@@ -154,5 +154,105 @@ namespace DLL
             }
         }
 
+        /// <summary>
+        /// get the transaction list by name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public List<Transaction> GetTransactionListByName(string name)
+        {
+            List<Transaction> objTransactions = new List<Transaction>();
+            StringBuilder sqlBuilder = new StringBuilder();
+            sqlBuilder.Append("select * from TransactionList where Purchaser like '%{0}%'");
+
+            string sql = string.Format(sqlBuilder.ToString(), name);
+
+            try
+            {
+                SqlDataReader objReaders = SQLHelper.GetObjectCollection(sql);
+                while (objReaders.Read())
+                {
+                    objTransactions.Add(new Transaction()
+                    {
+                        OrderNo = Convert.ToInt32(objReaders["OrderNo"]),
+                        Purchaser = objReaders["Purchaser"].ToString(),
+                        PurchasePrice = Convert.ToDouble(objReaders["PurchasePrice"]),
+                        SellingPrice = Convert.ToDouble(objReaders["SellingPrice"]),
+                        Profit = Convert.ToDouble(objReaders["Profit"]),
+                        CreateTime = Convert.ToDateTime(objReaders["CreateTime"])
+                    });
+                }
+                return objTransactions;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// get transaction list by Purchaser and sorting type
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="sortingType"></param>
+        /// <returns></returns>
+        public List<Transaction> GetTransactionList(string name, int sortingType)
+        {
+            List<Transaction> objTransactions = new List<Transaction>();
+            StringBuilder sqlBuilder = new StringBuilder();
+
+            if (name == "Input Name" || name == "")
+            {
+                sqlBuilder.Append("select * from TransactionList ");
+            }
+            else
+            {
+                sqlBuilder.Append("select * from TransactionList where Purchaser like '%{0}%' ");
+            }
+
+            switch (sortingType)
+            {
+                case 0:
+                    sqlBuilder.Append("order by OrderNo asc");
+                    break;
+                case 1:
+                    sqlBuilder.Append("order by OrderNo desc");
+                    break;
+                case 2:
+                    sqlBuilder.Append("order by Profit asc");
+                    break;
+                case 3:
+                    sqlBuilder.Append("order by Profit desc");
+                    break;
+                default:
+                    break;
+            }
+
+            string sql = null;
+            if (name == "Input Name" || name == "")
+            {
+                sql = sqlBuilder.ToString();
+            }
+            else
+            {
+                sql = string.Format(sqlBuilder.ToString(), name);
+            }
+
+            SqlDataReader objReaders = SQLHelper.GetObjectCollection(sql);
+            while (objReaders.Read())
+            {
+                objTransactions.Add(new Transaction()
+                {
+                    OrderNo = Convert.ToInt32(objReaders["OrderNo"]),
+                    Purchaser = objReaders["Purchaser"].ToString(),
+                    PurchasePrice = Convert.ToDouble(objReaders["PurchasePrice"]),
+                    SellingPrice = Convert.ToDouble(objReaders["SellingPrice"]),
+                    Profit = Convert.ToDouble(objReaders["Profit"]),
+                    CreateTime = Convert.ToDateTime(objReaders["CreateTime"])
+                });
+            }
+            return objTransactions;
+        }
     }
 }

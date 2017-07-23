@@ -19,4 +19,6 @@ namespace Models
         public DateTime CreateTime { get; set; }
 
     }
+
+    
 }
