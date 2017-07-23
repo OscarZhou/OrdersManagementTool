@@ -275,9 +275,9 @@
             // label11
             // 
             this.label11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label11.Location = new System.Drawing.Point(1167, 36);
+            this.label11.Location = new System.Drawing.Point(1162, 36);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(2, 514);
+            this.label11.Size = new System.Drawing.Size(1, 590);
             this.label11.TabIndex = 6;
             this.label11.Text = "label11";
             // 
@@ -360,7 +360,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(915, 473);
+            this.label13.Location = new System.Drawing.Point(916, 473);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(107, 18);
             this.label13.TabIndex = 0;
@@ -369,7 +369,7 @@
             // tbTotalPrice
             // 
             this.tbTotalPrice.Enabled = false;
-            this.tbTotalPrice.Location = new System.Drawing.Point(1031, 468);
+            this.tbTotalPrice.Location = new System.Drawing.Point(1029, 470);
             this.tbTotalPrice.Name = "tbTotalPrice";
             this.tbTotalPrice.Size = new System.Drawing.Size(93, 28);
             this.tbTotalPrice.TabIndex = 4;
@@ -378,7 +378,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1659, 577);
+            this.ClientSize = new System.Drawing.Size(1659, 643);
             this.Controls.Add(this.chkLock);
             this.Controls.Add(this.lbUserError);
             this.Controls.Add(this.lbItemError);

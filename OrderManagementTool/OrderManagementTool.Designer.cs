@@ -43,12 +43,15 @@
             this.CreateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnUndoneOrders = new System.Windows.Forms.Button();
             this.btnDataAnalysis = new System.Windows.Forms.Button();
+            this.cmbSorting = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransaction)).BeginInit();
             this.SuspendLayout();
             // 
             // tbSearch
             // 
-            this.tbSearch.Location = new System.Drawing.Point(36, 24);
+            this.tbSearch.Location = new System.Drawing.Point(36, 28);
+            this.tbSearch.MaxLength = 20;
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(206, 28);
             this.tbSearch.TabIndex = 0;
@@ -56,16 +59,17 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(267, 19);
+            this.btnSearch.Location = new System.Drawing.Point(267, 23);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(82, 39);
             this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnOpenDataImporter
             // 
-            this.btnOpenDataImporter.Location = new System.Drawing.Point(36, 571);
+            this.btnOpenDataImporter.Location = new System.Drawing.Point(36, 699);
             this.btnOpenDataImporter.Name = "btnOpenDataImporter";
             this.btnOpenDataImporter.Size = new System.Drawing.Size(178, 43);
             this.btnOpenDataImporter.TabIndex = 4;
@@ -75,7 +79,7 @@
             // 
             // btnAddOrder
             // 
-            this.btnAddOrder.Location = new System.Drawing.Point(965, 15);
+            this.btnAddOrder.Location = new System.Drawing.Point(965, 19);
             this.btnAddOrder.Name = "btnAddOrder";
             this.btnAddOrder.Size = new System.Drawing.Size(139, 42);
             this.btnAddOrder.TabIndex = 3;
@@ -86,7 +90,7 @@
             // lbTotalProfit
             // 
             this.lbTotalProfit.AutoSize = true;
-            this.lbTotalProfit.Location = new System.Drawing.Point(800, 583);
+            this.lbTotalProfit.Location = new System.Drawing.Point(800, 711);
             this.lbTotalProfit.Name = "lbTotalProfit";
             this.lbTotalProfit.Size = new System.Drawing.Size(179, 18);
             this.lbTotalProfit.TabIndex = 7;
@@ -105,11 +109,11 @@
             this.PurchasePrice,
             this.Profit,
             this.CreateTime});
-            this.dgvTransaction.Location = new System.Drawing.Point(36, 80);
+            this.dgvTransaction.Location = new System.Drawing.Point(36, 117);
             this.dgvTransaction.Name = "dgvTransaction";
             this.dgvTransaction.ReadOnly = true;
             this.dgvTransaction.RowTemplate.Height = 30;
-            this.dgvTransaction.Size = new System.Drawing.Size(1068, 456);
+            this.dgvTransaction.Size = new System.Drawing.Size(1195, 556);
             this.dgvTransaction.TabIndex = 6;
             // 
             // OrderNo
@@ -162,7 +166,7 @@
             // 
             // btnUndoneOrders
             // 
-            this.btnUndoneOrders.Location = new System.Drawing.Point(756, 15);
+            this.btnUndoneOrders.Location = new System.Drawing.Point(756, 19);
             this.btnUndoneOrders.Name = "btnUndoneOrders";
             this.btnUndoneOrders.Size = new System.Drawing.Size(139, 42);
             this.btnUndoneOrders.TabIndex = 2;
@@ -172,18 +176,39 @@
             // 
             // btnDataAnalysis
             // 
-            this.btnDataAnalysis.Location = new System.Drawing.Point(255, 571);
+            this.btnDataAnalysis.Location = new System.Drawing.Point(255, 699);
             this.btnDataAnalysis.Name = "btnDataAnalysis";
             this.btnDataAnalysis.Size = new System.Drawing.Size(178, 43);
             this.btnDataAnalysis.TabIndex = 5;
             this.btnDataAnalysis.Text = "Data Analysis";
             this.btnDataAnalysis.UseVisualStyleBackColor = true;
             // 
+            // cmbSorting
+            // 
+            this.cmbSorting.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSorting.FormattingEnabled = true;
+            this.cmbSorting.Location = new System.Drawing.Point(128, 73);
+            this.cmbSorting.Name = "cmbSorting";
+            this.cmbSorting.Size = new System.Drawing.Size(164, 26);
+            this.cmbSorting.TabIndex = 8;
+            this.cmbSorting.SelectedIndexChanged += new System.EventHandler(this.cmbSorting_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(36, 77);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 18);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Sorting:";
+            // 
             // OrderManagementTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1161, 637);
+            this.ClientSize = new System.Drawing.Size(1371, 766);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cmbSorting);
             this.Controls.Add(this.lbTotalProfit);
             this.Controls.Add(this.dgvTransaction);
             this.Controls.Add(this.btnUndoneOrders);
@@ -218,6 +243,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateTime;
         private System.Windows.Forms.Button btnUndoneOrders;
         private System.Windows.Forms.Button btnDataAnalysis;
+        private System.Windows.Forms.ComboBox cmbSorting;
+        private System.Windows.Forms.Label label1;
     }
 }
 

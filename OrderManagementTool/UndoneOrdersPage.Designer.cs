@@ -49,7 +49,7 @@ namespace OrderManagementTool
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(59, 56);
+            this.label1.Location = new System.Drawing.Point(29, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(134, 18);
             this.label1.TabIndex = 0;
@@ -68,7 +68,7 @@ namespace OrderManagementTool
             this.PurchasePrice,
             this.Profit,
             this.CreateTime});
-            this.dgvUndoneOrders.Location = new System.Drawing.Point(76, 94);
+            this.dgvUndoneOrders.Location = new System.Drawing.Point(32, 56);
             this.dgvUndoneOrders.Name = "dgvUndoneOrders";
             this.dgvUndoneOrders.ReadOnly = true;
             this.dgvUndoneOrders.RowTemplate.Height = 30;
@@ -126,7 +126,7 @@ namespace OrderManagementTool
             // 
             // btnCompleteOrder
             // 
-            this.btnCompleteOrder.Location = new System.Drawing.Point(798, 469);
+            this.btnCompleteOrder.Location = new System.Drawing.Point(754, 423);
             this.btnCompleteOrder.Name = "btnCompleteOrder";
             this.btnCompleteOrder.Size = new System.Drawing.Size(147, 44);
             this.btnCompleteOrder.TabIndex = 2;
@@ -136,7 +136,7 @@ namespace OrderManagementTool
             // 
             // UndoneOrdersPage
             // 
-            this.ClientSize = new System.Drawing.Size(1041, 559);
+            this.ClientSize = new System.Drawing.Size(943, 489);
             this.Controls.Add(this.btnCompleteOrder);
             this.Controls.Add(this.dgvUndoneOrders);
             this.Controls.Add(this.label1);

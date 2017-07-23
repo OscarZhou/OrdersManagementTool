@@ -16,10 +16,8 @@ namespace OrderManagementTool
             InitializeComponent();
             this.dgvTransaction.AutoGenerateColumns = false;// prohibit useless column 
             ShowTransaction();
+            InitializeSortingList();
         }
-
-
-
 
 
         /// <summary>
@@ -37,17 +35,14 @@ namespace OrderManagementTool
 
         private void ShowTransaction()
         {
-
             dgvTransaction.DataSource = new TransactionManage().GetTransactionList();
-
             #region Calculate total profit
-
             double TotalProfit = 0;
             foreach (DataGridViewRow dgvTransactionRow in dgvTransaction.Rows)
             {
                 TotalProfit += Convert.ToDouble(dgvTransactionRow.Cells["Profit"].Value);
             }
-            lbTotalProfit.Text = "The total profit: " + TotalProfit.ToString();
+            lbTotalProfit.Text = "The total profit: " + TotalProfit.ToString() + "RMB";
 
             #endregion
             dgvTransaction.Show();
@@ -65,6 +60,40 @@ namespace OrderManagementTool
             frmUndoneOrders = new UndoneOrdersPage();
             frmUndoneOrders.ShowDialog();
             ShowTransaction();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
+        }
+
+        private void ShowTransaction(string name, int sortingtype)
+        {
+            dgvTransaction.DataSource = new TransactionManage().GetTransactionList(name, sortingtype);
+            #region Calculate total profit
+            double TotalProfit = 0;
+            foreach (DataGridViewRow dgvTransactionRow in dgvTransaction.Rows)
+            {
+                TotalProfit += Convert.ToDouble(dgvTransactionRow.Cells["Profit"].Value);
+            }
+            lbTotalProfit.Text = "The total profit: " + TotalProfit.ToString();
+
+            #endregion
+            dgvTransaction.Show();
+        }
+
+        private void InitializeSortingList()
+        {
+            cmbSorting.Items.Add("OrderNo Asc");
+            cmbSorting.Items.Add("OrderNo Desc");
+            cmbSorting.Items.Add("Profit Asc");
+            cmbSorting.Items.Add("Profit Desc");
+            cmbSorting.SelectedIndex = 1;
+        }
+
+        private void cmbSorting_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
         }
 
     }

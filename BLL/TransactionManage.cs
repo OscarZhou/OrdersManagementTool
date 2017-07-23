@@ -31,5 +31,15 @@ namespace BLL
         {
             return new TransactionService().UpdateTransactionRecord(objTransaction);
         }
+
+        public List<Transaction> GetTransactionListByName(string name)
+        {
+            return new TransactionService().GetTransactionListByName(name);
+        }
+
+        public List<Transaction> GetTransactionList(string name, int sortingType)
+        {
+            return new TransactionService().GetTransactionList(name, sortingType);
+        }
     }
 }
