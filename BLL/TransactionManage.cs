@@ -41,5 +41,6 @@ namespace BLL
         {
             return new TransactionService().GetTransactionList(name, sortingType);
         }
+
     }
 }

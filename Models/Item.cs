@@ -11,9 +11,11 @@ namespace Models
 
         public int Quantity { get; set; }
 
-        public double Price { get; set; }
+        public double UnitPrice { get; set; }
 
         public int OrderNo { get; set; }
+
+        public double TotalPrice { get; set; }
 
         public DateTime CreatTime { get; set; }
 

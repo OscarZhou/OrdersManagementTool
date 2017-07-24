@@ -77,7 +77,7 @@ namespace OrderManagementTool
             {
                 ItemDescription = tbItemDescription.Text,
                 Quantity = Convert.ToInt32(tbQuantity.Text),
-                Price = Convert.ToInt32(tbPrice.Text),
+                UnitPrice = Convert.ToDouble(tbPrice.Text),
                 CreatTime = DateTime.Now
             });
 
@@ -91,7 +91,7 @@ namespace OrderManagementTool
             double productPrice = 0;
             foreach (Item objItem in objItems)
             {
-                productPrice += objItem.Quantity * objItem.Price;
+                productPrice += objItem.Quantity * objItem.UnitPrice;
             }
             tbTotalPrice.Text = productPrice.ToString();
 

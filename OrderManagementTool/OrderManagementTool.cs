@@ -13,7 +13,7 @@ namespace OrderManagementTool
         private OrderDetailsPage frmOrderDetail;
 
         // define delegate
-        public delegate void DlgSendOperation(string orderNo);
+        public delegate void DlgSendOperation(string operation, string orderNo);
         // create an event. that is delegate variables
         public event DlgSendOperation EvtSendOperation;
         #endregion
@@ -126,18 +126,18 @@ namespace OrderManagementTool
         {
             frmOrderDetail = new OrderDetailsPage();
             this.EvtSendOperation += frmOrderDetail.Receiver;
-            this.EvtSendOperation("View");
+            this.EvtSendOperation("View", dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString());
             frmOrderDetail.ShowDialog();
-            ShowTransaction();
+            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
             frmOrderDetail = new OrderDetailsPage();
             this.EvtSendOperation += frmOrderDetail.Receiver;
-            this.EvtSendOperation("Edit");
+            this.EvtSendOperation("Edit", dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString());
             frmOrderDetail.ShowDialog();
-            ShowTransaction();
+            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
         }
 
     }

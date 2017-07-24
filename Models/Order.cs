@@ -24,8 +24,6 @@ namespace Models
 
         public List<Item> LstItems = new List<Item>();
 
-
-
         public int CompareTo(Order other)
         {
 

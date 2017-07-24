@@ -9,7 +9,11 @@ namespace DLL
 {
     public class OrderService
     {
-
+        /// <summary>
+        /// insert order into database
+        /// </summary>
+        /// <param name="objOrder"></param>
+        /// <returns></returns>
         public int InsertOrder(Order objOrder)
         {
             StringBuilder sqlBuilder = new StringBuilder();
@@ -36,7 +40,10 @@ namespace DLL
 
         }
 
-
+        /// <summary>
+        /// get current order no
+        /// </summary>
+        /// <returns></returns>
         public int GetMaxOrderNo()
         {
             StringBuilder sqlBuilder = new StringBuilder();
@@ -53,5 +60,35 @@ namespace DLL
             }
         }
 
+        public Order GetOrderByOrderNo(string orderNo)
+        {
+            StringBuilder sqlBuilder = new StringBuilder();
+            sqlBuilder.Append("select UserInfo.UserName, UserInfo.PhoneNumber, UserInfo.UserAddress, UserInfo.CardNo, Orders.ShipmentFee, Orders.ProductPrice, Orders.Purchaser");
+            sqlBuilder.Append(" from Orders inner join UserInfo on Orders.UserNo = UserInfo.UserNo where OrderNo = {0}");
+            string sql = string.Format(sqlBuilder.ToString(), orderNo);
+            Order objOrder = new Order();
+            try
+            {
+                SqlDataReader objReaders = SQLHelper.GetObjectCollection(sql);
+                while (objReaders.Read())
+                {
+                    objOrder.User.UserName = objReaders["UserName"].ToString();
+                    objOrder.User.PhoneNumber = objReaders["PhoneNumber"].ToString();
+                    objOrder.User.Address = objReaders["UserAddress"].ToString();
+                    objOrder.User.CardNo = objReaders["CardNo"].ToString();
+
+                    objOrder.OrderNo = Convert.ToInt32(orderNo);
+                    objOrder.ShipmentFee = Convert.ToDouble(objReaders["ShipmentFee"]);
+                    objOrder.ProductPrice = Convert.ToDouble(objReaders["ProductPrice"]);
+                    objOrder.Purchaser = objReaders["Purchaser"].ToString();
+                }
+                return objOrder;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
     }
 }
