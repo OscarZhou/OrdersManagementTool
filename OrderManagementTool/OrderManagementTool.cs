@@ -6,10 +6,17 @@ namespace OrderManagementTool
 {
     public partial class OrderManagementTool : Form
     {
+        #region Variable declaration
         private DataImportingPage frmDataImporting;
         private OrderCreationPage frmOrderCreation;
         private UndoneOrdersPage frmUndoneOrders;
+        private OrderDetailsPage frmOrderDetail;
 
+        // define delegate
+        public delegate void DlgSendOperation(string orderNo);
+        // create an event. that is delegate variables
+        public event DlgSendOperation EvtSendOperation;
+        #endregion
 
         public OrderManagementTool()
         {
@@ -18,7 +25,6 @@ namespace OrderManagementTool
             ShowTransaction();
             InitializeSortingList();
         }
-
 
         /// <summary>
         /// Import the existed data
@@ -48,6 +54,11 @@ namespace OrderManagementTool
             dgvTransaction.Show();
         }
 
+        /// <summary>
+        /// create the order
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddOrder_Click(object sender, System.EventArgs e)
         {
             frmOrderCreation = new OrderCreationPage();
@@ -55,6 +66,11 @@ namespace OrderManagementTool
             ShowTransaction();
         }
 
+        /// <summary>
+        /// view undone orders
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnUndoneOrders_Click(object sender, System.EventArgs e)
         {
             frmUndoneOrders = new UndoneOrdersPage();
@@ -62,6 +78,11 @@ namespace OrderManagementTool
             ShowTransaction();
         }
 
+        /// <summary>
+        /// search purchaser
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
             ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
@@ -94,6 +115,29 @@ namespace OrderManagementTool
         private void cmbSorting_SelectedIndexChanged(object sender, EventArgs e)
         {
             ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
+        }
+
+        /// <summary>
+        /// view details
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDetail_Click(object sender, EventArgs e)
+        {
+            frmOrderDetail = new OrderDetailsPage();
+            this.EvtSendOperation += frmOrderDetail.Receiver;
+            this.EvtSendOperation("View");
+            frmOrderDetail.ShowDialog();
+            ShowTransaction();
+        }
+
+        private void BtnEdit_Click(object sender, EventArgs e)
+        {
+            frmOrderDetail = new OrderDetailsPage();
+            this.EvtSendOperation += frmOrderDetail.Receiver;
+            this.EvtSendOperation("Edit");
+            frmOrderDetail.ShowDialog();
+            ShowTransaction();
         }
 
     }

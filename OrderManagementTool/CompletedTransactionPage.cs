@@ -20,7 +20,6 @@ namespace OrderManagementTool
         private void ShowTransaction()
         {
             objTransaction = new TransactionManage().GetTransactionRecordByOrderNo(this._orderNo);
-            
             tbOrderNo.Text = objTransaction.OrderNo.ToString();
             tbPurchaser.Text = objTransaction.Purchaser;
             //tbSellingPrice.Text = objTransaction.SellingPrice.ToString();
@@ -84,8 +83,6 @@ namespace OrderManagementTool
 
         private void tbSellingPrice_Leave(object sender, EventArgs e)
         {
-
-
             if (tbPurchasingPrice.Text == "")
             {
                 //tbProfit.Text = (Convert.ToDouble(tbSellingPrice.Text.Trim()) - 0).ToString();

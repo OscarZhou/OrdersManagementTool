@@ -43,6 +43,7 @@ namespace OrderManagementTool
                 tbItemDescription.BackColor = System.Drawing.Color.LightCoral;
                 tbQuantity.BackColor = System.Drawing.Color.LightCoral;
                 tbPrice.BackColor = System.Drawing.Color.LightCoral;
+                this.tbItemDescription.Focus();
                 return;
             }
             else if (tbItemDescription.Text == "")
@@ -50,6 +51,7 @@ namespace OrderManagementTool
                 lbItemError.Text = "Please input the Product Name!";
                 lbItemError.Visible = true;
                 tbItemDescription.BackColor = System.Drawing.Color.LightCoral;
+                this.tbItemDescription.Focus();
                 return;
             }
             else if (tbQuantity.Text == "")
@@ -57,6 +59,7 @@ namespace OrderManagementTool
                 lbItemError.Text = "Please input the Quantity!";
                 lbItemError.Visible = true;
                 tbQuantity.BackColor = System.Drawing.Color.LightCoral;
+                this.tbQuantity.Focus();
                 return;
             }
             else if (tbPrice.Text == "")
@@ -64,6 +67,7 @@ namespace OrderManagementTool
                 lbItemError.Text = "Please input the Price!";
                 lbItemError.Visible = true;
                 tbPrice.BackColor = System.Drawing.Color.LightCoral;
+                this.tbPrice.Focus();
                 return;
             }
             #endregion
@@ -115,6 +119,7 @@ namespace OrderManagementTool
                 tbToPhone.BackColor = System.Drawing.Color.LightCoral;
                 tbAddress.BackColor = System.Drawing.Color.LightCoral;
                 tbPurchaser.BackColor = System.Drawing.Color.LightCoral;
+                this.tbTo.Focus();
                 return;
             }
             else if (tbTo.Text == "")
@@ -122,6 +127,7 @@ namespace OrderManagementTool
                 lbUserError.Text = "Please input the To!";
                 lbUserError.Visible = true;
                 tbTo.BackColor = System.Drawing.Color.LightCoral;
+                this.tbTo.Focus();
                 return;
             }
             else if (tbToPhone.Text == "")
@@ -129,6 +135,7 @@ namespace OrderManagementTool
                 lbUserError.Text = "Please input the Phone!";
                 lbUserError.Visible = true;
                 tbToPhone.BackColor = System.Drawing.Color.LightCoral;
+                this.tbToPhone.Focus();
                 return;
             }
             else if (tbAddress.Text == "")
@@ -136,6 +143,7 @@ namespace OrderManagementTool
                 lbUserError.Text = "Please input the Address!";
                 lbUserError.Visible = true;
                 tbAddress.BackColor = System.Drawing.Color.LightCoral;
+                this.tbAddress.Focus();
                 return;
             }
             else if (tbPurchaser.Text == "")
@@ -144,11 +152,12 @@ namespace OrderManagementTool
                 lbUserError.Text = "Please input the Purchaser Name!";
                 lbUserError.Visible = true;
                 tbPurchaser.BackColor = System.Drawing.Color.LightCoral;
+                this.tbPurchaser.Focus();
                 return;
             }
             else if (dgvItemList.DataSource == null)
             {
-                lbUserError.Text = "There is not data to be added!";
+                lbUserError.Text = "There is not items to be added!";
                 lbUserError.Visible = true;
                 return;
             }
