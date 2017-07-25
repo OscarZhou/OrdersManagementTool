@@ -46,7 +46,7 @@
             this.cmbSorting = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnView = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnExportTransaction = new System.Windows.Forms.Button();
             this.BtnEdit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransaction)).BeginInit();
             this.SuspendLayout();
@@ -216,15 +216,15 @@
             this.btnView.UseVisualStyleBackColor = true;
             this.btnView.Click += new System.EventHandler(this.btnDetail_Click);
             // 
-            // button1
+            // btnExportTransaction
             // 
-            this.button1.Location = new System.Drawing.Point(180, 700);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(201, 42);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Transaction Export";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.btnDetail_Click);
+            this.btnExportTransaction.Location = new System.Drawing.Point(180, 700);
+            this.btnExportTransaction.Name = "btnExportTransaction";
+            this.btnExportTransaction.Size = new System.Drawing.Size(201, 42);
+            this.btnExportTransaction.TabIndex = 2;
+            this.btnExportTransaction.Text = "Transaction Export";
+            this.btnExportTransaction.UseVisualStyleBackColor = true;
+            this.btnExportTransaction.Click += new System.EventHandler(this.btnExportTransaction_Click);
             // 
             // BtnEdit
             // 
@@ -245,7 +245,7 @@
             this.Controls.Add(this.cmbSorting);
             this.Controls.Add(this.lbTotalProfit);
             this.Controls.Add(this.dgvTransaction);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnExportTransaction);
             this.Controls.Add(this.BtnEdit);
             this.Controls.Add(this.btnView);
             this.Controls.Add(this.btnUndoneOrders);
@@ -283,7 +283,7 @@
         private System.Windows.Forms.ComboBox cmbSorting;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnView;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnExportTransaction;
         private System.Windows.Forms.Button BtnEdit;
     }
 }

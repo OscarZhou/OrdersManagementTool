@@ -1,6 +1,7 @@
 ﻿using BLL;
 using System;
 using System.Windows.Forms;
+using Utilities;
 
 namespace OrderManagementTool
 {
@@ -138,6 +139,25 @@ namespace OrderManagementTool
             this.EvtSendOperation("Edit", dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString());
             frmOrderDetail.ShowDialog();
             ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
+        }
+
+        private void btnExportTransaction_Click(object sender, EventArgs e)
+        {
+            #region Generate .csv file
+            FolderBrowserDialog fileSelector = new FolderBrowserDialog();
+            string timeStamp = DateTime.Now.Date.ToString("ddMMyyyy");
+            if (fileSelector.ShowDialog() == DialogResult.OK)
+            {
+                //string path = string.Format(fileSelector.SelectedPath + @"\销售记录{0}.csv", timeStamp);
+                //ExportFile.CreateTransactionFile(path, new TransactionManage().GetTransactionList());
+                string path = string.Format(fileSelector.SelectedPath + @"\销售记录{0}.xls", timeStamp);
+                ExportFile.CreateTransactionFile(path, new TransactionManage().GetTransactionList());
+            }
+
+            #endregion
+            //MessageBox.Show("Generating 销售记录" + timeStamp + ".csv Sucessfully!");
+            MessageBox.Show("Generating 销售记录" + timeStamp + ".xls Sucessfully!");
+            
         }
 
     }

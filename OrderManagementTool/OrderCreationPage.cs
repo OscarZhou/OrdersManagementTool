@@ -2,9 +2,9 @@
 using Models;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using Utilities;
 
 namespace OrderManagementTool
 {
@@ -278,16 +278,6 @@ namespace OrderManagementTool
             tbFromPhone.Enabled = !chkLock.Checked;
         }
 
-        private void CreateOrderFile(string path, string orderContent)
-        {
-            FileStream fs = new FileStream(path, FileMode.Create);
-            StreamWriter sw = new StreamWriter(fs, Encoding.Unicode);
-            sw.Write(orderContent);
-            sw.Close();
-            fs.Close();
-
-        }
-
         private void btnTxtFile_Click(object sender, EventArgs e)
         {
             #region Generate .txt file
@@ -297,7 +287,7 @@ namespace OrderManagementTool
                 string path = string.Format(fileSelector.SelectedPath + @"\{0}{1}.txt", this.crtOrderNo,
                     this.purchaserName);
 
-                CreateOrderFile(path, tbOrderContent.Text.Trim());
+                ExportFile.CreateOrderFile(path, tbOrderContent.Text.Trim());
             }
 
             #endregion
