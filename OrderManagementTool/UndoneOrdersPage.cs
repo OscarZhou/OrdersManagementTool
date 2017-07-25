@@ -27,6 +27,11 @@ namespace OrderManagementTool
         {
             dgvUndoneOrders.DataSource = new TransactionManage().GetUndoneTransactionList();
             dgvUndoneOrders.Show();
+
+            if (dgvUndoneOrders.DataSource == null)
+            {
+                this.Close();
+            }
         }
 
         private void btnCompleteOrder_Click(object sender, EventArgs e)

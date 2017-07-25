@@ -23,7 +23,7 @@ namespace OrderManagementTool
         {
             InitializeComponent();
             this.dgvTransaction.AutoGenerateColumns = false;// prohibit useless column 
-            ShowTransaction();
+            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
             InitializeSortingList();
         }
 
@@ -36,23 +36,7 @@ namespace OrderManagementTool
         {
             frmDataImporting = new DataImportingPage();
             frmDataImporting.ShowDialog();
-            ShowTransaction();
-        }
-
-
-        private void ShowTransaction()
-        {
-            dgvTransaction.DataSource = new TransactionManage().GetTransactionList();
-            #region Calculate total profit
-            double TotalProfit = 0;
-            foreach (DataGridViewRow dgvTransactionRow in dgvTransaction.Rows)
-            {
-                TotalProfit += Convert.ToDouble(dgvTransactionRow.Cells["Profit"].Value);
-            }
-            lbTotalProfit.Text = "The total profit: " + TotalProfit.ToString() + "RMB";
-
-            #endregion
-            dgvTransaction.Show();
+            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
         }
 
         /// <summary>
@@ -64,7 +48,7 @@ namespace OrderManagementTool
         {
             frmOrderCreation = new OrderCreationPage();
             frmOrderCreation.ShowDialog();
-            ShowTransaction();
+            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
         }
 
         /// <summary>
@@ -76,7 +60,7 @@ namespace OrderManagementTool
         {
             frmUndoneOrders = new UndoneOrdersPage();
             frmUndoneOrders.ShowDialog();
-            ShowTransaction();
+            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
         }
 
         /// <summary>
@@ -148,14 +132,11 @@ namespace OrderManagementTool
             string timeStamp = DateTime.Now.Date.ToString("ddMMyyyy");
             if (fileSelector.ShowDialog() == DialogResult.OK)
             {
-                //string path = string.Format(fileSelector.SelectedPath + @"\销售记录{0}.csv", timeStamp);
-                //ExportFile.CreateTransactionFile(path, new TransactionManage().GetTransactionList());
                 string path = string.Format(fileSelector.SelectedPath + @"\销售记录{0}.xls", timeStamp);
                 ExportFile.ExportToExcel(path, new TransactionManage().GetTransactionList());
             }
 
             #endregion
-            //MessageBox.Show("Generating 销售记录" + timeStamp + ".csv Sucessfully!");
             MessageBox.Show("Generating 销售记录" + timeStamp + ".xls Sucessfully!");
             
         }
