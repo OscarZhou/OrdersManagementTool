@@ -151,7 +151,7 @@ namespace OrderManagementTool
                 //string path = string.Format(fileSelector.SelectedPath + @"\销售记录{0}.csv", timeStamp);
                 //ExportFile.CreateTransactionFile(path, new TransactionManage().GetTransactionList());
                 string path = string.Format(fileSelector.SelectedPath + @"\销售记录{0}.xls", timeStamp);
-                ExportFile.CreateTransactionFile(path, new TransactionManage().GetTransactionList());
+                ExportFile.ExportToExcel(path, new TransactionManage().GetTransactionList());
             }
 
             #endregion

@@ -48,23 +48,27 @@ namespace Utilities
             fs.Close();
         }
 
+        /// <summary>
+        /// Export transaction record to Excel
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="objTransactions"></param>
         public static void ExportToExcel(string path, List<Transaction> objTransactions)
         {
             #region Initialize office components
             Excel.Application xlApp = new Excel.Application();
             object misValue = System.Reflection.Missing.Value;
             Excel.Workbook xlWorkbook = xlApp.Workbooks.Add(misValue);
-            //Excel._Worksheet xlWorksheet = xlWorkbook.Sheets[1];
-            Excel._Worksheet xlWorksheet = (Excel.Worksheet)xlWorkbook.Worksheets.get_Item(1);
-            //Excel.Range xlRange = xlWorksheet.UsedRange;
+            Excel._Worksheet xlWorksheet = xlWorkbook.Sheets[1];
+            //Excel._Worksheet xlWorksheet = (Excel.Worksheet)xlWorkbook.Worksheets.get_Item(1);
             #endregion
 
 
-            xlWorksheet.Cells[1, 1].Value2 = "订单号";
-            xlWorksheet.Cells[1, 2].Value2 = "下单人";
-            xlWorksheet.Cells[1, 3].Value2 = "收款";
-            xlWorksheet.Cells[1, 4].Value2 = "付款";
-            xlWorksheet.Cells[1, 5].Value2 = "利润";
+            xlWorksheet.Cells[1, 1] = "订单号";
+            xlWorksheet.Cells[1, 2] = "下单人";
+            xlWorksheet.Cells[1, 3] = "收款";
+            xlWorksheet.Cells[1, 4] = "付款";
+            xlWorksheet.Cells[1, 5] = "利润";
 
             for (int i = 2; i <= objTransactions.Count; i++)
             {
@@ -75,8 +79,9 @@ namespace Utilities
                 xlWorksheet.Cells[i, 5] = objTransactions[i - 2].Profit.ToString();
 
             }
+
             xlWorkbook.SaveAs(path, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-            xlWorkbook.Close(true, misValue, misValue);
+            
 
             #region Close office components
             //cleanup
@@ -86,7 +91,7 @@ namespace Utilities
             //Marshal.ReleaseComObject(xlRange);
             Marshal.ReleaseComObject(xlWorksheet);
             //close and release
-            xlWorkbook.Close();
+            xlWorkbook.Close(true, misValue, misValue);
             Marshal.ReleaseComObject(xlWorkbook);
 
             //quit and release
