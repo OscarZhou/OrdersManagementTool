@@ -16,6 +16,8 @@ namespace OrderManagementTool
         private List<Order> objOrders = new List<Order>();
         private List<Transaction> objTransactions = new List<Transaction>();
 
+        private string defaultFilePath = null;
+
         public DataImportingPage()
         {
             InitializeComponent();
@@ -30,8 +32,14 @@ namespace OrderManagementTool
         private void btnImport_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fileSelector = new FolderBrowserDialog();
+            if (defaultFilePath != "")
+            {
+                fileSelector.SelectedPath = defaultFilePath;
+            }
+
             if (fileSelector.ShowDialog() == DialogResult.OK)
             {
+                defaultFilePath = fileSelector.SelectedPath;
                 lbFolder.Text = fileSelector.SelectedPath;                    
                 var files = Directory.GetFiles(fileSelector.SelectedPath).Where(name => name.EndsWith(".txt"));
                 prbImport.Maximum = files.ToList().Count;
@@ -46,14 +54,14 @@ namespace OrderManagementTool
                     objOrders.Add(objOrder);
                 }
                 objOrders.Sort();
+
+                if (bkgWorkForImporting.IsBusy != true)
+                {
+                    bkgWorkForImporting.RunWorkerAsync();
+                }
+                btnImportRecords.Enabled = false;
                 
             }
-
-            if (bkgWorkForImporting.IsBusy != true)
-            {
-                bkgWorkForImporting.RunWorkerAsync();
-            }
-            btnImportRecords.Enabled = false;
         }
 
         /// <summary>
@@ -103,6 +111,7 @@ namespace OrderManagementTool
         {
 
             prbImport.PerformStep();
+            prbImport.Maximum = 100;
             Order objOrder = objOrders[e.ProgressPercentage];
             lbProcessing.Text = "The current file: " + objOrder.OrderNo.ToString() + objOrder.Purchaser.ToString() +
                                 ".txt";
@@ -139,13 +148,14 @@ namespace OrderManagementTool
 
                 string file = files.ToList()[1];
                 objTransactions = FormatParsing.ParseContentIntoTransaction(file, objTransactions);
-            }
 
-            if (bkgWorkForTransaction.IsBusy != true)
-            {
-                bkgWorkForTransaction.RunWorkerAsync();
+                if (bkgWorkForTransaction.IsBusy != true)
+                {
+                    bkgWorkForTransaction.RunWorkerAsync();
+                }
+                btnImportTransaction.Enabled = false;
+
             }
-            btnImportTransaction.Enabled = false;
         }
 
         private void bkgWorkForTransaction_DoWork(object sender, DoWorkEventArgs e)
@@ -171,6 +181,7 @@ namespace OrderManagementTool
         private void bkgWorkForTransaction_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             prbImport.PerformStep();
+            prbImport.Maximum = 100;
             lbProcessing.Text = "Loading" + e.ProgressPercentage.ToString() + " transaction record";
             int counter = e.ProgressPercentage;
             int total = objTransactions.Count();
@@ -182,8 +193,64 @@ namespace OrderManagementTool
             }
         }
 
+        private void btnExportTransaction_Click(object sender, EventArgs e)
+        {
+            #region Generate .xls file
+            FolderBrowserDialog fileSelector = new FolderBrowserDialog();
+            string timeStamp = DateTime.Now.Date.ToString("ddMMyyyy");
+            if (fileSelector.ShowDialog() == DialogResult.OK)
+            {
+                string path = string.Format(fileSelector.SelectedPath + @"\销售记录{0}.xls", timeStamp);
+                string[] parameters = new string[2];
+                parameters[0] = timeStamp;
+                parameters[1] = path;
+                if (bkgWorkForExporting.IsBusy != true)
+                {
+                    bkgWorkForExporting.RunWorkerAsync(parameters);
+                }
+                btnExportTransaction.Enabled = false;
 
+            }
 
+            #endregion
+        }
+
+        private void bkgWorkForExporting_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var bkgWorker = sender as BackgroundWorker;
+            string timeStamp = ((string[]) (e.Argument))[0];
+            string path = ((string[]) (e.Argument))[1];
+            ExportFile.ExportToExcel(path, new TransactionManage().GetTransactionList());
+            try
+            {
+                int counter = 0;
+                bkgWorker.ReportProgress(counter++);
+                
+            }
+            catch (NullReferenceException exception)
+            {
+                Console.WriteLine(exception);
+                throw;
+            }
+
+            MessageBox.Show("Generating 销售记录" + timeStamp + ".xls Sucessfully!");
+        }
+
+        private void bkgWorkForExporting_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            prbImport.PerformStep();
+            prbImport.Maximum = 1;
+            lbProcessing.Text = "Exporting" + e.ProgressPercentage.ToString() + " transaction record";
+            int counter = e.ProgressPercentage;
+            int total = e.ProgressPercentage;
+            string progressIndicate = string.Format("{0:P1}", counter * 1.0 / total);
+            this.lbProgress.Text = progressIndicate;
+            if (counter == total)
+            {
+                this.lbProgress.Text = "100%";
+            }
+            
+        }
 
     }
 }

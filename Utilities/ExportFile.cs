@@ -70,7 +70,7 @@ namespace Utilities
             xlWorksheet.Cells[1, 4] = "付款";
             xlWorksheet.Cells[1, 5] = "利润";
 
-            for (int i = 2; i <= objTransactions.Count; i++)
+            for (int i = 2; i <= objTransactions.Count+1; i++)
             {
                 xlWorksheet.Cells[i, 1] = objTransactions[i - 2].OrderNo.ToString();
                 xlWorksheet.Cells[i, 2] = objTransactions[i - 2].Purchaser.ToString();

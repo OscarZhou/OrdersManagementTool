@@ -135,10 +135,10 @@ namespace OrderManagementTool
             {
                 string path = string.Format(fileSelector.SelectedPath + @"\销售记录{0}.xls", timeStamp);
                 ExportFile.ExportToExcel(path, new TransactionManage().GetTransactionList());
+                MessageBox.Show("Generating 销售记录" + timeStamp + ".xls Sucessfully!");
             }
 
             #endregion
-            MessageBox.Show("Generating 销售记录" + timeStamp + ".xls Sucessfully!");
             
         }
 

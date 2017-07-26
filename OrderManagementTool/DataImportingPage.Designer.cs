@@ -37,6 +37,8 @@
             this.lbFolder = new System.Windows.Forms.Label();
             this.btnImportTransaction = new System.Windows.Forms.Button();
             this.bkgWorkForTransaction = new System.ComponentModel.BackgroundWorker();
+            this.btnExportTransaction = new System.Windows.Forms.Button();
+            this.bkgWorkForExporting = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // btnImportRecords
@@ -106,11 +108,28 @@
             this.bkgWorkForTransaction.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkgWorkForTransaction_DoWork);
             this.bkgWorkForTransaction.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bkgWorkForTransaction_ProgressChanged);
             // 
+            // btnExportTransaction
+            // 
+            this.btnExportTransaction.Location = new System.Drawing.Point(646, 29);
+            this.btnExportTransaction.Name = "btnExportTransaction";
+            this.btnExportTransaction.Size = new System.Drawing.Size(206, 34);
+            this.btnExportTransaction.TabIndex = 1;
+            this.btnExportTransaction.Text = "Export Transaction";
+            this.btnExportTransaction.UseVisualStyleBackColor = true;
+            this.btnExportTransaction.Click += new System.EventHandler(this.btnExportTransaction_Click);
+            // 
+            // bkgWorkForExporting
+            // 
+            this.bkgWorkForExporting.WorkerReportsProgress = true;
+            this.bkgWorkForExporting.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkgWorkForExporting_DoWork);
+            this.bkgWorkForExporting.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bkgWorkForExporting_ProgressChanged);
+            // 
             // DataImportingPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1024, 230);
+            this.Controls.Add(this.btnExportTransaction);
             this.Controls.Add(this.btnImportTransaction);
             this.Controls.Add(this.lbFolder);
             this.Controls.Add(this.lbProgress);
@@ -137,5 +156,7 @@
         private System.Windows.Forms.Label lbFolder;
         private System.Windows.Forms.Button btnImportTransaction;
         private System.ComponentModel.BackgroundWorker bkgWorkForTransaction;
+        private System.Windows.Forms.Button btnExportTransaction;
+        private System.ComponentModel.BackgroundWorker bkgWorkForExporting;
     }
 }

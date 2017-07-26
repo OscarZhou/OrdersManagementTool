@@ -289,11 +289,11 @@ namespace OrderManagementTool
                     this.purchaserName);
 
                 ExportFile.CreateOrderFile(path, tbOrderContent.Text.Trim());
+                MessageBox.Show("Generating " + this.crtOrderNo + this.purchaserName + ".txt Sucessfully!");
             }
 
             #endregion
 
-            MessageBox.Show("Generating " + this.crtOrderNo + this.purchaserName + ".txt Sucessfully!");
         }
     }
 }
