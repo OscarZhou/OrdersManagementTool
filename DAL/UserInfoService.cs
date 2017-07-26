@@ -101,5 +101,32 @@ namespace DLL
                 throw;
             }
         }
+
+        public int UpdatetUser(UserInfo objUserInfo)
+        {
+            StringBuilder sqlBuilder = new StringBuilder();
+            sqlBuilder.Append(
+                "update UserInfo set UserName='{0}', PhoneNumber='{1}', UserAddress='{2}', CardNo='{3}' where UserNo={4}");
+
+            string sql = string.Format(sqlBuilder.ToString(), objUserInfo.UserName,
+                objUserInfo.PhoneNumber, objUserInfo.Address, objUserInfo.CardNo, objUserInfo.UserNo);
+
+            try
+            {
+                return SQLHelper.Update(sql);
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+
+        }
     }
 }

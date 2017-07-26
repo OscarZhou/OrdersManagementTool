@@ -7,7 +7,7 @@ namespace OrderManagementTool
 {
     public partial class CompletedTransactionPage : Form
     {
-        private int _orderNo;
+        private string _orderNo;
         private Transaction objTransaction;
     
         public CompletedTransactionPage()
@@ -44,7 +44,7 @@ namespace OrderManagementTool
         /// <param name="OrderNo"></param>
         public void Receiver(string OrderNo)
         {
-            this._orderNo = Convert.ToInt32(OrderNo);
+            this._orderNo = OrderNo;
             ShowTransaction();
         }
 

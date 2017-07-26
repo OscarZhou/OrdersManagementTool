@@ -108,5 +108,28 @@ namespace DLL
                 throw;
             }
         }
+
+        public int UpdateOrder(Order objOrder)
+        {
+            StringBuilder sqlBuilder = new StringBuilder();
+            sqlBuilder.Append("update Orders set Purchaser='{0}' where OrderNo={1}");
+
+            string sql = string.Format(sqlBuilder.ToString(), objOrder.Purchaser, objOrder.OrderNo );
+            try
+            {
+                return SQLHelper.Update(sql);
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            return 0;
+
+        }
     }
 }
