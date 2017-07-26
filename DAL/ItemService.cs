@@ -66,5 +66,23 @@ namespace DLL
             }
         }
 
+        public int DeleteItemListByOrderNo(string orderNo)
+        {
+            StringBuilder sqlBuilder = new StringBuilder();
+            sqlBuilder.Append("delete from ItemList where OrderNo = {0}");
+
+            string sql = string.Format(sqlBuilder.ToString(), orderNo);
+
+            try
+            {
+                return SQLHelper.Update(sql);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
     }
 }

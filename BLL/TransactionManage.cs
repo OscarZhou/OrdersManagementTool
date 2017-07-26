@@ -42,5 +42,10 @@ namespace BLL
             return new TransactionService().GetTransactionList(name, sortingType);
         }
 
+        public int DeleteTransactionRecord(string orderNo)
+        {
+            return new TransactionService().DeleteTransactionRecordByOrderNo(orderNo);
+        }
+
     }
 }

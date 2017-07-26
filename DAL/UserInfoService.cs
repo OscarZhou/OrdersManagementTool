@@ -36,7 +36,6 @@ namespace DLL
 
         }
 
-
         public int GetLatestUserNo()
         {
             StringBuilder sqlBuilder = new StringBuilder();
@@ -53,6 +52,54 @@ namespace DLL
                 throw;
             }
 
+        }
+
+        public int DeleteUser(UserInfo objUserInfo)
+        {
+            StringBuilder sqlBuilder = new StringBuilder();
+            sqlBuilder.Append("delete from UserInfo where UserNo = {0}");
+
+            string sql = string.Format(sqlBuilder.ToString(), objUserInfo.UserNo);
+
+            try
+            {
+                return SQLHelper.Update(sql);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public UserInfo GetUserByOrderNo(string orderNo)
+        {
+            StringBuilder sqlBuilder = new StringBuilder();
+            sqlBuilder.Append(
+                "select * from UserInfo inner join Orders on Orders.UserNo = UserInfo.UserNo where Orders.OrderNo = {0} ");
+
+            string sql = string.Format(sqlBuilder.ToString(), orderNo);
+
+            try
+            {
+                SqlDataReader objReaders = SQLHelper.GetObjectCollection(sql);
+                UserInfo objUserInfo = new UserInfo();
+                while (objReaders.Read())
+                {
+                    objUserInfo.UserNo = Convert.ToInt32(objReaders["UserNo"]);
+                    objUserInfo.UserName = objReaders["UserName"].ToString();
+                    objUserInfo.PhoneNumber = objReaders["PhoneNumber"].ToString();
+                    objUserInfo.Address = objReaders["UserAddress"].ToString();
+                    objUserInfo.CardNo = objReaders["CardNo"].ToString();
+
+                }
+                return objUserInfo;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 }

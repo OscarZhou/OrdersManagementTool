@@ -20,5 +20,10 @@ namespace BLL
         {
             return new OrderService().GetOrderByOrderNo(orderNo);
         }
+
+        public int DeleteOrder(Order objOrder)
+        {
+            return new OrderService().DeleteOrder(objOrder);
+        }
     }
 }

@@ -171,6 +171,7 @@ namespace OrderManagementTool
                 UserName = tbTo.Text.Trim(),
                 PhoneNumber = tbToPhone.Text.Trim(),
                 Address = tbAddress.Text.Trim(),
+                CardNo = tbIdentityCard.Text.Trim(),
                 CreateTime = DateTime.Now.Date
             };
             new UserInfoManage().InsertUser(objUserInfo);

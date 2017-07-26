@@ -1,4 +1,5 @@
 ﻿using BLL;
+using Models;
 using System;
 using System.Windows.Forms;
 using Utilities;
@@ -139,6 +140,24 @@ namespace OrderManagementTool
             #endregion
             MessageBox.Show("Generating 销售记录" + timeStamp + ".xls Sucessfully!");
             
+        }
+
+        private void btnDeleteOrder_Click(object sender, EventArgs e)
+        {
+            string orderNo = dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString();
+
+            Order objOrder = new OrderManage().GetOrderByOrderNo(orderNo);
+            objOrder.User = new UserInfoManage().GetUserByOrderNo(orderNo);
+            new TransactionManage().DeleteTransactionRecord(orderNo);
+            new ItemManage().DeleteItemListByOrderNo(orderNo);
+            new OrderManage().DeleteOrder(objOrder);
+            int result = new UserInfoManage().DeleteUser(objOrder.User);
+            if (result > 0)
+            {
+                MessageBox.Show("Delete data sucessfully!");
+            }
+
+            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
         }
 
     }

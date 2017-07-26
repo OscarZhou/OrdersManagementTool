@@ -48,6 +48,7 @@
             this.btnView = new System.Windows.Forms.Button();
             this.btnExportTransaction = new System.Windows.Forms.Button();
             this.BtnEdit = new System.Windows.Forms.Button();
+            this.btnDeleteOrder = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransaction)).BeginInit();
             this.SuspendLayout();
             // 
@@ -212,7 +213,7 @@
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(139, 42);
             this.btnView.TabIndex = 2;
-            this.btnView.Text = "View Detail";
+            this.btnView.Text = "View Order";
             this.btnView.UseVisualStyleBackColor = true;
             this.btnView.Click += new System.EventHandler(this.btnDetail_Click);
             // 
@@ -232,9 +233,19 @@
             this.BtnEdit.Name = "BtnEdit";
             this.BtnEdit.Size = new System.Drawing.Size(139, 42);
             this.BtnEdit.TabIndex = 2;
-            this.BtnEdit.Text = "Edit Detail";
+            this.BtnEdit.Text = "Edit Order";
             this.BtnEdit.UseVisualStyleBackColor = true;
             this.BtnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
+            // 
+            // btnDeleteOrder
+            // 
+            this.btnDeleteOrder.Location = new System.Drawing.Point(1220, 314);
+            this.btnDeleteOrder.Name = "btnDeleteOrder";
+            this.btnDeleteOrder.Size = new System.Drawing.Size(139, 42);
+            this.btnDeleteOrder.TabIndex = 2;
+            this.btnDeleteOrder.Text = "Delete Order";
+            this.btnDeleteOrder.UseVisualStyleBackColor = true;
+            this.btnDeleteOrder.Click += new System.EventHandler(this.btnDeleteOrder_Click);
             // 
             // OrderManagementTool
             // 
@@ -246,6 +257,7 @@
             this.Controls.Add(this.lbTotalProfit);
             this.Controls.Add(this.dgvTransaction);
             this.Controls.Add(this.btnExportTransaction);
+            this.Controls.Add(this.btnDeleteOrder);
             this.Controls.Add(this.BtnEdit);
             this.Controls.Add(this.btnView);
             this.Controls.Add(this.btnUndoneOrders);
@@ -285,6 +297,7 @@
         private System.Windows.Forms.Button btnView;
         private System.Windows.Forms.Button btnExportTransaction;
         private System.Windows.Forms.Button BtnEdit;
+        private System.Windows.Forms.Button btnDeleteOrder;
     }
 }
 

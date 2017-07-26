@@ -90,5 +90,23 @@ namespace DLL
                 throw;
             }
         }
+
+        public int DeleteOrder(Order objOrder)
+        {
+            StringBuilder sqlBuilder = new StringBuilder();
+            sqlBuilder.Append("delete from Orders where OrderNo = {0}");
+
+            string sql = string.Format(sqlBuilder.ToString(), objOrder.OrderNo);
+
+            try
+            {
+                return SQLHelper.Update(sql);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
     }
 }

@@ -64,6 +64,8 @@
             this.btnTxtFile = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.tbTotalPrice = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.tbIdentityCard = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -249,7 +251,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(74, 525);
+            this.label10.Location = new System.Drawing.Point(74, 576);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(80, 18);
             this.label10.TabIndex = 0;
@@ -257,7 +259,7 @@
             // 
             // tbAddress
             // 
-            this.tbAddress.Location = new System.Drawing.Point(167, 522);
+            this.tbAddress.Location = new System.Drawing.Point(167, 573);
             this.tbAddress.Name = "tbAddress";
             this.tbAddress.Size = new System.Drawing.Size(735, 28);
             this.tbAddress.TabIndex = 6;
@@ -374,6 +376,22 @@
             this.tbTotalPrice.Size = new System.Drawing.Size(93, 28);
             this.tbTotalPrice.TabIndex = 4;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(75, 525);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(134, 18);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "Identity Card:";
+            // 
+            // tbIdentityCard
+            // 
+            this.tbIdentityCard.Location = new System.Drawing.Point(215, 522);
+            this.tbIdentityCard.Name = "tbIdentityCard";
+            this.tbIdentityCard.Size = new System.Drawing.Size(315, 28);
+            this.tbIdentityCard.TabIndex = 6;
+            // 
             // OrderCreationPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -400,7 +418,9 @@
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.tbIdentityCard);
             this.Controls.Add(this.tbAddress);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.tbItemDescription);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.tbQuantity);
@@ -458,6 +478,8 @@
         private System.Windows.Forms.Button btnTxtFile;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox tbTotalPrice;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox tbIdentityCard;
 
     }
 }
