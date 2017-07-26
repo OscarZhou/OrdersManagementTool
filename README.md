@@ -19,14 +19,22 @@ It will be written by WinForm in .Net framework. And the database will use SQL S
 
 ## V1.0
 
-First releasing. 
-**1.**Place the order  
+First releasing.  
 
-**2.**Browse the transaction  
+**1.** Place the order  
+**2.** Browse the transaction  
+**3.** Import original .txt and .xlsx file  
+**4.** Finish undone order    
 
-**3.**Import original .txt and .xlsx file  
+## V1.2
 
-**4.**Finish undone order  
+**1.** View and delete the order  
+**2.** Name search and transaction list sorting  
+**3.** Export transaction
+**4.** Solve some bugs  
+
+
+
 
 
 

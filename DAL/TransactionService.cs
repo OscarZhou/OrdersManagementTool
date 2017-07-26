@@ -254,5 +254,23 @@ namespace DLL
             }
             return objTransactions;
         }
+
+        public int DeleteTransactionRecordByOrderNo(string orderNo)
+        {
+            StringBuilder sqlBuilder = new StringBuilder();
+            sqlBuilder.Append("delete from TransactionList where OrderNo = {0}");
+
+            string sql = string.Format(sqlBuilder.ToString(), orderNo);
+
+            try
+            {
+                return SQLHelper.Update(sql);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
     }
 }

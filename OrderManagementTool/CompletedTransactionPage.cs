@@ -20,11 +20,20 @@ namespace OrderManagementTool
         private void ShowTransaction()
         {
             objTransaction = new TransactionManage().GetTransactionRecordByOrderNo(this._orderNo);
-            
             tbOrderNo.Text = objTransaction.OrderNo.ToString();
             tbPurchaser.Text = objTransaction.Purchaser;
-            //tbSellingPrice.Text = objTransaction.SellingPrice.ToString();
-            //tbPurchasingPrice.Text = objTransaction.PurchasePrice.ToString();
+            if (objTransaction.SellingPrice != 0.0)
+            {
+                tbSellingPrice.Text = objTransaction.SellingPrice.ToString();
+                tbPurchasingPrice.Focus();
+            }
+            
+            if (objTransaction.PurchasePrice != 0.0)
+            {
+                tbPurchasingPrice.Text = objTransaction.PurchasePrice.ToString();
+                tbProfit.Focus();
+            }
+            
             //tbProfit.Text = objTransaction.Profit.ToString();
 
         }
@@ -42,39 +51,57 @@ namespace OrderManagementTool
         private void btnOkay_Click(object sender, EventArgs e)
         {
             #region Validation for Transaction
-            if (tbSellingPrice.Text == "" && tbPurchasingPrice.Text == "")
-            {
-                lbError.Text = "Please fill the blanks!";
-                lbError.Visible = true;
-                tbSellingPrice.BackColor = System.Drawing.Color.LightCoral;
-                tbPurchasingPrice.BackColor = System.Drawing.Color.LightCoral;
-                return;
-            }
-            else if (tbSellingPrice.Text == "")
-            {
-                lbError.Text = "Please input Selling Price";
-                lbError.Visible = true;
-                tbSellingPrice.BackColor = System.Drawing.Color.LightCoral;
-            }
-            else if (tbPurchasingPrice.Text == "")
-            {
-                lbError.Text = "Please input Purchasing Price";
-                lbError.Visible = true;
-                tbPurchasingPrice.BackColor = System.Drawing.Color.LightCoral;
-            } 
+            //if (tbSellingPrice.Text == "" && tbPurchasingPrice.Text == "")
+            //{
+            //    lbError.Text = "Please fill the blanks!";
+            //    lbError.Visible = true;
+            //    tbSellingPrice.BackColor = System.Drawing.Color.LightCoral;
+            //    tbPurchasingPrice.BackColor = System.Drawing.Color.LightCoral;
+            //    return;
+            //}
+            //else if (tbSellingPrice.Text == "")
+            //{
+            //    lbError.Text = "Please input Selling Price";
+            //    lbError.Visible = true;
+            //    tbSellingPrice.BackColor = System.Drawing.Color.LightCoral;
+            //}
+            //else if (tbPurchasingPrice.Text == "")
+            //{
+            //    lbError.Text = "Please input Purchasing Price";
+            //    lbError.Visible = true;
+            //    tbPurchasingPrice.BackColor = System.Drawing.Color.LightCoral;
+            //}
+
             #endregion
 
             #region Update price
 
-            objTransaction.SellingPrice = Convert.ToDouble(tbSellingPrice.Text.Trim());
-            objTransaction.PurchasePrice = Convert.ToDouble(tbPurchasingPrice.Text.Trim());
-            objTransaction.Profit = objTransaction.SellingPrice - objTransaction.PurchasePrice;
-            objTransaction.OrderStatus = Convert.ToByte(true);
-
-            int result = new TransactionManage().UpdateTransactionRecord(objTransaction);
-            if (result > 0)
+            if (lbError.Visible == false)
             {
-                MessageBox.Show("Updating Sucessfully!");
+                if (tbSellingPrice.Text.Length != 0)
+                {
+                    objTransaction.SellingPrice = Convert.ToDouble(tbSellingPrice.Text.Trim());
+                }
+                if (tbPurchasingPrice.Text.Length != 0 )
+                {
+                    objTransaction.PurchasePrice = Convert.ToDouble(tbPurchasingPrice.Text.Trim());
+                }
+                objTransaction.Profit = objTransaction.SellingPrice - objTransaction.PurchasePrice;
+                if (tbSellingPrice.Text.Length != 0 && tbPurchasingPrice.Text.Length != 0)
+                {
+                    objTransaction.OrderStatus = Convert.ToByte(true);
+                }
+
+                int result = new TransactionManage().UpdateTransactionRecord(objTransaction);
+                if (result > 0)
+                {
+                    MessageBox.Show("Updating Sucessfully!");
+                }
+            }
+            else
+            {
+                lbError.Text = "You can't submit before solving the error!";
+                return;
             }
 
             #endregion
@@ -84,18 +111,39 @@ namespace OrderManagementTool
 
         private void tbSellingPrice_Leave(object sender, EventArgs e)
         {
-
-
-            if (tbPurchasingPrice.Text == "")
+            int result;
+            if (int.TryParse(tbSellingPrice.Text.Trim(), out result) == false)
             {
-                //tbProfit.Text = (Convert.ToDouble(tbSellingPrice.Text.Trim()) - 0).ToString();
-                return;
-            }
-            else if (tbSellingPrice.Text == "")
-            {
+                lbError.Text = "Please input numbers";
+                lbError.Visible = true;
+                tbSellingPrice.BackColor = System.Drawing.Color.LightCoral;
                 return;
             }
             else
+            {
+                lbError.Visible = false;
+                tbSellingPrice.BackColor = System.Drawing.Color.White;
+            }
+
+            if (int.TryParse(tbPurchasingPrice.Text.Trim(), out result) == false)
+            {
+                lbError.Text = "Please input numbers";
+                lbError.Visible = true;
+                tbPurchasingPrice.BackColor = System.Drawing.Color.LightCoral;
+                return;
+            }
+            else
+            {
+                lbError.Visible = false;
+                tbPurchasingPrice.BackColor = System.Drawing.Color.White;
+            }
+
+
+            if (tbSellingPrice.Text.Trim().Length == 0 || tbPurchasingPrice.Text.Trim().Length == 0)
+            {
+                return;
+            }
+            else if (tbSellingPrice.Text.Length != 0 && tbPurchasingPrice.Text.Length != 0)
             {
                 tbProfit.Text = (Convert.ToDouble(tbSellingPrice.Text.Trim()) -
                                 Convert.ToDouble(tbPurchasingPrice.Text.Trim())).ToString();                
@@ -104,23 +152,43 @@ namespace OrderManagementTool
 
         private void tbPurchasingPrice_Leave(object sender, EventArgs e)
         {
-            if (tbSellingPrice.Text == "")
+            int result;
+            if (int.TryParse(tbSellingPrice.Text.Trim(), out result) == false)
             {
-                //tbProfit.Text = (0 - Convert.ToDouble(tbPurchasingPrice.Text.Trim())).ToString();
-                return;
-            }
-            else if (tbPurchasingPrice.Text == "")
-            {
+                lbError.Text = "Please input numbers";
+                lbError.Visible = true;
+                tbSellingPrice.BackColor = System.Drawing.Color.LightCoral;
                 return;
             }
             else
+            {
+                lbError.Visible = false;
+                tbSellingPrice.BackColor = System.Drawing.Color.White;
+            }
+
+            if (int.TryParse(tbPurchasingPrice.Text.Trim(), out result) == false)
+            {
+                lbError.Text = "Please input numbers";
+                lbError.Visible = true;
+                tbPurchasingPrice.BackColor = System.Drawing.Color.LightCoral;
+                return;
+            }
+            else
+            {
+                lbError.Visible = false;
+                tbPurchasingPrice.BackColor = System.Drawing.Color.White;
+            }
+
+            if (tbSellingPrice.Text.Trim().Length == 0 || tbPurchasingPrice.Text.Trim().Length == 0)
+            {
+                return;
+            }
+            else if (tbSellingPrice.Text.Length != 0 && tbPurchasingPrice.Text.Length != 0)
             {
                 tbProfit.Text = (Convert.ToDouble(tbSellingPrice.Text.Trim()) -
                                 Convert.ToDouble(tbPurchasingPrice.Text.Trim())).ToString();
             }
         }
-
-
 
     }
 }

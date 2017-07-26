@@ -98,7 +98,7 @@ namespace Utilities
                     {
                         if (substrings[2].Trim() != "")
                         {
-                            item.Price = Convert.ToDouble(substrings[2].Trim());//get the item price   
+                            item.UnitPrice = Convert.ToDouble(substrings[2].Trim());//get the item price   
                         }
                     }
                     item.OrderNo = objOrder.OrderNo;
