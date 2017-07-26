@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/BLL/bin/Debug
+/BLL/bin/Release
+/BLL/obj
+/DAL
+/Models
+/OrderManagementTool
+/Utilities/bin
+/Utilities/obj/Debug
+/Utilities/obj/Release

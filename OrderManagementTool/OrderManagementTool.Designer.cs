@@ -266,6 +266,7 @@
             this.Controls.Add(this.btnOpenDataImporter);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.tbSearch);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OrderManagementTool";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

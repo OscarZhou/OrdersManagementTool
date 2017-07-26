@@ -21,5 +21,15 @@ namespace BLL
         {
             return new ItemService().DeleteItemListByOrderNo(orderNo);
         }
+
+        public Item GetItemByItemNo(string itemNo)
+        {
+            return new ItemService().GetItemByItemNo(itemNo);
+        }
+
+        public int UpdateItem(Item objItem)
+        {
+            return new ItemService().UpdateItem(objItem);
+        }
     }
 }

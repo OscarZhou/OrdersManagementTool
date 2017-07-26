@@ -117,6 +117,7 @@
             this.Controls.Add(this.lbProcessing);
             this.Controls.Add(this.prbImport);
             this.Controls.Add(this.btnImportRecords);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DataImportingPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
