@@ -66,6 +66,7 @@
             this.lbError = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.tbProfit = new System.Windows.Forms.TextBox();
+            this.btnCreateOrder = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -383,11 +384,22 @@
             this.tbProfit.Size = new System.Drawing.Size(122, 28);
             this.tbProfit.TabIndex = 8;
             // 
+            // btnCreateOrder
+            // 
+            this.btnCreateOrder.Location = new System.Drawing.Point(824, 681);
+            this.btnCreateOrder.Name = "btnCreateOrder";
+            this.btnCreateOrder.Size = new System.Drawing.Size(149, 38);
+            this.btnCreateOrder.TabIndex = 14;
+            this.btnCreateOrder.Text = "CreateOrder";
+            this.btnCreateOrder.UseVisualStyleBackColor = true;
+            this.btnCreateOrder.Click += new System.EventHandler(this.btnCreateOrder_Click);
+            // 
             // OrderDetailsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1088, 761);
+            this.Controls.Add(this.btnCreateOrder);
             this.Controls.Add(this.lbError);
             this.Controls.Add(this.btnEditItem);
             this.Controls.Add(this.btnModify);
@@ -470,5 +482,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemNo;
+        private System.Windows.Forms.Button btnCreateOrder;
     }
 }

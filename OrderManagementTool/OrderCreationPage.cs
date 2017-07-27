@@ -301,5 +301,14 @@ namespace OrderManagementTool
             #endregion
 
         }
+
+        public void Receiver(Order objOrder)
+        {
+            tbPurchaser.Text = objOrder.Purchaser;
+            tbTo.Text = objOrder.User.UserName;
+            tbToPhone.Text = objOrder.User.PhoneNumber;
+            tbIdentityCard.Text = objOrder.User.CardNo;
+            tbAddress.Text = objOrder.User.Address;
+        }
     }
 }
