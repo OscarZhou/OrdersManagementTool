@@ -283,8 +283,14 @@ namespace OrderManagementTool
         {
             #region Generate .txt file
             FolderBrowserDialog fileSelector = new FolderBrowserDialog();
+            string defaultPath = ExportFile.GetDefaultPath("dircPath");
+            if (defaultPath != "")
+            {
+                fileSelector.SelectedPath = defaultPath;
+            }
             if (fileSelector.ShowDialog() == DialogResult.OK)
             {
+                ExportFile.SetFolderPath("dircPath", fileSelector.SelectedPath);
                 string path = string.Format(fileSelector.SelectedPath + @"\{0}{1}.txt", this.crtOrderNo,
                     this.purchaserName);
 

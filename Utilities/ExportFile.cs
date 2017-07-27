@@ -2,6 +2,7 @@
 using Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -99,6 +100,33 @@ namespace Utilities
             Marshal.ReleaseComObject(xlApp);
             #endregion
             
+        }
+        /// <summary>
+        /// Read the config file
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static string GetDefaultPath(string key)
+        {
+            string _value = string.Empty;
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            if (config.AppSettings.Settings[key] != null)
+            {
+                _value = config.AppSettings.Settings[key].Value;
+            }
+            return _value;
+        }
+        /// <summary>
+        /// Set the config file
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        public static void SetFolderPath(string key, string value)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            config.AppSettings.Settings[key].Value = value;
+            config.Save(ConfigurationSaveMode.Modified);
+
         }
     }
 }

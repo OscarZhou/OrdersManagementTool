@@ -16,12 +16,10 @@ namespace OrderManagementTool
         private List<Order> objOrders = new List<Order>();
         private List<Transaction> objTransactions = new List<Transaction>();
 
-        private string defaultFilePath = null;
-
         public DataImportingPage()
         {
             InitializeComponent();
-
+            
         }
 
         /// <summary>
@@ -32,14 +30,14 @@ namespace OrderManagementTool
         private void btnImport_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fileSelector = new FolderBrowserDialog();
-            if (defaultFilePath != "")
+            string defaultPath = ExportFile.GetDefaultPath("dircPath");
+            if (defaultPath != "")
             {
-                fileSelector.SelectedPath = defaultFilePath;
+                fileSelector.SelectedPath = defaultPath;
             }
-
             if (fileSelector.ShowDialog() == DialogResult.OK)
             {
-                defaultFilePath = fileSelector.SelectedPath;
+                ExportFile.SetFolderPath("dircPath", fileSelector.SelectedPath);
                 lbFolder.Text = fileSelector.SelectedPath;                    
                 var files = Directory.GetFiles(fileSelector.SelectedPath).Where(name => name.EndsWith(".txt"));
                 prbImport.Maximum = files.ToList().Count;
@@ -138,8 +136,14 @@ namespace OrderManagementTool
         private void btnImportTransaction_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fileSelector = new FolderBrowserDialog();
+            string defaultPath = ExportFile.GetDefaultPath("dircPath");
+            if (defaultPath != "")
+            {
+                fileSelector.SelectedPath = defaultPath;
+            }
             if (fileSelector.ShowDialog() == DialogResult.OK)
             {
+                ExportFile.SetFolderPath("dircPath", fileSelector.SelectedPath);
                 lbFolder.Text = fileSelector.SelectedPath;
                 var files = Directory.GetFiles(fileSelector.SelectedPath).Where(name => name.EndsWith(".xlsx"));
                 prbImport.Maximum = files.ToList().Count;
@@ -197,9 +201,15 @@ namespace OrderManagementTool
         {
             #region Generate .xls file
             FolderBrowserDialog fileSelector = new FolderBrowserDialog();
+            string defaultPath = ExportFile.GetDefaultPath("dircPath");
+            if (defaultPath != "")
+            {
+                fileSelector.SelectedPath = defaultPath;
+            }
             string timeStamp = DateTime.Now.Date.ToString("ddMMyyyy");
             if (fileSelector.ShowDialog() == DialogResult.OK)
             {
+                ExportFile.SetFolderPath("dircPath", fileSelector.SelectedPath);
                 string path = string.Format(fileSelector.SelectedPath + @"\销售记录{0}.xls", timeStamp);
                 string[] parameters = new string[2];
                 parameters[0] = timeStamp;
