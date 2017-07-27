@@ -22,7 +22,7 @@ namespace BLL
             return new TransactionService().GetUndoneTransactionList();
         }
 
-        public Transaction GetTransactionRecordByOrderNo(int orderNo)
+        public Transaction GetTransactionRecordByOrderNo(string orderNo)
         {
             return new TransactionService().GetTransactionRecordByOrderNo(orderNo);
         }

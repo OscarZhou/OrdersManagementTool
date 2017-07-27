@@ -431,6 +431,7 @@
             this.Controls.Add(this.tbFrom);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbTotalPrice);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OrderCreationPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

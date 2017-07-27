@@ -25,5 +25,10 @@ namespace BLL
         {
             return new UserInfoService().GetUserByOrderNo(orderNo);
         }
+
+        public int UpdatetUser(UserInfo objUserInfo)
+        {
+            return new UserInfoService().UpdatetUser(objUserInfo);
+        }
     }
 }

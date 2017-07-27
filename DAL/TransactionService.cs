@@ -93,7 +93,7 @@ namespace DLL
         /// </summary>
         /// <param name="orderNo"></param>
         /// <returns></returns>
-        public Transaction GetTransactionRecordByOrderNo(int orderNo)
+        public Transaction GetTransactionRecordByOrderNo(string orderNo)
         {
             StringBuilder sqlBuilder = new StringBuilder();
             sqlBuilder.Append("select * from TransactionList where OrderNo = {0}");

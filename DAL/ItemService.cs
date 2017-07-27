@@ -35,11 +35,10 @@ namespace DLL
             }
         }
 
-
         public List<Item> GetItemListByOrderNo(string orderNo)
         {
             StringBuilder sqlBuilder = new StringBuilder();
-            sqlBuilder.Append("select ItemDescription, Quantity, Price, Quantity*Price as TotalPrice from ItemList where OrderNo = {0}");
+            sqlBuilder.Append("select ItemNo, ItemDescription, Quantity, Price, Quantity*Price as TotalPrice from ItemList where OrderNo = {0}");
 
             string sql = string.Format(sqlBuilder.ToString(), Convert.ToInt32(orderNo));
 
@@ -54,7 +53,8 @@ namespace DLL
                         ItemDescription = objReaders["ItemDescription"].ToString(),
                         Quantity = Convert.ToInt32(objReaders["Quantity"]),
                         UnitPrice = Convert.ToDouble(objReaders["Price"]),
-                        TotalPrice = Convert.ToDouble(objReaders["TotalPrice"])
+                        TotalPrice = Convert.ToDouble(objReaders["TotalPrice"]),
+                        ItemNo = Convert.ToInt32(objReaders["ItemNo"])
                     }); 
                 }
                 return objItems;
@@ -76,6 +76,57 @@ namespace DLL
             try
             {
                 return SQLHelper.Update(sql);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public Item GetItemByItemNo(string itemNo)
+        {
+            StringBuilder sqlBuilder = new StringBuilder();
+            sqlBuilder.Append("select * from ItemList where ItemNo = {0}");
+
+            string sql = string.Format(sqlBuilder.ToString(), itemNo);
+            try
+            {
+                SqlDataReader objReaders = SQLHelper.GetObjectCollection(sql);
+                Item objItem = new Item();
+                while (objReaders.Read())
+                {
+                    objItem.ItemNo = Convert.ToInt32(objReaders["ItemNo"]);
+                    objItem.ItemDescription = objReaders["ItemDescription"].ToString();
+                    objItem.Quantity = Convert.ToInt32(objReaders["Quantity"]);
+                    objItem.UnitPrice = Convert.ToDouble(objReaders["Price"]);
+                    
+                }
+                return objItem;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public int UpdateItem(Item objItem)
+        {
+            StringBuilder sqlBuilder = new StringBuilder();
+            sqlBuilder.Append("update ItemList set ItemDescription='{0}', Quantity={1}, Price={2} where ItemNo = {3}");
+
+            string sql = string.Format(sqlBuilder.ToString(), objItem.ItemDescription, objItem.Quantity, objItem.UnitPrice,
+                objItem.ItemNo);
+
+            try
+            {
+                return SQLHelper.Update(sql);
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e);
+                throw;
             }
             catch (Exception e)
             {

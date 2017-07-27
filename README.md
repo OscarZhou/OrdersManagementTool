@@ -30,8 +30,15 @@ First releasing.
 
 **1.** View and delete the order  
 **2.** Name search and transaction list sorting  
-**3.** Export transaction
+**3.** Export transaction  
 **4.** Solve some bugs  
+
+## V1.3
+**1.** Edit the order  
+**2.** Add CreateTime into Excel  
+**3.** Create new order based on previous user information  
+**4.** Edit the item list  
+**5.** Solve some bugs  
 
 
 

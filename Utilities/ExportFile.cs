@@ -2,6 +2,7 @@
 using Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -64,20 +65,21 @@ namespace Utilities
             #endregion
 
 
-            xlWorksheet.Cells[1, 1] = "订单号";
-            xlWorksheet.Cells[1, 2] = "下单人";
-            xlWorksheet.Cells[1, 3] = "收款";
-            xlWorksheet.Cells[1, 4] = "付款";
-            xlWorksheet.Cells[1, 5] = "利润";
+            xlWorksheet.Cells[1, 1] = "Order No";
+            xlWorksheet.Cells[1, 2] = "Purchaser";
+            xlWorksheet.Cells[1, 3] = "Selling Price";
+            xlWorksheet.Cells[1, 4] = "Purchase Price";
+            xlWorksheet.Cells[1, 5] = "Profit";
+            xlWorksheet.Cells[1, 6] = "Date";
 
-            for (int i = 2; i <= objTransactions.Count; i++)
+            for (int i = 2; i <= objTransactions.Count+1; i++)
             {
                 xlWorksheet.Cells[i, 1] = objTransactions[i - 2].OrderNo.ToString();
                 xlWorksheet.Cells[i, 2] = objTransactions[i - 2].Purchaser.ToString();
                 xlWorksheet.Cells[i, 3] = objTransactions[i - 2].SellingPrice.ToString();
                 xlWorksheet.Cells[i, 4] = objTransactions[i - 2].PurchasePrice.ToString();
                 xlWorksheet.Cells[i, 5] = objTransactions[i - 2].Profit.ToString();
-
+                xlWorksheet.Cells[i, 6] = objTransactions[i - 2].CreateTime.ToString("yyyy-MM-dd");
             }
 
             xlWorkbook.SaveAs(path, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
@@ -99,6 +101,33 @@ namespace Utilities
             Marshal.ReleaseComObject(xlApp);
             #endregion
             
+        }
+        /// <summary>
+        /// Read the config file
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static string GetDefaultPath(string key)
+        {
+            string _value = string.Empty;
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            if (config.AppSettings.Settings[key] != null)
+            {
+                _value = config.AppSettings.Settings[key].Value;
+            }
+            return _value;
+        }
+        /// <summary>
+        /// Set the config file
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        public static void SetFolderPath(string key, string value)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            config.AppSettings.Settings[key].Value = value;
+            config.Save(ConfigurationSaveMode.Modified);
+
         }
     }
 }

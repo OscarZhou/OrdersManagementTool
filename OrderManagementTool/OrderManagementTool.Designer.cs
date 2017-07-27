@@ -46,7 +46,6 @@
             this.cmbSorting = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnView = new System.Windows.Forms.Button();
-            this.btnExportTransaction = new System.Windows.Forms.Button();
             this.BtnEdit = new System.Windows.Forms.Button();
             this.btnDeleteOrder = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransaction)).BeginInit();
@@ -75,9 +74,9 @@
             // 
             this.btnOpenDataImporter.Location = new System.Drawing.Point(36, 699);
             this.btnOpenDataImporter.Name = "btnOpenDataImporter";
-            this.btnOpenDataImporter.Size = new System.Drawing.Size(138, 43);
+            this.btnOpenDataImporter.Size = new System.Drawing.Size(206, 43);
             this.btnOpenDataImporter.TabIndex = 4;
-            this.btnOpenDataImporter.Text = "Data Import";
+            this.btnOpenDataImporter.Text = "Data Transmission";
             this.btnOpenDataImporter.UseVisualStyleBackColor = true;
             this.btnOpenDataImporter.Click += new System.EventHandler(this.btnOpenDataImporter_Click);
             // 
@@ -181,7 +180,7 @@
             // 
             // btnDataAnalysis
             // 
-            this.btnDataAnalysis.Location = new System.Drawing.Point(387, 700);
+            this.btnDataAnalysis.Location = new System.Drawing.Point(267, 699);
             this.btnDataAnalysis.Name = "btnDataAnalysis";
             this.btnDataAnalysis.Size = new System.Drawing.Size(178, 43);
             this.btnDataAnalysis.TabIndex = 5;
@@ -217,16 +216,6 @@
             this.btnView.UseVisualStyleBackColor = true;
             this.btnView.Click += new System.EventHandler(this.btnDetail_Click);
             // 
-            // btnExportTransaction
-            // 
-            this.btnExportTransaction.Location = new System.Drawing.Point(180, 700);
-            this.btnExportTransaction.Name = "btnExportTransaction";
-            this.btnExportTransaction.Size = new System.Drawing.Size(201, 42);
-            this.btnExportTransaction.TabIndex = 2;
-            this.btnExportTransaction.Text = "Transaction Export";
-            this.btnExportTransaction.UseVisualStyleBackColor = true;
-            this.btnExportTransaction.Click += new System.EventHandler(this.btnExportTransaction_Click);
-            // 
             // BtnEdit
             // 
             this.BtnEdit.Location = new System.Drawing.Point(1220, 255);
@@ -256,7 +245,6 @@
             this.Controls.Add(this.cmbSorting);
             this.Controls.Add(this.lbTotalProfit);
             this.Controls.Add(this.dgvTransaction);
-            this.Controls.Add(this.btnExportTransaction);
             this.Controls.Add(this.btnDeleteOrder);
             this.Controls.Add(this.BtnEdit);
             this.Controls.Add(this.btnView);
@@ -266,6 +254,7 @@
             this.Controls.Add(this.btnOpenDataImporter);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.tbSearch);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OrderManagementTool";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -295,7 +284,6 @@
         private System.Windows.Forms.ComboBox cmbSorting;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnView;
-        private System.Windows.Forms.Button btnExportTransaction;
         private System.Windows.Forms.Button BtnEdit;
         private System.Windows.Forms.Button btnDeleteOrder;
     }

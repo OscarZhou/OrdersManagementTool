@@ -283,17 +283,32 @@ namespace OrderManagementTool
         {
             #region Generate .txt file
             FolderBrowserDialog fileSelector = new FolderBrowserDialog();
+            string defaultPath = ExportFile.GetDefaultPath("dircPath");
+            if (defaultPath != "")
+            {
+                fileSelector.SelectedPath = defaultPath;
+            }
             if (fileSelector.ShowDialog() == DialogResult.OK)
             {
+                ExportFile.SetFolderPath("dircPath", fileSelector.SelectedPath);
                 string path = string.Format(fileSelector.SelectedPath + @"\{0}{1}.txt", this.crtOrderNo,
                     this.purchaserName);
 
                 ExportFile.CreateOrderFile(path, tbOrderContent.Text.Trim());
+                MessageBox.Show("Generating " + this.crtOrderNo + this.purchaserName + ".txt Sucessfully!");
             }
 
             #endregion
 
-            MessageBox.Show("Generating " + this.crtOrderNo + this.purchaserName + ".txt Sucessfully!");
+        }
+
+        public void Receiver(Order objOrder)
+        {
+            tbPurchaser.Text = objOrder.Purchaser;
+            tbTo.Text = objOrder.User.UserName;
+            tbToPhone.Text = objOrder.User.PhoneNumber;
+            tbIdentityCard.Text = objOrder.User.CardNo;
+            tbAddress.Text = objOrder.User.Address;
         }
     }
 }
