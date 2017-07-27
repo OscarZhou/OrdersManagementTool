@@ -109,7 +109,6 @@ namespace OrderManagementTool
         {
 
             prbImport.PerformStep();
-            prbImport.Maximum = 100;
             Order objOrder = objOrders[e.ProgressPercentage];
             lbProcessing.Text = "The current file: " + objOrder.OrderNo.ToString() + objOrder.Purchaser.ToString() +
                                 ".txt";
@@ -135,24 +134,23 @@ namespace OrderManagementTool
         /// <param name="e"></param>
         private void btnImportTransaction_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog fileSelector = new FolderBrowserDialog();
+            FileDialog fileSelector = new OpenFileDialog();
+            fileSelector.Filter = "Text files (*.xls)|*.xls";
             string defaultPath = ExportFile.GetDefaultPath("dircPath");
             if (defaultPath != "")
             {
-                fileSelector.SelectedPath = defaultPath;
+                fileSelector.InitialDirectory = defaultPath;
             }
             if (fileSelector.ShowDialog() == DialogResult.OK)
             {
-                ExportFile.SetFolderPath("dircPath", fileSelector.SelectedPath);
-                lbFolder.Text = fileSelector.SelectedPath;
-                var files = Directory.GetFiles(fileSelector.SelectedPath).Where(name => name.EndsWith(".xlsx"));
-                prbImport.Maximum = files.ToList().Count;
+                int pos = fileSelector.FileName.LastIndexOf(@"\", StringComparison.Ordinal);
+                string path = fileSelector.FileName.Substring(0, pos);
+                ExportFile.SetFolderPath("dircPath", path);
+                lbFolder.Text = path;
                 prbImport.Step = 1;
                 prbImport.Value = 0;
-
-                string file = files.ToList()[1];
-                objTransactions = FormatParsing.ParseContentIntoTransaction(file, objTransactions);
-
+                objTransactions = FormatParsing.ParseContentIntoTransaction(fileSelector.FileName, objTransactions);
+                prbImport.Maximum = objTransactions.Count;
                 if (bkgWorkForTransaction.IsBusy != true)
                 {
                     bkgWorkForTransaction.RunWorkerAsync();
@@ -185,8 +183,7 @@ namespace OrderManagementTool
         private void bkgWorkForTransaction_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             prbImport.PerformStep();
-            prbImport.Maximum = 100;
-            lbProcessing.Text = "Loading" + e.ProgressPercentage.ToString() + " transaction record";
+            lbProcessing.Text = "Loading " + e.ProgressPercentage.ToString() + " transaction record";
             int counter = e.ProgressPercentage;
             int total = objTransactions.Count();
             string progressIndicate = string.Format("{0:P1}", counter * 1.0 / total);
@@ -250,7 +247,7 @@ namespace OrderManagementTool
         {
             prbImport.PerformStep();
             prbImport.Maximum = 1;
-            lbProcessing.Text = "Exporting" + e.ProgressPercentage.ToString() + " transaction record";
+            lbProcessing.Text = "Exporting " + e.ProgressPercentage.ToString() + " transaction record";
             int counter = e.ProgressPercentage;
             int total = e.ProgressPercentage;
             string progressIndicate = string.Format("{0:P1}", counter * 1.0 / total);

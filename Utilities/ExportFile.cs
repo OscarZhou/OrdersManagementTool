@@ -65,11 +65,12 @@ namespace Utilities
             #endregion
 
 
-            xlWorksheet.Cells[1, 1] = "订单号";
-            xlWorksheet.Cells[1, 2] = "下单人";
-            xlWorksheet.Cells[1, 3] = "收款";
-            xlWorksheet.Cells[1, 4] = "付款";
-            xlWorksheet.Cells[1, 5] = "利润";
+            xlWorksheet.Cells[1, 1] = "Order No";
+            xlWorksheet.Cells[1, 2] = "Purchaser";
+            xlWorksheet.Cells[1, 3] = "Selling Price";
+            xlWorksheet.Cells[1, 4] = "Purchase Price";
+            xlWorksheet.Cells[1, 5] = "Profit";
+            xlWorksheet.Cells[1, 6] = "Date";
 
             for (int i = 2; i <= objTransactions.Count+1; i++)
             {
@@ -78,7 +79,7 @@ namespace Utilities
                 xlWorksheet.Cells[i, 3] = objTransactions[i - 2].SellingPrice.ToString();
                 xlWorksheet.Cells[i, 4] = objTransactions[i - 2].PurchasePrice.ToString();
                 xlWorksheet.Cells[i, 5] = objTransactions[i - 2].Profit.ToString();
-
+                xlWorksheet.Cells[i, 6] = objTransactions[i - 2].CreateTime.ToString("yyyy-MM-dd");
             }
 
             xlWorkbook.SaveAs(path, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
