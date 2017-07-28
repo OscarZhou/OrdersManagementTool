@@ -111,8 +111,8 @@ namespace OrderManagementTool
 
         private void tbSellingPrice_Leave(object sender, EventArgs e)
         {
-            int result;
-            if (int.TryParse(tbSellingPrice.Text.Trim(), out result) == false)
+            double result;
+            if (double.TryParse(tbSellingPrice.Text.Trim(), out result) == false)//check to determine if the input is a number
             {
                 lbError.Text = "Please input numbers";
                 lbError.Visible = true;
@@ -125,48 +125,50 @@ namespace OrderManagementTool
                 tbSellingPrice.BackColor = System.Drawing.Color.White;
             }
 
-            if (int.TryParse(tbPurchasingPrice.Text.Trim(), out result) == false)
-            {
-                lbError.Text = "Please input numbers";
-                lbError.Visible = true;
-                tbPurchasingPrice.BackColor = System.Drawing.Color.LightCoral;
-                return;
-            }
-            else
-            {
-                lbError.Visible = false;
-                tbPurchasingPrice.BackColor = System.Drawing.Color.White;
-            }
+            //if (int.TryParse(tbPurchasingPrice.Text.Trim(), out result) == false)
+            //{
+            //    lbError.Text = "Please input numbers";
+            //    lbError.Visible = true;
+            //    tbPurchasingPrice.BackColor = System.Drawing.Color.LightCoral;
+            //    return;
+            //}
+            //else
+            //{
+            //    lbError.Visible = false;
+            //    tbPurchasingPrice.BackColor = System.Drawing.Color.White;
+            //}
 
 
             if (tbSellingPrice.Text.Trim().Length == 0 || tbPurchasingPrice.Text.Trim().Length == 0)
             {
+                lbError.Text = "Please input numbers";
                 return;
             }
             else if (tbSellingPrice.Text.Length != 0 && tbPurchasingPrice.Text.Length != 0)
             {
                 tbProfit.Text = (Convert.ToDouble(tbSellingPrice.Text.Trim()) -
-                                Convert.ToDouble(tbPurchasingPrice.Text.Trim())).ToString();                
+                                Convert.ToDouble(tbPurchasingPrice.Text.Trim())).ToString();
+                lbError.Visible = false;
             }
         }
 
         private void tbPurchasingPrice_Leave(object sender, EventArgs e)
         {
-            int result;
-            if (int.TryParse(tbSellingPrice.Text.Trim(), out result) == false)
-            {
-                lbError.Text = "Please input numbers";
-                lbError.Visible = true;
-                tbSellingPrice.BackColor = System.Drawing.Color.LightCoral;
-                return;
-            }
-            else
-            {
-                lbError.Visible = false;
-                tbSellingPrice.BackColor = System.Drawing.Color.White;
-            }
+            double result;
+            //if (int.TryParse(tbSellingPrice.Text.Trim(), out result) == false)
+            //{
+            //    lbError.Text = "Please input numbers";
+            //    lbError.Visible = true;
+            //    tbSellingPrice.BackColor = System.Drawing.Color.LightCoral;
+            //    return;
+            //}
+            //else
+            //{
+            //    lbError.Visible = false;
+            //    tbSellingPrice.BackColor = System.Drawing.Color.White;
+            //}
 
-            if (int.TryParse(tbPurchasingPrice.Text.Trim(), out result) == false)
+            if (double.TryParse(tbPurchasingPrice.Text.Trim(), out result) == false)
             {
                 lbError.Text = "Please input numbers";
                 lbError.Visible = true;
@@ -187,6 +189,7 @@ namespace OrderManagementTool
             {
                 tbProfit.Text = (Convert.ToDouble(tbSellingPrice.Text.Trim()) -
                                 Convert.ToDouble(tbPurchasingPrice.Text.Trim())).ToString();
+                lbError.Visible = false;
             }
         }
 
