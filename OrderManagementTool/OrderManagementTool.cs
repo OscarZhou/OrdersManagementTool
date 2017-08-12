@@ -184,7 +184,6 @@ namespace OrderManagementTool
             this.EvtSendOperation += frmOrderDetail.Receiver;
             this.EvtSendOperation("View", dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString());
             frmOrderDetail.ShowDialog();
-            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
         }
 
         private void OrderManagementTool_KeyDown(object sender, KeyEventArgs e)

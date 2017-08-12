@@ -126,7 +126,7 @@ namespace Utilities
                 xlWorksheet.Cells[i, 3] = objTransactions[i - 2].SellingPrice.ToString();
                 xlWorksheet.Cells[i, 4] = objTransactions[i - 2].PurchasePrice.ToString();
                 xlWorksheet.Cells[i, 5] = objTransactions[i - 2].Profit.ToString();
-                xlWorksheet.Cells[i, 6] = objTransactions[i - 2].CreateTime.ToString("yyyy-MM-dd");
+                xlWorksheet.Cells[i, 6] = Convert.ToDateTime(objTransactions[i - 2].CreateTime).ToString("yy-mm-dd");
             }
 
             xlWorkbook.SaveAs(path, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);

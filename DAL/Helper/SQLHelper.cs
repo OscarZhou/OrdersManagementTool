@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 
 
-namespace DLL.Helper
+namespace DAL.Helper
 {
     class SQLHelper
     {
