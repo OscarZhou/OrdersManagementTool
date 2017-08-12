@@ -437,6 +437,7 @@
             this.Name = "OrderDetailsPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Order Detail";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OrderDetailsPage_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

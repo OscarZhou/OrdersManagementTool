@@ -27,6 +27,12 @@ namespace OrderManagementTool
             this.dgvTransaction.AutoGenerateColumns = false;// prohibit useless column 
             ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
             InitializeSortingList();
+            // Add key down event
+            this.KeyDown += OrderManagementTool_KeyDown;
+            foreach (Control control in this.Controls)
+            {
+                control.KeyDown += OrderManagementTool_KeyDown;
+            }
         }
 
         /// <summary>
@@ -115,7 +121,7 @@ namespace OrderManagementTool
             this.EvtSendOperation += frmOrderDetail.Receiver;
             this.EvtSendOperation("View", dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString());
             frmOrderDetail.ShowDialog();
-            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
+            //ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
@@ -171,6 +177,32 @@ namespace OrderManagementTool
             frmPriceKit.Show();
             //btnPriceKit.Enabled = false;
         }
+
+        private void dgvTransaction_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            frmOrderDetail = new OrderDetailsPage();
+            this.EvtSendOperation += frmOrderDetail.Receiver;
+            this.EvtSendOperation("View", dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString());
+            frmOrderDetail.ShowDialog();
+            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
+        }
+
+        private void OrderManagementTool_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
+                    break;
+                case Keys.Escape:
+                    this.Close();
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
 
     }
 }

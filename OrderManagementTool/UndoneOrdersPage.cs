@@ -21,6 +21,12 @@ namespace OrderManagementTool
             InitializeComponent();
             this.dgvUndoneOrders.AutoGenerateColumns = false;
             ShowUndoneOrder();
+            // Add key down event
+            this.KeyDown += UndoneOrdersPage_KeyDown;
+            foreach (Control control in this.Controls)
+            {
+                control.KeyDown += UndoneOrdersPage_KeyDown;
+            }
         }
 
         public void ShowUndoneOrder()
@@ -47,6 +53,22 @@ namespace OrderManagementTool
 
             ShowUndoneOrder();
         }
+
+        private void UndoneOrdersPage_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    break;
+                case Keys.Escape:
+                    this.Close();
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
 
     }
 }

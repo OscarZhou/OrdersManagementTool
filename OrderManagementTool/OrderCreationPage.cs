@@ -19,6 +19,12 @@ namespace OrderManagementTool
         {
             InitializeComponent();
             SetControls();
+            // Add key down event
+            this.KeyDown += OrderCreationPage_KeyDown;
+            foreach (Control control in this.Controls)
+            {
+                control.KeyDown += OrderCreationPage_KeyDown;
+            }
         }
 
         private void SetControls()
@@ -325,6 +331,22 @@ namespace OrderManagementTool
             tbItemDescription.Text = objItem.ItemDescription;
             tbPrice.Text = objItem.UnitPrice.ToString();
 
+        }
+
+        private void OrderCreationPage_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+
+                    break;
+                case Keys.Escape:
+                    this.Close();
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 }

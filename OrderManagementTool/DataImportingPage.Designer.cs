@@ -141,6 +141,7 @@
             this.Name = "DataImportingPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Data Importing";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DataImportingPage_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

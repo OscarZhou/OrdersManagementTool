@@ -169,6 +169,7 @@
             this.Name = "CompletedTransactionPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Completed Transaction";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CompletedTransactionPage_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

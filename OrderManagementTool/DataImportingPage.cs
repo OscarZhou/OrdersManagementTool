@@ -19,7 +19,12 @@ namespace OrderManagementTool
         public DataImportingPage()
         {
             InitializeComponent();
-            
+            // Add key down event
+            this.KeyDown += DataImportingPage_KeyDown;
+            foreach (Control control in this.Controls)
+            {
+                control.KeyDown += DataImportingPage_KeyDown;
+            }
         }
 
         /// <summary>
@@ -257,6 +262,22 @@ namespace OrderManagementTool
                 this.lbProgress.Text = "100%";
             }
             
+        }
+
+        private void DataImportingPage_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+
+                    break;
+                case Keys.Escape:
+                    this.Close();
+                    break;
+
+                default:
+                    break;
+            }
         }
 
     }

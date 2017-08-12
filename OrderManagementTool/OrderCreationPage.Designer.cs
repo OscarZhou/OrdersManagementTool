@@ -448,6 +448,7 @@
             this.Name = "OrderCreationPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Creating Order";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OrderCreationPage_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

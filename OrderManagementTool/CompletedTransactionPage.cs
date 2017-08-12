@@ -15,6 +15,12 @@ namespace OrderManagementTool
             InitializeComponent();
             lbError.Visible = false;
             lbError.ForeColor = System.Drawing.Color.Red;
+            // Add key down event
+            this.KeyDown += CompletedTransactionPage_KeyDown;
+            foreach (Control control in this.Controls)
+            {
+                control.KeyDown += CompletedTransactionPage_KeyDown;
+            }
         }
 
         private void ShowTransaction()
@@ -190,6 +196,54 @@ namespace OrderManagementTool
                 tbProfit.Text = (Convert.ToDouble(tbSellingPrice.Text.Trim()) -
                                 Convert.ToDouble(tbPurchasingPrice.Text.Trim())).ToString();
                 lbError.Visible = false;
+            }
+        }
+
+        private void CompletedTransactionPage_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    #region Update price
+
+                    if (lbError.Visible == false)
+                    {
+                        if (tbSellingPrice.Text.Length != 0)
+                        {
+                            objTransaction.SellingPrice = Convert.ToDouble(tbSellingPrice.Text.Trim());
+                        }
+                        if (tbPurchasingPrice.Text.Length != 0)
+                        {
+                            objTransaction.PurchasePrice = Convert.ToDouble(tbPurchasingPrice.Text.Trim());
+                        }
+                        objTransaction.Profit = objTransaction.SellingPrice - objTransaction.PurchasePrice;
+                        if (tbSellingPrice.Text.Length != 0 && tbPurchasingPrice.Text.Length != 0)
+                        {
+                            objTransaction.OrderStatus = Convert.ToByte(true);
+                        }
+
+                        int result = new TransactionManage().UpdateTransactionRecord(objTransaction);
+                        if (result > 0)
+                        {
+                            MessageBox.Show("Updating Sucessfully!");
+                        }
+                    }
+                    else
+                    {
+                        lbError.Text = "You can't submit before solving the error!";
+                        return;
+                    }
+
+                    #endregion
+
+                    this.Close();
+                    break;
+                case Keys.Escape:
+                    this.Close();
+                    break;
+
+                default:
+                    break;
             }
         }
 

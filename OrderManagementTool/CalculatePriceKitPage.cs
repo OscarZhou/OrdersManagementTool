@@ -18,6 +18,12 @@ namespace OrderManagementTool
             InitializeComponent();
             this.dgvPriceHistory.AutoGenerateColumns = false;
             ReadBrowsingHistory();
+            // Add key down event
+            this.KeyDown += CalculatePriceKitPage_KeyDown;
+            foreach (Control control in this.Controls)
+            {
+                control.KeyDown += CalculatePriceKitPage_KeyDown;
+            }
         }
 
         public void ReadBrowsingHistory()
@@ -146,6 +152,22 @@ namespace OrderManagementTool
             cboExchangeRate.SelectedIndex = -1;
             cboProfitMargin.SelectedIndex = -1;
             tbNZPrice.Focus();
+        }
+
+        private void CalculatePriceKitPage_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+
+                    break;
+                case Keys.Escape:
+                    this.Close();
+                    break;
+
+                default:
+                    break;
+            }
         }
 
     }

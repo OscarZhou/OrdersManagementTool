@@ -334,6 +334,7 @@
             this.Name = "CalculatePriceKitPage";
             this.Text = "Price Calculation Kit";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CalculatePriceKitPage_FormClosed);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CalculatePriceKitPage_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPriceHistory)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
