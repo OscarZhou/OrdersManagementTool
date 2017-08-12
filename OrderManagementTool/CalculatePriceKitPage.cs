@@ -1,8 +1,9 @@
-﻿using BLL;
-using Models;
+﻿using Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
+using Utilities;
 
 namespace OrderManagementTool
 {
@@ -16,17 +17,16 @@ namespace OrderManagementTool
         {
             InitializeComponent();
             this.dgvPriceHistory.AutoGenerateColumns = false;
-            ShowPriceHistory();
+            ReadBrowsingHistory();
         }
 
-        public void ShowPriceHistory()
+        public void ReadBrowsingHistory()
         {
-            foreach (DataGridViewRow row in dgvPriceHistory.Rows)
-            {
-                DataGridViewCheckBoxCell chkSelected = (DataGridViewCheckBoxCell) row.Cells[0];
-                chkSelected.Value = false;
-            }
-            dgvPriceHistory.DataSource = new ItemManage().GetItemPriceHistory();
+            List<Item> objItems = ExportFile.ReadItemsFromBrowseHistoryFile(@"BrowsingHistory.txt");
+            // Implement the select Top 20 order by CreateTime desc using Linq 
+            var lstTop20 = (from t in objItems orderby t.CreateTime descending select t).Take(20);
+            dgvPriceHistory.DataSource = null;
+            dgvPriceHistory.DataSource = lstTop20.ToList();
             dgvPriceHistory.Show();
 
         }
@@ -39,19 +39,22 @@ namespace OrderManagementTool
 
         private void cboExchangeRate_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (cboExchangeRate.SelectedItem != null)
+            if (cboExchangeRate.SelectedItem != null && tbNZPrice.Text.Trim() != "")
             {
-                double price = Convert.ToDouble(lbResult.Text.Trim());
-                lbResult.Text = (price * Convert.ToDouble(cboExchangeRate.SelectedItem)).ToString();   
+                double price = Convert.ToDouble(tbNZPrice.Text.Trim());
+
+                lbResult.Text = (price * Convert.ToDouble(cboExchangeRate.SelectedItem)).ToString("0.00");
+                cboProfitMargin.SelectedIndex = -1;
             }
         }
 
         private void cboProfitMargin_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (cboProfitMargin.SelectedItem != null)
+            if (cboProfitMargin.SelectedItem != null && cboExchangeRate.SelectedItem != null && tbNZPrice.Text.Trim() != "")
             {
-                double price = Convert.ToDouble(lbResult.Text.Trim());
-                lbResult.Text = (price * Convert.ToDouble(cboProfitMargin.SelectedItem)).ToString();
+                double price = Convert.ToDouble(tbNZPrice.Text.Trim());
+                price = price * Convert.ToDouble(cboExchangeRate.SelectedItem);
+                lbResult.Text = Math.Round(price * Convert.ToDouble(cboProfitMargin.SelectedItem)).ToString("0.00");
             }
         }
 
@@ -64,32 +67,35 @@ namespace OrderManagementTool
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            dgvPriceHistory.DataSource = null;
-            List<Item> objItems = new ItemManage().GetItemPriceHistory();
-            objItems.Insert(0, new Item()
+            #region Generate BrowseHistory file
+
+            Item objItem = new Item()
             {
                 ItemDescription = tbItem.Text.Trim(),
                 UnitPrice = Convert.ToDouble(lbResult.Text),
                 CreateTime = DateTime.Now.Date
-            });
+            };
+            ExportFile.CreateOrUpdateBrowseHistoryFile(@"BrowsingHistory.txt", objItem);
+            #endregion
 
-            dgvPriceHistory.DataSource = objItems;
+            #region Read BrowseHistory file
+            dgvPriceHistory.DataSource = null;
+            dgvPriceHistory.DataSource = ExportFile.ReadItemsFromBrowseHistoryFile(@"BrowsingHistory.txt");
             dgvPriceHistory.Show();
+            #endregion
 
+            #region Controls updating
             DataGridViewCheckBoxCell chkSelected =
                 (DataGridViewCheckBoxCell)dgvPriceHistory.Rows[0].Cells[0];
             chkSelected.Value = true;
+
+            this.ClearControls();
+            #endregion
         }
 
         private void btnClearPrice_Click(object sender, EventArgs e)
         {
-            tbItem.Text = "";
-            lbResult.Text = "0";
-            tbNZPrice.Text = "";
-            cboExchangeRate.SelectedIndex = -1;
-            cboProfitMargin.SelectedIndex = -1;
-            tbNZPrice.Focus();
-
+            this.ClearControls();
         }
 
         private void btnImportToOrder_Click(object sender, EventArgs e)
@@ -131,6 +137,16 @@ namespace OrderManagementTool
 
         }
 
+
+        private void ClearControls()
+        {
+            tbItem.Text = "";
+            lbResult.Text = "0";
+            tbNZPrice.Text = "";
+            cboExchangeRate.SelectedIndex = -1;
+            cboProfitMargin.SelectedIndex = -1;
+            tbNZPrice.Focus();
+        }
 
     }
 }

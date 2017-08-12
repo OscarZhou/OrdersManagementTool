@@ -48,6 +48,53 @@ namespace Utilities
             sw.Close();
             fs.Close();
         }
+        /// <summary>
+        /// Create and update local file to store the browsing history of items
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="objItem"></param>
+        public static void CreateOrUpdateBrowseHistoryFile(string path, Item objItem)
+        {
+            FileStream fs;
+            if (!File.Exists(path))
+            {
+                fs = new FileStream(path, FileMode.Create);
+            }
+            else
+            {
+                fs = new FileStream(path, FileMode.Append);
+            }
+            StreamWriter sw = new StreamWriter(fs, Encoding.Unicode);
+            sw.WriteLine(string.Format("{0},{1},{2}",objItem.UnitPrice, objItem.ItemDescription, objItem.CreateTime));
+            sw.Close();
+            fs.Close();
+        }
+
+        public static List<Item> ReadItemsFromBrowseHistoryFile(string path)
+        {
+            List<Item> objItems = new List<Item>();
+            
+            if (File.Exists(path))
+            {
+                FileStream fs = new FileStream(path, FileMode.Open);
+                StreamReader sr = new StreamReader(fs, Encoding.Unicode);
+                string infos = "";
+                while ((infos = sr.ReadLine())!= null)
+                {
+                    string[] items = infos.Split(',');
+                    objItems.Add(new Item()
+                    {
+                        UnitPrice = Convert.ToDouble(items[0]),
+                        ItemDescription = items[1],
+                        CreateTime = Convert.ToDateTime(items[2])
+                    });
+                }
+
+                sr.Close();
+                fs.Close();
+            }
+            return objItems;
+        }
 
         /// <summary>
         /// Export transaction record to Excel

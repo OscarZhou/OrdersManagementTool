@@ -330,6 +330,7 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Location = new System.Drawing.Point(800, 600);
             this.Name = "CalculatePriceKitPage";
             this.Text = "Price Calculation Kit";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CalculatePriceKitPage_FormClosed);

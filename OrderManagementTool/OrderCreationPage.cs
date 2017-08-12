@@ -317,7 +317,7 @@ namespace OrderManagementTool
             frmPriceKit = new CalculatePriceKitPage();
             frmPriceKit.EvtMoveItem += Receiver;
             frmPriceKit.Show();
-            btnPriceKit.Enabled = false;
+            //btnPriceKit.Enabled = false;
         }
 
         public void Receiver(Item objItem)
