@@ -135,5 +135,31 @@ namespace DLL
             }
         }
 
+        public List<Item> GetItemPriceHistory()
+        {
+            StringBuilder sqlBuilder = new StringBuilder();
+            sqlBuilder.Append(
+                "select ItemDescription, Price, CreateTime from [dbo].[ItemList] where Price<>0 order by CreateTime desc");
+            try
+            {
+                List<Item> objItems = new List<Item>();
+                SqlDataReader objReader = SQLHelper.GetObjectCollection(sqlBuilder.ToString());
+                while (objReader.Read())
+                {
+                    objItems.Add(new Item()
+                    {
+                        ItemDescription = objReader["ItemDescription"].ToString(),
+                        UnitPrice = Convert.ToDouble(objReader["Price"]),
+                        CreateTime = Convert.ToDateTime(objReader["CreateTime"])
+                    });
+                }
+                return objItems;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
     }
 }

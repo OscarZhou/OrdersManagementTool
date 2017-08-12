@@ -13,6 +13,7 @@ namespace OrderManagementTool
         private List<Item> objItems = new List<Item>();
         private int crtOrderNo;
         private string purchaserName;
+        private CalculatePriceKitPage frmPriceKit;
 
         public OrderCreationPage()
         {
@@ -78,7 +79,7 @@ namespace OrderManagementTool
                 ItemDescription = tbItemDescription.Text,
                 Quantity = Convert.ToInt32(tbQuantity.Text),
                 UnitPrice = Convert.ToDouble(tbPrice.Text),
-                CreatTime = DateTime.Now
+                CreateTime = DateTime.Now
             });
 
             dgvItemList.DataSource = null;
@@ -309,6 +310,12 @@ namespace OrderManagementTool
             tbToPhone.Text = objOrder.User.PhoneNumber;
             tbIdentityCard.Text = objOrder.User.CardNo;
             tbAddress.Text = objOrder.User.Address;
+        }
+
+        private void btnPriceKit_Click(object sender, EventArgs e)
+        {
+            frmPriceKit = new CalculatePriceKitPage();
+            frmPriceKit.Show();
         }
     }
 }

@@ -31,5 +31,10 @@ namespace BLL
         {
             return new ItemService().UpdateItem(objItem);
         }
+
+        public List<Item> GetItemPriceHistory()
+        {
+            return new ItemService().GetItemPriceHistory();
+        }
     }
 }

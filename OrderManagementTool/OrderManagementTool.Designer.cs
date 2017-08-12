@@ -48,6 +48,7 @@
             this.btnView = new System.Windows.Forms.Button();
             this.BtnEdit = new System.Windows.Forms.Button();
             this.btnDeleteOrder = new System.Windows.Forms.Button();
+            this.btnPriceKit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransaction)).BeginInit();
             this.SuspendLayout();
             // 
@@ -236,6 +237,16 @@
             this.btnDeleteOrder.UseVisualStyleBackColor = true;
             this.btnDeleteOrder.Click += new System.EventHandler(this.btnDeleteOrder_Click);
             // 
+            // btnPriceKit
+            // 
+            this.btnPriceKit.Location = new System.Drawing.Point(1220, 371);
+            this.btnPriceKit.Name = "btnPriceKit";
+            this.btnPriceKit.Size = new System.Drawing.Size(139, 42);
+            this.btnPriceKit.TabIndex = 2;
+            this.btnPriceKit.Text = "Price Kit";
+            this.btnPriceKit.UseVisualStyleBackColor = true;
+            this.btnPriceKit.Click += new System.EventHandler(this.btnPriceKit_Click);
+            // 
             // OrderManagementTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -245,6 +256,7 @@
             this.Controls.Add(this.cmbSorting);
             this.Controls.Add(this.lbTotalProfit);
             this.Controls.Add(this.dgvTransaction);
+            this.Controls.Add(this.btnPriceKit);
             this.Controls.Add(this.btnDeleteOrder);
             this.Controls.Add(this.BtnEdit);
             this.Controls.Add(this.btnView);
@@ -286,6 +298,7 @@
         private System.Windows.Forms.Button btnView;
         private System.Windows.Forms.Button BtnEdit;
         private System.Windows.Forms.Button btnDeleteOrder;
+        private System.Windows.Forms.Button btnPriceKit;
     }
 }
 
