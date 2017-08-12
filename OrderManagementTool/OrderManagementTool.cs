@@ -13,6 +13,7 @@ namespace OrderManagementTool
         private OrderCreationPage frmOrderCreation;
         private UndoneOrdersPage frmUndoneOrders;
         private OrderDetailsPage frmOrderDetail;
+        private CalculatePriceKitPage frmPriceKit;
 
         // define delegate
         public delegate void DlgSendOperation(string operation, string orderNo);
@@ -26,6 +27,12 @@ namespace OrderManagementTool
             this.dgvTransaction.AutoGenerateColumns = false;// prohibit useless column 
             ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
             InitializeSortingList();
+            // Add key down event
+            this.KeyDown += OrderManagementTool_KeyDown;
+            foreach (Control control in this.Controls)
+            {
+                control.KeyDown += OrderManagementTool_KeyDown;
+            }
         }
 
         /// <summary>
@@ -114,7 +121,7 @@ namespace OrderManagementTool
             this.EvtSendOperation += frmOrderDetail.Receiver;
             this.EvtSendOperation("View", dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString());
             frmOrderDetail.ShowDialog();
-            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
+            //ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
@@ -144,21 +151,57 @@ namespace OrderManagementTool
 
         private void btnDeleteOrder_Click(object sender, EventArgs e)
         {
-            string orderNo = dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString();
 
-            Order objOrder = new OrderManage().GetOrderByOrderNo(orderNo);
-            objOrder.User = new UserInfoManage().GetUserByOrderNo(orderNo);
-            new TransactionManage().DeleteTransactionRecord(orderNo);
-            new ItemManage().DeleteItemListByOrderNo(orderNo);
-            new OrderManage().DeleteOrder(objOrder);
-            int result = new UserInfoManage().DeleteUser(objOrder.User);
-            if (result > 0)
+            if (MessageBox.Show(this, "Delete?", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                MessageBox.Show("Delete data sucessfully!");
-            }
+                string orderNo = dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString();
 
-            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
+                Order objOrder = new OrderManage().GetOrderByOrderNo(orderNo);
+                objOrder.User = new UserInfoManage().GetUserByOrderNo(orderNo);
+                new TransactionManage().DeleteTransactionRecord(orderNo);
+                new ItemManage().DeleteItemListByOrderNo(orderNo);
+                new OrderManage().DeleteOrder(objOrder);
+                int result = new UserInfoManage().DeleteUser(objOrder.User);
+                if (result > 0)
+                {
+                    MessageBox.Show("Delete data sucessfully!");
+                }
+
+                ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));                
+            }
         }
+
+        private void btnPriceKit_Click(object sender, EventArgs e)
+        {
+            frmPriceKit = new CalculatePriceKitPage();
+            frmPriceKit.Show();
+            //btnPriceKit.Enabled = false;
+        }
+
+        private void dgvTransaction_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            frmOrderDetail = new OrderDetailsPage();
+            this.EvtSendOperation += frmOrderDetail.Receiver;
+            this.EvtSendOperation("View", dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString());
+            frmOrderDetail.ShowDialog();
+        }
+
+        private void OrderManagementTool_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
+                    break;
+                case Keys.Escape:
+                    this.Close();
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
 
     }
 }

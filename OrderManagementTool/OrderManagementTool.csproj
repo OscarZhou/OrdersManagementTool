@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalculatePriceKitPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CalculatePriceKitPage.Designer.cs">
+      <DependentUpon>CalculatePriceKitPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="CompletedTransactionPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,9 @@
     <Compile Include="UndoneOrdersPage.Designer.cs">
       <DependentUpon>UndoneOrdersPage.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CalculatePriceKitPage.resx">
+      <DependentUpon>CalculatePriceKitPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CompletedTransactionPage.resx">
       <DependentUpon>CompletedTransactionPage.cs</DependentUpon>
     </EmbeddedResource>

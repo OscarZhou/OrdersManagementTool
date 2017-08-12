@@ -1,10 +1,10 @@
-﻿using DLL.Helper;
+﻿using DAL.Helper;
 using Models;
 using System;
 using System.Data.SqlClient;
 using System.Text;
 
-namespace DLL
+namespace DAL
 {
     public class UserInfoService
     {
@@ -84,7 +84,7 @@ namespace DLL
             {
                 SqlDataReader objReaders = SQLHelper.GetObjectCollection(sql);
                 UserInfo objUserInfo = new UserInfo();
-                while (objReaders.Read())
+                if (objReaders.Read())
                 {
                     objUserInfo.UserNo = Convert.ToInt32(objReaders["UserNo"]);
                     objUserInfo.UserName = objReaders["UserName"].ToString();
@@ -93,6 +93,7 @@ namespace DLL
                     objUserInfo.CardNo = objReaders["CardNo"].ToString();
 
                 }
+                objReaders.Close();
                 return objUserInfo;
             }
             catch (Exception e)

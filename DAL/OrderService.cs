@@ -1,11 +1,11 @@
 ﻿
-using DLL.Helper;
+using DAL.Helper;
 using Models;
 using System;
 using System.Data.SqlClient;
 using System.Text;
 
-namespace DLL
+namespace DAL
 {
     public class OrderService
     {
@@ -82,6 +82,7 @@ namespace DLL
                     objOrder.ProductPrice = Convert.ToDouble(objReaders["ProductPrice"]);
                     objOrder.Purchaser = objReaders["Purchaser"].ToString();
                 }
+                objReaders.Close();
                 return objOrder;
             }
             catch (Exception e)

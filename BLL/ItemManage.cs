@@ -1,7 +1,7 @@
 ﻿
-using DLL;
 using Models;
 using System.Collections.Generic;
+using DAL;
 
 namespace BLL
 {
@@ -30,6 +30,11 @@ namespace BLL
         public int UpdateItem(Item objItem)
         {
             return new ItemService().UpdateItem(objItem);
+        }
+
+        public List<Item> GetItemPriceHistory()
+        {
+            return new ItemService().GetItemPriceHistory();
         }
     }
 }

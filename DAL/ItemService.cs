@@ -1,11 +1,11 @@
-﻿using DLL.Helper;
+﻿using DAL.Helper;
 using Models;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
 
-namespace DLL
+namespace DAL
 {
     public class ItemService
     {
@@ -57,6 +57,7 @@ namespace DLL
                         ItemNo = Convert.ToInt32(objReaders["ItemNo"])
                     }); 
                 }
+                objReaders.Close();
                 return objItems;
             }
             catch (Exception e)
@@ -94,7 +95,7 @@ namespace DLL
             {
                 SqlDataReader objReaders = SQLHelper.GetObjectCollection(sql);
                 Item objItem = new Item();
-                while (objReaders.Read())
+                if (objReaders.Read())
                 {
                     objItem.ItemNo = Convert.ToInt32(objReaders["ItemNo"]);
                     objItem.ItemDescription = objReaders["ItemDescription"].ToString();
@@ -102,6 +103,7 @@ namespace DLL
                     objItem.UnitPrice = Convert.ToDouble(objReaders["Price"]);
                     
                 }
+                objReaders.Close();
                 return objItem;
             }
             catch (Exception e)
@@ -135,5 +137,32 @@ namespace DLL
             }
         }
 
+        public List<Item> GetItemPriceHistory()
+        {
+            StringBuilder sqlBuilder = new StringBuilder();
+            sqlBuilder.Append(
+                "select ItemDescription, Price, CreateTime from [dbo].[ItemList] where Price<>0 order by CreateTime desc");
+            try
+            {
+                List<Item> objItems = new List<Item>();
+                SqlDataReader objReader = SQLHelper.GetObjectCollection(sqlBuilder.ToString());
+                while (objReader.Read())
+                {
+                    objItems.Add(new Item()
+                    {
+                        ItemDescription = objReader["ItemDescription"].ToString(),
+                        UnitPrice = Convert.ToDouble(objReader["Price"]),
+                        CreateTime = Convert.ToDateTime(objReader["CreateTime"])
+                    });
+                }
+                objReader.Close();
+                return objItems;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
     }
 }

@@ -43,9 +43,6 @@
             this.btnAddItem = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.dgvItemList = new System.Windows.Forms.DataGridView();
-            this.ItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label8 = new System.Windows.Forms.Label();
             this.tbTo = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -66,6 +63,10 @@
             this.tbTotalPrice = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.tbIdentityCard = new System.Windows.Forms.TextBox();
+            this.btnPriceKit = new System.Windows.Forms.Button();
+            this.ItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -186,35 +187,13 @@
             this.dgvItemList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemDescription,
             this.Quantity,
-            this.Price});
+            this.UnitPrice});
             this.dgvItemList.Location = new System.Drawing.Point(76, 202);
             this.dgvItemList.Name = "dgvItemList";
             this.dgvItemList.ReadOnly = true;
             this.dgvItemList.RowTemplate.Height = 30;
             this.dgvItemList.Size = new System.Drawing.Size(1015, 228);
             this.dgvItemList.TabIndex = 5;
-            // 
-            // ItemDescription
-            // 
-            this.ItemDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ItemDescription.DataPropertyName = "ItemDescription";
-            this.ItemDescription.HeaderText = "Product Name";
-            this.ItemDescription.Name = "ItemDescription";
-            this.ItemDescription.ReadOnly = true;
-            // 
-            // Quantity
-            // 
-            this.Quantity.DataPropertyName = "Quantity";
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.Name = "Quantity";
-            this.Quantity.ReadOnly = true;
-            // 
-            // Price
-            // 
-            this.Price.DataPropertyName = "Price";
-            this.Price.HeaderText = "Price";
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
             // 
             // label8
             // 
@@ -392,6 +371,42 @@
             this.tbIdentityCard.Size = new System.Drawing.Size(315, 28);
             this.tbIdentityCard.TabIndex = 6;
             // 
+            // btnPriceKit
+            // 
+            this.btnPriceKit.Location = new System.Drawing.Point(991, 568);
+            this.btnPriceKit.Name = "btnPriceKit";
+            this.btnPriceKit.Size = new System.Drawing.Size(133, 35);
+            this.btnPriceKit.TabIndex = 8;
+            this.btnPriceKit.Text = "Price Kit";
+            this.btnPriceKit.UseVisualStyleBackColor = true;
+            this.btnPriceKit.Click += new System.EventHandler(this.btnPriceKit_Click);
+            // 
+            // ItemDescription
+            // 
+            this.ItemDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ItemDescription.DataPropertyName = "ItemDescription";
+            this.ItemDescription.HeaderText = "Product Name";
+            this.ItemDescription.Name = "ItemDescription";
+            this.ItemDescription.ReadOnly = true;
+            // 
+            // Quantity
+            // 
+            this.Quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Quantity.DataPropertyName = "Quantity";
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            this.Quantity.Width = 116;
+            // 
+            // UnitPrice
+            // 
+            this.UnitPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.UnitPrice.DataPropertyName = "UnitPrice";
+            this.UnitPrice.HeaderText = "Price";
+            this.UnitPrice.Name = "UnitPrice";
+            this.UnitPrice.ReadOnly = true;
+            this.UnitPrice.Width = 89;
+            // 
             // OrderCreationPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -406,6 +421,7 @@
             this.Controls.Add(this.label11);
             this.Controls.Add(this.dgvItemList);
             this.Controls.Add(this.label7);
+            this.Controls.Add(this.btnPriceKit);
             this.Controls.Add(this.btnAddOrder);
             this.Controls.Add(this.btnAddItem);
             this.Controls.Add(this.label3);
@@ -436,6 +452,7 @@
             this.Name = "OrderCreationPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Creating Order";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OrderCreationPage_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -470,9 +487,6 @@
         private System.Windows.Forms.Button btnCopy;
         private System.Windows.Forms.Label lbItemError;
         private System.Windows.Forms.Label lbUserError;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox tbPurchaser;
         private System.Windows.Forms.CheckBox chkLock;
@@ -481,6 +495,10 @@
         private System.Windows.Forms.TextBox tbTotalPrice;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox tbIdentityCard;
+        private System.Windows.Forms.Button btnPriceKit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
 
     }
 }

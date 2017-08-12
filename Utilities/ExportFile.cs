@@ -48,6 +48,53 @@ namespace Utilities
             sw.Close();
             fs.Close();
         }
+        /// <summary>
+        /// Create and update local file to store the browsing history of items
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="objItem"></param>
+        public static void CreateOrUpdateBrowseHistoryFile(string path, Item objItem)
+        {
+            FileStream fs;
+            if (!File.Exists(path))
+            {
+                fs = new FileStream(path, FileMode.Create);
+            }
+            else
+            {
+                fs = new FileStream(path, FileMode.Append);
+            }
+            StreamWriter sw = new StreamWriter(fs, Encoding.Unicode);
+            sw.WriteLine(string.Format("{0},{1},{2}",objItem.UnitPrice, objItem.ItemDescription, objItem.CreateTime));
+            sw.Close();
+            fs.Close();
+        }
+
+        public static List<Item> ReadItemsFromBrowseHistoryFile(string path)
+        {
+            List<Item> objItems = new List<Item>();
+            
+            if (File.Exists(path))
+            {
+                FileStream fs = new FileStream(path, FileMode.Open);
+                StreamReader sr = new StreamReader(fs, Encoding.Unicode);
+                string infos = "";
+                while ((infos = sr.ReadLine())!= null)
+                {
+                    string[] items = infos.Split(',');
+                    objItems.Add(new Item()
+                    {
+                        UnitPrice = Convert.ToDouble(items[0]),
+                        ItemDescription = items[1],
+                        CreateTime = Convert.ToDateTime(items[2])
+                    });
+                }
+
+                sr.Close();
+                fs.Close();
+            }
+            return objItems;
+        }
 
         /// <summary>
         /// Export transaction record to Excel
@@ -79,7 +126,7 @@ namespace Utilities
                 xlWorksheet.Cells[i, 3] = objTransactions[i - 2].SellingPrice.ToString();
                 xlWorksheet.Cells[i, 4] = objTransactions[i - 2].PurchasePrice.ToString();
                 xlWorksheet.Cells[i, 5] = objTransactions[i - 2].Profit.ToString();
-                xlWorksheet.Cells[i, 6] = objTransactions[i - 2].CreateTime.ToString("yyyy-MM-dd");
+                xlWorksheet.Cells[i, 6] = Convert.ToDateTime(objTransactions[i - 2].CreateTime).ToString("yy-mm-dd");
             }
 
             xlWorkbook.SaveAs(path, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);

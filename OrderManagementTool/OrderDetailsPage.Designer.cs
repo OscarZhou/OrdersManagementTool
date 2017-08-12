@@ -36,11 +36,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tbPurchaser = new System.Windows.Forms.TextBox();
             this.dgvItemList = new System.Windows.Forms.DataGridView();
-            this.ItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.tbTo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -67,6 +62,11 @@
             this.label14 = new System.Windows.Forms.Label();
             this.tbProfit = new System.Windows.Forms.TextBox();
             this.btnCreateOrder = new System.Windows.Forms.Button();
+            this.ItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -138,44 +138,6 @@
             this.dgvItemList.Size = new System.Drawing.Size(957, 381);
             this.dgvItemList.TabIndex = 2;
             this.dgvItemList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItemList_CellClick);
-            // 
-            // ItemDescription
-            // 
-            this.ItemDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ItemDescription.DataPropertyName = "ItemDescription";
-            this.ItemDescription.HeaderText = "Product Name";
-            this.ItemDescription.Name = "ItemDescription";
-            this.ItemDescription.ReadOnly = true;
-            this.ItemDescription.Width = 107;
-            // 
-            // Quantity
-            // 
-            this.Quantity.DataPropertyName = "Quantity";
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.Name = "Quantity";
-            this.Quantity.ReadOnly = true;
-            // 
-            // UnitPrice
-            // 
-            this.UnitPrice.DataPropertyName = "UnitPrice";
-            this.UnitPrice.HeaderText = "Unit Price";
-            this.UnitPrice.Name = "UnitPrice";
-            this.UnitPrice.ReadOnly = true;
-            // 
-            // TotalPrice
-            // 
-            this.TotalPrice.DataPropertyName = "TotalPrice";
-            this.TotalPrice.HeaderText = "Product Total Price";
-            this.TotalPrice.Name = "TotalPrice";
-            this.TotalPrice.ReadOnly = true;
-            // 
-            // ItemNo
-            // 
-            this.ItemNo.DataPropertyName = "ItemNo";
-            this.ItemNo.HeaderText = "Item No";
-            this.ItemNo.Name = "ItemNo";
-            this.ItemNo.ReadOnly = true;
-            this.ItemNo.Visible = false;
             // 
             // label4
             // 
@@ -394,6 +356,49 @@
             this.btnCreateOrder.UseVisualStyleBackColor = true;
             this.btnCreateOrder.Click += new System.EventHandler(this.btnCreateOrder_Click);
             // 
+            // ItemDescription
+            // 
+            this.ItemDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ItemDescription.DataPropertyName = "ItemDescription";
+            this.ItemDescription.HeaderText = "Product Name";
+            this.ItemDescription.Name = "ItemDescription";
+            this.ItemDescription.ReadOnly = true;
+            // 
+            // Quantity
+            // 
+            this.Quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Quantity.DataPropertyName = "Quantity";
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            this.Quantity.Width = 116;
+            // 
+            // UnitPrice
+            // 
+            this.UnitPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.UnitPrice.DataPropertyName = "UnitPrice";
+            this.UnitPrice.HeaderText = "Unit Price";
+            this.UnitPrice.Name = "UnitPrice";
+            this.UnitPrice.ReadOnly = true;
+            this.UnitPrice.Width = 134;
+            // 
+            // TotalPrice
+            // 
+            this.TotalPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.TotalPrice.DataPropertyName = "TotalPrice";
+            this.TotalPrice.HeaderText = "Product Total Price";
+            this.TotalPrice.Name = "TotalPrice";
+            this.TotalPrice.ReadOnly = true;
+            this.TotalPrice.Width = 156;
+            // 
+            // ItemNo
+            // 
+            this.ItemNo.DataPropertyName = "ItemNo";
+            this.ItemNo.HeaderText = "Item No";
+            this.ItemNo.Name = "ItemNo";
+            this.ItemNo.ReadOnly = true;
+            this.ItemNo.Visible = false;
+            // 
             // OrderDetailsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -437,6 +442,7 @@
             this.Name = "OrderDetailsPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Order Detail";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OrderDetailsPage_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -477,11 +483,11 @@
         private System.Windows.Forms.Label lbError;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox tbProfit;
+        private System.Windows.Forms.Button btnCreateOrder;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemNo;
-        private System.Windows.Forms.Button btnCreateOrder;
     }
 }

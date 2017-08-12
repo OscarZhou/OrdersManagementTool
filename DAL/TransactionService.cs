@@ -1,12 +1,11 @@
-﻿
-using DLL.Helper;
+﻿using DAL.Helper;
 using Models;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
 
-namespace DLL
+namespace DAL
 {
     public class TransactionService
     {
@@ -59,6 +58,7 @@ namespace DLL
                     CreateTime = Convert.ToDateTime(objReaders["CreateTime"])
                 });
             }
+            objReaders.Close();
             return objTransactions;
         }
 
@@ -182,6 +182,7 @@ namespace DLL
                         CreateTime = Convert.ToDateTime(objReaders["CreateTime"])
                     });
                 }
+                objReaders.Close();
                 return objTransactions;
             }
             catch (Exception e)
@@ -252,6 +253,7 @@ namespace DLL
                     CreateTime = Convert.ToDateTime(objReaders["CreateTime"])
                 });
             }
+            objReaders.Close();
             return objTransactions;
         }
 

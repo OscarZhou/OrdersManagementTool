@@ -17,7 +17,7 @@ namespace Models
 
         public double TotalPrice { get; set; }
 
-        public DateTime CreatTime { get; set; }
+        public DateTime CreateTime { get; set; }
 
     }
 }

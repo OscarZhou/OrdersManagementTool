@@ -123,7 +123,7 @@ namespace Utilities
             #endregion
             
 
-            int rowCount = 200;
+            int rowCount = 300;
             // excel is not zero based
             for (int i = 2; i <= rowCount; i++)
             {
@@ -131,7 +131,7 @@ namespace Utilities
                 {
                     break;
                 }
-                
+                string strDate = DateTime.FromOADate(Convert.ToInt32(xlRange.Cells[i, 6].Value2)).ToString("d");
                 objTransactions.Add(new Transaction()
                 {
                     OrderNo = Convert.ToInt32(xlRange.Cells[i, 1].Value2),
@@ -139,7 +139,7 @@ namespace Utilities
                     SellingPrice = Convert.ToDouble(xlRange.Cells[i, 3].Value2),
                     PurchasePrice = Convert.ToDouble(xlRange.Cells[i, 4].Value2),
                     Profit = Convert.ToDouble(xlRange.Cells[i, 5].Value2),
-                    CreateTime = Convert.ToDateTime(xlRange.Cells[1, 6].Value2),
+                    CreateTime = DateTime.Parse(strDate),
                     OrderStatus = Convert.ToByte(true)
                 });
 

@@ -1,6 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.Drawing;
+﻿using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace OrderManagementTool
@@ -145,6 +143,7 @@ namespace OrderManagementTool
             this.Name = "UndoneOrdersPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Undone Orders";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UndoneOrdersPage_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUndoneOrders)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
