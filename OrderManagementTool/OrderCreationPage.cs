@@ -315,7 +315,16 @@ namespace OrderManagementTool
         private void btnPriceKit_Click(object sender, EventArgs e)
         {
             frmPriceKit = new CalculatePriceKitPage();
+            frmPriceKit.EvtMoveItem += Receiver;
             frmPriceKit.Show();
+            btnPriceKit.Enabled = false;
+        }
+
+        public void Receiver(Item objItem)
+        {
+            tbItemDescription.Text = objItem.ItemDescription;
+            tbPrice.Text = objItem.UnitPrice.ToString();
+
         }
     }
 }

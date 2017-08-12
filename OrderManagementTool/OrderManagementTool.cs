@@ -169,6 +169,7 @@ namespace OrderManagementTool
         {
             frmPriceKit = new CalculatePriceKitPage();
             frmPriceKit.Show();
+            btnPriceKit.Enabled = false;
         }
 
     }

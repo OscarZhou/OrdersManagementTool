@@ -8,6 +8,10 @@ namespace OrderManagementTool
 {
     public partial class CalculatePriceKitPage : Form
     {
+        public delegate void DlgMoveItem(Item objItem);
+
+        public DlgMoveItem EvtMoveItem;
+
         public CalculatePriceKitPage()
         {
             InitializeComponent();
@@ -90,7 +94,13 @@ namespace OrderManagementTool
 
         private void btnImportToOrder_Click(object sender, EventArgs e)
         {
-
+            Item objItem = new Item()
+            {
+                ItemDescription = dgvPriceHistory.CurrentRow.Cells[2].Value.ToString(),
+                UnitPrice = Convert.ToDouble(dgvPriceHistory.CurrentRow.Cells[1].Value),
+                CreateTime = Convert.ToDateTime(dgvPriceHistory.CurrentRow.Cells[3].Value)
+            };
+            this.EvtMoveItem(objItem);
         }
 
         private void dgvPriceHistory_CellClick(object sender, DataGridViewCellEventArgs e)

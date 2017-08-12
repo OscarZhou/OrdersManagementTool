@@ -283,7 +283,7 @@
             this.btnImportToOrder.Name = "btnImportToOrder";
             this.btnImportToOrder.Size = new System.Drawing.Size(174, 40);
             this.btnImportToOrder.TabIndex = 5;
-            this.btnImportToOrder.Text = "Import into Order";
+            this.btnImportToOrder.Text = "Move To Order";
             this.btnImportToOrder.UseVisualStyleBackColor = true;
             this.btnImportToOrder.Click += new System.EventHandler(this.btnImportToOrder_Click);
             // 
