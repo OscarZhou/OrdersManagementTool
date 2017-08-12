@@ -41,6 +41,21 @@ First releasing.
 **5.** Solve some bugs  
 
 
+## V1.5
+**1.** Add Price Calculation Kit (Make ordering operation more convenient)  
+&nbsp;&nbsp;**1.1** Accelerate the price's calculation  
+&nbsp;&nbsp;**1.2** Move product and price's information direct to the order  
+&nbsp;&nbsp;**1.3** Add browsing history (latest 20 products)  
+**2.** Fix some bugs  
+&nbsp;&nbsp;**2.1** Add Reader.Close() in order to avoiding the collapase of the system  
+&nbsp;&nbsp;**2.2** Adjust the width of the columns in each DataGridView   
+&nbsp;&nbsp;**2.3** Convert the Date column in Excel with the additional column(Date) to DateTime type  
+&nbsp;&nbsp;**2.4** Add Key Code to associate with window operation  
+ 
+ 
+ 
+ 
+ 
 
 
 
