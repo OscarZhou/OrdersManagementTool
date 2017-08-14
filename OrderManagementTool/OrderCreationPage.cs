@@ -2,6 +2,7 @@
 using Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Utilities;
@@ -347,6 +348,34 @@ namespace OrderManagementTool
                 default:
                     break;
             }
+        }
+
+        private void btnDeleteItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show(this, "Are you sure to delete?", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                #region Delete Item
+
+                string itemDescription = dgvItemList.CurrentRow.Cells["ItemDescription"].Value.ToString();
+                var objDeleteItem = (from t in objItems where t.ItemDescription == itemDescription select t).First();//Re-organize the data in DataGridView
+                objItems.Remove(objDeleteItem);
+                dgvItemList.DataSource = null;
+                dgvItemList.DataSource = objItems;
+                dgvItemList.Show();
+                #endregion
+
+                #region Calculate product price
+                double productPrice = 0;
+                foreach (Item objItem in objItems)
+                {
+                    productPrice += objItem.Quantity * objItem.UnitPrice;
+                }
+                tbTotalPrice.Text = productPrice.ToString();
+
+                #endregion    
+            }
+            
+            
         }
     }
 }

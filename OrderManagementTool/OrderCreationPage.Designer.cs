@@ -64,7 +64,9 @@
             this.label14 = new System.Windows.Forms.Label();
             this.tbIdentityCard = new System.Windows.Forms.TextBox();
             this.btnPriceKit = new System.Windows.Forms.Button();
+            this.btnDeleteItem = new System.Windows.Forms.Button();
             this.ItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemList)).BeginInit();
@@ -165,9 +167,9 @@
             // 
             this.btnAddItem.Location = new System.Drawing.Point(948, 157);
             this.btnAddItem.Name = "btnAddItem";
-            this.btnAddItem.Size = new System.Drawing.Size(122, 33);
+            this.btnAddItem.Size = new System.Drawing.Size(85, 33);
             this.btnAddItem.TabIndex = 7;
-            this.btnAddItem.Text = "AddItem";
+            this.btnAddItem.Text = "Add";
             this.btnAddItem.UseVisualStyleBackColor = true;
             this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
@@ -186,12 +188,14 @@
             this.dgvItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvItemList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemDescription,
+            this.ItemNo,
             this.Quantity,
             this.UnitPrice});
             this.dgvItemList.Location = new System.Drawing.Point(76, 202);
             this.dgvItemList.Name = "dgvItemList";
             this.dgvItemList.ReadOnly = true;
             this.dgvItemList.RowTemplate.Height = 30;
+            this.dgvItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvItemList.Size = new System.Drawing.Size(1015, 228);
             this.dgvItemList.TabIndex = 5;
             // 
@@ -381,6 +385,16 @@
             this.btnPriceKit.UseVisualStyleBackColor = true;
             this.btnPriceKit.Click += new System.EventHandler(this.btnPriceKit_Click);
             // 
+            // btnDeleteItem
+            // 
+            this.btnDeleteItem.Location = new System.Drawing.Point(1054, 157);
+            this.btnDeleteItem.Name = "btnDeleteItem";
+            this.btnDeleteItem.Size = new System.Drawing.Size(85, 33);
+            this.btnDeleteItem.TabIndex = 7;
+            this.btnDeleteItem.Text = "Delete";
+            this.btnDeleteItem.UseVisualStyleBackColor = true;
+            this.btnDeleteItem.Click += new System.EventHandler(this.btnDeleteItem_Click);
+            // 
             // ItemDescription
             // 
             this.ItemDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -388,6 +402,14 @@
             this.ItemDescription.HeaderText = "Product Name";
             this.ItemDescription.Name = "ItemDescription";
             this.ItemDescription.ReadOnly = true;
+            // 
+            // ItemNo
+            // 
+            this.ItemNo.DataPropertyName = "ItemNo";
+            this.ItemNo.HeaderText = "Item No";
+            this.ItemNo.Name = "ItemNo";
+            this.ItemNo.ReadOnly = true;
+            this.ItemNo.Visible = false;
             // 
             // Quantity
             // 
@@ -423,6 +445,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnPriceKit);
             this.Controls.Add(this.btnAddOrder);
+            this.Controls.Add(this.btnDeleteItem);
             this.Controls.Add(this.btnAddItem);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tbPrice);
@@ -496,7 +519,9 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox tbIdentityCard;
         private System.Windows.Forms.Button btnPriceKit;
+        private System.Windows.Forms.Button btnDeleteItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
 
