@@ -1,6 +1,9 @@
 ﻿using BLL;
 using Models;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Reflection;
 using System.Windows.Forms;
 using Utilities;
 
@@ -27,6 +30,10 @@ namespace OrderManagementTool
             this.dgvTransaction.AutoGenerateColumns = false;// prohibit useless column 
             ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
             InitializeSortingList();
+            lbVersion.Text = string.Format("Version:{0}\r\nAuthor:{1}",
+                Assembly.GetExecutingAssembly().GetName().Version.ToString(),
+                FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).CompanyName);
+
             // Add key down event
             this.KeyDown += OrderManagementTool_KeyDown;
             foreach (Control control in this.Controls)
@@ -66,9 +73,20 @@ namespace OrderManagementTool
         /// <param name="e"></param>
         private void btnUndoneOrders_Click(object sender, System.EventArgs e)
         {
-            frmUndoneOrders = new UndoneOrdersPage();
-            frmUndoneOrders.ShowDialog();
-            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
+            // 添加检查是否存在未完成的订单
+            List<Transaction> objLists = new TransactionManage().GetUndoneTransactionList();
+            if (objLists.Count == 0)
+            {
+                MessageBox.Show("No undone orders!", "Prompt", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                frmUndoneOrders = new UndoneOrdersPage();
+                frmUndoneOrders.ShowDialog();
+                ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));                
+            }
+
+
         }
 
         /// <summary>
