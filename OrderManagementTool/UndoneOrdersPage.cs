@@ -1,5 +1,7 @@
 ﻿using BLL;
+using Models;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace OrderManagementTool
@@ -7,6 +9,7 @@ namespace OrderManagementTool
     public partial class UndoneOrdersPage : Form
     {
         private CompletedTransactionPage _frmCompletedTransactionPage;
+        private OrderDetailsPage _frmOrderDetail;
 
         // define delegate
         public delegate void DlgGetObjTransaction(string orderNo);
@@ -14,6 +17,10 @@ namespace OrderManagementTool
         public event DlgGetObjTransaction EvtGetObjTransaction;
 
 
+        // define delegate
+        public delegate void DlgSendOperation(string operation, string orderNo);
+        // create an event. that is delegate variables
+        public event DlgSendOperation EvtSendOperation;
 
         
         public UndoneOrdersPage()
@@ -31,13 +38,18 @@ namespace OrderManagementTool
 
         public void ShowUndoneOrder()
         {
-            dgvUndoneOrders.DataSource = new TransactionManage().GetUndoneTransactionList();
-            dgvUndoneOrders.Show();
-
-            if (dgvUndoneOrders.DataSource == null)
+            List<Transaction> objLists = new TransactionManage().GetUndoneTransactionList();
+            if (objLists.Count == 0)
             {
                 this.Close();
             }
+            else
+            {
+                dgvUndoneOrders.DataSource = objLists;
+                dgvUndoneOrders.Show();                
+            }
+
+
         }
 
         private void btnCompleteOrder_Click(object sender, EventArgs e)
@@ -50,7 +62,7 @@ namespace OrderManagementTool
                 this.EvtGetObjTransaction(dgvUndoneOrders.CurrentRow.Cells["OrderNo"].Value.ToString());
             }
             _frmCompletedTransactionPage.ShowDialog();
-
+            
             ShowUndoneOrder();
         }
 
@@ -67,6 +79,20 @@ namespace OrderManagementTool
                 default:
                     break;
             }
+        }
+
+        /// <summary>
+        /// double click item to check the information of the order
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvUndoneOrders_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string orderNo = dgvUndoneOrders.CurrentRow.Cells["OrderNo"].Value.ToString();
+            _frmOrderDetail = new OrderDetailsPage();
+            this.EvtSendOperation += _frmOrderDetail.Receiver;
+            this.EvtSendOperation("View", orderNo);
+            _frmOrderDetail.ShowDialog();
         }
 
 

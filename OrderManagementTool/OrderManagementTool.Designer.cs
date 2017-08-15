@@ -35,6 +35,12 @@
             this.btnAddOrder = new System.Windows.Forms.Button();
             this.lbTotalProfit = new System.Windows.Forms.Label();
             this.dgvTransaction = new System.Windows.Forms.DataGridView();
+            this.OrderNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Purchaser = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SellingPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchasePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Profit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnUndoneOrders = new System.Windows.Forms.Button();
             this.btnDataAnalysis = new System.Windows.Forms.Button();
             this.cmbSorting = new System.Windows.Forms.ComboBox();
@@ -43,12 +49,8 @@
             this.BtnEdit = new System.Windows.Forms.Button();
             this.btnDeleteOrder = new System.Windows.Forms.Button();
             this.btnPriceKit = new System.Windows.Forms.Button();
-            this.OrderNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Purchaser = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SellingPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PurchasePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Profit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbVersion = new System.Windows.Forms.Label();
+            this.btnOrderText = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransaction)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,6 +62,7 @@
             this.tbSearch.Size = new System.Drawing.Size(206, 28);
             this.tbSearch.TabIndex = 0;
             this.tbSearch.Text = "Input Name";
+            this.tbSearch.Click += new System.EventHandler(this.tbSearch_Click);
             // 
             // btnSearch
             // 
@@ -87,7 +90,7 @@
             this.btnAddOrder.Name = "btnAddOrder";
             this.btnAddOrder.Size = new System.Drawing.Size(139, 42);
             this.btnAddOrder.TabIndex = 3;
-            this.btnAddOrder.Text = "CreateOrder";
+            this.btnAddOrder.Text = "Create Order";
             this.btnAddOrder.UseVisualStyleBackColor = true;
             this.btnAddOrder.Click += new System.EventHandler(this.btnAddOrder_Click);
             // 
@@ -121,6 +124,54 @@
             this.dgvTransaction.Size = new System.Drawing.Size(1160, 591);
             this.dgvTransaction.TabIndex = 6;
             this.dgvTransaction.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTransaction_CellDoubleClick);
+            // 
+            // OrderNo
+            // 
+            this.OrderNo.DataPropertyName = "OrderNo";
+            this.OrderNo.FillWeight = 30F;
+            this.OrderNo.HeaderText = "Order No";
+            this.OrderNo.Name = "OrderNo";
+            this.OrderNo.ReadOnly = true;
+            // 
+            // Purchaser
+            // 
+            this.Purchaser.DataPropertyName = "Purchaser";
+            this.Purchaser.FillWeight = 35.51238F;
+            this.Purchaser.HeaderText = "Purchaser Name";
+            this.Purchaser.Name = "Purchaser";
+            this.Purchaser.ReadOnly = true;
+            // 
+            // SellingPrice
+            // 
+            this.SellingPrice.DataPropertyName = "SellingPrice";
+            this.SellingPrice.FillWeight = 35.51238F;
+            this.SellingPrice.HeaderText = "Selling Price";
+            this.SellingPrice.Name = "SellingPrice";
+            this.SellingPrice.ReadOnly = true;
+            // 
+            // PurchasePrice
+            // 
+            this.PurchasePrice.DataPropertyName = "PurchasePrice";
+            this.PurchasePrice.FillWeight = 35.51238F;
+            this.PurchasePrice.HeaderText = "Purchasing Price";
+            this.PurchasePrice.Name = "PurchasePrice";
+            this.PurchasePrice.ReadOnly = true;
+            // 
+            // Profit
+            // 
+            this.Profit.DataPropertyName = "Profit";
+            this.Profit.FillWeight = 42.0718F;
+            this.Profit.HeaderText = "Profit";
+            this.Profit.Name = "Profit";
+            this.Profit.ReadOnly = true;
+            // 
+            // CreateTime
+            // 
+            this.CreateTime.DataPropertyName = "CreateTime";
+            this.CreateTime.FillWeight = 42.0718F;
+            this.CreateTime.HeaderText = "Date";
+            this.CreateTime.Name = "CreateTime";
+            this.CreateTime.ReadOnly = true;
             // 
             // btnUndoneOrders
             // 
@@ -200,53 +251,24 @@
             this.btnPriceKit.UseVisualStyleBackColor = true;
             this.btnPriceKit.Click += new System.EventHandler(this.btnPriceKit_Click);
             // 
-            // OrderNo
+            // lbVersion
             // 
-            this.OrderNo.DataPropertyName = "OrderNo";
-            this.OrderNo.FillWeight = 30F;
-            this.OrderNo.HeaderText = "Order No";
-            this.OrderNo.Name = "OrderNo";
-            this.OrderNo.ReadOnly = true;
+            this.lbVersion.AutoSize = true;
+            this.lbVersion.Location = new System.Drawing.Point(1171, 711);
+            this.lbVersion.Name = "lbVersion";
+            this.lbVersion.Size = new System.Drawing.Size(89, 18);
+            this.lbVersion.TabIndex = 7;
+            this.lbVersion.Text = "Version: ";
             // 
-            // Purchaser
+            // btnOrderText
             // 
-            this.Purchaser.DataPropertyName = "Purchaser";
-            this.Purchaser.FillWeight = 35.51238F;
-            this.Purchaser.HeaderText = "Purchaser Name";
-            this.Purchaser.Name = "Purchaser";
-            this.Purchaser.ReadOnly = true;
-            // 
-            // SellingPrice
-            // 
-            this.SellingPrice.DataPropertyName = "SellingPrice";
-            this.SellingPrice.FillWeight = 35.51238F;
-            this.SellingPrice.HeaderText = "Selling Price";
-            this.SellingPrice.Name = "SellingPrice";
-            this.SellingPrice.ReadOnly = true;
-            // 
-            // PurchasePrice
-            // 
-            this.PurchasePrice.DataPropertyName = "PurchasePrice";
-            this.PurchasePrice.FillWeight = 35.51238F;
-            this.PurchasePrice.HeaderText = "Purchasing Price";
-            this.PurchasePrice.Name = "PurchasePrice";
-            this.PurchasePrice.ReadOnly = true;
-            // 
-            // Profit
-            // 
-            this.Profit.DataPropertyName = "Profit";
-            this.Profit.FillWeight = 42.0718F;
-            this.Profit.HeaderText = "Profit";
-            this.Profit.Name = "Profit";
-            this.Profit.ReadOnly = true;
-            // 
-            // CreateTime
-            // 
-            this.CreateTime.DataPropertyName = "CreateTime";
-            this.CreateTime.FillWeight = 42.0718F;
-            this.CreateTime.HeaderText = "Date";
-            this.CreateTime.Name = "CreateTime";
-            this.CreateTime.ReadOnly = true;
+            this.btnOrderText.Location = new System.Drawing.Point(1220, 428);
+            this.btnOrderText.Name = "btnOrderText";
+            this.btnOrderText.Size = new System.Drawing.Size(139, 42);
+            this.btnOrderText.TabIndex = 2;
+            this.btnOrderText.Text = "Order Text";
+            this.btnOrderText.UseVisualStyleBackColor = true;
+            this.btnOrderText.Click += new System.EventHandler(this.btnOrderText_Click);
             // 
             // OrderManagementTool
             // 
@@ -255,8 +277,10 @@
             this.ClientSize = new System.Drawing.Size(1371, 766);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbSorting);
+            this.Controls.Add(this.lbVersion);
             this.Controls.Add(this.lbTotalProfit);
             this.Controls.Add(this.dgvTransaction);
+            this.Controls.Add(this.btnOrderText);
             this.Controls.Add(this.btnPriceKit);
             this.Controls.Add(this.btnDeleteOrder);
             this.Controls.Add(this.BtnEdit);
@@ -269,6 +293,8 @@
             this.Controls.Add(this.tbSearch);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "OrderManagementTool";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Order Management Tool";
@@ -301,6 +327,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PurchasePrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn Profit;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateTime;
+        private System.Windows.Forms.Label lbVersion;
+        private System.Windows.Forms.Button btnOrderText;
     }
 }
 

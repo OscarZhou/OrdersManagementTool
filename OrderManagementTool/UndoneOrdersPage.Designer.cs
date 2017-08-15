@@ -73,6 +73,7 @@ namespace OrderManagementTool
             this.dgvUndoneOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUndoneOrders.Size = new System.Drawing.Size(869, 341);
             this.dgvUndoneOrders.TabIndex = 1;
+            this.dgvUndoneOrders.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUndoneOrders_CellDoubleClick);
             // 
             // OrderNo
             // 
