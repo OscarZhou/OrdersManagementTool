@@ -14,22 +14,6 @@ namespace Utilities
     public class ExportFile
     {
         /// <summary>
-        /// Create .txt file for storing every order
-        /// </summary>
-        /// <param name="path"></param>
-        /// <param name="orderContent"></param>
-        public static void CreateOrderFile(string path, string orderContent)
-        {
-            FileStream fs = new FileStream(path, FileMode.Create);
-            StreamWriter sw = new StreamWriter(fs, Encoding.Unicode);
-            sw.Write(orderContent);
-            sw.Close();
-            fs.Close();
-
-        }
-
-
-        /// <summary>
         /// Export .csv file for storing every transaction record
         /// </summary>
         /// <param name="path"></param>
@@ -48,53 +32,8 @@ namespace Utilities
             sw.Close();
             fs.Close();
         }
-        /// <summary>
-        /// Create and update local file to store the browsing history of items
-        /// </summary>
-        /// <param name="path"></param>
-        /// <param name="objItem"></param>
-        public static void CreateOrUpdateBrowseHistoryFile(string path, Item objItem)
-        {
-            FileStream fs;
-            if (!File.Exists(path))
-            {
-                fs = new FileStream(path, FileMode.Create);
-            }
-            else
-            {
-                fs = new FileStream(path, FileMode.Append);
-            }
-            StreamWriter sw = new StreamWriter(fs, Encoding.Unicode);
-            sw.WriteLine(string.Format("{0},{1},{2}",objItem.UnitPrice, objItem.ItemDescription, objItem.CreateTime));
-            sw.Close();
-            fs.Close();
-        }
 
-        public static List<Item> ReadItemsFromBrowseHistoryFile(string path)
-        {
-            List<Item> objItems = new List<Item>();
-            
-            if (File.Exists(path))
-            {
-                FileStream fs = new FileStream(path, FileMode.Open);
-                StreamReader sr = new StreamReader(fs, Encoding.Unicode);
-                string infos = "";
-                while ((infos = sr.ReadLine())!= null)
-                {
-                    string[] items = infos.Split(',');
-                    objItems.Add(new Item()
-                    {
-                        UnitPrice = Convert.ToDouble(items[0]),
-                        ItemDescription = items[1],
-                        CreateTime = Convert.ToDateTime(items[2])
-                    });
-                }
-
-                sr.Close();
-                fs.Close();
-            }
-            return objItems;
-        }
+        #region Export Excel File
 
         /// <summary>
         /// Export transaction record to Excel
@@ -111,6 +50,8 @@ namespace Utilities
             //Excel._Worksheet xlWorksheet = (Excel.Worksheet)xlWorkbook.Worksheets.get_Item(1);
             #endregion
 
+            #region Format parsing
+
 
             xlWorksheet.Cells[1, 1] = "Order No";
             xlWorksheet.Cells[1, 2] = "Purchaser";
@@ -119,7 +60,7 @@ namespace Utilities
             xlWorksheet.Cells[1, 5] = "Profit";
             xlWorksheet.Cells[1, 6] = "Date";
 
-            for (int i = 2; i <= objTransactions.Count+1; i++)
+            for (int i = 2; i <= objTransactions.Count + 1; i++)
             {
                 xlWorksheet.Cells[i, 1] = objTransactions[i - 2].OrderNo.ToString();
                 xlWorksheet.Cells[i, 2] = objTransactions[i - 2].Purchaser.ToString();
@@ -130,7 +71,9 @@ namespace Utilities
             }
 
             xlWorkbook.SaveAs(path, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-            
+
+
+            #endregion
 
             #region Close office components
             //cleanup
@@ -147,8 +90,60 @@ namespace Utilities
             xlApp.Quit();
             Marshal.ReleaseComObject(xlApp);
             #endregion
-            
+
         }
+
+        #endregion
+
+        #region The operation for reading or writing order file
+
+        /// <summary>
+        /// Create .txt file for storing every order
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="orderContent"></param>
+        public static void CreateOrderFile(string path, string orderContent)
+        {
+            if (File.Exists(path))
+            {
+                FileStream fs = new FileStream(path, FileMode.Create);
+                StreamWriter sw = new StreamWriter(fs, Encoding.Unicode);
+                sw.Write(orderContent);
+                sw.Close();
+                fs.Close();   
+            }
+            else
+            {
+                Console.WriteLine("There is not file in this path!");
+            }
+
+        }
+        /// <summary>
+        /// View the order file
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static string ReadOrderFile(string path)
+        {
+            StringBuilder contentBuilder = new StringBuilder();
+            if (File.Exists(path))
+            {
+                FileStream fs = new FileStream(path, FileMode.Open);
+                StreamReader sr = new StreamReader(fs, Encoding.Unicode);
+                string content = "";
+                while ((content = sr.ReadLine()) != null)
+                {
+                    contentBuilder.Append(content + "\r\n");
+                }
+                sr.Close();
+                fs.Close();
+            }
+            return contentBuilder.ToString();
+        }
+        #endregion
+
+        #region Default path
+
         /// <summary>
         /// Read the config file
         /// </summary>
@@ -176,5 +171,59 @@ namespace Utilities
             config.Save(ConfigurationSaveMode.Modified);
 
         }
+        #endregion
+
+        #region The operation for browsing history file
+        /// <summary>
+        /// Create and update local file to store the browsing history of items
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="objItem"></param>
+        public static void CreateOrUpdateBrowseHistoryFile(string path, Item objItem)
+        {
+            FileStream fs;
+            if (!File.Exists(path))
+            {
+                fs = new FileStream(path, FileMode.Create);
+            }
+            else
+            {
+                fs = new FileStream(path, FileMode.Append);
+            }
+            StreamWriter sw = new StreamWriter(fs, Encoding.Unicode);
+            sw.WriteLine(string.Format("{0},{1},{2}", objItem.UnitPrice, objItem.ItemDescription, objItem.CreateTime));
+            sw.Close();
+            fs.Close();
+        }
+
+        public static List<Item> ReadItemsFromBrowseHistoryFile(string path)
+        {
+            List<Item> objItems = new List<Item>();
+
+            if (File.Exists(path))
+            {
+                FileStream fs = new FileStream(path, FileMode.Open);
+                StreamReader sr = new StreamReader(fs, Encoding.Unicode);
+                string infos = "";
+                while ((infos = sr.ReadLine()) != null)
+                {
+                    string[] items = infos.Split(',');
+                    objItems.Add(new Item()
+                    {
+                        UnitPrice = Convert.ToDouble(items[0]),
+                        ItemDescription = items[1],
+                        CreateTime = Convert.ToDateTime(items[2])
+                    });
+                }
+
+                sr.Close();
+                fs.Close();
+            }
+            return objItems;
+        }
+
+        #endregion
+
+
     }
 }

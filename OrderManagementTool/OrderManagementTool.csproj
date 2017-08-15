@@ -65,6 +65,12 @@
     <Compile Include="DataImportingPage.Designer.cs">
       <DependentUpon>DataImportingPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmOrderText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOrderText.Designer.cs">
+      <DependentUpon>FrmOrderText.cs</DependentUpon>
+    </Compile>
     <Compile Include="OrderCreationPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DataImportingPage.resx">
       <DependentUpon>DataImportingPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmOrderText.resx">
+      <DependentUpon>FrmOrderText.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrderCreationPage.resx">
       <DependentUpon>OrderCreationPage.cs</DependentUpon>

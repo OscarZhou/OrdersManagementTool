@@ -50,6 +50,7 @@
             this.btnDeleteOrder = new System.Windows.Forms.Button();
             this.btnPriceKit = new System.Windows.Forms.Button();
             this.lbVersion = new System.Windows.Forms.Label();
+            this.btnOrderText = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransaction)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,6 +62,7 @@
             this.tbSearch.Size = new System.Drawing.Size(206, 28);
             this.tbSearch.TabIndex = 0;
             this.tbSearch.Text = "Input Name";
+            this.tbSearch.Click += new System.EventHandler(this.tbSearch_Click);
             // 
             // btnSearch
             // 
@@ -88,7 +90,7 @@
             this.btnAddOrder.Name = "btnAddOrder";
             this.btnAddOrder.Size = new System.Drawing.Size(139, 42);
             this.btnAddOrder.TabIndex = 3;
-            this.btnAddOrder.Text = "CreateOrder";
+            this.btnAddOrder.Text = "Create Order";
             this.btnAddOrder.UseVisualStyleBackColor = true;
             this.btnAddOrder.Click += new System.EventHandler(this.btnAddOrder_Click);
             // 
@@ -258,6 +260,16 @@
             this.lbVersion.TabIndex = 7;
             this.lbVersion.Text = "Version: ";
             // 
+            // btnOrderText
+            // 
+            this.btnOrderText.Location = new System.Drawing.Point(1220, 428);
+            this.btnOrderText.Name = "btnOrderText";
+            this.btnOrderText.Size = new System.Drawing.Size(139, 42);
+            this.btnOrderText.TabIndex = 2;
+            this.btnOrderText.Text = "Order Text";
+            this.btnOrderText.UseVisualStyleBackColor = true;
+            this.btnOrderText.Click += new System.EventHandler(this.btnOrderText_Click);
+            // 
             // OrderManagementTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -268,6 +280,7 @@
             this.Controls.Add(this.lbVersion);
             this.Controls.Add(this.lbTotalProfit);
             this.Controls.Add(this.dgvTransaction);
+            this.Controls.Add(this.btnOrderText);
             this.Controls.Add(this.btnPriceKit);
             this.Controls.Add(this.btnDeleteOrder);
             this.Controls.Add(this.BtnEdit);
@@ -315,6 +328,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Profit;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateTime;
         private System.Windows.Forms.Label lbVersion;
+        private System.Windows.Forms.Button btnOrderText;
     }
 }
 

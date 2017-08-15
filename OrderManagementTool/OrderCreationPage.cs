@@ -269,6 +269,7 @@ namespace OrderManagementTool
             if (tbOrderContent.Text != "")
             {
                 Clipboard.SetDataObject(tbOrderContent.Text);
+                tbOrderContent.Focus();
                 MessageBox.Show("Copy to clipboard!");
             }
         }

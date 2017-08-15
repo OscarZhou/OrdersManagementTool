@@ -81,6 +81,11 @@ namespace OrderManagementTool
             }
         }
 
+        /// <summary>
+        /// double click item to check the information of the order
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvUndoneOrders_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             string orderNo = dgvUndoneOrders.CurrentRow.Cells["OrderNo"].Value.ToString();

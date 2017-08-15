@@ -111,7 +111,6 @@ namespace Utilities
 
         #endregion
 
-
         #region ImportTransactionRecords
         public static List<Transaction> ParseContentIntoTransaction(string path, List<Transaction> objTransactions)
         {
