@@ -30,7 +30,8 @@ namespace OrderManagementTool
         {
             List<Item> objItems = ExportFile.ReadItemsFromBrowseHistoryFile(@"BrowsingHistory.txt");
             // Implement the select Top 20 order by CreateTime desc using Linq 
-            var lstTop20 = (from t in objItems orderby t.CreateTime descending select t).Take(20);
+            //Distinct is used for removing the repeated records
+            var lstTop20 = (from t in objItems orderby t.CreateTime descending select t).Distinct(new ItemNoComparer()).Take(20);
             dgvPriceHistory.DataSource = null;
             dgvPriceHistory.DataSource = lstTop20.ToList();
             dgvPriceHistory.Show();
