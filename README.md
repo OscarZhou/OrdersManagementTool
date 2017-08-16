@@ -52,11 +52,7 @@ First releasing.
 &nbsp;&nbsp;**2.3** Convert the Date column in Excel with the additional column(Date) to DateTime type  
 &nbsp;&nbsp;**2.4** Add Key Code to associate with window operation  
  
-## V1.5.5
-**1.** Remove the repeated records in Browsing History  
-**2.** Allow to delete the item when creating the items  
-**3.** Increase the convenience of the operation  
-**4.** Add the version number
+ 
  
  
  
