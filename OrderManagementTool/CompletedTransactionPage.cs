@@ -1,7 +1,8 @@
-﻿using BLL;
-using Models;
-using System;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
+using BLL;
+using Models;
 
 namespace OrderManagementTool
 {
@@ -9,23 +10,21 @@ namespace OrderManagementTool
     {
         private string _orderNo;
         private Transaction objTransaction;
-    
+
         public CompletedTransactionPage()
         {
             InitializeComponent();
             lbError.Visible = false;
-            lbError.ForeColor = System.Drawing.Color.Red;
+            lbError.ForeColor = Color.Red;
             // Add key down event
-            this.KeyDown += CompletedTransactionPage_KeyDown;
-            foreach (Control control in this.Controls)
-            {
+            KeyDown += CompletedTransactionPage_KeyDown;
+            foreach (Control control in Controls)
                 control.KeyDown += CompletedTransactionPage_KeyDown;
-            }
         }
 
         private void ShowTransaction()
         {
-            objTransaction = new TransactionManage().GetTransactionRecordByOrderNo(this._orderNo);
+            objTransaction = new TransactionManage().GetTransactionRecordByOrderNo(_orderNo);
             tbOrderNo.Text = objTransaction.OrderNo.ToString();
             tbPurchaser.Text = objTransaction.Purchaser;
             if (objTransaction.SellingPrice != 0.0)
@@ -33,30 +32,30 @@ namespace OrderManagementTool
                 tbSellingPrice.Text = objTransaction.SellingPrice.ToString();
                 tbPurchasingPrice.Focus();
             }
-            
+
             if (objTransaction.PurchasePrice != 0.0)
             {
                 tbPurchasingPrice.Text = objTransaction.PurchasePrice.ToString();
                 tbProfit.Focus();
             }
-            
-            //tbProfit.Text = objTransaction.Profit.ToString();
 
+            //tbProfit.Text = objTransaction.Profit.ToString();
         }
 
         /// <summary>
-        /// delegate method
+        ///     delegate method
         /// </summary>
         /// <param name="OrderNo"></param>
         public void Receiver(string OrderNo)
         {
-            this._orderNo = OrderNo;
+            _orderNo = OrderNo;
             ShowTransaction();
         }
 
         private void btnOkay_Click(object sender, EventArgs e)
         {
             #region Validation for Transaction
+
             //if (tbSellingPrice.Text == "" && tbPurchasingPrice.Text == "")
             //{
             //    lbError.Text = "Please fill the blanks!";
@@ -85,24 +84,16 @@ namespace OrderManagementTool
             if (lbError.Visible == false)
             {
                 if (tbSellingPrice.Text.Length != 0)
-                {
                     objTransaction.SellingPrice = Convert.ToDouble(tbSellingPrice.Text.Trim());
-                }
-                if (tbPurchasingPrice.Text.Length != 0 )
-                {
+                if (tbPurchasingPrice.Text.Length != 0)
                     objTransaction.PurchasePrice = Convert.ToDouble(tbPurchasingPrice.Text.Trim());
-                }
                 objTransaction.Profit = objTransaction.SellingPrice - objTransaction.PurchasePrice;
                 if (tbSellingPrice.Text.Length != 0 && tbPurchasingPrice.Text.Length != 0)
-                {
                     objTransaction.OrderStatus = Convert.ToByte(true);
-                }
 
-                int result = new TransactionManage().UpdateTransactionRecord(objTransaction);
+                var result = new TransactionManage().UpdateTransactionRecord(objTransaction);
                 if (result > 0)
-                {
                     MessageBox.Show("Updating Sucessfully!");
-                }
             }
             else
             {
@@ -112,24 +103,22 @@ namespace OrderManagementTool
 
             #endregion
 
-            this.Close();
+            Close();
         }
 
         private void tbSellingPrice_Leave(object sender, EventArgs e)
         {
             double result;
-            if (double.TryParse(tbSellingPrice.Text.Trim(), out result) == false)//check to determine if the input is a number
+            if (double.TryParse(tbSellingPrice.Text.Trim(), out result) == false)
+                //check to determine if the input is a number
             {
                 lbError.Text = "Please input numbers";
                 lbError.Visible = true;
-                tbSellingPrice.BackColor = System.Drawing.Color.LightCoral;
+                tbSellingPrice.BackColor = Color.LightCoral;
                 return;
             }
-            else
-            {
-                lbError.Visible = false;
-                tbSellingPrice.BackColor = System.Drawing.Color.White;
-            }
+            lbError.Visible = false;
+            tbSellingPrice.BackColor = Color.White;
 
             //if (int.TryParse(tbPurchasingPrice.Text.Trim(), out result) == false)
             //{
@@ -148,12 +137,11 @@ namespace OrderManagementTool
             if (tbSellingPrice.Text.Trim().Length == 0 || tbPurchasingPrice.Text.Trim().Length == 0)
             {
                 lbError.Text = "Please input numbers";
-                return;
             }
             else if (tbSellingPrice.Text.Length != 0 && tbPurchasingPrice.Text.Length != 0)
             {
                 tbProfit.Text = (Convert.ToDouble(tbSellingPrice.Text.Trim()) -
-                                Convert.ToDouble(tbPurchasingPrice.Text.Trim())).ToString();
+                                 Convert.ToDouble(tbPurchasingPrice.Text.Trim())).ToString();
                 lbError.Visible = false;
             }
         }
@@ -178,23 +166,19 @@ namespace OrderManagementTool
             {
                 lbError.Text = "Please input numbers";
                 lbError.Visible = true;
-                tbPurchasingPrice.BackColor = System.Drawing.Color.LightCoral;
+                tbPurchasingPrice.BackColor = Color.LightCoral;
                 return;
             }
-            else
-            {
-                lbError.Visible = false;
-                tbPurchasingPrice.BackColor = System.Drawing.Color.White;
-            }
+            lbError.Visible = false;
+            tbPurchasingPrice.BackColor = Color.White;
 
             if (tbSellingPrice.Text.Trim().Length == 0 || tbPurchasingPrice.Text.Trim().Length == 0)
             {
-                return;
             }
             else if (tbSellingPrice.Text.Length != 0 && tbPurchasingPrice.Text.Length != 0)
             {
                 tbProfit.Text = (Convert.ToDouble(tbSellingPrice.Text.Trim()) -
-                                Convert.ToDouble(tbPurchasingPrice.Text.Trim())).ToString();
+                                 Convert.ToDouble(tbPurchasingPrice.Text.Trim())).ToString();
                 lbError.Visible = false;
             }
         }
@@ -204,29 +188,22 @@ namespace OrderManagementTool
             switch (e.KeyCode)
             {
                 case Keys.Enter:
+
                     #region Update price
 
                     if (lbError.Visible == false)
                     {
                         if (tbSellingPrice.Text.Length != 0)
-                        {
                             objTransaction.SellingPrice = Convert.ToDouble(tbSellingPrice.Text.Trim());
-                        }
                         if (tbPurchasingPrice.Text.Length != 0)
-                        {
                             objTransaction.PurchasePrice = Convert.ToDouble(tbPurchasingPrice.Text.Trim());
-                        }
                         objTransaction.Profit = objTransaction.SellingPrice - objTransaction.PurchasePrice;
                         if (tbSellingPrice.Text.Length != 0 && tbPurchasingPrice.Text.Length != 0)
-                        {
                             objTransaction.OrderStatus = Convert.ToByte(true);
-                        }
 
-                        int result = new TransactionManage().UpdateTransactionRecord(objTransaction);
+                        var result = new TransactionManage().UpdateTransactionRecord(objTransaction);
                         if (result > 0)
-                        {
                             MessageBox.Show("Updating Sucessfully!");
-                        }
                     }
                     else
                     {
@@ -236,16 +213,15 @@ namespace OrderManagementTool
 
                     #endregion
 
-                    this.Close();
+                    Close();
                     break;
                 case Keys.Escape:
-                    this.Close();
+                    Close();
                     break;
 
                 default:
                     break;
             }
         }
-
     }
 }

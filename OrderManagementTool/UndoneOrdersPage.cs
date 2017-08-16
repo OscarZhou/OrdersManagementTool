@@ -1,68 +1,61 @@
-﻿using BLL;
-using Models;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Windows.Forms;
+using BLL;
 
 namespace OrderManagementTool
 {
     public partial class UndoneOrdersPage : Form
     {
-        private CompletedTransactionPage _frmCompletedTransactionPage;
-        private OrderDetailsPage _frmOrderDetail;
-
         // define delegate
         public delegate void DlgGetObjTransaction(string orderNo);
-        // create an event. that is delegate variables
-        public event DlgGetObjTransaction EvtGetObjTransaction;
 
 
         // define delegate
         public delegate void DlgSendOperation(string operation, string orderNo);
-        // create an event. that is delegate variables
-        public event DlgSendOperation EvtSendOperation;
 
-        
+        private CompletedTransactionPage _frmCompletedTransactionPage;
+        private OrderDetailsPage _frmOrderDetail;
+
+
         public UndoneOrdersPage()
         {
             InitializeComponent();
-            this.dgvUndoneOrders.AutoGenerateColumns = false;
+            dgvUndoneOrders.AutoGenerateColumns = false;
             ShowUndoneOrder();
             // Add key down event
-            this.KeyDown += UndoneOrdersPage_KeyDown;
-            foreach (Control control in this.Controls)
-            {
+            KeyDown += UndoneOrdersPage_KeyDown;
+            foreach (Control control in Controls)
                 control.KeyDown += UndoneOrdersPage_KeyDown;
-            }
         }
+
+        // create an event. that is delegate variables
+        public event DlgGetObjTransaction EvtGetObjTransaction;
+        // create an event. that is delegate variables
+        public event DlgSendOperation EvtSendOperation;
 
         public void ShowUndoneOrder()
         {
-            List<Transaction> objLists = new TransactionManage().GetUndoneTransactionList();
+            var objLists = new TransactionManage().GetUndoneTransactionList();
             if (objLists.Count == 0)
             {
-                this.Close();
+                Close();
             }
             else
             {
                 dgvUndoneOrders.DataSource = objLists;
-                dgvUndoneOrders.Show();                
+                dgvUndoneOrders.Show();
             }
-
-
         }
 
         private void btnCompleteOrder_Click(object sender, EventArgs e)
         {
             _frmCompletedTransactionPage = new CompletedTransactionPage();
             // create an instance of the delegate
-            this.EvtGetObjTransaction += _frmCompletedTransactionPage.Receiver;
-            if (this.EvtGetObjTransaction != null)
-            {
-                this.EvtGetObjTransaction(dgvUndoneOrders.CurrentRow.Cells["OrderNo"].Value.ToString());
-            }
+            EvtGetObjTransaction += _frmCompletedTransactionPage.Receiver;
+            if (EvtGetObjTransaction != null)
+                EvtGetObjTransaction(dgvUndoneOrders.CurrentRow.Cells["OrderNo"].Value.ToString());
             _frmCompletedTransactionPage.ShowDialog();
-            
+
             ShowUndoneOrder();
         }
 
@@ -73,7 +66,7 @@ namespace OrderManagementTool
                 case Keys.Enter:
                     break;
                 case Keys.Escape:
-                    this.Close();
+                    Close();
                     break;
 
                 default:
@@ -82,19 +75,17 @@ namespace OrderManagementTool
         }
 
         /// <summary>
-        /// double click item to check the information of the order
+        ///     double click item to check the information of the order
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void dgvUndoneOrders_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            string orderNo = dgvUndoneOrders.CurrentRow.Cells["OrderNo"].Value.ToString();
+            var orderNo = dgvUndoneOrders.CurrentRow.Cells["OrderNo"].Value.ToString();
             _frmOrderDetail = new OrderDetailsPage();
-            this.EvtSendOperation += _frmOrderDetail.Receiver;
-            this.EvtSendOperation("View", orderNo);
+            EvtSendOperation += _frmOrderDetail.Receiver;
+            EvtSendOperation("View", orderNo);
             _frmOrderDetail.ShowDialog();
         }
-
-
     }
 }

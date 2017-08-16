@@ -80,7 +80,7 @@
     <Compile Include="OrderDetailsPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OrderDetailsPage.Designer.cs">
+    <Compile Include="OrderDetailsPage.designer.cs">
       <DependentUpon>OrderDetailsPage.cs</DependentUpon>
     </Compile>
     <Compile Include="OrderManagementTool.cs">
