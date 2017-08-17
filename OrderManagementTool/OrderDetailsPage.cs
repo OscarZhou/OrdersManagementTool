@@ -110,8 +110,8 @@ namespace OrderManagementTool
             tbAddress.Text = _objOrder.User.Address;
 
             Transaction objTransaction = new TransactionManage().GetTransactionRecordByOrderNo(orderNo);
-            tbPurchasePrice.Text = objTransaction.SellingPrice.ToString();
-            tbSellingPrice.Text = objTransaction.PurchasePrice.ToString();
+            tbPurchasePrice.Text = objTransaction.PurchasePrice.ToString();
+            tbSellingPrice.Text = objTransaction.SellingPrice.ToString();
             tbProfit.Text = objTransaction.Profit.ToString();
 
             _objItems = new ItemManage().GetItemListByOrderNo(orderNo);
@@ -153,6 +153,7 @@ namespace OrderManagementTool
             objItem.ItemDescription = tbProductName.Text.Trim();
             objItem.Quantity = Convert.ToInt32(tbQuantity.Text.Trim());
             objItem.UnitPrice = Convert.ToDouble(tbPrice.Text.Trim());
+            objItem.TotalPrice = objItem.Quantity * objItem.UnitPrice;
 
             dgvItemList.DataSource = null;
             dgvItemList.DataSource = _objItems;

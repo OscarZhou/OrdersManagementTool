@@ -3,6 +3,7 @@ using Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
 using Utilities;
@@ -131,6 +132,32 @@ namespace OrderManagementTool
             dgvTransaction.Show();
         }
 
+        private void ShowTransaction(string name, int sortingtype, int orderNo)
+        {
+            dgvTransaction.DataSource = new TransactionManage().GetTransactionList(name, sortingtype);
+            if (sortingtype == 0)
+            {
+                dgvTransaction.FirstDisplayedCell = this.dgvTransaction.Rows[orderNo].Cells[0]; // Display the selected row in datagridview    
+                dgvTransaction.Rows[orderNo].DefaultCellStyle.BackColor = Color.DeepSkyBlue;
+            }
+            else if (sortingtype==1)
+            {
+                int totalRows = dgvTransaction.RowCount;
+                dgvTransaction.FirstDisplayedCell = this.dgvTransaction.Rows[totalRows-orderNo].Cells[0]; // Display the selected row in datagridview    
+                dgvTransaction.Rows[totalRows-orderNo].DefaultCellStyle.BackColor = Color.DeepSkyBlue;
+            }
+            #region Calculate total profit
+            double TotalProfit = 0;
+            foreach (DataGridViewRow dgvTransactionRow in dgvTransaction.Rows)
+            {
+                TotalProfit += Convert.ToDouble(dgvTransactionRow.Cells["Profit"].Value);
+            }
+            lbTotalProfit.Text = "The total profit: " + TotalProfit.ToString();
+
+            #endregion
+            dgvTransaction.Show();
+        }
+
         private void cmbSorting_SelectedIndexChanged(object sender, EventArgs e)
         {
             ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
@@ -156,7 +183,8 @@ namespace OrderManagementTool
             this.EvtSendOperation += _frmOrderDetail.Receiver;
             this.EvtSendOperation("Edit", dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString());
             _frmOrderDetail.ShowDialog();
-            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
+            int orderNo = Convert.ToInt32(dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString());
+            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex), orderNo);
         }
 
         private void btnExportTransaction_Click(object sender, EventArgs e)
