@@ -119,7 +119,16 @@ namespace Utilities
         public static string ReadOrderFile(string path)
         {
             StringBuilder contentBuilder = new StringBuilder();
-            FileStream fs = new FileStream(path, FileMode.Open);
+            FileStream fs = null;
+            if (!File.Exists(path))
+            {
+                fs = new FileStream(path, FileMode.Create);
+            }
+            else
+            {
+                fs = new FileStream(path, FileMode.Open);    
+            }
+            
             StreamReader sr = new StreamReader(fs, Encoding.Unicode);
             string content = "";
             while ((content = sr.ReadLine()) != null)

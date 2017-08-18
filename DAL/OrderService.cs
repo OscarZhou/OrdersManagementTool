@@ -132,5 +132,27 @@ namespace DAL
             return 0;
 
         }
+
+        public string GetPurchaserName(string orderNo)
+        {
+            StringBuilder sqlBuilder = new StringBuilder();
+            sqlBuilder.Append("select Purchaser from Orders where OrderNo = {0}");
+            string sql = string.Format(sqlBuilder.ToString(), orderNo);
+
+            try
+            {
+                return (string) SQLHelper.GetSingleObject(sql);
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
     }
 }

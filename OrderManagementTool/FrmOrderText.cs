@@ -4,12 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
+using Utilities;
 
 namespace OrderManagementTool
 {
     public partial class FrmOrderText : Form
     {
         private string _orderNo;
+        private string _purchaserName;
         public FrmOrderText()
         {
             InitializeComponent();
@@ -80,6 +82,31 @@ namespace OrderManagementTool
 
             #endregion
 
+            #region Generate .txt file
+
+            this._purchaserName = new OrderManage().GetPurchaserName(this._orderNo);
+            FolderBrowserDialog fileSelector = new FolderBrowserDialog();
+            string defaultPath = ExportFile.GetDefaultPath("dircPath");
+            if (defaultPath != "")
+            {
+                fileSelector.SelectedPath = defaultPath;
+            }
+            if (fileSelector.ShowDialog() == DialogResult.OK)
+            {
+                ExportFile.SetFolderPath("dircPath", fileSelector.SelectedPath);
+                string path = string.Format(fileSelector.SelectedPath + @"\{0}{1}.txt", this._orderNo,
+                    this._purchaserName);
+
+                ExportFile.CreateOrderFile(path, tbOrderContent.Text.Trim());
+                if (DialogResult.OK ==
+                    MessageBox.Show("Generating " + this._orderNo + this._purchaserName + ".txt Sucessfully!"))
+                {
+                    this.Close();
+                }
+
+            }
+
+            #endregion
         }
     }
 }
