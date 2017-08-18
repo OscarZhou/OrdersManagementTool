@@ -29,7 +29,7 @@ namespace OrderManagementTool
 
         #region Delegate for view the order text
 
-        public delegate void DlgSetOrderText(string content);
+        public delegate void DlgSetOrderText(string content, string orderNo);
 
         public event DlgSetOrderText EvtSetOrderText;
         
@@ -273,7 +273,7 @@ namespace OrderManagementTool
                 dgvTransaction.CurrentRow.Cells["Purchaser"].Value.ToString()); // Get the file name
                 _frmOrderText = new FrmOrderText();
                 this.EvtSetOrderText += _frmOrderText.Receiver;
-                this.EvtSetOrderText(ExportFile.ReadOrderFile(filename));
+                this.EvtSetOrderText(ExportFile.ReadOrderFile(filename), dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString());
                 _frmOrderText.ShowDialog();
 
             }

@@ -1,10 +1,15 @@
-﻿using System;
+﻿using BLL;
+using Models;
+using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Windows.Forms;
 
 namespace OrderManagementTool
 {
     public partial class FrmOrderText : Form
     {
+        private string _orderNo;
         public FrmOrderText()
         {
             InitializeComponent();
@@ -15,9 +20,10 @@ namespace OrderManagementTool
                 control.KeyDown += FrmOrderText_KeyDown;
         }
 
-        public void Receiver(string content)
+        public void Receiver(string content, string orderNo)
         {
             tbOrderContent.Text = content;
+            this._orderNo = orderNo;
         }
 
         private void btnCopyToClipboard_Click(object sender, EventArgs e)
@@ -41,6 +47,39 @@ namespace OrderManagementTool
                 default:
                     break;
             }
+        }
+
+        private void btnRegenerate_Click(object sender, EventArgs e)
+        {
+
+            #region Generate the Order text
+            // From part
+            string orderContent = "发件人：Oscar\r\n电话：0211376664\r\n\r\n";
+            tbOrderContent.Text = orderContent;
+
+            // Item part
+
+            StringBuilder orderBuilder = new StringBuilder();
+            List<Item> objItems = new ItemManage().GetItemListByOrderNo(this._orderNo);
+            int counter = 0;
+            foreach (Item objItem in objItems)
+            {
+                counter++;
+                orderBuilder.Append(counter + "、{0}，数量{1}\r\n");
+                orderContent = string.Format(orderBuilder.ToString(), objItem.ItemDescription, objItem.Quantity);
+                tbOrderContent.Text += orderContent;
+                orderBuilder.Clear();
+            }
+
+            // To part
+            UserInfo objUserInfo = new UserInfoManage().GetUserByOrderNo(this._orderNo);
+            orderBuilder.Append("\r\n收件人：{0}\r\n电话：{1}\r\n地址：{2}\r\n");
+            orderContent = string.Format(orderBuilder.ToString(), objUserInfo.UserName, objUserInfo.PhoneNumber,
+                objUserInfo.Address);
+            tbOrderContent.Text += orderContent;
+
+            #endregion
+
         }
     }
 }
