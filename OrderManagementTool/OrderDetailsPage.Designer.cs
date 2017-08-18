@@ -403,6 +403,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1088, 761);
             this.Controls.Add(this.btnCreateOrder);
             this.Controls.Add(this.lbError);

@@ -66,11 +66,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(505, 563);
             this.Controls.Add(this.btnRegenerate);
             this.Controls.Add(this.btnCopyToClipboard);
             this.Controls.Add(this.tbOrderContent);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmOrderText";
             this.Text = "Order Text";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmOrderText_KeyDown);

@@ -309,6 +309,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(632, 597);
             this.Controls.Add(this.tbItem);
             this.Controls.Add(this.label10);
