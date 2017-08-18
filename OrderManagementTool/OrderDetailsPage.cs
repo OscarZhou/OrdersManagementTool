@@ -17,6 +17,11 @@ namespace OrderManagementTool
         public delegate void DlgCreateNewOrder(Order objOrder);
         public DlgCreateNewOrder EvtCreateNewOrder;
 
+        public delegate void DlgSendMsg(string msgName);
+
+        public DlgSendMsg EvtSendMsg;
+
+
         #endregion
 
 
@@ -195,11 +200,22 @@ namespace OrderManagementTool
 
         private void btnCreateOrder_Click(object sender, EventArgs e)
         {
+            #region 传递订单号给下一个窗体
+
             OrderCreationPage frmOrderCreation = new OrderCreationPage();
             EvtCreateNewOrder += frmOrderCreation.Receiver;
             EvtCreateNewOrder(_objOrder);
-            frmOrderCreation.ShowDialog();
+            frmOrderCreation.ShowDialog();            
+
+            #endregion
+
+            #region 回传消息给主窗体，让其刷新交易列表
+
+            this.EvtSendMsg("refresh");
             this.Close();
+
+            #endregion
+
         }
 
         private void OrderDetailsPage_KeyDown(object sender, KeyEventArgs e)

@@ -104,18 +104,11 @@ namespace Utilities
         /// <param name="orderContent"></param>
         public static void CreateOrderFile(string path, string orderContent)
         {
-            if (File.Exists(path))
-            {
-                FileStream fs = new FileStream(path, FileMode.Create);
-                StreamWriter sw = new StreamWriter(fs, Encoding.Unicode);
-                sw.Write(orderContent);
-                sw.Close();
-                fs.Close();   
-            }
-            else
-            {
-                Console.WriteLine("There is not file in this path!");
-            }
+            FileStream fs = new FileStream(path, FileMode.Create);
+            StreamWriter sw = new StreamWriter(fs, Encoding.Unicode);
+            sw.Write(orderContent);
+            sw.Close();
+            fs.Close();   
 
         }
         /// <summary>
@@ -126,18 +119,15 @@ namespace Utilities
         public static string ReadOrderFile(string path)
         {
             StringBuilder contentBuilder = new StringBuilder();
-            if (File.Exists(path))
+            FileStream fs = new FileStream(path, FileMode.Open);
+            StreamReader sr = new StreamReader(fs, Encoding.Unicode);
+            string content = "";
+            while ((content = sr.ReadLine()) != null)
             {
-                FileStream fs = new FileStream(path, FileMode.Open);
-                StreamReader sr = new StreamReader(fs, Encoding.Unicode);
-                string content = "";
-                while ((content = sr.ReadLine()) != null)
-                {
-                    contentBuilder.Append(content + "\r\n");
-                }
-                sr.Close();
-                fs.Close();
+                contentBuilder.Append(content + "\r\n");
             }
+            sr.Close();
+            fs.Close();
             return contentBuilder.ToString();
         }
         #endregion

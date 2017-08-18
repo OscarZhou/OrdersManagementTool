@@ -171,8 +171,10 @@ namespace OrderManagementTool
         private void btnDetail_Click(object sender, EventArgs e)
         {
             _frmOrderDetail = new OrderDetailsPage();
-            this.EvtSendOperation += _frmOrderDetail.Receiver;
+            this.EvtSendOperation += _frmOrderDetail.Receiver;// 关联子窗体，传递订单号信息
             this.EvtSendOperation("View", dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString());
+
+            _frmOrderDetail.EvtSendMsg += this.Receiver;//关联子窗体，添加发送消息方法，用于刷新交易列表
             _frmOrderDetail.ShowDialog();
             //ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
         }
@@ -284,6 +286,15 @@ namespace OrderManagementTool
                 tbSearch.Text = "";
             }
 
+        }
+
+        public void Receiver(string msgName)
+        {
+            if (msgName.Equals("refresh"))
+            {
+                ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));    
+            }
+            
         }
 
 
