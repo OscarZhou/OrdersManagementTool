@@ -43,9 +43,9 @@ namespace OrderManagementTool
             this.dgvTransaction.AutoGenerateColumns = false;// prohibit useless column 
             ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
             InitializeSortingList();
-            lbVersion.Text = string.Format("Version:{0}\r\nAuthor:{1}",
-                Assembly.GetExecutingAssembly().GetName().Version.ToString(),
-                FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).CompanyName);
+            lbAuthor.Text = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).CompanyName;
+            lbVersion.Text = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            
             tbSearch.Focus();
             // Add key down event
             this.KeyDown += OrderManagementTool_KeyDown;
@@ -126,7 +126,7 @@ namespace OrderManagementTool
             {
                 TotalProfit += Convert.ToDouble(dgvTransactionRow.Cells["Profit"].Value);
             }
-            lbTotalProfit.Text = "The total profit: " + TotalProfit.ToString();
+            lbTotalProfit.Text = "￥"+TotalProfit.ToString();
 
             #endregion
             dgvTransaction.Show();
@@ -296,6 +296,12 @@ namespace OrderManagementTool
             }
             
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
 
 
     }

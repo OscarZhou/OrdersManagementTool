@@ -126,6 +126,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UndoneOrdersPage.resx">
       <DependentUpon>UndoneOrdersPage.cs</DependentUpon>
@@ -190,6 +191,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="management_shield.ico" />
+    <None Include="Resources\zd.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
