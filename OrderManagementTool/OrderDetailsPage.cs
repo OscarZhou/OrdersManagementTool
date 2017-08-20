@@ -13,6 +13,7 @@ namespace OrderManagementTool
         private List<Item> _objItems = null;
         private string _status = null;
         private string _orderNo = null;
+        private Control parentContainer = null;
 
         public delegate void DlgCreateNewOrder(Order objOrder);
         public DlgCreateNewOrder EvtCreateNewOrder;
@@ -20,6 +21,7 @@ namespace OrderManagementTool
         public delegate void DlgSendMsg(string msgName);
 
         public DlgSendMsg EvtSendMsg;
+
 
 
         #endregion
@@ -63,7 +65,37 @@ namespace OrderManagementTool
             textBox.Text = "";
         }
         #endregion
-    
+
+        public void ViewReceiver(string orderNo, Control parentControl)
+        {
+            lbError.Visible = false;
+            _status = "View";
+            btnModify.Visible = false;
+            btnEditItem.Visible = false;
+            btnCreateOrder.Visible = true;
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox)
+                {
+                    control.Enabled = false;
+                }
+            }
+            this.parentContainer = parentControl;
+            this._orderNo = orderNo;
+            ShowOrderDetail(orderNo);
+        }
+
+        public void EditReceiver(string orderNo)
+        {
+            lbError.Visible = false;
+            _status = "Edit";
+            btnModify.Visible = true;
+            btnEditItem.Visible = true;
+            tbOrderNo.Enabled = false;
+            btnCreateOrder.Visible = false;
+            this._orderNo = orderNo;
+            ShowOrderDetail(orderNo);
+        }
         /// <summary>
         /// 从外部的数据列表中点击进入查看数据详细
         /// </summary>
@@ -200,19 +232,19 @@ namespace OrderManagementTool
 
         private void btnCreateOrder_Click(object sender, EventArgs e)
         {
+            
             #region 传递订单号给下一个窗体
 
             OrderCreationPage frmOrderCreation = new OrderCreationPage();
             EvtCreateNewOrder += frmOrderCreation.Receiver;
             EvtCreateNewOrder(_objOrder);
-            frmOrderCreation.ShowDialog();            
-
+            this.OpenNewForm(frmOrderCreation);
             #endregion
 
             #region 回传消息给主窗体，让其刷新交易列表
 
-            this.EvtSendMsg("refresh");
-            this.Close();
+            //this.EvtSendMsg("refresh");
+            //this.Close();
 
             #endregion
 
@@ -234,7 +266,48 @@ namespace OrderManagementTool
             }
         }
 
+        #region Window operation
 
+        private void OpenNewForm(Form newFrm)
+        {
 
+            // Close other embeded windows
+            foreach (Control item in parentContainer.Controls)
+            {
+                if (item is Form)
+                {
+                    ((Form)item).Close();
+                }
+            }
+
+            // Open and attach the new window
+            newFrm.TopLevel = false;
+            newFrm.Parent = parentContainer;
+            newFrm.Dock = DockStyle.Fill;
+            newFrm.Show();
+        }
+
+        /// <summary>
+        /// Open or Close the elements in main window
+        /// </summary>
+        /// <param name="mainFrmState"></param>
+        private void DisplayMainFrm(bool mainFrmState)
+        {
+            //MessageBox.Show("width:" + this.splitContainer.Panel1.Size.Width + ",height:" +
+            //                this.splitContainer.Panel1.Size.Height);
+
+            // Close other embeded windows
+            foreach (Control item in parentContainer.Controls)
+            {
+                if (item is Form)
+                {
+                    ((Form)item).Close();
+                }
+                item.Visible = mainFrmState;
+            }
+
+        }
+
+        #endregion
     }
 }

@@ -26,6 +26,15 @@ namespace OrderManagementTool
         public delegate void DlgSendOperation(string operation, string orderNo);
         // create an event. that is delegate variables
         public event DlgSendOperation EvtSendOperation;
+
+        public delegate void DlgOpenEdit(string order);
+
+        public event DlgOpenEdit EvtOpenEdit;
+
+
+        public delegate void DlgOpenView(string orderNo, Control parentControl);
+
+        public event DlgOpenView EvtOpenView;
         #endregion
 
         #region Delegate for view the order text
@@ -177,9 +186,13 @@ namespace OrderManagementTool
         {
             this.DisplayMainFrm(false);
             _frmOrderDetail = new OrderDetailsPage();
-            this.EvtSendOperation += _frmOrderDetail.Receiver;// 关联子窗体，传递订单号信息
-            this.EvtSendOperation("View", this.orderNo);
-            _frmOrderDetail.EvtSendMsg += this.Receiver;//关联子窗体，添加发送消息方法，用于刷新交易列表
+            this.EvtOpenView += _frmOrderDetail.ViewReceiver;// 关联子窗体，传递订单号信息
+            this.EvtOpenView(this.orderNo, this.splitContainer.Panel1);
+
+            #region 回传消息给主窗体，让其刷新交易列表
+            //_frmOrderDetail.EvtSendMsg += this.Receiver;//关联子窗体，添加发送消息方法，用于刷新交易列表
+            #endregion
+
             this.OpenNewForm(_frmOrderDetail);
             //ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
         }
@@ -188,8 +201,8 @@ namespace OrderManagementTool
         {
             this.DisplayMainFrm(false);
             _frmOrderDetail = new OrderDetailsPage();
-            this.EvtSendOperation += _frmOrderDetail.Receiver;
-            this.EvtSendOperation("Edit", this.orderNo);
+            this.EvtOpenEdit += _frmOrderDetail.EditReceiver;
+            this.EvtOpenEdit(this.orderNo);
             this.OpenNewForm(_frmOrderDetail);
             //int orderNo = Convert.ToInt32(dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString());
             //ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex), orderNo);
