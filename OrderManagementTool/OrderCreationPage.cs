@@ -2,6 +2,7 @@
 using Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -14,7 +15,7 @@ namespace OrderManagementTool
         private List<Item> objItems = new List<Item>();
         private int crtOrderNo;
         private string purchaserName;
-        private CalculatePriceKitPage frmPriceKit;
+        private CalculatePriceKitPage _frmPriceKit;
 
         public OrderCreationPage()
         {
@@ -322,9 +323,18 @@ namespace OrderManagementTool
 
         private void btnPriceKit_Click(object sender, EventArgs e)
         {
-            frmPriceKit = new CalculatePriceKitPage();
-            frmPriceKit.EvtMoveItem += Receiver;
-            frmPriceKit.Show();
+            _frmPriceKit = new CalculatePriceKitPage();
+            _frmPriceKit.EvtMoveItem += Receiver;
+
+            #region 使打开的窗口依附在原窗口的边上
+
+            int x = (System.Windows.Forms.SystemInformation.WorkingArea.Width - _frmPriceKit.Size.Width) / 2 + _frmPriceKit.Size.Width;
+            int y = (System.Windows.Forms.SystemInformation.WorkingArea.Height - _frmPriceKit.Size.Height) / 2;
+            _frmPriceKit.StartPosition = FormStartPosition.Manual; //窗体的位置由Location属性决定
+            _frmPriceKit.Location = (Point)new Size(x, y);     
+
+            #endregion            
+            _frmPriceKit.Show();
             //btnPriceKit.Enabled = false;
         }
 
@@ -378,5 +388,7 @@ namespace OrderManagementTool
             
             
         }
+
+        
     }
 }

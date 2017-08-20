@@ -29,6 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderCreationPage));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.tbFrom = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -54,7 +63,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.tbAddress = new System.Windows.Forms.TextBox();
             this.btnAddOrder = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
             this.tbOrderContent = new System.Windows.Forms.TextBox();
             this.btnCopy = new System.Windows.Forms.Button();
             this.lbItemError = new System.Windows.Forms.Label();
@@ -69,47 +77,55 @@
             this.tbIdentityCard = new System.Windows.Forms.TextBox();
             this.btnPriceKit = new System.Windows.Forms.Button();
             this.btnDeleteItem = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemList)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(73, 41);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label1.Location = new System.Drawing.Point(37, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 18);
+            this.label1.Size = new System.Drawing.Size(58, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "From:";
             // 
             // tbFrom
             // 
-            this.tbFrom.Location = new System.Drawing.Point(133, 36);
+            this.tbFrom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbFrom.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbFrom.Location = new System.Drawing.Point(124, 11);
             this.tbFrom.Name = "tbFrom";
-            this.tbFrom.Size = new System.Drawing.Size(128, 28);
+            this.tbFrom.Size = new System.Drawing.Size(128, 31);
             this.tbFrom.TabIndex = 10;
             this.tbFrom.Text = "Oscar";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(306, 41);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label2.Location = new System.Drawing.Point(287, 13);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 18);
+            this.label2.Size = new System.Drawing.Size(66, 25);
             this.label2.TabIndex = 0;
             this.label2.Text = "Phone:";
             // 
             // tbFromPhone
             // 
-            this.tbFromPhone.Location = new System.Drawing.Point(385, 36);
+            this.tbFromPhone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbFromPhone.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbFromPhone.Location = new System.Drawing.Point(352, 11);
             this.tbFromPhone.Name = "tbFromPhone";
-            this.tbFromPhone.Size = new System.Drawing.Size(128, 28);
+            this.tbFromPhone.Size = new System.Drawing.Size(128, 31);
             this.tbFromPhone.TabIndex = 11;
             this.tbFromPhone.Text = "0211376664";
             // 
             // label3
             // 
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label3.Location = new System.Drawing.Point(23, 83);
+            this.label3.Location = new System.Drawing.Point(23, 43);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(1124, 1);
             this.label3.TabIndex = 2;
@@ -117,60 +133,73 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(74, 111);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label4.Location = new System.Drawing.Point(37, 61);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(125, 18);
+            this.label4.Size = new System.Drawing.Size(78, 25);
             this.label4.TabIndex = 0;
-            this.label4.Text = "Product Name:";
+            this.label4.Text = "Product:";
             // 
             // tbItemDescription
             // 
             this.tbItemDescription.BackColor = System.Drawing.SystemColors.Window;
-            this.tbItemDescription.Location = new System.Drawing.Point(205, 108);
+            this.tbItemDescription.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbItemDescription.Location = new System.Drawing.Point(124, 58);
             this.tbItemDescription.Name = "tbItemDescription";
-            this.tbItemDescription.Size = new System.Drawing.Size(818, 28);
+            this.tbItemDescription.Size = new System.Drawing.Size(604, 31);
             this.tbItemDescription.TabIndex = 1;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(73, 162);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label5.Location = new System.Drawing.Point(37, 104);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(89, 18);
+            this.label5.Size = new System.Drawing.Size(84, 25);
             this.label5.TabIndex = 0;
             this.label5.Text = "Quantity:";
             // 
             // tbQuantity
             // 
-            this.tbQuantity.Location = new System.Drawing.Point(168, 157);
+            this.tbQuantity.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbQuantity.Location = new System.Drawing.Point(124, 101);
             this.tbQuantity.Name = "tbQuantity";
-            this.tbQuantity.Size = new System.Drawing.Size(128, 28);
+            this.tbQuantity.Size = new System.Drawing.Size(128, 31);
             this.tbQuantity.TabIndex = 2;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(323, 162);
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label6.Location = new System.Drawing.Point(287, 104);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 18);
+            this.label6.Size = new System.Drawing.Size(53, 25);
             this.label6.TabIndex = 0;
             this.label6.Text = "Price:";
             // 
             // tbPrice
             // 
-            this.tbPrice.Location = new System.Drawing.Point(402, 157);
+            this.tbPrice.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbPrice.Location = new System.Drawing.Point(352, 101);
             this.tbPrice.Name = "tbPrice";
-            this.tbPrice.Size = new System.Drawing.Size(128, 28);
+            this.tbPrice.Size = new System.Drawing.Size(128, 31);
             this.tbPrice.TabIndex = 3;
             // 
             // btnAddItem
             // 
-            this.btnAddItem.Location = new System.Drawing.Point(948, 157);
+            this.btnAddItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
+            this.btnAddItem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
+            this.btnAddItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddItem.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnAddItem.Image = ((System.Drawing.Image)(resources.GetObject("btnAddItem.Image")));
+            this.btnAddItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddItem.Location = new System.Drawing.Point(787, 100);
             this.btnAddItem.Name = "btnAddItem";
-            this.btnAddItem.Size = new System.Drawing.Size(85, 33);
+            this.btnAddItem.Size = new System.Drawing.Size(97, 33);
             this.btnAddItem.TabIndex = 7;
             this.btnAddItem.Text = "Add";
-            this.btnAddItem.UseVisualStyleBackColor = true;
+            this.btnAddItem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddItem.UseVisualStyleBackColor = false;
             this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
             // label7
@@ -185,24 +214,64 @@
             // 
             this.dgvItemList.AllowUserToAddRows = false;
             this.dgvItemList.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.PapayaWhip;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.PapayaWhip;
+            this.dgvItemList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvItemList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSeaGreen;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.LightSeaGreen;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvItemList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvItemList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemDescription,
             this.ItemNo,
             this.Quantity,
             this.UnitPrice});
-            this.dgvItemList.Location = new System.Drawing.Point(76, 202);
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvItemList.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvItemList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(227)))), ((int)(((byte)(227)))));
+            this.dgvItemList.Location = new System.Drawing.Point(26, 151);
             this.dgvItemList.Name = "dgvItemList";
             this.dgvItemList.ReadOnly = true;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.LightSkyBlue;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightSkyBlue;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvItemList.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            this.dgvItemList.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvItemList.RowTemplate.Height = 30;
             this.dgvItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvItemList.Size = new System.Drawing.Size(1015, 228);
+            this.dgvItemList.Size = new System.Drawing.Size(1119, 200);
             this.dgvItemList.TabIndex = 5;
             // 
             // ItemDescription
             // 
             this.ItemDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ItemDescription.DataPropertyName = "ItemDescription";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            this.ItemDescription.DefaultCellStyle = dataGridViewCellStyle3;
             this.ItemDescription.HeaderText = "Product Name";
             this.ItemDescription.Name = "ItemDescription";
             this.ItemDescription.ReadOnly = true;
@@ -210,6 +279,10 @@
             // ItemNo
             // 
             this.ItemNo.DataPropertyName = "ItemNo";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            this.ItemNo.DefaultCellStyle = dataGridViewCellStyle4;
             this.ItemNo.HeaderText = "Item No";
             this.ItemNo.Name = "ItemNo";
             this.ItemNo.ReadOnly = true;
@@ -219,138 +292,163 @@
             // 
             this.Quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Quantity.DataPropertyName = "Quantity";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            this.Quantity.DefaultCellStyle = dataGridViewCellStyle5;
             this.Quantity.HeaderText = "Quantity";
             this.Quantity.Name = "Quantity";
             this.Quantity.ReadOnly = true;
-            this.Quantity.Width = 116;
+            this.Quantity.Width = 129;
             // 
             // UnitPrice
             // 
             this.UnitPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.UnitPrice.DataPropertyName = "UnitPrice";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            this.UnitPrice.DefaultCellStyle = dataGridViewCellStyle6;
             this.UnitPrice.HeaderText = "Price";
             this.UnitPrice.Name = "UnitPrice";
             this.UnitPrice.ReadOnly = true;
-            this.UnitPrice.Width = 89;
+            this.UnitPrice.Width = 94;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(73, 478);
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label8.Location = new System.Drawing.Point(37, 367);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 18);
+            this.label8.Size = new System.Drawing.Size(34, 25);
             this.label8.TabIndex = 0;
             this.label8.Text = "To:";
             // 
             // tbTo
             // 
-            this.tbTo.Location = new System.Drawing.Point(133, 473);
+            this.tbTo.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbTo.Location = new System.Drawing.Point(124, 366);
             this.tbTo.Name = "tbTo";
-            this.tbTo.Size = new System.Drawing.Size(128, 28);
+            this.tbTo.Size = new System.Drawing.Size(128, 31);
             this.tbTo.TabIndex = 4;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(306, 478);
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label9.Location = new System.Drawing.Point(287, 367);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(62, 18);
+            this.label9.Size = new System.Drawing.Size(66, 25);
             this.label9.TabIndex = 0;
             this.label9.Text = "Phone:";
             // 
             // tbToPhone
             // 
-            this.tbToPhone.Location = new System.Drawing.Point(385, 473);
+            this.tbToPhone.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbToPhone.Location = new System.Drawing.Point(352, 366);
             this.tbToPhone.Name = "tbToPhone";
-            this.tbToPhone.Size = new System.Drawing.Size(128, 28);
+            this.tbToPhone.Size = new System.Drawing.Size(128, 31);
             this.tbToPhone.TabIndex = 5;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(74, 576);
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label10.Location = new System.Drawing.Point(517, 410);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(80, 18);
+            this.label10.Size = new System.Drawing.Size(81, 25);
             this.label10.TabIndex = 0;
             this.label10.Text = "Address:";
             // 
             // tbAddress
             // 
-            this.tbAddress.Location = new System.Drawing.Point(167, 573);
+            this.tbAddress.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbAddress.Location = new System.Drawing.Point(604, 407);
             this.tbAddress.Name = "tbAddress";
-            this.tbAddress.Size = new System.Drawing.Size(735, 28);
+            this.tbAddress.Size = new System.Drawing.Size(543, 31);
             this.tbAddress.TabIndex = 6;
             // 
             // btnAddOrder
             // 
-            this.btnAddOrder.Location = new System.Drawing.Point(991, 517);
+            this.btnAddOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
+            this.btnAddOrder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
+            this.btnAddOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddOrder.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnAddOrder.Image = ((System.Drawing.Image)(resources.GetObject("btnAddOrder.Image")));
+            this.btnAddOrder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddOrder.Location = new System.Drawing.Point(1000, 9);
             this.btnAddOrder.Name = "btnAddOrder";
-            this.btnAddOrder.Size = new System.Drawing.Size(133, 35);
+            this.btnAddOrder.Size = new System.Drawing.Size(138, 35);
             this.btnAddOrder.TabIndex = 8;
             this.btnAddOrder.Text = "Place Order";
-            this.btnAddOrder.UseVisualStyleBackColor = true;
+            this.btnAddOrder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddOrder.UseVisualStyleBackColor = false;
             this.btnAddOrder.Click += new System.EventHandler(this.btnAddOrder_Click);
-            // 
-            // label11
-            // 
-            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label11.Location = new System.Drawing.Point(1162, 36);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(1, 590);
-            this.label11.TabIndex = 6;
-            this.label11.Text = "label11";
             // 
             // tbOrderContent
             // 
             this.tbOrderContent.Enabled = false;
-            this.tbOrderContent.Location = new System.Drawing.Point(1193, 41);
+            this.tbOrderContent.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbOrderContent.Location = new System.Drawing.Point(41, 460);
             this.tbOrderContent.Multiline = true;
             this.tbOrderContent.Name = "tbOrderContent";
-            this.tbOrderContent.Size = new System.Drawing.Size(430, 443);
+            this.tbOrderContent.Size = new System.Drawing.Size(876, 205);
             this.tbOrderContent.TabIndex = 7;
             // 
             // btnCopy
             // 
-            this.btnCopy.Location = new System.Drawing.Point(1193, 515);
+            this.btnCopy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
+            this.btnCopy.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
+            this.btnCopy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCopy.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnCopy.Image = ((System.Drawing.Image)(resources.GetObject("btnCopy.Image")));
+            this.btnCopy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCopy.Location = new System.Drawing.Point(955, 466);
             this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(183, 35);
+            this.btnCopy.Size = new System.Drawing.Size(183, 40);
             this.btnCopy.TabIndex = 9;
-            this.btnCopy.Text = "Copy To Clipboard";
-            this.btnCopy.UseVisualStyleBackColor = true;
+            this.btnCopy.Text = "Copy Clipboard";
+            this.btnCopy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCopy.UseVisualStyleBackColor = false;
             this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
             // lbItemError
             // 
             this.lbItemError.AutoSize = true;
-            this.lbItemError.Location = new System.Drawing.Point(582, 163);
+            this.lbItemError.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lbItemError.Location = new System.Drawing.Point(750, 61);
             this.lbItemError.Name = "lbItemError";
-            this.lbItemError.Size = new System.Drawing.Size(71, 18);
+            this.lbItemError.Size = new System.Drawing.Size(69, 25);
             this.lbItemError.TabIndex = 12;
             this.lbItemError.Text = "label12";
             // 
             // lbUserError
             // 
             this.lbUserError.AutoSize = true;
-            this.lbUserError.Location = new System.Drawing.Point(563, 476);
+            this.lbUserError.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lbUserError.Location = new System.Drawing.Point(517, 369);
             this.lbUserError.Name = "lbUserError";
-            this.lbUserError.Size = new System.Drawing.Size(71, 18);
+            this.lbUserError.Size = new System.Drawing.Size(69, 25);
             this.lbUserError.TabIndex = 12;
             this.lbUserError.Text = "label12";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(778, 43);
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label12.Location = new System.Drawing.Point(630, 13);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(143, 18);
+            this.label12.Size = new System.Drawing.Size(92, 25);
             this.label12.TabIndex = 0;
-            this.label12.Text = "Purchaser Name:";
+            this.label12.Text = "Purchaser:";
             // 
             // tbPurchaser
             // 
-            this.tbPurchaser.Location = new System.Drawing.Point(928, 38);
+            this.tbPurchaser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbPurchaser.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbPurchaser.Location = new System.Drawing.Point(729, 11);
             this.tbPurchaser.Name = "tbPurchaser";
-            this.tbPurchaser.Size = new System.Drawing.Size(142, 28);
+            this.tbPurchaser.Size = new System.Drawing.Size(142, 31);
             this.tbPurchaser.TabIndex = 0;
             // 
             // chkLock
@@ -358,9 +456,10 @@
             this.chkLock.AutoSize = true;
             this.chkLock.Checked = true;
             this.chkLock.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkLock.Location = new System.Drawing.Point(547, 38);
+            this.chkLock.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.chkLock.Location = new System.Drawing.Point(506, 13);
             this.chkLock.Name = "chkLock";
-            this.chkLock.Size = new System.Drawing.Size(88, 22);
+            this.chkLock.Size = new System.Drawing.Size(92, 29);
             this.chkLock.TabIndex = 13;
             this.chkLock.Text = "Unlock";
             this.chkLock.UseVisualStyleBackColor = true;
@@ -368,80 +467,124 @@
             // 
             // btnTxtFile
             // 
-            this.btnTxtFile.Location = new System.Drawing.Point(1399, 515);
+            this.btnTxtFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
+            this.btnTxtFile.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
+            this.btnTxtFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTxtFile.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnTxtFile.Image = ((System.Drawing.Image)(resources.GetObject("btnTxtFile.Image")));
+            this.btnTxtFile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTxtFile.Location = new System.Drawing.Point(955, 522);
             this.btnTxtFile.Name = "btnTxtFile";
-            this.btnTxtFile.Size = new System.Drawing.Size(183, 35);
+            this.btnTxtFile.Size = new System.Drawing.Size(183, 40);
             this.btnTxtFile.TabIndex = 10;
             this.btnTxtFile.Text = "Generate .txt File";
-            this.btnTxtFile.UseVisualStyleBackColor = true;
+            this.btnTxtFile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnTxtFile.UseVisualStyleBackColor = false;
             this.btnTxtFile.Click += new System.EventHandler(this.btnTxtFile_Click);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(916, 473);
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label13.Location = new System.Drawing.Point(901, 367);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(107, 18);
+            this.label13.Size = new System.Drawing.Size(90, 25);
             this.label13.TabIndex = 0;
             this.label13.Text = "TotalPrice:";
             // 
             // tbTotalPrice
             // 
             this.tbTotalPrice.Enabled = false;
-            this.tbTotalPrice.Location = new System.Drawing.Point(1029, 470);
+            this.tbTotalPrice.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbTotalPrice.Location = new System.Drawing.Point(1000, 363);
             this.tbTotalPrice.Name = "tbTotalPrice";
-            this.tbTotalPrice.Size = new System.Drawing.Size(93, 28);
+            this.tbTotalPrice.Size = new System.Drawing.Size(93, 31);
             this.tbTotalPrice.TabIndex = 4;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(75, 525);
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label14.Location = new System.Drawing.Point(37, 410);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(134, 18);
+            this.label14.Size = new System.Drawing.Size(76, 25);
             this.label14.TabIndex = 0;
-            this.label14.Text = "Identity Card:";
+            this.label14.Text = "ID Card:";
             // 
             // tbIdentityCard
             // 
-            this.tbIdentityCard.Location = new System.Drawing.Point(215, 522);
+            this.tbIdentityCard.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbIdentityCard.Location = new System.Drawing.Point(124, 407);
             this.tbIdentityCard.Name = "tbIdentityCard";
-            this.tbIdentityCard.Size = new System.Drawing.Size(315, 28);
+            this.tbIdentityCard.Size = new System.Drawing.Size(356, 31);
             this.tbIdentityCard.TabIndex = 6;
             // 
             // btnPriceKit
             // 
-            this.btnPriceKit.Location = new System.Drawing.Point(991, 568);
+            this.btnPriceKit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
+            this.btnPriceKit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
+            this.btnPriceKit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPriceKit.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnPriceKit.Image = ((System.Drawing.Image)(resources.GetObject("btnPriceKit.Image")));
+            this.btnPriceKit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPriceKit.Location = new System.Drawing.Point(1019, 99);
             this.btnPriceKit.Name = "btnPriceKit";
-            this.btnPriceKit.Size = new System.Drawing.Size(133, 35);
+            this.btnPriceKit.Size = new System.Drawing.Size(118, 35);
             this.btnPriceKit.TabIndex = 8;
             this.btnPriceKit.Text = "Price Kit";
-            this.btnPriceKit.UseVisualStyleBackColor = true;
+            this.btnPriceKit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPriceKit.UseVisualStyleBackColor = false;
             this.btnPriceKit.Click += new System.EventHandler(this.btnPriceKit_Click);
             // 
             // btnDeleteItem
             // 
-            this.btnDeleteItem.Location = new System.Drawing.Point(1054, 157);
+            this.btnDeleteItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
+            this.btnDeleteItem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
+            this.btnDeleteItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteItem.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteItem.Image")));
+            this.btnDeleteItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDeleteItem.Location = new System.Drawing.Point(901, 100);
             this.btnDeleteItem.Name = "btnDeleteItem";
-            this.btnDeleteItem.Size = new System.Drawing.Size(85, 33);
+            this.btnDeleteItem.Size = new System.Drawing.Size(101, 33);
             this.btnDeleteItem.TabIndex = 7;
             this.btnDeleteItem.Text = "Delete";
-            this.btnDeleteItem.UseVisualStyleBackColor = true;
+            this.btnDeleteItem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDeleteItem.UseVisualStyleBackColor = false;
             this.btnDeleteItem.Click += new System.EventHandler(this.btnDeleteItem_Click);
+            // 
+            // label15
+            // 
+            this.label15.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label15.Location = new System.Drawing.Point(22, 133);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(1124, 1);
+            this.label15.TabIndex = 14;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label16.Location = new System.Drawing.Point(1096, 366);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(49, 25);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "RMB";
             // 
             // OrderCreationPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1659, 643);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ClientSize = new System.Drawing.Size(1218, 706);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.chkLock);
             this.Controls.Add(this.lbUserError);
             this.Controls.Add(this.lbItemError);
             this.Controls.Add(this.btnTxtFile);
             this.Controls.Add(this.btnCopy);
             this.Controls.Add(this.tbOrderContent);
-            this.Controls.Add(this.label11);
             this.Controls.Add(this.dgvItemList);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnPriceKit);
@@ -454,6 +597,7 @@
             this.Controls.Add(this.tbToPhone);
             this.Controls.Add(this.tbPurchaser);
             this.Controls.Add(this.tbFromPhone);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label9);
@@ -471,7 +615,7 @@
             this.Controls.Add(this.tbFrom);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbTotalPrice);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -508,7 +652,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox tbAddress;
         private System.Windows.Forms.Button btnAddOrder;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox tbOrderContent;
         private System.Windows.Forms.Button btnCopy;
         private System.Windows.Forms.Label lbItemError;
@@ -523,6 +666,8 @@
         private System.Windows.Forms.TextBox tbIdentityCard;
         private System.Windows.Forms.Button btnPriceKit;
         private System.Windows.Forms.Button btnDeleteItem;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;

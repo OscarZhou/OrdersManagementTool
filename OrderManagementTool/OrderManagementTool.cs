@@ -82,8 +82,10 @@ namespace OrderManagementTool
         private void btnAddOrder_Click(object sender, System.EventArgs e)
         {
             _frmOrderCreation = new OrderCreationPage();
-            _frmOrderCreation.ShowDialog();
-            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
+            this.DisplayMainFrm(false);
+            this.OpenNewForm(_frmOrderCreation);
+            //_frmOrderCreation.ShowDialog();
+            //ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
         }
         /// <summary>
         /// view undone orders
@@ -303,6 +305,11 @@ namespace OrderManagementTool
             
         }
 
+        private void btnTransaction_Click(object sender, EventArgs e)
+        {
+            this.DisplayMainFrm(true);
+        }
+
         #region Window operation
 
 
@@ -348,12 +355,7 @@ namespace OrderManagementTool
         }
 
         #endregion
-
-        private void btnTransaction_Click(object sender, EventArgs e)
-        {
-            this.DisplayMainFrm(true);
-        }
-
+        
         #region Drag and close window
 
         private Point mouseOff; //The moving position variables of the mouse
