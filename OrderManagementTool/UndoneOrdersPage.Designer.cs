@@ -51,14 +51,16 @@ namespace OrderManagementTool
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label1.Location = new System.Drawing.Point(17, 10);
+            this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.Location = new System.Drawing.Point(17, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 25);
+            this.label1.Size = new System.Drawing.Size(167, 28);
             this.label1.TabIndex = 0;
             this.label1.Text = "Undone Orders:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnCompleteOrder
             // 
@@ -68,9 +70,9 @@ namespace OrderManagementTool
             this.btnCompleteOrder.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnCompleteOrder.Image = ((System.Drawing.Image)(resources.GetObject("btnCompleteOrder.Image")));
             this.btnCompleteOrder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCompleteOrder.Location = new System.Drawing.Point(645, 8);
+            this.btnCompleteOrder.Location = new System.Drawing.Point(953, 10);
             this.btnCompleteOrder.Name = "btnCompleteOrder";
-            this.btnCompleteOrder.Size = new System.Drawing.Size(118, 25);
+            this.btnCompleteOrder.Size = new System.Drawing.Size(183, 40);
             this.btnCompleteOrder.TabIndex = 2;
             this.btnCompleteOrder.Text = "Complete Order";
             this.btnCompleteOrder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -81,9 +83,9 @@ namespace OrderManagementTool
             // 
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label6.Location = new System.Drawing.Point(12, 33);
+            this.label6.Location = new System.Drawing.Point(12, 50);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(755, 2);
+            this.label6.Size = new System.Drawing.Size(1124, 1);
             this.label6.TabIndex = 11;
             this.label6.Text = "label6";
             // 
@@ -116,7 +118,7 @@ namespace OrderManagementTool
             this.PurchasePrice,
             this.Profit,
             this.CreateTime});
-            this.dgvUndoneOrders.Location = new System.Drawing.Point(12, 33);
+            this.dgvUndoneOrders.Location = new System.Drawing.Point(12, 65);
             this.dgvUndoneOrders.MultiSelect = false;
             this.dgvUndoneOrders.Name = "dgvUndoneOrders";
             this.dgvUndoneOrders.ReadOnly = true;
@@ -136,7 +138,7 @@ namespace OrderManagementTool
             this.dgvUndoneOrders.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvUndoneOrders.RowTemplate.Height = 30;
             this.dgvUndoneOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUndoneOrders.Size = new System.Drawing.Size(750, 419);
+            this.dgvUndoneOrders.Size = new System.Drawing.Size(1126, 608);
             this.dgvUndoneOrders.TabIndex = 1;
             this.dgvUndoneOrders.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUndoneOrders_CellDoubleClick);
             // 
@@ -201,9 +203,10 @@ namespace OrderManagementTool
             // 
             // UndoneOrdersPage
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(1039, 590);
+            this.ClientSize = new System.Drawing.Size(1218, 706);
             this.Controls.Add(this.dgvUndoneOrders);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnCompleteOrder);
@@ -218,7 +221,6 @@ namespace OrderManagementTool
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UndoneOrdersPage_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUndoneOrders)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

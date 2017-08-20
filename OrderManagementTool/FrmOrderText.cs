@@ -101,7 +101,8 @@ namespace OrderManagementTool
                 if (DialogResult.OK ==
                     MessageBox.Show("Generating " + this._orderNo + this._purchaserName + ".txt Sucessfully!"))
                 {
-                    this.Close();
+                    //this.Close();
+                    
                 }
 
             }

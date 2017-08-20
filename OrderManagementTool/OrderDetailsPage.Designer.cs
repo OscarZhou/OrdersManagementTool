@@ -45,6 +45,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tbPurchaser = new System.Windows.Forms.TextBox();
             this.dgvItemList = new System.Windows.Forms.DataGridView();
+            this.ItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.tbTo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -77,11 +82,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.ItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,7 +89,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label1.Location = new System.Drawing.Point(710, 18);
+            this.label1.Location = new System.Drawing.Point(530, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 25);
             this.label1.TabIndex = 0;
@@ -98,7 +98,7 @@
             // tbFrom
             // 
             this.tbFrom.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tbFrom.Location = new System.Drawing.Point(776, 17);
+            this.tbFrom.Location = new System.Drawing.Point(615, 17);
             this.tbFrom.Name = "tbFrom";
             this.tbFrom.Size = new System.Drawing.Size(128, 31);
             this.tbFrom.TabIndex = 1;
@@ -107,7 +107,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label2.Location = new System.Drawing.Point(948, 18);
+            this.label2.Location = new System.Drawing.Point(787, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 25);
             this.label2.TabIndex = 0;
@@ -116,7 +116,7 @@
             // tbFromPhone
             // 
             this.tbFromPhone.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tbFromPhone.Location = new System.Drawing.Point(1020, 17);
+            this.tbFromPhone.Location = new System.Drawing.Point(859, 17);
             this.tbFromPhone.Name = "tbFromPhone";
             this.tbFromPhone.Size = new System.Drawing.Size(128, 31);
             this.tbFromPhone.TabIndex = 2;
@@ -189,6 +189,69 @@
             this.dgvItemList.Size = new System.Drawing.Size(1119, 356);
             this.dgvItemList.TabIndex = 2;
             this.dgvItemList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItemList_CellClick);
+            // 
+            // ItemDescription
+            // 
+            this.ItemDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ItemDescription.DataPropertyName = "ItemDescription";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            this.ItemDescription.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ItemDescription.HeaderText = "Product Name";
+            this.ItemDescription.Name = "ItemDescription";
+            this.ItemDescription.ReadOnly = true;
+            // 
+            // Quantity
+            // 
+            this.Quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Quantity.DataPropertyName = "Quantity";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            this.Quantity.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            this.Quantity.Width = 129;
+            // 
+            // UnitPrice
+            // 
+            this.UnitPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.UnitPrice.DataPropertyName = "UnitPrice";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            this.UnitPrice.DefaultCellStyle = dataGridViewCellStyle5;
+            this.UnitPrice.HeaderText = "Unit Price";
+            this.UnitPrice.Name = "UnitPrice";
+            this.UnitPrice.ReadOnly = true;
+            this.UnitPrice.Width = 127;
+            // 
+            // TotalPrice
+            // 
+            this.TotalPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.TotalPrice.DataPropertyName = "TotalPrice";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            this.TotalPrice.DefaultCellStyle = dataGridViewCellStyle6;
+            this.TotalPrice.HeaderText = "Product Total Price";
+            this.TotalPrice.Name = "TotalPrice";
+            this.TotalPrice.ReadOnly = true;
+            this.TotalPrice.Width = 133;
+            // 
+            // ItemNo
+            // 
+            this.ItemNo.DataPropertyName = "ItemNo";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            this.ItemNo.DefaultCellStyle = dataGridViewCellStyle7;
+            this.ItemNo.HeaderText = "Item No";
+            this.ItemNo.Name = "ItemNo";
+            this.ItemNo.ReadOnly = true;
+            this.ItemNo.Visible = false;
             // 
             // label4
             // 
@@ -319,14 +382,14 @@
             this.label10.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label10.Location = new System.Drawing.Point(530, 530);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(72, 25);
+            this.label10.Size = new System.Drawing.Size(76, 25);
             this.label10.TabIndex = 0;
-            this.label10.Text = "ID Card";
+            this.label10.Text = "ID Card:";
             // 
             // tbCardNo
             // 
             this.tbCardNo.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tbCardNo.Location = new System.Drawing.Point(610, 525);
+            this.tbCardNo.Location = new System.Drawing.Point(615, 525);
             this.tbCardNo.Name = "tbCardNo";
             this.tbCardNo.Size = new System.Drawing.Size(329, 31);
             this.tbCardNo.TabIndex = 8;
@@ -496,74 +559,10 @@
             this.label20.TabIndex = 18;
             this.label20.Text = "RMB";
             // 
-            // ItemDescription
-            // 
-            this.ItemDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ItemDescription.DataPropertyName = "ItemDescription";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
-            this.ItemDescription.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ItemDescription.HeaderText = "Product Name";
-            this.ItemDescription.Name = "ItemDescription";
-            this.ItemDescription.ReadOnly = true;
-            // 
-            // Quantity
-            // 
-            this.Quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Quantity.DataPropertyName = "Quantity";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
-            this.Quantity.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.Name = "Quantity";
-            this.Quantity.ReadOnly = true;
-            this.Quantity.Width = 129;
-            // 
-            // UnitPrice
-            // 
-            this.UnitPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.UnitPrice.DataPropertyName = "UnitPrice";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
-            this.UnitPrice.DefaultCellStyle = dataGridViewCellStyle5;
-            this.UnitPrice.HeaderText = "Unit Price";
-            this.UnitPrice.Name = "UnitPrice";
-            this.UnitPrice.ReadOnly = true;
-            this.UnitPrice.Width = 127;
-            // 
-            // TotalPrice
-            // 
-            this.TotalPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.TotalPrice.DataPropertyName = "TotalPrice";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
-            this.TotalPrice.DefaultCellStyle = dataGridViewCellStyle6;
-            this.TotalPrice.HeaderText = "Product Total Price";
-            this.TotalPrice.Name = "TotalPrice";
-            this.TotalPrice.ReadOnly = true;
-            this.TotalPrice.Width = 162;
-            // 
-            // ItemNo
-            // 
-            this.ItemNo.DataPropertyName = "ItemNo";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
-            this.ItemNo.DefaultCellStyle = dataGridViewCellStyle7;
-            this.ItemNo.HeaderText = "Item No";
-            this.ItemNo.Name = "ItemNo";
-            this.ItemNo.ReadOnly = true;
-            this.ItemNo.Visible = false;
-            // 
             // OrderDetailsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1218, 706);
             this.Controls.Add(this.label20);

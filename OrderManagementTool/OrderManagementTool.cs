@@ -270,6 +270,7 @@ namespace OrderManagementTool
 
         private void btnOrderText_Click(object sender, EventArgs e)
         {
+            this.DisplayMainFrm(false);
             FolderBrowserDialog fileSelector = new FolderBrowserDialog();
             fileSelector.Description = @"Please choose the folder that stores order text:";
             string defaultPath = ExportFile.GetDefaultPath("dircPath");
@@ -281,10 +282,11 @@ namespace OrderManagementTool
             {
                 string filename = string.Format(fileSelector.SelectedPath+@"\{0}{1}.txt", dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString(),
                 dgvTransaction.CurrentRow.Cells["Purchaser"].Value.ToString()); // Get the file name
+                
                 _frmOrderText = new FrmOrderText();
                 this.EvtSetOrderText += _frmOrderText.Receiver;
                 this.EvtSetOrderText(ExportFile.ReadOrderFile(filename), dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString());
-                _frmOrderText.ShowDialog();
+                this.OpenNewForm(_frmOrderText);
 
             }
         }
