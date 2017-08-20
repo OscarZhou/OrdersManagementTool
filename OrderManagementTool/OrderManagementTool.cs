@@ -71,9 +71,10 @@ namespace OrderManagementTool
         /// <param name="e"></param>
         private void btnOpenDataImporter_Click(object sender, System.EventArgs e)
         {
+            this.DisplayMainFrm(false);
             _frmDataImporting = new DataImportingPage();
-            _frmDataImporting.ShowDialog();
-            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
+            this.OpenNewForm(_frmDataImporting);
+            //ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
         }
         /// <summary>
         /// create the order
