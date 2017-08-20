@@ -1,6 +1,7 @@
 ﻿using Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using Utilities;
@@ -170,6 +171,71 @@ namespace OrderManagementTool
                     break;
             }
         }
+
+        #region Drag and close window
+
+        private Point mouseOff; //The moving position variables of the mouse
+        private bool leftFlag; // Determine if the label is left button
+
+
+        private void panelTop_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                mouseOff = new Point(-e.X, -e.Y);  // Get the values of the variable
+                leftFlag = true;
+            }
+        }
+
+        private void panelTop_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (leftFlag)
+            {
+                Point mousetSet = Control.MousePosition;
+                mousetSet.Offset(mouseOff.X, mouseOff.Y);   // Set the position after moving
+                Location = mousetSet;
+            }
+        }
+
+        private void panelTop_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (leftFlag)
+            {
+                leftFlag = false; // Set false after releasing mouse
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void lbLogo_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                mouseOff = new Point(-e.X, -e.Y);  // Get the values of the variable
+                leftFlag = true;
+            }
+        }
+
+        private void lbLogo_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (leftFlag)
+            {
+                Point mousetSet = Control.MousePosition;
+                mousetSet.Offset(mouseOff.X, mouseOff.Y);   // Set the position after moving
+                Location = mousetSet;
+            }
+        }
+
+        private void lbLogo_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (leftFlag)
+            {
+                leftFlag = false; // Set false after releasing mouse
+            }
+        }
+        #endregion
 
     }
 }

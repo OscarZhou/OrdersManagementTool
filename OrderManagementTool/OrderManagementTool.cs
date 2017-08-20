@@ -353,34 +353,6 @@ namespace OrderManagementTool
         private Point mouseOff; //The moving position variables of the mouse
         private bool leftFlag; // Determine if the label is left button
 
-        private void OrderManagementTool_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                mouseOff = new Point(-e.X, -e.Y);  // Get the values of the variable
-                leftFlag = true;
-            }
-        }
-
-        private void OrderManagementTool_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (leftFlag)
-            {
-                Point mousetSet = Control.MousePosition;
-                mousetSet.Offset(mouseOff.X, mouseOff.Y);   // Set the position after moving
-                Location = mousetSet;
-            }
-        }
-
-        private void OrderManagementTool_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (leftFlag)
-            {
-                leftFlag = false; // Set false after releasing mouse
-            }
-        }
-
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -412,10 +384,34 @@ namespace OrderManagementTool
                 leftFlag = false; // Set false after releasing mouse
             }
         }
+
+        private void lbLogo_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                mouseOff = new Point(-e.X, -e.Y);  // Get the values of the variable
+                leftFlag = true;
+            }
+        }
+
+        private void lbLogo_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (leftFlag)
+            {
+                Point mousetSet = Control.MousePosition;
+                mousetSet.Offset(mouseOff.X, mouseOff.Y);   // Set the position after moving
+                Location = mousetSet;
+            }
+        }
+
+        private void lbLogo_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (leftFlag)
+            {
+                leftFlag = false; // Set false after releasing mouse
+            }
+        }
         #endregion
-
-
-
 
     }
 }

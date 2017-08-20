@@ -63,7 +63,7 @@
             this.btnOrderText = new System.Windows.Forms.Button();
             this.panelTop = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbLogo = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbAuthor = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -466,7 +466,7 @@
             this.panelTop.BackgroundImage = global::OrderManagementTool.Properties.Resources.zd;
             this.panelTop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelTop.Controls.Add(this.btnClose);
-            this.panelTop.Controls.Add(this.label2);
+            this.panelTop.Controls.Add(this.lbLogo);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
@@ -491,17 +491,20 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // label2
+            // lbLogo
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(62)))), ((int)(((byte)(125)))));
-            this.label2.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(54, 10);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(457, 48);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Order Management Tool";
+            this.lbLogo.AutoSize = true;
+            this.lbLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(62)))), ((int)(((byte)(125)))));
+            this.lbLogo.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLogo.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbLogo.Location = new System.Drawing.Point(21, 9);
+            this.lbLogo.Name = "lbLogo";
+            this.lbLogo.Size = new System.Drawing.Size(457, 48);
+            this.lbLogo.TabIndex = 0;
+            this.lbLogo.Text = "Order Management Tool";
+            this.lbLogo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbLogo_MouseDown);
+            this.lbLogo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbLogo_MouseMove);
+            this.lbLogo.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbLogo_MouseUp);
             // 
             // panel2
             // 
@@ -648,9 +651,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Order Management Tool";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OrderManagementTool_KeyDown);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OrderManagementTool_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.OrderManagementTool_MouseMove);
-            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OrderManagementTool_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransaction)).EndInit();
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
@@ -684,7 +684,7 @@
         private System.Windows.Forms.Label lbVersion;
         private System.Windows.Forms.Button btnOrderText;
         private System.Windows.Forms.Panel panelTop;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbLogo;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label label3;

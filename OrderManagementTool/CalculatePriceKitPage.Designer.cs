@@ -54,21 +54,26 @@
             this.label10 = new System.Windows.Forms.Label();
             this.tbItem = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.panelTop = new System.Windows.Forms.Panel();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.lbLogo = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPriceHistory)).BeginInit();
+            this.panelTop.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(36, 225);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label1.Location = new System.Drawing.Point(58, 179);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 31);
+            this.label1.Size = new System.Drawing.Size(104, 31);
             this.label1.TabIndex = 0;
             this.label1.Text = "Price($NZ)";
             // 
             // tbNZPrice
             // 
-            this.tbNZPrice.Location = new System.Drawing.Point(39, 261);
+            this.tbNZPrice.Location = new System.Drawing.Point(48, 215);
             this.tbNZPrice.Multiline = true;
             this.tbNZPrice.Name = "tbNZPrice";
             this.tbNZPrice.Size = new System.Drawing.Size(118, 28);
@@ -77,37 +82,37 @@
             // 
             // label2
             // 
-            this.label2.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(214, 225);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label2.Location = new System.Drawing.Point(237, 179);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 31);
+            this.label2.Size = new System.Drawing.Size(39, 31);
             this.label2.TabIndex = 0;
             this.label2.Text = "ER";
             // 
             // label3
             // 
-            this.label3.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(164, 258);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label3.Location = new System.Drawing.Point(173, 212);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 31);
+            this.label3.Size = new System.Drawing.Size(28, 31);
             this.label3.TabIndex = 0;
             this.label3.Text = "x";
             // 
             // label4
             // 
-            this.label4.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(367, 225);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label4.Location = new System.Drawing.Point(376, 179);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 31);
+            this.label4.Size = new System.Drawing.Size(44, 31);
             this.label4.TabIndex = 0;
             this.label4.Text = "PM";
             // 
             // label5
             // 
-            this.label5.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(305, 258);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label5.Location = new System.Drawing.Point(314, 212);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 31);
+            this.label5.Size = new System.Drawing.Size(27, 31);
             this.label5.TabIndex = 0;
             this.label5.Text = "x";
             // 
@@ -124,7 +129,7 @@
             "5.6",
             "5.7",
             "5.8"});
-            this.cboExchangeRate.Location = new System.Drawing.Point(194, 258);
+            this.cboExchangeRate.Location = new System.Drawing.Point(203, 215);
             this.cboExchangeRate.Name = "cboExchangeRate";
             this.cboExchangeRate.Size = new System.Drawing.Size(97, 26);
             this.cboExchangeRate.TabIndex = 3;
@@ -139,7 +144,7 @@
             "1.3",
             "1.4",
             "1.5"});
-            this.cboProfitMargin.Location = new System.Drawing.Point(338, 258);
+            this.cboProfitMargin.Location = new System.Drawing.Point(347, 215);
             this.cboProfitMargin.Name = "cboProfitMargin";
             this.cboProfitMargin.Size = new System.Drawing.Size(98, 26);
             this.cboProfitMargin.TabIndex = 4;
@@ -147,9 +152,9 @@
             // 
             // lbResult
             // 
-            this.lbResult.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lbResult.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbResult.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbResult.Location = new System.Drawing.Point(491, 257);
+            this.lbResult.Location = new System.Drawing.Point(500, 215);
             this.lbResult.Name = "lbResult";
             this.lbResult.Size = new System.Drawing.Size(104, 31);
             this.lbResult.TabIndex = 0;
@@ -157,8 +162,8 @@
             // 
             // label7
             // 
-            this.label7.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.Location = new System.Drawing.Point(448, 258);
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label7.Location = new System.Drawing.Point(457, 212);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(39, 31);
             this.label7.TabIndex = 0;
@@ -166,34 +171,44 @@
             // 
             // label6
             // 
-            this.label6.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(459, 225);
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label6.Location = new System.Drawing.Point(496, 179);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(161, 31);
+            this.label6.Size = new System.Drawing.Size(124, 31);
             this.label6.TabIndex = 0;
             this.label6.Text = "Price(￥RMB)";
             // 
             // btnReset
             // 
             this.btnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
+            this.btnReset.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnReset.Location = new System.Drawing.Point(224, 12);
+            this.btnReset.Image = ((System.Drawing.Image)(resources.GetObject("btnReset.Image")));
+            this.btnReset.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReset.Location = new System.Drawing.Point(290, 82);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(104, 40);
+            this.btnReset.Size = new System.Drawing.Size(85, 40);
             this.btnReset.TabIndex = 5;
             this.btnReset.Text = "Reset";
+            this.btnReset.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnReset.UseVisualStyleBackColor = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
+            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnSave.Location = new System.Drawing.Point(336, 12);
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(385, 82);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(104, 40);
+            this.btnSave.Size = new System.Drawing.Size(84, 40);
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
+            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -201,7 +216,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.Red;
-            this.label8.Location = new System.Drawing.Point(230, 336);
+            this.label8.Location = new System.Drawing.Point(298, 275);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(332, 18);
             this.label8.TabIndex = 6;
@@ -218,11 +233,11 @@
             this.UnitPrice,
             this.ItemDescription,
             this.CreateTime});
-            this.dgvPriceHistory.Location = new System.Drawing.Point(20, 357);
+            this.dgvPriceHistory.Location = new System.Drawing.Point(20, 309);
             this.dgvPriceHistory.Name = "dgvPriceHistory";
             this.dgvPriceHistory.RowTemplate.Height = 30;
             this.dgvPriceHistory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPriceHistory.Size = new System.Drawing.Size(610, 189);
+            this.dgvPriceHistory.Size = new System.Drawing.Size(620, 339);
             this.dgvPriceHistory.TabIndex = 7;
             this.dgvPriceHistory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPriceHistory_CellClick);
             // 
@@ -267,63 +282,130 @@
             // 
             // label9
             // 
-            this.label9.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label9.Location = new System.Drawing.Point(34, 336);
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label9.Location = new System.Drawing.Point(30, 275);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(167, 31);
+            this.label9.Size = new System.Drawing.Size(111, 25);
             this.label9.TabIndex = 0;
             this.label9.Text = "Price History";
             // 
             // btnClearPrice
             // 
             this.btnClearPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
+            this.btnClearPrice.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
+            this.btnClearPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearPrice.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnClearPrice.Location = new System.Drawing.Point(90, 12);
+            this.btnClearPrice.Image = ((System.Drawing.Image)(resources.GetObject("btnClearPrice.Image")));
+            this.btnClearPrice.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClearPrice.Location = new System.Drawing.Point(194, 82);
             this.btnClearPrice.Name = "btnClearPrice";
-            this.btnClearPrice.Size = new System.Drawing.Size(126, 40);
+            this.btnClearPrice.Size = new System.Drawing.Size(86, 40);
             this.btnClearPrice.TabIndex = 5;
-            this.btnClearPrice.Text = "Clear Price";
+            this.btnClearPrice.Text = "Clear";
+            this.btnClearPrice.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClearPrice.UseVisualStyleBackColor = false;
             this.btnClearPrice.Click += new System.EventHandler(this.btnClearPrice_Click);
             // 
             // btnImportToOrder
             // 
             this.btnImportToOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
+            this.btnImportToOrder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
+            this.btnImportToOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImportToOrder.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnImportToOrder.Location = new System.Drawing.Point(446, 12);
+            this.btnImportToOrder.Image = ((System.Drawing.Image)(resources.GetObject("btnImportToOrder.Image")));
+            this.btnImportToOrder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImportToOrder.Location = new System.Drawing.Point(479, 82);
             this.btnImportToOrder.Name = "btnImportToOrder";
-            this.btnImportToOrder.Size = new System.Drawing.Size(174, 40);
+            this.btnImportToOrder.Size = new System.Drawing.Size(160, 40);
             this.btnImportToOrder.TabIndex = 5;
             this.btnImportToOrder.Text = "Move To Order";
+            this.btnImportToOrder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnImportToOrder.UseVisualStyleBackColor = false;
             this.btnImportToOrder.Click += new System.EventHandler(this.btnImportToOrder_Click);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(50, 155);
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label10.Location = new System.Drawing.Point(28, 135);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(53, 18);
+            this.label10.Size = new System.Drawing.Size(52, 25);
             this.label10.TabIndex = 8;
             this.label10.Text = "Item:";
             // 
             // tbItem
             // 
-            this.tbItem.Location = new System.Drawing.Point(110, 151);
+            this.tbItem.Location = new System.Drawing.Point(93, 136);
             this.tbItem.Multiline = true;
             this.tbItem.Name = "tbItem";
-            this.tbItem.Size = new System.Drawing.Size(520, 28);
+            this.tbItem.Size = new System.Drawing.Size(537, 28);
             this.tbItem.TabIndex = 9;
             // 
             // label11
             // 
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label11.Location = new System.Drawing.Point(35, 59);
+            this.label11.Location = new System.Drawing.Point(16, 121);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(462, 2);
+            this.label11.Size = new System.Drawing.Size(633, 2);
             this.label11.TabIndex = 11;
             this.label11.Text = "label11";
+            // 
+            // panelTop
+            // 
+            this.panelTop.BackgroundImage = global::OrderManagementTool.Properties.Resources.zd;
+            this.panelTop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelTop.Controls.Add(this.btnClose);
+            this.panelTop.Controls.Add(this.lbLogo);
+            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTop.Location = new System.Drawing.Point(0, 0);
+            this.panelTop.Name = "panelTop";
+            this.panelTop.Size = new System.Drawing.Size(658, 67);
+            this.panelTop.TabIndex = 12;
+            this.panelTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTop_MouseDown);
+            this.panelTop.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelTop_MouseMove);
+            this.panelTop.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelTop_MouseUp);
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(54)))), ((int)(((byte)(112)))));
+            this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(54)))), ((int)(((byte)(112)))));
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(614, 0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(41, 43);
+            this.btnClose.TabIndex = 3;
+            this.btnClose.Text = "x";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // lbLogo
+            // 
+            this.lbLogo.AutoSize = true;
+            this.lbLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(62)))), ((int)(((byte)(125)))));
+            this.lbLogo.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLogo.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbLogo.Location = new System.Drawing.Point(12, 9);
+            this.lbLogo.Name = "lbLogo";
+            this.lbLogo.Size = new System.Drawing.Size(378, 48);
+            this.lbLogo.TabIndex = 1;
+            this.lbLogo.Text = "Calculation Price Kit";
+            this.lbLogo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbLogo_MouseDown);
+            this.lbLogo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbLogo_MouseMove);
+            this.lbLogo.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbLogo_MouseUp);
+            // 
+            // label12
+            // 
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label12.Location = new System.Drawing.Point(13, 257);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(633, 2);
+            this.label12.TabIndex = 13;
+            this.label12.Text = "label12";
             // 
             // CalculatePriceKitPage
             // 
@@ -331,6 +413,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(658, 660);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.panelTop);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.tbItem);
             this.Controls.Add(this.label10);
@@ -363,6 +447,8 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CalculatePriceKitPage_FormClosed);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CalculatePriceKitPage_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPriceHistory)).EndInit();
+            this.panelTop.ResumeLayout(false);
+            this.panelTop.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -395,5 +481,9 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox tbItem;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel panelTop;
+        private System.Windows.Forms.Label lbLogo;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label label12;
     }
 }
