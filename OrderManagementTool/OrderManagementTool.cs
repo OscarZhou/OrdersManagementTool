@@ -101,11 +101,10 @@ namespace OrderManagementTool
             else
             {
                 _frmUndoneOrders = new UndoneOrdersPage();
-                _frmUndoneOrders.ShowDialog();
-                ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));                
+                this.DisplayMainFrm(false);
+                this.OpenNewForm(_frmUndoneOrders);
+                //ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));                
             }
-
-
         }
         /// <summary>
         /// search purchaser
@@ -304,6 +303,8 @@ namespace OrderManagementTool
             
         }
 
+        #region Window operation
+
 
         private void OpenNewForm(Form newFrm)
         {
@@ -322,12 +323,18 @@ namespace OrderManagementTool
             newFrm.Dock = DockStyle.Fill;
             newFrm.Show();
         }
+
         /// <summary>
         /// Open or Close the elements in main window
         /// </summary>
         /// <param name="mainFrmState"></param>
         private void DisplayMainFrm(bool mainFrmState)
         {
+            //MessageBox.Show("width:" + this.splitContainer.Panel1.Size.Width + ",height:" +
+            //                this.splitContainer.Panel1.Size.Height);
+
+
+
             // Close other embeded windows
             foreach (Control item in this.splitContainer.Panel1.Controls)
             {
@@ -335,13 +342,12 @@ namespace OrderManagementTool
                 {
                     ((Form)item).Close();
                 }
-                else
-                {
-                    item.Visible = mainFrmState;
-                }
+                item.Visible = mainFrmState;
             }
 
         }
+
+        #endregion
 
         private void btnTransaction_Click(object sender, EventArgs e)
         {

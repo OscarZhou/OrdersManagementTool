@@ -48,8 +48,6 @@ namespace OrderManagementTool
                 dgvUndoneOrders.DataSource = objLists;
                 dgvUndoneOrders.Show();                
             }
-
-
         }
 
         private void btnCompleteOrder_Click(object sender, EventArgs e)
