@@ -230,6 +230,13 @@ namespace OrderManagementTool
         private void btnPriceKit_Click(object sender, EventArgs e)
         {
             _frmPriceKit = new CalculatePriceKitPage();
+            int x = (System.Windows.Forms.SystemInformation.WorkingArea.Width - _frmPriceKit.Size.Width) / 2 + _frmPriceKit.Size.Width;
+            int y = (System.Windows.Forms.SystemInformation.WorkingArea.Height - _frmPriceKit.Size.Height) / 2;
+            _frmPriceKit.StartPosition = FormStartPosition.Manual; //窗体的位置由Location属性决定
+            _frmPriceKit.Location = (Point)new Size(x, y);         //窗体的起始位置为(x,y)
+
+            //this.DisplayMainFrm(false);
+            //this.OpenNewForm(_frmPriceKit);
             _frmPriceKit.Show();
             //btnPriceKit.Enabled = false;
         }
@@ -297,10 +304,116 @@ namespace OrderManagementTool
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        private void OpenNewForm(Form newFrm)
+        {
+            // Close other embeded windows
+            foreach (Control item in this.splitContainer.Panel1.Controls)
+            {
+                if (item is Form)
+                {
+                    ((Form)item).Close();
+                }
+            }
+
+            // Open and attach the new window
+            newFrm.TopLevel = false;
+            newFrm.Parent = this.splitContainer.Panel1;
+            newFrm.Dock = DockStyle.Fill;
+            newFrm.Show();
+        }
+        /// <summary>
+        /// Open or Close the elements in main window
+        /// </summary>
+        /// <param name="mainFrmState"></param>
+        private void DisplayMainFrm(bool mainFrmState)
+        {
+            // Close other embeded windows
+            foreach (Control item in this.splitContainer.Panel1.Controls)
+            {
+                if (item is Form)
+                {
+                    ((Form)item).Close();
+                }
+                else
+                {
+                    item.Visible = mainFrmState;
+                }
+            }
+
+        }
+
+        private void btnTransaction_Click(object sender, EventArgs e)
+        {
+            this.DisplayMainFrm(true);
+        }
+
+        #region Drag and close window
+
+        private Point mouseOff; //The moving position variables of the mouse
+        private bool leftFlag; // Determine if the label is left button
+
+        private void OrderManagementTool_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                mouseOff = new Point(-e.X, -e.Y);  // Get the values of the variable
+                leftFlag = true;
+            }
+        }
+
+        private void OrderManagementTool_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (leftFlag)
+            {
+                Point mousetSet = Control.MousePosition;
+                mousetSet.Offset(mouseOff.X, mouseOff.Y);   // Set the position after moving
+                Location = mousetSet;
+            }
+        }
+
+        private void OrderManagementTool_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (leftFlag)
+            {
+                leftFlag = false; // Set false after releasing mouse
+            }
+        }
+
+
+        private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        private void panelTop_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                mouseOff = new Point(-e.X, -e.Y);  // Get the values of the variable
+                leftFlag = true;
+            }
+        }
+
+        private void panelTop_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (leftFlag)
+            {
+                Point mousetSet = Control.MousePosition;
+                mousetSet.Offset(mouseOff.X, mouseOff.Y);   // Set the position after moving
+                Location = mousetSet;
+            }
+        }
+
+        private void panelTop_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (leftFlag)
+            {
+                leftFlag = false; // Set false after releasing mouse
+            }
+        }
+        #endregion
+
 
 
 
