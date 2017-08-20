@@ -120,16 +120,16 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnCompleteOrder.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAHLSURBVDhPYxh6oGxV8f3cZZmf5PPlBaBCxIOyFQVXO7e1
-        /C9anfvfqtzkiUay0iSoFGGQvij5/IzDk/87zbL6L9jK999pivV/kwbtX1BpBgb5GhEvuWpRKygXBQTN
-        9r4048yk/75bHP/zLGD4rzBP9L9Bn/p/7VaVdwyS9ZJcCtWSqfmrM/4nLYr+hW6I80yrC9MuTfgfezzo
-        v/x2/v9aa2T+G/dr/desV6jRq1cSYzDp1H6VuCLq/9lXJ/4ffXbwf/TC0B/ylcIaIM1GLZoXZlyZ+D//
-        asp/45PK/013qYM1a9Qp1IJNBwHDDs1XbvNt/9dfKf2/6P7s/3vebPsfOT/wi2a90qlplyf+r39Y+t/j
-        lsV/xxPG/41AmhsUyqFaIQDkBekSkVTtmQr/sm7H/Z/ypOf/6mdL/k+7MuF/9+vG/xHPPf/7XLH7b9Sr
-        +V+9WqEGqg0T8JeyJxkvU/+X9ibif8+H5v9Tv3b/T/8S8T/ynfd/w8ma/zVXyODWDANq1XKxthuM/hb+
-        Tfpf8iftf9av2P92W03/Wy7SJ6wZBpQrpVMDdrj+7/3f+N91re1/oxkaiAAjFmjUKhVYTzP9p1Gr2AUV
-        GrSAgQEAro/MPiqTYJAAAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAW
+        JQAAFiUBSVIk8AAAActJREFUOE9jGHqgbFXx/dxlmZ/k8+UFoELEg7IVBVc7t7X8L1qd+9+q3OSJRrLS
+        JKgUYZC+KPn8jMOT/zvNsvov2Mr332mK9X+TBu1fUGkGBvkaES+5alErKBcFBM32vjTjzKT/vlsc//Ms
+        YPivME/0v0Gf+n/tVpV3DJL1klwK1ZKp+asz/ictiv6FbojzTKsL0y5N+B97POi//Hb+/1prZP4b92v9
+        16xXqNGrVxJjMOnUfpW4Iur/2Vcn/h99dvB/9MLQH/KVwhogzUYtmhdmXJn4P/9qyn/jk8r/TXepgzVr
+        1CnUgk0HAcMOzVdu823/118p/b/o/uz/e95s+x85P/CLZr3SqWmXJ/6vf1j63+OWxX/HE8b/jUCaGxTK
+        oVohAOQF6RKRVO2ZCv+ybsf9n/Kk5//qZ0v+T7sy4X/368b/Ec89//tcsftv1Kv5X71aoQaqDRPwl7In
+        GS9T/5f2JuJ/z4fm/1O/dv9P/xLxP/Kd93/DyZr/NVfI4NYMA2rVcrG2G4z+Fv5N+l/yJ+1/1q/Y/3Zb
+        Tf9bLtInrBkGlCulUwN2uP7v/d/433Wt7X+jGRqIACMWaNQqFVhPM/2nUavYBRUatICBAQCuj8w+KpNg
+        kAAAAABJRU5ErkJggg==
 </value>
   </data>
   <metadata name="OrderNo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

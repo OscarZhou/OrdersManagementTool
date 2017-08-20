@@ -40,12 +40,12 @@ namespace OrderManagementTool
             this.btnCompleteOrder = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.dgvUndoneOrders = new System.Windows.Forms.DataGridView();
-            this.CreateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Profit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PurchasePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SellingPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Purchaser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Purchaser = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SellingPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchasePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Profit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUndoneOrders)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,7 +68,7 @@ namespace OrderManagementTool
             this.btnCompleteOrder.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnCompleteOrder.Image = ((System.Drawing.Image)(resources.GetObject("btnCompleteOrder.Image")));
             this.btnCompleteOrder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCompleteOrder.Location = new System.Drawing.Point(640, 8);
+            this.btnCompleteOrder.Location = new System.Drawing.Point(645, 8);
             this.btnCompleteOrder.Name = "btnCompleteOrder";
             this.btnCompleteOrder.Size = new System.Drawing.Size(118, 25);
             this.btnCompleteOrder.TabIndex = 2;
@@ -83,7 +83,7 @@ namespace OrderManagementTool
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label6.Location = new System.Drawing.Point(12, 33);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(760, 2);
+            this.label6.Size = new System.Drawing.Size(755, 2);
             this.label6.TabIndex = 11;
             this.label6.Text = "label6";
             // 
@@ -117,6 +117,7 @@ namespace OrderManagementTool
             this.Profit,
             this.CreateTime});
             this.dgvUndoneOrders.Location = new System.Drawing.Point(12, 33);
+            this.dgvUndoneOrders.MultiSelect = false;
             this.dgvUndoneOrders.Name = "dgvUndoneOrders";
             this.dgvUndoneOrders.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -139,14 +140,45 @@ namespace OrderManagementTool
             this.dgvUndoneOrders.TabIndex = 1;
             this.dgvUndoneOrders.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUndoneOrders_CellDoubleClick);
             // 
-            // CreateTime
+            // OrderNo
             // 
-            this.CreateTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CreateTime.DataPropertyName = "CreateTime";
-            this.CreateTime.FillWeight = 30F;
-            this.CreateTime.HeaderText = "Date";
-            this.CreateTime.Name = "CreateTime";
-            this.CreateTime.ReadOnly = true;
+            this.OrderNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.OrderNo.DataPropertyName = "OrderNo";
+            this.OrderNo.FillWeight = 30F;
+            this.OrderNo.HeaderText = "Order No";
+            this.OrderNo.Name = "OrderNo";
+            this.OrderNo.ReadOnly = true;
+            this.OrderNo.Width = 136;
+            // 
+            // Purchaser
+            // 
+            this.Purchaser.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Purchaser.DataPropertyName = "Purchaser";
+            this.Purchaser.FillWeight = 30F;
+            this.Purchaser.HeaderText = "Purchaser Name";
+            this.Purchaser.Name = "Purchaser";
+            this.Purchaser.ReadOnly = true;
+            this.Purchaser.Width = 185;
+            // 
+            // SellingPrice
+            // 
+            this.SellingPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SellingPrice.DataPropertyName = "SellingPrice";
+            this.SellingPrice.FillWeight = 30F;
+            this.SellingPrice.HeaderText = "Selling Price";
+            this.SellingPrice.Name = "SellingPrice";
+            this.SellingPrice.ReadOnly = true;
+            this.SellingPrice.Width = 148;
+            // 
+            // PurchasePrice
+            // 
+            this.PurchasePrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.PurchasePrice.DataPropertyName = "PurchasePrice";
+            this.PurchasePrice.FillWeight = 30F;
+            this.PurchasePrice.HeaderText = "Purchasing Price";
+            this.PurchasePrice.Name = "PurchasePrice";
+            this.PurchasePrice.ReadOnly = true;
+            this.PurchasePrice.Width = 185;
             // 
             // Profit
             // 
@@ -158,45 +190,14 @@ namespace OrderManagementTool
             this.Profit.ReadOnly = true;
             this.Profit.Width = 99;
             // 
-            // PurchasePrice
+            // CreateTime
             // 
-            this.PurchasePrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.PurchasePrice.DataPropertyName = "PurchasePrice";
-            this.PurchasePrice.FillWeight = 30F;
-            this.PurchasePrice.HeaderText = "Purchasing Price";
-            this.PurchasePrice.Name = "PurchasePrice";
-            this.PurchasePrice.ReadOnly = true;
-            this.PurchasePrice.Width = 202;
-            // 
-            // SellingPrice
-            // 
-            this.SellingPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SellingPrice.DataPropertyName = "SellingPrice";
-            this.SellingPrice.FillWeight = 30F;
-            this.SellingPrice.HeaderText = "Selling Price";
-            this.SellingPrice.Name = "SellingPrice";
-            this.SellingPrice.ReadOnly = true;
-            this.SellingPrice.Width = 161;
-            // 
-            // Purchaser
-            // 
-            this.Purchaser.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Purchaser.DataPropertyName = "Purchaser";
-            this.Purchaser.FillWeight = 30F;
-            this.Purchaser.HeaderText = "Purchaser Name";
-            this.Purchaser.Name = "Purchaser";
-            this.Purchaser.ReadOnly = true;
-            this.Purchaser.Width = 202;
-            // 
-            // OrderNo
-            // 
-            this.OrderNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.OrderNo.DataPropertyName = "OrderNo";
-            this.OrderNo.FillWeight = 30F;
-            this.OrderNo.HeaderText = "Order No";
-            this.OrderNo.Name = "OrderNo";
-            this.OrderNo.ReadOnly = true;
-            this.OrderNo.Width = 136;
+            this.CreateTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CreateTime.DataPropertyName = "CreateTime";
+            this.CreateTime.FillWeight = 30F;
+            this.CreateTime.HeaderText = "Date";
+            this.CreateTime.Name = "CreateTime";
+            this.CreateTime.ReadOnly = true;
             // 
             // UndoneOrdersPage
             // 

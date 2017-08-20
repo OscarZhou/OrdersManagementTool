@@ -186,7 +186,7 @@
             this.btnReset.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnReset.Image = ((System.Drawing.Image)(resources.GetObject("btnReset.Image")));
             this.btnReset.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReset.Location = new System.Drawing.Point(290, 82);
+            this.btnReset.Location = new System.Drawing.Point(296, 82);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(85, 40);
             this.btnReset.TabIndex = 5;
@@ -203,7 +203,7 @@
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(385, 82);
+            this.btnSave.Location = new System.Drawing.Point(391, 82);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(84, 40);
             this.btnSave.TabIndex = 5;
@@ -227,6 +227,7 @@
             this.dgvPriceHistory.AccessibleName = "";
             this.dgvPriceHistory.AllowUserToAddRows = false;
             this.dgvPriceHistory.AllowUserToDeleteRows = false;
+            this.dgvPriceHistory.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(227)))), ((int)(((byte)(227)))));
             this.dgvPriceHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPriceHistory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Opt,
@@ -234,6 +235,7 @@
             this.ItemDescription,
             this.CreateTime});
             this.dgvPriceHistory.Location = new System.Drawing.Point(20, 309);
+            this.dgvPriceHistory.MultiSelect = false;
             this.dgvPriceHistory.Name = "dgvPriceHistory";
             this.dgvPriceHistory.RowTemplate.Height = 30;
             this.dgvPriceHistory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -298,7 +300,7 @@
             this.btnClearPrice.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnClearPrice.Image = ((System.Drawing.Image)(resources.GetObject("btnClearPrice.Image")));
             this.btnClearPrice.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClearPrice.Location = new System.Drawing.Point(194, 82);
+            this.btnClearPrice.Location = new System.Drawing.Point(200, 82);
             this.btnClearPrice.Name = "btnClearPrice";
             this.btnClearPrice.Size = new System.Drawing.Size(86, 40);
             this.btnClearPrice.TabIndex = 5;
@@ -315,7 +317,7 @@
             this.btnImportToOrder.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnImportToOrder.Image = ((System.Drawing.Image)(resources.GetObject("btnImportToOrder.Image")));
             this.btnImportToOrder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImportToOrder.Location = new System.Drawing.Point(479, 82);
+            this.btnImportToOrder.Location = new System.Drawing.Point(485, 82);
             this.btnImportToOrder.Name = "btnImportToOrder";
             this.btnImportToOrder.Size = new System.Drawing.Size(160, 40);
             this.btnImportToOrder.TabIndex = 5;

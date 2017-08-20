@@ -122,14 +122,14 @@ namespace OrderManagementTool
             _objItems = new ItemManage().GetItemListByOrderNo(orderNo);
             dgvItemList.DataSource = _objItems;
             dgvItemList.Show();
-            if (_status.Equals("Edit"))
-            {
-                string itemNo = dgvItemList.Rows[0].Cells["ItemNo"].Value.ToString(); //get the information in the first row
-                Item objItem = new ItemManage().GetItemByItemNo(itemNo);
-                tbProductName.Text = objItem.ItemDescription;
-                tbQuantity.Text = objItem.Quantity.ToString();
-                tbPrice.Text = objItem.UnitPrice.ToString();
-            }
+            //if (_status.Equals("Edit"))
+            //{
+            //    string itemNo = dgvItemList.Rows[0].Cells["ItemNo"].Value.ToString(); //get the information in the first row
+            //    Item objItem = new ItemManage().GetItemByItemNo(itemNo);
+            //    tbProductName.Text = objItem.ItemDescription;
+            //    tbQuantity.Text = objItem.Quantity.ToString();
+            //    tbPrice.Text = objItem.UnitPrice.ToString();
+            //}
 
         }
 
