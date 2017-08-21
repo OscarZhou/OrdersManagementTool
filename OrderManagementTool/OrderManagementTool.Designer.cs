@@ -164,6 +164,8 @@
             this.dgvTransaction.AllowDrop = true;
             this.dgvTransaction.AllowUserToAddRows = false;
             this.dgvTransaction.AllowUserToDeleteRows = false;
+            this.dgvTransaction.AllowUserToResizeColumns = false;
+            this.dgvTransaction.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.PapayaWhip;
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
@@ -182,7 +184,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.LightSeaGreen;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvTransaction.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvTransaction.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTransaction.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvTransaction.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OrderNo,
             this.Purchaser,
@@ -211,6 +213,7 @@
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvTransaction.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.dgvTransaction.RowHeadersVisible = false;
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
@@ -254,7 +257,7 @@
             this.Purchaser.HeaderText = "Purchaser Name";
             this.Purchaser.Name = "Purchaser";
             this.Purchaser.ReadOnly = true;
-            this.Purchaser.Width = 185;
+            this.Purchaser.Width = 202;
             // 
             // SellingPrice
             // 
@@ -269,7 +272,7 @@
             this.SellingPrice.HeaderText = "Selling Price";
             this.SellingPrice.Name = "SellingPrice";
             this.SellingPrice.ReadOnly = true;
-            this.SellingPrice.Width = 148;
+            this.SellingPrice.Width = 161;
             // 
             // PurchasePrice
             // 
@@ -284,7 +287,7 @@
             this.PurchasePrice.HeaderText = "Purchasing Price";
             this.PurchasePrice.Name = "PurchasePrice";
             this.PurchasePrice.ReadOnly = true;
-            this.PurchasePrice.Width = 185;
+            this.PurchasePrice.Width = 202;
             // 
             // Profit
             // 

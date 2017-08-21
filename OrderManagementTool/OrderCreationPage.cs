@@ -42,43 +42,78 @@ namespace OrderManagementTool
             
         }
 
+        #region The validation of inputing text
+
+        private void ShowError(string tips, TextBox tbBox, Label lbError)
+        {
+            lbError.Text = tips;
+            lbError.Visible = true;
+            tbBox.Text = "";
+            tbBox.BackColor = System.Drawing.Color.LightCoral;
+            tbBox.Focus();
+        }
+
+        private void HideError(TextBox tbBox, Label lbError)
+        {
+            lbError.Visible = false;
+            tbBox.BackColor = System.Drawing.Color.White;
+        }
+
+        #endregion
+
         private void btnAddItem_Click(object sender, EventArgs e)
         {
             #region Validation for items
-            if (tbItemDescription.Text == "" && tbQuantity.Text == "" && tbPrice.Text == "")
+            if (tbItemDescription.Text.Length == 0 && tbQuantity.Text.Length == 0 && tbPrice.Text.Length == 0)
             {
-                lbItemError.Text = "Please input blank!";
-                lbItemError.Visible = true;
-                tbItemDescription.BackColor = System.Drawing.Color.LightCoral;
-                tbQuantity.BackColor = System.Drawing.Color.LightCoral;
-                tbPrice.BackColor = System.Drawing.Color.LightCoral;
-                this.tbItemDescription.Focus();
+                this.ShowError("Please fill blank!", tbItemDescription, lbItemError);
+                this.ShowError("Please fill blank!", tbQuantity, lbItemError);
+                this.ShowError("Please fill blank!", tbPrice, lbItemError);
                 return;
             }
-            else if (tbItemDescription.Text == "")
+            
+            if (tbItemDescription.Text.Length == 0)
             {
-                lbItemError.Text = "Please input the Product Name!";
-                lbItemError.Visible = true;
-                tbItemDescription.BackColor = System.Drawing.Color.LightCoral;
-                this.tbItemDescription.Focus();
+                this.ShowError("Please input the Product Name!", tbItemDescription, lbItemError);
                 return;
             }
-            else if (tbQuantity.Text == "")
+            else
             {
-                lbItemError.Text = "Please input the Quantity!";
-                lbItemError.Visible = true;
-                tbQuantity.BackColor = System.Drawing.Color.LightCoral;
-                this.tbQuantity.Focus();
+                this.HideError(tbItemDescription, lbItemError);
+            }
+
+
+            if (tbQuantity.Text.Length == 0)
+            {
+                this.ShowError("Please input the Quantity!", tbQuantity, lbItemError);
                 return;
             }
-            else if (tbPrice.Text == "")
+            else if (System.Text.RegularExpressions.Regex.IsMatch(tbQuantity.Text, "[^0-9]"))
             {
-                lbItemError.Text = "Please input the Price!";
-                lbItemError.Visible = true;
-                tbPrice.BackColor = System.Drawing.Color.LightCoral;
-                this.tbPrice.Focus();
+                this.ShowError("Please input only numbers", tbQuantity, lbItemError);
                 return;
             }
+            else
+            {
+                this.HideError(tbQuantity, lbItemError);
+            }
+
+
+            if (tbPrice.Text.Length == 0)
+            {
+                this.ShowError("Please input the Price!", tbPrice, lbItemError);
+                return;
+            }
+            else if (System.Text.RegularExpressions.Regex.IsMatch(tbPrice.Text, "[^0-9]"))
+            {
+                this.ShowError("Please input only numbers", tbPrice, lbItemError);
+                return;
+            }
+            else
+            {
+                this.HideError(tbPrice, lbItemError);
+            }
+
             #endregion
 
             #region Bind Item datagridview

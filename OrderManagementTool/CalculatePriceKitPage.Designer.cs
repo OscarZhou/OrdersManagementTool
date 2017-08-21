@@ -29,6 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CalculatePriceKitPage));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.tbNZPrice = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -58,6 +66,7 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.lbLogo = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.lbError = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPriceHistory)).BeginInit();
             this.panelTop.SuspendLayout();
             this.SuspendLayout();
@@ -216,7 +225,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.Red;
-            this.label8.Location = new System.Drawing.Point(298, 275);
+            this.label8.Location = new System.Drawing.Point(17, 633);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(332, 18);
             this.label8.TabIndex = 6;
@@ -227,19 +236,58 @@
             this.dgvPriceHistory.AccessibleName = "";
             this.dgvPriceHistory.AllowUserToAddRows = false;
             this.dgvPriceHistory.AllowUserToDeleteRows = false;
+            this.dgvPriceHistory.AllowUserToResizeColumns = false;
+            this.dgvPriceHistory.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.PapayaWhip;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.PapayaWhip;
+            this.dgvPriceHistory.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPriceHistory.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(227)))), ((int)(((byte)(227)))));
-            this.dgvPriceHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPriceHistory.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvPriceHistory.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSeaGreen;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.LightSeaGreen;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPriceHistory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvPriceHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvPriceHistory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Opt,
             this.UnitPrice,
             this.ItemDescription,
             this.CreateTime});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPriceHistory.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvPriceHistory.Location = new System.Drawing.Point(20, 309);
             this.dgvPriceHistory.MultiSelect = false;
             this.dgvPriceHistory.Name = "dgvPriceHistory";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.LightSkyBlue;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightSkyBlue;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPriceHistory.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvPriceHistory.RowHeadersVisible = false;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            this.dgvPriceHistory.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvPriceHistory.RowTemplate.Height = 30;
             this.dgvPriceHistory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPriceHistory.Size = new System.Drawing.Size(620, 339);
+            this.dgvPriceHistory.Size = new System.Drawing.Size(620, 312);
             this.dgvPriceHistory.TabIndex = 7;
             this.dgvPriceHistory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPriceHistory_CellClick);
             // 
@@ -248,23 +296,31 @@
             this.Opt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Opt.HeaderText = "Opt.";
             this.Opt.Name = "Opt";
-            this.Opt.Width = 50;
+            this.Opt.Visible = false;
             // 
             // UnitPrice
             // 
             this.UnitPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.UnitPrice.DataPropertyName = "UnitPrice";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            this.UnitPrice.DefaultCellStyle = dataGridViewCellStyle3;
             this.UnitPrice.HeaderText = "Price";
             this.UnitPrice.Name = "UnitPrice";
             this.UnitPrice.ReadOnly = true;
             this.UnitPrice.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.UnitPrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.UnitPrice.Width = 59;
+            this.UnitPrice.Width = 64;
             // 
             // ItemDescription
             // 
             this.ItemDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ItemDescription.DataPropertyName = "ItemDescription";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            this.ItemDescription.DefaultCellStyle = dataGridViewCellStyle4;
             this.ItemDescription.HeaderText = "Item";
             this.ItemDescription.Name = "ItemDescription";
             this.ItemDescription.ReadOnly = true;
@@ -275,12 +331,16 @@
             // 
             this.CreateTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.CreateTime.DataPropertyName = "CreateTime";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            this.CreateTime.DefaultCellStyle = dataGridViewCellStyle5;
             this.CreateTime.HeaderText = "Date";
             this.CreateTime.Name = "CreateTime";
             this.CreateTime.ReadOnly = true;
             this.CreateTime.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.CreateTime.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.CreateTime.Width = 50;
+            this.CreateTime.Width = 63;
             // 
             // label9
             // 
@@ -409,12 +469,22 @@
             this.label12.TabIndex = 13;
             this.label12.Text = "label12";
             // 
+            // lbError
+            // 
+            this.lbError.AutoSize = true;
+            this.lbError.Location = new System.Drawing.Point(329, 275);
+            this.lbError.Name = "lbError";
+            this.lbError.Size = new System.Drawing.Size(71, 18);
+            this.lbError.TabIndex = 14;
+            this.lbError.Text = "label13";
+            // 
             // CalculatePriceKitPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(658, 660);
+            this.Controls.Add(this.lbError);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.panelTop);
             this.Controls.Add(this.label11);
@@ -476,10 +546,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnClearPrice;
         private System.Windows.Forms.Button btnImportToOrder;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Opt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreateTime;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox tbItem;
         private System.Windows.Forms.Label label11;
@@ -487,5 +553,10 @@
         private System.Windows.Forms.Label lbLogo;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lbError;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Opt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateTime;
     }
 }

@@ -19,8 +19,7 @@ namespace OrderManagementTool
         private OrderDetailsPage _frmOrderDetail;
         private CalculatePriceKitPage _frmPriceKit;
         private FrmOrderText _frmOrderText;
-        private string orderNo;
-        private CalculatePriceKitPage _frmInnerPriceKit = null;
+        private string _orderNo;
 
         #region Delegate for opening the edit order and the view order
         // define delegate
@@ -38,7 +37,7 @@ namespace OrderManagementTool
         public event DlgOpenView EvtOpenView;
         #endregion
 
-        #region Delegate for view the order text
+        #region Delegate for view the OrderText
 
         public delegate void DlgSetOrderText(string content, string orderNo);
 
@@ -52,7 +51,6 @@ namespace OrderManagementTool
 
         public event DlgOpenPriceKit EvtOpenPriceKit;
         #endregion
-
 
         #region Delegate for sending back the Form Handler to Main Interface
 
@@ -72,7 +70,6 @@ namespace OrderManagementTool
             InitializeSortingList();
             lbAuthor.Text = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).CompanyName;
             lbVersion.Text = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            
             tbSearch.Focus();
             // Add key down event
             this.KeyDown += OrderManagementTool_KeyDown;
@@ -90,6 +87,7 @@ namespace OrderManagementTool
             cmbSorting.Items.Add("Profit Desc");
             cmbSorting.SelectedIndex = 1;
         }
+
         /// <summary>
         /// Import the existed data
         /// </summary>
@@ -100,8 +98,8 @@ namespace OrderManagementTool
             this.DisplayMainFrm(false);
             _frmDataImporting = new DataImportingPage();
             this.OpenNewForm(_frmDataImporting);
-            //ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
         }
+
         /// <summary>
         /// create the order
         /// </summary>
@@ -112,9 +110,9 @@ namespace OrderManagementTool
             _frmOrderCreation = new OrderCreationPage();
             this.DisplayMainFrm(false);
             this.OpenNewForm(_frmOrderCreation);
-            //_frmOrderCreation.ShowDialog();
-            //ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
+
         }
+
         /// <summary>
         /// view undone orders
         /// </summary>
@@ -132,10 +130,10 @@ namespace OrderManagementTool
             {
                 _frmUndoneOrders = new UndoneOrdersPage();
                 this.DisplayMainFrm(false);
-                this.OpenNewForm(_frmUndoneOrders);
-                //ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));                
+                this.OpenNewForm(_frmUndoneOrders);       
             }
         }
+
         /// <summary>
         /// search purchaser
         /// </summary>
@@ -160,7 +158,7 @@ namespace OrderManagementTool
 
             #endregion
             dgvTransaction.Show();
-            this.orderNo = dgvTransaction.Rows[0].Cells["OrderNo"].Value.ToString();
+            this._orderNo = dgvTransaction.Rows[0].Cells["OrderNo"].Value.ToString();
         }
 
         private void ShowTransaction(string name, int sortingtype, int orderNo)
@@ -204,14 +202,13 @@ namespace OrderManagementTool
             this.DisplayMainFrm(false);
             _frmOrderDetail = new OrderDetailsPage();
             this.EvtOpenView += _frmOrderDetail.ViewReceiver;// 关联子窗体，传递订单号信息
-            this.EvtOpenView(this.orderNo, this.splitContainer.Panel1);
+            this.EvtOpenView(this._orderNo, this.splitContainer.Panel1);
 
             #region 回传消息给主窗体，让其刷新交易列表
             //_frmOrderDetail.EvtSendMsg += this.Receiver;//关联子窗体，添加发送消息方法，用于刷新交易列表
             #endregion
 
             this.OpenNewForm(_frmOrderDetail);
-            //ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
@@ -219,11 +216,9 @@ namespace OrderManagementTool
             this.DisplayMainFrm(false);
             _frmOrderDetail = new OrderDetailsPage();
             this.EvtOpenEdit += _frmOrderDetail.EditReceiver;
-            this.EvtOpenEdit(this.orderNo);
+            this.EvtOpenEdit(this._orderNo);
             _frmOrderDetail.EvtSendMsg += Receiver;
             this.OpenNewForm(_frmOrderDetail);
-            //int orderNo = Convert.ToInt32(dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString());
-            //ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex), orderNo);
         }
 
         private void btnExportTransaction_Click(object sender, EventArgs e)
@@ -250,10 +245,10 @@ namespace OrderManagementTool
 
             if (MessageBox.Show(this, "Delete?", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                Order objOrder = new OrderManage().GetOrderByOrderNo(this.orderNo);
-                objOrder.User = new UserInfoManage().GetUserByOrderNo(this.orderNo);
-                new TransactionManage().DeleteTransactionRecord(this.orderNo);
-                new ItemManage().DeleteItemListByOrderNo(this.orderNo);
+                Order objOrder = new OrderManage().GetOrderByOrderNo(this._orderNo);
+                objOrder.User = new UserInfoManage().GetUserByOrderNo(this._orderNo);
+                new TransactionManage().DeleteTransactionRecord(this._orderNo);
+                new ItemManage().DeleteItemListByOrderNo(this._orderNo);
                 new OrderManage().DeleteOrder(objOrder);
                 int result = new UserInfoManage().DeleteUser(objOrder.User);
                 if (result > 0)
@@ -282,14 +277,13 @@ namespace OrderManagementTool
             this.EvtOpenPriceKit += _frmPriceKit.Receiver;
             this.EvtOpenPriceKit("Outer");
             _frmPriceKit.Show();
-            //btnPriceKit.Enabled = false;
         }
 
         private void dgvTransaction_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             _frmOrderDetail = new OrderDetailsPage();
             this.EvtSendOperation += _frmOrderDetail.Receiver;
-            this.EvtSendOperation("View", this.orderNo);
+            this.EvtSendOperation("View", this._orderNo);
             _frmOrderDetail.ShowDialog();
         }
 
@@ -361,12 +355,7 @@ namespace OrderManagementTool
 
         }
 
-        
-
         #endregion
-
-        
-
 
         private void btnTransaction_Click(object sender, EventArgs e)
         {
@@ -404,7 +393,8 @@ namespace OrderManagementTool
             //MessageBox.Show("width:" + this.splitContainer.Panel1.Size.Width + ",height:" +
             //                this.splitContainer.Panel1.Size.Height);
 
-            
+            // Refresh the Transaction DataGridView
+            this.ShowTransaction(tbSearch.Text.Trim(), cmbSorting.SelectedIndex);
 
             // Close other embeded windows
             foreach (Control item in this.splitContainer.Panel1.Controls)
@@ -487,7 +477,7 @@ namespace OrderManagementTool
 
         private void dgvTransaction_Click(object sender, EventArgs e)
         {
-            this.orderNo = dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString();
+            this._orderNo = dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString();
         }
 
     }

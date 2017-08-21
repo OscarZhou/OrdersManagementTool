@@ -33,6 +33,7 @@ namespace OrderManagementTool
 
         #endregion
 
+
         #endregion
 
 
@@ -40,6 +41,8 @@ namespace OrderManagementTool
         {
             InitializeComponent();
             dgvItemList.AutoGenerateColumns = false;
+            lbError.Visible = false;
+            lbError.ForeColor = System.Drawing.Color.Red;
             // Add key down event
             this.KeyDown += OrderDetailsPage_KeyDown;
             foreach (Control control in this.Controls)
@@ -75,6 +78,8 @@ namespace OrderManagementTool
         }
         #endregion
 
+        #region Receiver operation
+
         public void ViewReceiver(string orderNo, Control parentControl)
         {
             lbError.Visible = false;
@@ -105,6 +110,7 @@ namespace OrderManagementTool
             this._orderNo = orderNo;
             ShowOrderDetail(orderNo);
         }
+
         /// <summary>
         /// 从外部的数据列表中点击进入查看数据详细
         /// </summary>
@@ -138,6 +144,26 @@ namespace OrderManagementTool
             this._orderNo = orderNo;
             ShowOrderDetail(orderNo);
         }
+        #endregion
+
+        #region The validation of inputing text
+
+        private void ShowError(string tips, TextBox tbBox, Label lbError)
+        {
+            lbError.Text = tips;
+            lbError.Visible = true;
+            tbBox.Text = "";
+            tbBox.BackColor = System.Drawing.Color.LightCoral;
+            tbBox.Focus();
+        }
+
+        private void HideError(TextBox tbBox, Label lbError)
+        {
+            lbError.Visible = false;
+            tbBox.BackColor = System.Drawing.Color.White;
+        }
+
+        #endregion
 
         private void ShowOrderDetail(string orderNo)
         {
@@ -194,6 +220,40 @@ namespace OrderManagementTool
             //    where t.ItemNo == Convert.ToInt32(dgvItemList.CurrentRow.Cells["ItemNo"].Value)
             //    select t).First();
 
+            #region Validation the controls
+
+            if (tbQuantity.Text.Trim().Length == 0)
+            {
+                this.ShowError("Please input the Quantity", tbQuantity, lbError);
+                return;
+            }
+            else if (System.Text.RegularExpressions.Regex.IsMatch(tbQuantity.Text, "[^0-9]"))
+            {
+                this.ShowError("Please input only number", tbQuantity, lbError);
+                return;
+            }
+            else
+            {
+                this.HideError(tbQuantity, lbError);
+            }
+
+            if (tbPrice.Text.Trim().Length == 0)
+            {
+                this.ShowError("Please input the Unit Price", tbPrice, lbError);
+                return;
+            }
+            else if (System.Text.RegularExpressions.Regex.IsMatch(tbPrice.Text, "[^0-9]"))
+            {
+                this.ShowError("Please input only number", tbPrice, lbError);
+                return;
+            }
+            else
+            {
+                this.HideError(tbPrice, lbError);
+            }
+            #endregion
+
+            #region Item DataGridView operation
 
             Item objItem = _objItems.Find(t => t.ItemNo == Convert.ToInt32(dgvItemList.CurrentRow.Cells["ItemNo"].Value));
             objItem.ItemDescription = tbProductName.Text.Trim();
@@ -205,16 +265,79 @@ namespace OrderManagementTool
             dgvItemList.DataSource = _objItems;
             dgvItemList.Show();
 
-            //int result = new ItemManage().UpdateItem(objItem);
-            //if (result > 0)
-            //{
-            //    dgvItemList.DataSource = new ItemManage().GetItemListByOrderNo(this.orderNo);
-            //    dgvItemList.Show();
-            //}
+            #endregion
         }
 
         private void btnModify_Click(object sender, EventArgs e)
         {
+            #region Validation controls
+
+            if (tbTo.Text.Trim().Length == 0)
+            {
+                this.ShowError("Please fill the blank", tbTo, lbError);
+                return;
+            }
+            else
+            {
+                this.HideError(tbTo, lbError);
+            }
+
+
+            if (tbToPhone.Text.Trim().Length ==0)
+            {
+                this.ShowError("Please fill the blank", tbToPhone, lbError);
+                return;
+            }
+            else
+            {
+                this.HideError(tbToPhone, lbError);
+            }
+
+            if (tbAddress.Text.Trim().Length ==0)
+            {
+                this.ShowError("Please fill the blank", tbAddress, lbError);
+                return;
+            }
+            else
+            {
+                this.HideError(tbAddress,lbError);
+            }
+
+            if (tbSellingPrice.Text.Trim().Length == 0)
+            {
+                this.ShowError("Please fill the blank", tbSellingPrice, lbError);
+                return;
+                
+            }
+            else if (System.Text.RegularExpressions.Regex.IsMatch(tbSellingPrice.Text, "[^0-9]"))
+            {
+                this.ShowError("Please input only number", tbSellingPrice, lbError);
+                return;
+            }
+            else
+            {
+                this.HideError(tbSellingPrice, lbError);
+            }
+
+            if (tbPurchasePrice.Text.Trim().Length == 0)
+            {
+                this.ShowError("Please fill the blank", tbPurchasePrice, lbError);
+                return;
+                
+            }
+            else if (System.Text.RegularExpressions.Regex.IsMatch(tbPurchasePrice.Text, "[^0-9]"))
+            {
+                this.ShowError("Please input only number", tbPurchasePrice, lbError);
+                return;
+            }
+            else
+            {
+                this.HideError(tbPurchasePrice, lbError);
+            }
+                
+            #endregion
+
+            #region Database operation
             _objOrder = new OrderManage().GetOrderByOrderNo(tbOrderNo.Text.Trim());
             _objOrder.Purchaser = tbPurchaser.Text.Trim();
             _objOrder.User = new UserInfoManage().GetUserByOrderNo(tbOrderNo.Text.Trim());
@@ -238,11 +361,13 @@ namespace OrderManagementTool
                 this.EvtSendMsg("open");
                 this.Close();
             }
+            
+            #endregion
+
         }
 
         private void btnCreateOrder_Click(object sender, EventArgs e)
         {
-            
             #region 传递订单号给下一个窗体
 
             OrderCreationPage frmOrderCreation = new OrderCreationPage();
@@ -257,7 +382,6 @@ namespace OrderManagementTool
             //this.Close();
 
             #endregion
-
         }
 
         private void OrderDetailsPage_KeyDown(object sender, KeyEventArgs e)

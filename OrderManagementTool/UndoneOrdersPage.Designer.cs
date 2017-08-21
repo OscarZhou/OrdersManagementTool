@@ -93,6 +93,8 @@ namespace OrderManagementTool
             // 
             this.dgvUndoneOrders.AllowUserToAddRows = false;
             this.dgvUndoneOrders.AllowUserToDeleteRows = false;
+            this.dgvUndoneOrders.AllowUserToResizeColumns = false;
+            this.dgvUndoneOrders.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.PapayaWhip;
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
@@ -102,6 +104,7 @@ namespace OrderManagementTool
             this.dgvUndoneOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvUndoneOrders.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(227)))), ((int)(((byte)(227)))));
             this.dgvUndoneOrders.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvUndoneOrders.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSeaGreen;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
@@ -110,7 +113,7 @@ namespace OrderManagementTool
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.LightSeaGreen;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvUndoneOrders.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvUndoneOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUndoneOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvUndoneOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OrderNo,
             this.Purchaser,
@@ -131,6 +134,7 @@ namespace OrderManagementTool
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvUndoneOrders.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvUndoneOrders.RowHeadersVisible = false;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
@@ -160,7 +164,7 @@ namespace OrderManagementTool
             this.Purchaser.HeaderText = "Purchaser Name";
             this.Purchaser.Name = "Purchaser";
             this.Purchaser.ReadOnly = true;
-            this.Purchaser.Width = 185;
+            this.Purchaser.Width = 202;
             // 
             // SellingPrice
             // 
@@ -170,7 +174,7 @@ namespace OrderManagementTool
             this.SellingPrice.HeaderText = "Selling Price";
             this.SellingPrice.Name = "SellingPrice";
             this.SellingPrice.ReadOnly = true;
-            this.SellingPrice.Width = 148;
+            this.SellingPrice.Width = 161;
             // 
             // PurchasePrice
             // 
@@ -180,7 +184,7 @@ namespace OrderManagementTool
             this.PurchasePrice.HeaderText = "Purchasing Price";
             this.PurchasePrice.Name = "PurchasePrice";
             this.PurchasePrice.ReadOnly = true;
-            this.PurchasePrice.Width = 185;
+            this.PurchasePrice.Width = 202;
             // 
             // Profit
             // 
