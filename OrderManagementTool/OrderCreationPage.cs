@@ -339,6 +339,8 @@ namespace OrderManagementTool
                 string path = string.Format(fileSelector.SelectedPath + @"\{0}{1}.txt", this.crtOrderNo,
                     this.purchaserName);
 
+
+
                 ExportFile.CreateOrderFile(path, tbOrderContent.Text.Trim());
                 MessageBox.Show("Generating " + this.crtOrderNo + this.purchaserName + ".txt Sucessfully!");
             }

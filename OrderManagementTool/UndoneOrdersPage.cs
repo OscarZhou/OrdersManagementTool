@@ -10,6 +10,7 @@ namespace OrderManagementTool
     {
         private CompletedTransactionPage _frmCompletedTransactionPage;
         private OrderDetailsPage _frmOrderDetail;
+        private Control _parentContainer = null;
 
         // define delegate
         public delegate void DlgGetObjTransaction(string orderNo);
@@ -18,16 +19,16 @@ namespace OrderManagementTool
 
 
         // define delegate
-        public delegate void DlgSendOperation(string operation, string orderNo);
+        public delegate void DlgOpenInnerView(string orderNo, Control parentControl);
         // create an event. that is delegate variables
-        public event DlgSendOperation EvtSendOperation;
+        public event DlgOpenInnerView EvtSendOperation;
 
         
         public UndoneOrdersPage()
         {
             InitializeComponent();
             this.dgvUndoneOrders.AutoGenerateColumns = false;
-            ShowUndoneOrder();
+            
             // Add key down event
             this.KeyDown += UndoneOrdersPage_KeyDown;
             foreach (Control control in this.Controls)
@@ -88,11 +89,63 @@ namespace OrderManagementTool
         {
             string orderNo = dgvUndoneOrders.CurrentRow.Cells["OrderNo"].Value.ToString();
             _frmOrderDetail = new OrderDetailsPage();
-            this.EvtSendOperation += _frmOrderDetail.Receiver;
-            this.EvtSendOperation("View", orderNo);
-            _frmOrderDetail.ShowDialog();
+            this.EvtSendOperation += _frmOrderDetail.ViewReceiver;
+            this.EvtSendOperation(orderNo, this._parentContainer);
+            this.OpenNewForm(_frmOrderDetail);
+
         }
 
+        #region Receiver operation corresponding from the main interface
 
+        public void Receiver(Control parentControl)
+        {
+            ShowUndoneOrder();
+            this._parentContainer = parentControl;
+        }
+        #endregion
+
+        #region Window operation
+
+        private void OpenNewForm(Form newFrm)
+        {
+
+            // Close other embeded windows
+            foreach (Control item in _parentContainer.Controls)
+            {
+                if (item is Form)
+                {
+                    ((Form)item).Close();
+                }
+            }
+
+            // Open and attach the new window
+            newFrm.TopLevel = false;
+            newFrm.Parent = _parentContainer;
+            newFrm.Dock = DockStyle.Fill;
+            newFrm.Show();
+        }
+
+        /// <summary>
+        /// Open or Close the elements in main window
+        /// </summary>
+        /// <param name="mainFrmState"></param>
+        private void DisplayMainFrm(bool mainFrmState)
+        {
+            //MessageBox.Show("width:" + this.splitContainer.Panel1.Size.Width + ",height:" +
+            //                this.splitContainer.Panel1.Size.Height);
+
+            // Close other embeded windows
+            foreach (Control item in _parentContainer.Controls)
+            {
+                if (item is Form)
+                {
+                    ((Form)item).Close();
+                }
+                item.Visible = mainFrmState;
+            }
+
+        }
+
+        #endregion
     }
 }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using Utilities;
@@ -57,6 +58,15 @@ namespace OrderManagementTool
         public delegate void DlgSendHandler(CalculatePriceKitPage priceKitForm);
 
         public DlgSendHandler EvtSendHandler;
+
+        #endregion
+
+        #region Delegate for passing the parent control when UndoneOrders Form is opened
+
+        public delegate void DlgPassParentPanel(Control parentControl);
+
+        public DlgPassParentPanel EvtPassParentPanel;
+
 
         #endregion
 
@@ -128,8 +138,10 @@ namespace OrderManagementTool
             }
             else
             {
-                _frmUndoneOrders = new UndoneOrdersPage();
                 this.DisplayMainFrm(false);
+                _frmUndoneOrders = new UndoneOrdersPage();
+                this.EvtPassParentPanel += _frmUndoneOrders.Receiver;// 关联子窗体，传递订单号信息
+                this.EvtPassParentPanel(this.splitContainer.Panel1);
                 this.OpenNewForm(_frmUndoneOrders);       
             }
         }
@@ -147,7 +159,6 @@ namespace OrderManagementTool
         private void ShowTransaction(string name, int sortingtype)
         {
             dgvTransaction.DataSource = new TransactionManage().GetTransactionList(name, sortingtype);
-
             #region Calculate total profit
             double TotalProfit = 0;
             foreach (DataGridViewRow dgvTransactionRow in dgvTransaction.Rows)
@@ -158,6 +169,7 @@ namespace OrderManagementTool
 
             #endregion
             dgvTransaction.Show();
+            //dgvTransaction.Columns["Purchaser"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             this._orderNo = dgvTransaction.Rows[0].Cells["OrderNo"].Value.ToString();
         }
 
@@ -239,14 +251,29 @@ namespace OrderManagementTool
 
         private void btnDeleteOrder_Click(object sender, EventArgs e)
         {
-            this.DisplayMainFrm(true);
             // Display the selected row in datagridview    
             //this.dgvTransaction.FirstDisplayedCell = this.dgvTransaction.Rows[Convert.ToInt32(this.orderNo)].Cells[0]; 
 
             if (MessageBox.Show(this, "Delete?", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                
                 Order objOrder = new OrderManage().GetOrderByOrderNo(this._orderNo);
                 objOrder.User = new UserInfoManage().GetUserByOrderNo(this._orderNo);
+
+                #region Delete the .txt File
+
+                string defaultPath = ExportFile.GetDefaultPath("dircPath");
+                if (defaultPath != "")
+                {
+                    string filename = string.Format(@"{0}\{1}{2}.txt", defaultPath, objOrder.OrderNo, objOrder.Purchaser);
+                    if (File.Exists(filename))
+                    {
+                        File.Delete(filename);
+                    }
+                }
+
+                #endregion
+
                 new TransactionManage().DeleteTransactionRecord(this._orderNo);
                 new ItemManage().DeleteItemListByOrderNo(this._orderNo);
                 new OrderManage().DeleteOrder(objOrder);
@@ -255,8 +282,8 @@ namespace OrderManagementTool
                 {
                     MessageBox.Show("Delete data sucessfully!");
                 }
-
-                ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));                
+                this.DisplayMainFrm(true);
+             
             }
         }
 

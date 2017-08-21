@@ -46,12 +46,6 @@
             this.btnAddOrder = new System.Windows.Forms.Button();
             this.lbTotalProfit = new System.Windows.Forms.Label();
             this.dgvTransaction = new System.Windows.Forms.DataGridView();
-            this.OrderNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Purchaser = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SellingPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PurchasePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Profit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnUndoneOrders = new System.Windows.Forms.Button();
             this.btnDataAnalysis = new System.Windows.Forms.Button();
             this.cmbSorting = new System.Windows.Forms.ComboBox();
@@ -73,6 +67,12 @@
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.label6 = new System.Windows.Forms.Label();
             this.btnTransaction = new System.Windows.Forms.Button();
+            this.OrderNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Purchaser = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SellingPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchasePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Profit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransaction)).BeginInit();
             this.panelTop.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -226,96 +226,6 @@
             this.dgvTransaction.TabIndex = 6;
             this.dgvTransaction.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTransaction_CellDoubleClick);
             this.dgvTransaction.Click += new System.EventHandler(this.dgvTransaction_Click);
-            // 
-            // OrderNo
-            // 
-            this.OrderNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.OrderNo.DataPropertyName = "OrderNo";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            this.OrderNo.DefaultCellStyle = dataGridViewCellStyle3;
-            this.OrderNo.FillWeight = 30F;
-            this.OrderNo.HeaderText = "Order No";
-            this.OrderNo.Name = "OrderNo";
-            this.OrderNo.ReadOnly = true;
-            this.OrderNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.OrderNo.Width = 106;
-            // 
-            // Purchaser
-            // 
-            this.Purchaser.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Purchaser.DataPropertyName = "Purchaser";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.Purchaser.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Purchaser.FillWeight = 35.51238F;
-            this.Purchaser.HeaderText = "Purchaser Name";
-            this.Purchaser.Name = "Purchaser";
-            this.Purchaser.ReadOnly = true;
-            this.Purchaser.Width = 202;
-            // 
-            // SellingPrice
-            // 
-            this.SellingPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SellingPrice.DataPropertyName = "SellingPrice";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.NullValue = null;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
-            this.SellingPrice.DefaultCellStyle = dataGridViewCellStyle5;
-            this.SellingPrice.FillWeight = 35.51238F;
-            this.SellingPrice.HeaderText = "Selling Price";
-            this.SellingPrice.Name = "SellingPrice";
-            this.SellingPrice.ReadOnly = true;
-            this.SellingPrice.Width = 161;
-            // 
-            // PurchasePrice
-            // 
-            this.PurchasePrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.PurchasePrice.DataPropertyName = "PurchasePrice";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.NullValue = null;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
-            this.PurchasePrice.DefaultCellStyle = dataGridViewCellStyle6;
-            this.PurchasePrice.FillWeight = 35.51238F;
-            this.PurchasePrice.HeaderText = "Purchasing Price";
-            this.PurchasePrice.Name = "PurchasePrice";
-            this.PurchasePrice.ReadOnly = true;
-            this.PurchasePrice.Width = 202;
-            // 
-            // Profit
-            // 
-            this.Profit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Profit.DataPropertyName = "Profit";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.NullValue = null;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
-            this.Profit.DefaultCellStyle = dataGridViewCellStyle7;
-            this.Profit.FillWeight = 42.0718F;
-            this.Profit.HeaderText = "Profit";
-            this.Profit.Name = "Profit";
-            this.Profit.ReadOnly = true;
-            this.Profit.Width = 99;
-            // 
-            // CreateTime
-            // 
-            this.CreateTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CreateTime.DataPropertyName = "CreateTime";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
-            this.CreateTime.DefaultCellStyle = dataGridViewCellStyle8;
-            this.CreateTime.FillWeight = 42.0718F;
-            this.CreateTime.HeaderText = "Date";
-            this.CreateTime.Name = "CreateTime";
-            this.CreateTime.ReadOnly = true;
             // 
             // btnUndoneOrders
             // 
@@ -651,6 +561,96 @@
             this.btnTransaction.UseVisualStyleBackColor = false;
             this.btnTransaction.Click += new System.EventHandler(this.btnTransaction_Click);
             // 
+            // OrderNo
+            // 
+            this.OrderNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.OrderNo.DataPropertyName = "OrderNo";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            this.OrderNo.DefaultCellStyle = dataGridViewCellStyle3;
+            this.OrderNo.FillWeight = 30F;
+            this.OrderNo.HeaderText = "Order No";
+            this.OrderNo.Name = "OrderNo";
+            this.OrderNo.ReadOnly = true;
+            this.OrderNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.OrderNo.Width = 106;
+            // 
+            // Purchaser
+            // 
+            this.Purchaser.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Purchaser.DataPropertyName = "Purchaser";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.Purchaser.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Purchaser.FillWeight = 35.51238F;
+            this.Purchaser.HeaderText = "Purchaser Name";
+            this.Purchaser.Name = "Purchaser";
+            this.Purchaser.ReadOnly = true;
+            this.Purchaser.Width = 202;
+            // 
+            // SellingPrice
+            // 
+            this.SellingPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SellingPrice.DataPropertyName = "SellingPrice";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.NullValue = null;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            this.SellingPrice.DefaultCellStyle = dataGridViewCellStyle5;
+            this.SellingPrice.FillWeight = 35.51238F;
+            this.SellingPrice.HeaderText = "Selling Price";
+            this.SellingPrice.Name = "SellingPrice";
+            this.SellingPrice.ReadOnly = true;
+            this.SellingPrice.Width = 161;
+            // 
+            // PurchasePrice
+            // 
+            this.PurchasePrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.PurchasePrice.DataPropertyName = "PurchasePrice";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.NullValue = null;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            this.PurchasePrice.DefaultCellStyle = dataGridViewCellStyle6;
+            this.PurchasePrice.FillWeight = 35.51238F;
+            this.PurchasePrice.HeaderText = "Purchasing Price";
+            this.PurchasePrice.Name = "PurchasePrice";
+            this.PurchasePrice.ReadOnly = true;
+            this.PurchasePrice.Width = 202;
+            // 
+            // Profit
+            // 
+            this.Profit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Profit.DataPropertyName = "Profit";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.NullValue = null;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            this.Profit.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Profit.FillWeight = 42.0718F;
+            this.Profit.HeaderText = "Profit";
+            this.Profit.Name = "Profit";
+            this.Profit.ReadOnly = true;
+            this.Profit.Width = 99;
+            // 
+            // CreateTime
+            // 
+            this.CreateTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CreateTime.DataPropertyName = "CreateTime";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            this.CreateTime.DefaultCellStyle = dataGridViewCellStyle8;
+            this.CreateTime.FillWeight = 42.0718F;
+            this.CreateTime.HeaderText = "Date";
+            this.CreateTime.Name = "CreateTime";
+            this.CreateTime.ReadOnly = true;
+            // 
             // OrderManagementTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -712,13 +712,13 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.SplitContainer splitContainer;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnTransaction;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Purchaser;
         private System.Windows.Forms.DataGridViewTextBoxColumn SellingPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn PurchasePrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn Profit;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateTime;
-        private System.Windows.Forms.Button btnTransaction;
     }
 }
 

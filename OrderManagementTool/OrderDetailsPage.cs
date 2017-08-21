@@ -13,7 +13,7 @@ namespace OrderManagementTool
         private List<Item> _objItems = null;
         private string _status = null;
         private string _orderNo = null;
-        private Control parentContainer = null;
+        private Control _parentContainer = null;
 
         #region When CreateOrder Form is opened from OrderDetail Form, sending the order object to CreateOrder Form directly
 
@@ -32,7 +32,6 @@ namespace OrderManagementTool
         public DlgSendMsg EvtSendMsg;
 
         #endregion
-
 
         #endregion
 
@@ -94,7 +93,7 @@ namespace OrderManagementTool
                     control.Enabled = false;
                 }
             }
-            this.parentContainer = parentControl;
+            this._parentContainer = parentControl;
             this._orderNo = orderNo;
             ShowOrderDetail(orderNo);
         }
@@ -406,7 +405,7 @@ namespace OrderManagementTool
         {
 
             // Close other embeded windows
-            foreach (Control item in parentContainer.Controls)
+            foreach (Control item in _parentContainer.Controls)
             {
                 if (item is Form)
                 {
@@ -416,7 +415,7 @@ namespace OrderManagementTool
 
             // Open and attach the new window
             newFrm.TopLevel = false;
-            newFrm.Parent = parentContainer;
+            newFrm.Parent = _parentContainer;
             newFrm.Dock = DockStyle.Fill;
             newFrm.Show();
         }
@@ -431,7 +430,7 @@ namespace OrderManagementTool
             //                this.splitContainer.Panel1.Size.Height);
 
             // Close other embeded windows
-            foreach (Control item in parentContainer.Controls)
+            foreach (Control item in _parentContainer.Controls)
             {
                 if (item is Form)
                 {
