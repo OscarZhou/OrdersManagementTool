@@ -15,14 +15,23 @@ namespace OrderManagementTool
         private string _orderNo = null;
         private Control parentContainer = null;
 
+        #region When CreateOrder Form is opened from OrderDetail Form, sending the order object to CreateOrder Form directly
+
+
         public delegate void DlgCreateNewOrder(Order objOrder);
         public DlgCreateNewOrder EvtCreateNewOrder;
+
+        #endregion
+
+        #region This delegate is used for sending message to main interface
+        // when msgName = refresh, refreshing the transaction datagridview
+        // when msgName = open, opening default view
 
         public delegate void DlgSendMsg(string msgName);
 
         public DlgSendMsg EvtSendMsg;
 
-
+        #endregion
 
         #endregion
 
@@ -226,6 +235,7 @@ namespace OrderManagementTool
             if (result > 0)
             {
                 MessageBox.Show("Modifying Order Sucessfully!");
+                this.EvtSendMsg("open");
                 this.Close();
             }
         }

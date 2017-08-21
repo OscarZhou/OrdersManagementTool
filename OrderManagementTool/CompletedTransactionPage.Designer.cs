@@ -147,7 +147,7 @@
             this.btnOkay.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnOkay.Location = new System.Drawing.Point(204, 407);
             this.btnOkay.Name = "btnOkay";
-            this.btnOkay.Size = new System.Drawing.Size(109, 37);
+            this.btnOkay.Size = new System.Drawing.Size(109, 40);
             this.btnOkay.TabIndex = 0;
             this.btnOkay.Text = "Submit";
             this.btnOkay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

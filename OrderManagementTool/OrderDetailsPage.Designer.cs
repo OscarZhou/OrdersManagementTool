@@ -143,7 +143,7 @@
             // 
             this.dgvItemList.AllowUserToAddRows = false;
             this.dgvItemList.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.PapayaWhip;
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
@@ -172,7 +172,7 @@
             this.dgvItemList.MultiSelect = false;
             this.dgvItemList.Name = "dgvItemList";
             this.dgvItemList.ReadOnly = true;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.LightSkyBlue;
             dataGridViewCellStyle8.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
@@ -180,7 +180,7 @@
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvItemList.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
             this.dgvItemList.RowsDefaultCellStyle = dataGridViewCellStyle9;
@@ -194,7 +194,7 @@
             // 
             this.ItemDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ItemDescription.DataPropertyName = "ItemDescription";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
             this.ItemDescription.DefaultCellStyle = dataGridViewCellStyle3;
@@ -368,11 +368,14 @@
             this.btnModify.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
             this.btnModify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModify.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnModify.Location = new System.Drawing.Point(942, 629);
+            this.btnModify.Image = ((System.Drawing.Image)(resources.GetObject("btnModify.Image")));
+            this.btnModify.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnModify.Location = new System.Drawing.Point(933, 629);
             this.btnModify.Name = "btnModify";
-            this.btnModify.Size = new System.Drawing.Size(204, 38);
+            this.btnModify.Size = new System.Drawing.Size(213, 40);
             this.btnModify.TabIndex = 13;
             this.btnModify.Text = "Confirm Modification";
+            this.btnModify.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnModify.UseVisualStyleBackColor = false;
             this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
@@ -454,11 +457,14 @@
             this.btnEditItem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
             this.btnEditItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditItem.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnEditItem.Location = new System.Drawing.Point(1028, 116);
+            this.btnEditItem.Image = ((System.Drawing.Image)(resources.GetObject("btnEditItem.Image")));
+            this.btnEditItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditItem.Location = new System.Drawing.Point(1028, 110);
             this.btnEditItem.Name = "btnEditItem";
-            this.btnEditItem.Size = new System.Drawing.Size(118, 35);
+            this.btnEditItem.Size = new System.Drawing.Size(118, 40);
             this.btnEditItem.TabIndex = 12;
             this.btnEditItem.Text = "Edit";
+            this.btnEditItem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEditItem.UseVisualStyleBackColor = false;
             this.btnEditItem.Click += new System.EventHandler(this.btnEditItem_Click);
             // 
@@ -497,11 +503,14 @@
             this.btnCreateOrder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
             this.btnCreateOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateOrder.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnCreateOrder.Image = ((System.Drawing.Image)(resources.GetObject("btnCreateOrder.Image")));
+            this.btnCreateOrder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCreateOrder.Location = new System.Drawing.Point(997, 570);
             this.btnCreateOrder.Name = "btnCreateOrder";
-            this.btnCreateOrder.Size = new System.Drawing.Size(149, 38);
+            this.btnCreateOrder.Size = new System.Drawing.Size(149, 40);
             this.btnCreateOrder.TabIndex = 14;
-            this.btnCreateOrder.Text = "Create Order";
+            this.btnCreateOrder.Text = "New Order";
+            this.btnCreateOrder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCreateOrder.UseVisualStyleBackColor = false;
             this.btnCreateOrder.Click += new System.EventHandler(this.btnCreateOrder_Click);
             // 

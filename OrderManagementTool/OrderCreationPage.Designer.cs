@@ -193,9 +193,9 @@
             this.btnAddItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnAddItem.Image = ((System.Drawing.Image)(resources.GetObject("btnAddItem.Image")));
             this.btnAddItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddItem.Location = new System.Drawing.Point(792, 108);
+            this.btnAddItem.Location = new System.Drawing.Point(792, 101);
             this.btnAddItem.Name = "btnAddItem";
-            this.btnAddItem.Size = new System.Drawing.Size(97, 33);
+            this.btnAddItem.Size = new System.Drawing.Size(97, 40);
             this.btnAddItem.TabIndex = 7;
             this.btnAddItem.Text = "Add";
             this.btnAddItem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -271,7 +271,7 @@
             // 
             this.ItemDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ItemDescription.DataPropertyName = "ItemDescription";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
             this.ItemDescription.DefaultCellStyle = dataGridViewCellStyle3;
@@ -379,9 +379,9 @@
             this.btnAddOrder.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnAddOrder.Image = ((System.Drawing.Image)(resources.GetObject("btnAddOrder.Image")));
             this.btnAddOrder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddOrder.Location = new System.Drawing.Point(1006, 16);
+            this.btnAddOrder.Location = new System.Drawing.Point(1006, 10);
             this.btnAddOrder.Name = "btnAddOrder";
-            this.btnAddOrder.Size = new System.Drawing.Size(138, 35);
+            this.btnAddOrder.Size = new System.Drawing.Size(138, 40);
             this.btnAddOrder.TabIndex = 8;
             this.btnAddOrder.Text = "Place Order";
             this.btnAddOrder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -530,9 +530,9 @@
             this.btnPriceKit.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnPriceKit.Image = ((System.Drawing.Image)(resources.GetObject("btnPriceKit.Image")));
             this.btnPriceKit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPriceKit.Location = new System.Drawing.Point(1026, 107);
+            this.btnPriceKit.Location = new System.Drawing.Point(1026, 101);
             this.btnPriceKit.Name = "btnPriceKit";
-            this.btnPriceKit.Size = new System.Drawing.Size(118, 35);
+            this.btnPriceKit.Size = new System.Drawing.Size(118, 40);
             this.btnPriceKit.TabIndex = 8;
             this.btnPriceKit.Text = "Price Kit";
             this.btnPriceKit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -547,9 +547,9 @@
             this.btnDeleteItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteItem.Image")));
             this.btnDeleteItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDeleteItem.Location = new System.Drawing.Point(906, 108);
+            this.btnDeleteItem.Location = new System.Drawing.Point(906, 101);
             this.btnDeleteItem.Name = "btnDeleteItem";
-            this.btnDeleteItem.Size = new System.Drawing.Size(101, 33);
+            this.btnDeleteItem.Size = new System.Drawing.Size(101, 40);
             this.btnDeleteItem.TabIndex = 7;
             this.btnDeleteItem.Text = "Delete";
             this.btnDeleteItem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -624,6 +624,7 @@
             this.Name = "OrderCreationPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Creating Order";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OrderCreationPage_FormClosing);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OrderCreationPage_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemList)).EndInit();
             this.ResumeLayout(false);

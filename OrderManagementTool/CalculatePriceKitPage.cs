@@ -172,6 +172,15 @@ namespace OrderManagementTool
             }
         }
 
+        public void Receiver(string whereFromOpen)
+        {
+            if (whereFromOpen.Equals("Outer"))
+            {
+                this.btnImportToOrder.Visible = false;
+                
+            }
+        }
+
         #region Drag and close window
 
         private Point mouseOff; //The moving position variables of the mouse

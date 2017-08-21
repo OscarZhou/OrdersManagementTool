@@ -325,7 +325,6 @@ namespace OrderManagementTool
         {
             _frmPriceKit = new CalculatePriceKitPage();
             _frmPriceKit.EvtMoveItem += Receiver;
-
             #region 使打开的窗口依附在原窗口的边上
 
             int x = (System.Windows.Forms.SystemInformation.WorkingArea.Width - _frmPriceKit.Size.Width) / 2 + _frmPriceKit.Size.Width;
@@ -387,6 +386,14 @@ namespace OrderManagementTool
             }
             
             
+        }
+
+        private void OrderCreationPage_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_frmPriceKit!=null)
+            {
+                this._frmPriceKit.Close();
+            }
         }
 
         

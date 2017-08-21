@@ -20,6 +20,7 @@ namespace OrderManagementTool
         private CalculatePriceKitPage _frmPriceKit;
         private FrmOrderText _frmOrderText;
         private string orderNo;
+        private CalculatePriceKitPage _frmInnerPriceKit = null;
 
         #region Delegate for opening the edit order and the view order
         // define delegate
@@ -43,6 +44,22 @@ namespace OrderManagementTool
 
         public event DlgSetOrderText EvtSetOrderText;
         
+        #endregion
+
+        #region Delegate for opening the PriceKit
+
+        public delegate void DlgOpenPriceKit(string whereFromOpen);
+
+        public event DlgOpenPriceKit EvtOpenPriceKit;
+        #endregion
+
+
+        #region Delegate for sending back the Form Handler to Main Interface
+
+        public delegate void DlgSendHandler(CalculatePriceKitPage priceKitForm);
+
+        public DlgSendHandler EvtSendHandler;
+
         #endregion
 
         #endregion
@@ -203,6 +220,7 @@ namespace OrderManagementTool
             _frmOrderDetail = new OrderDetailsPage();
             this.EvtOpenEdit += _frmOrderDetail.EditReceiver;
             this.EvtOpenEdit(this.orderNo);
+            _frmOrderDetail.EvtSendMsg += Receiver;
             this.OpenNewForm(_frmOrderDetail);
             //int orderNo = Convert.ToInt32(dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString());
             //ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex), orderNo);
@@ -250,10 +268,19 @@ namespace OrderManagementTool
         private void btnPriceKit_Click(object sender, EventArgs e)
         {
             _frmPriceKit = new CalculatePriceKitPage();
+
+            #region Setting the start position of the new window
+
             int x = (System.Windows.Forms.SystemInformation.WorkingArea.Width - _frmPriceKit.Size.Width) / 2 + _frmPriceKit.Size.Width;
             int y = (System.Windows.Forms.SystemInformation.WorkingArea.Height - _frmPriceKit.Size.Height) / 2;
             _frmPriceKit.StartPosition = FormStartPosition.Manual; //窗体的位置由Location属性决定
             _frmPriceKit.Location = (Point)new Size(x, y);         //窗体的起始位置为(x,y)
+
+
+            #endregion
+            
+            this.EvtOpenPriceKit += _frmPriceKit.Receiver;
+            this.EvtOpenPriceKit("Outer");
             _frmPriceKit.Show();
             //btnPriceKit.Enabled = false;
         }
@@ -314,18 +341,37 @@ namespace OrderManagementTool
 
         }
 
+        #region Receiver function collection
+        /// <summary>
+        /// This receiver is used for receiving all the messages from other windows
+        /// refresh: refreshing the Transaction DataGridView
+        /// open: opening the default view
+        /// </summary>
+        /// <param name="msgName"></param>
         public void Receiver(string msgName)
         {
             if (msgName.Equals("refresh"))
             {
-                ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));    
+                ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
             }
-            
+            else if (msgName.Equals("open"))
+            {
+                this.DisplayMainFrm(true);
+            }
+
         }
+
+        
+
+        #endregion
+
+        
+
 
         private void btnTransaction_Click(object sender, EventArgs e)
         {
             this.DisplayMainFrm(true);
+            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));    
         }
 
         #region Window operation
@@ -357,6 +403,8 @@ namespace OrderManagementTool
         {
             //MessageBox.Show("width:" + this.splitContainer.Panel1.Size.Width + ",height:" +
             //                this.splitContainer.Panel1.Size.Height);
+
+            
 
             // Close other embeded windows
             foreach (Control item in this.splitContainer.Panel1.Controls)

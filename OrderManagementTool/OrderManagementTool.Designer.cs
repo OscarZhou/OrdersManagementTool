@@ -103,9 +103,9 @@
             this.btnSearch.ForeColor = System.Drawing.Color.Black;
             this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
             this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSearch.Location = new System.Drawing.Point(1032, 14);
+            this.btnSearch.Location = new System.Drawing.Point(1032, 10);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(110, 37);
+            this.btnSearch.Size = new System.Drawing.Size(110, 40);
             this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "Search";
             this.btnSearch.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -254,7 +254,7 @@
             this.Purchaser.HeaderText = "Purchaser Name";
             this.Purchaser.Name = "Purchaser";
             this.Purchaser.ReadOnly = true;
-            this.Purchaser.Width = 202;
+            this.Purchaser.Width = 185;
             // 
             // SellingPrice
             // 

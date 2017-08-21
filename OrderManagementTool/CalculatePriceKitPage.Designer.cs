@@ -186,7 +186,7 @@
             this.btnReset.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnReset.Image = ((System.Drawing.Image)(resources.GetObject("btnReset.Image")));
             this.btnReset.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReset.Location = new System.Drawing.Point(296, 82);
+            this.btnReset.Location = new System.Drawing.Point(113, 82);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(85, 40);
             this.btnReset.TabIndex = 5;
@@ -203,7 +203,7 @@
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(391, 82);
+            this.btnSave.Location = new System.Drawing.Point(208, 82);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(84, 40);
             this.btnSave.TabIndex = 5;
@@ -300,7 +300,7 @@
             this.btnClearPrice.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnClearPrice.Image = ((System.Drawing.Image)(resources.GetObject("btnClearPrice.Image")));
             this.btnClearPrice.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClearPrice.Location = new System.Drawing.Point(200, 82);
+            this.btnClearPrice.Location = new System.Drawing.Point(17, 82);
             this.btnClearPrice.Name = "btnClearPrice";
             this.btnClearPrice.Size = new System.Drawing.Size(86, 40);
             this.btnClearPrice.TabIndex = 5;
