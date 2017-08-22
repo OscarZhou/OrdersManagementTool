@@ -255,29 +255,7 @@ namespace OrderManagementTool
             #endregion
 
             #region Generate the Order text
-            StringBuilder orderBuilder = new StringBuilder();
-            // From part
-            orderBuilder.Append("发件人：{0}\r\n电话：{1}\r\n\r\n");
-            string orderContent = string.Format(orderBuilder.ToString(), tbFrom.Text, tbFromPhone.Text);
-            tbOrderContent.Text = orderContent;
-            
-            // Item part
-            orderBuilder.Clear();
-            int counter = 0;
-            foreach (Item objItem in objItems)
-            {
-                counter++;
-                orderBuilder.Append(counter + "、{0}，数量{1}\r\n");
-                orderContent = string.Format(orderBuilder.ToString(), objItem.ItemDescription, objItem.Quantity);
-                tbOrderContent.Text += orderContent;
-                orderBuilder.Clear();
-            }
-
-            // To part
-            orderBuilder.Append("\r\n收件人：{0}\r\n电话：{1}\r\n地址：{2}\r\n");
-            orderContent = string.Format(orderBuilder.ToString(), objUserInfo.UserName, objUserInfo.PhoneNumber,
-                objUserInfo.Address);
-            tbOrderContent.Text += orderContent;
+            tbOrderContent.Text = this.GenerateOrderContent(objUserInfo, false);
 
             #endregion
 
@@ -339,6 +317,14 @@ namespace OrderManagementTool
                 string path = string.Format(fileSelector.SelectedPath + @"\{0}{1}.txt", this.crtOrderNo,
                     this.purchaserName);
 
+                UserInfo objUserInfo = new UserInfo()
+                {
+                    UserName = tbTo.Text.Trim(),
+                    PhoneNumber = tbToPhone.Text.Trim(),
+                    Address = tbAddress.Text.Trim(),
+                    CardNo = tbIdentityCard.Text.Trim()
+                };
+                string orderContent = this.GenerateOrderContent(objUserInfo, true);
 
 
                 ExportFile.CreateOrderFile(path, tbOrderContent.Text.Trim());
@@ -433,6 +419,37 @@ namespace OrderManagementTool
             }
         }
 
-        
+        #region Generate Order content
+
+        private string GenerateOrderContent(UserInfo objUserInfo,bool withUnitPrice)
+        {
+            StringBuilder orderBuilder = new StringBuilder();
+            // From part
+            orderBuilder.Append(string.Format("发件人：{0}\r\n电话：{1}\r\n\r\n", tbFrom.Text, tbFromPhone.Text));
+            // Item part
+            int counter = 0;
+            foreach (Item objItem in objItems)
+            {
+                counter++;
+                if (withUnitPrice)
+                {
+                    orderBuilder.Append(string.Format(counter + "、{0}，数量{1}，{2}\r\n", objItem.ItemDescription,
+                        objItem.Quantity, objItem.UnitPrice));
+                }
+                else
+                {
+                    orderBuilder.Append(string.Format(counter + "、{0}，数量{1}\r\n", objItem.ItemDescription,
+                        objItem.Quantity));
+                }
+            }
+            // To part
+            orderBuilder.Append(string.Format("\r\n收件人：{0}\r\n电话：{1}\r\n地址：{2}\r\n", objUserInfo.UserName,
+                objUserInfo.PhoneNumber,
+                objUserInfo.Address));
+            return orderBuilder.ToString();
+
+        }
+
+        #endregion
     }
 }

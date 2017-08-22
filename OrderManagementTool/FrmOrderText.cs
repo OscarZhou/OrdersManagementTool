@@ -55,30 +55,10 @@ namespace OrderManagementTool
         {
 
             #region Generate the Order text
-            // From part
-            string orderContent = "发件人：Oscar\r\n电话：0211376664\r\n\r\n";
-            tbOrderContent.Text = orderContent;
 
-            // Item part
-
-            StringBuilder orderBuilder = new StringBuilder();
             List<Item> objItems = new ItemManage().GetItemListByOrderNo(this._orderNo);
-            int counter = 0;
-            foreach (Item objItem in objItems)
-            {
-                counter++;
-                orderBuilder.Append(counter + "、{0}，数量{1}\r\n");
-                orderContent = string.Format(orderBuilder.ToString(), objItem.ItemDescription, objItem.Quantity);
-                tbOrderContent.Text += orderContent;
-                orderBuilder.Clear();
-            }
-
-            // To part
             UserInfo objUserInfo = new UserInfoManage().GetUserByOrderNo(this._orderNo);
-            orderBuilder.Append("\r\n收件人：{0}\r\n电话：{1}\r\n地址：{2}\r\n");
-            orderContent = string.Format(orderBuilder.ToString(), objUserInfo.UserName, objUserInfo.PhoneNumber,
-                objUserInfo.Address);
-            tbOrderContent.Text += orderContent;
+            tbOrderContent.Text = this.GenerateOrderContent(objItems, objUserInfo, true);
 
             #endregion
 
@@ -109,5 +89,38 @@ namespace OrderManagementTool
 
             #endregion
         }
+
+        #region Generate Order content
+
+        private string GenerateOrderContent(List<Item> objItems, UserInfo objUserInfo, bool withUnitPrice)
+        {
+            StringBuilder orderBuilder = new StringBuilder();
+            // From part
+            orderBuilder.Append("发件人：Oscar\r\n电话：0211376664\r\n\r\n");
+            // Item part
+            int counter = 0;
+            foreach (Item objItem in objItems)
+            {
+                counter++;
+                if (withUnitPrice)
+                {
+                    orderBuilder.Append(string.Format(counter + "、{0}，数量{1}，{2}\r\n", objItem.ItemDescription,
+                        objItem.Quantity, objItem.UnitPrice));
+                }
+                else
+                {
+                    orderBuilder.Append(string.Format(counter + "、{0}，数量{1}\r\n", objItem.ItemDescription,
+                        objItem.Quantity));
+                }
+            }
+            // To part
+            orderBuilder.Append(string.Format("\r\n收件人：{0}\r\n电话：{1}\r\n地址：{2}\r\n", objUserInfo.UserName,
+                objUserInfo.PhoneNumber,
+                objUserInfo.Address));
+            return orderBuilder.ToString();
+
+        }
+
+        #endregion
     }
 }

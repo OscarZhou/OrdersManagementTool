@@ -22,11 +22,8 @@ namespace OrderManagementTool
         private FrmOrderText _frmOrderText;
         private string _orderNo;
 
+
         #region Delegate for opening the edit order and the view order
-        // define delegate
-        public delegate void DlgSendOperation(string operation, string orderNo);
-        // create an event. that is delegate variables
-        public event DlgSendOperation EvtSendOperation;
 
         public delegate void DlgOpenEdit(string order);
 
@@ -144,6 +141,7 @@ namespace OrderManagementTool
                 this.EvtPassParentPanel(this.splitContainer.Panel1);
                 this.OpenNewForm(_frmUndoneOrders);       
             }
+            
         }
 
         /// <summary>
@@ -170,10 +168,14 @@ namespace OrderManagementTool
             #endregion
             dgvTransaction.Show();
             //dgvTransaction.Columns["Purchaser"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            if (dgvTransaction.RowCount != 0)
-            {
-                this._orderNo = dgvTransaction.Rows[0].Cells["OrderNo"].Value.ToString();    
-            }
+            
+            
+            
+            
+            //if (dgvTransaction.RowCount != 0)
+            //{
+            //    this._orderNo = dgvTransaction.Rows[0].Cells["OrderNo"].Value.ToString();    
+            //}
         }
 
         private void ShowTransaction(string name, int sortingtype, int orderNo)
@@ -214,7 +216,8 @@ namespace OrderManagementTool
         /// <param name="e"></param>
         private void btnDetail_Click(object sender, EventArgs e)
         {
-            this.DisplayMainFrm(false);
+            
+            this._orderNo = dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString();    
             _frmOrderDetail = new OrderDetailsPage();
             this.EvtOpenView += _frmOrderDetail.ViewReceiver;// 关联子窗体，传递订单号信息
             this.EvtOpenView(this._orderNo, this.splitContainer.Panel1);
@@ -222,17 +225,37 @@ namespace OrderManagementTool
             #region 回传消息给主窗体，让其刷新交易列表
             //_frmOrderDetail.EvtSendMsg += this.Receiver;//关联子窗体，添加发送消息方法，用于刷新交易列表
             #endregion
-
+            this.DisplayMainFrm(false);
             this.OpenNewForm(_frmOrderDetail);
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            this.DisplayMainFrm(false);
+            //#region 不能连续两次点击 OrderDetails Form
+
+
+            //foreach (Control item in this.splitContainer.Panel1.Controls)
+            //{
+            //    if (item is OrderDetailsPage)
+            //    {
+            //        if (MessageBox.Show(this, "You should choose one transaction firstly?", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            //        {
+            //            ((Form)item).Close();
+            //            this.DisplayMainFrm(true);
+            //            return;
+            //        }
+            //    }
+            //}
+
+            //#endregion
+
+
+            this._orderNo = dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString();    
             _frmOrderDetail = new OrderDetailsPage();
             this.EvtOpenEdit += _frmOrderDetail.EditReceiver;
             this.EvtOpenEdit(this._orderNo);
             _frmOrderDetail.EvtSendMsg += Receiver;
+            this.DisplayMainFrm(false);
             this.OpenNewForm(_frmOrderDetail);
         }
 
@@ -313,10 +336,11 @@ namespace OrderManagementTool
 
         private void dgvTransaction_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.DisplayMainFrm(false);
+            this._orderNo = dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString();    
             _frmOrderDetail = new OrderDetailsPage();
             this.EvtOpenView += _frmOrderDetail.ViewReceiver;// 关联子窗体，传递订单号信息
             this.EvtOpenView(this._orderNo, this.splitContainer.Panel1);
+            this.DisplayMainFrm(false);
             this.OpenNewForm(_frmOrderDetail);
         }
 
@@ -393,7 +417,14 @@ namespace OrderManagementTool
         private void btnTransaction_Click(object sender, EventArgs e)
         {
             this.DisplayMainFrm(true);
-            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));    
+            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
+
+            int selectedRowNo = GetCurrentRowNo(this._orderNo) > 5
+                ? GetCurrentRowNo(this._orderNo) - 5
+                : GetCurrentRowNo(this._orderNo);
+            
+            this.dgvTransaction.FirstDisplayedCell = this.dgvTransaction.Rows[selectedRowNo].Cells[0];
+            this.dgvTransaction.Rows[GetCurrentRowNo(this._orderNo)-1].Cells[0].Selected = true;
         }
 
         #region Window operation
@@ -512,6 +543,26 @@ namespace OrderManagementTool
         {
             this._orderNo = dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString();
         }
+
+
+        #region Get the row No that is can be selected after switching the form
+        private int GetCurrentRowNo(string orderNo)
+        {
+            int selectedRowNo = 0;
+            foreach (DataGridViewRow row in this.dgvTransaction.Rows)
+            {
+                selectedRowNo++;
+                if (row.Cells["OrderNo"].Value.ToString().Equals(orderNo))
+                {
+                    return selectedRowNo;
+                }
+            }
+
+            return selectedRowNo;
+        }        
+
+        #endregion
+
 
     }
 }
