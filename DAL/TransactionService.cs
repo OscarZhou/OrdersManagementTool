@@ -22,7 +22,7 @@ namespace DAL
             sqlBuilder.Append(" values({0}, {1}, {2}, {3}, '{4}', {5}, '{6}')");
 
             string sql = string.Format(sqlBuilder.ToString(), objTransaction.PurchasePrice, objTransaction.SellingPrice,
-                objTransaction.Profit, objTransaction.OrderNo, objTransaction.Purchaser, objTransaction.OrderStatus, DateTime.Now.Date );
+                objTransaction.Profit, objTransaction.OrderNo, objTransaction.Purchaser, objTransaction.OrderStatus, objTransaction.CreateTime.Date );
 
             try
             {

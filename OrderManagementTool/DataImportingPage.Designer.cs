@@ -61,7 +61,7 @@
             // 
             // prbImport
             // 
-            this.prbImport.Location = new System.Drawing.Point(61, 172);
+            this.prbImport.Location = new System.Drawing.Point(28, 172);
             this.prbImport.Name = "prbImport";
             this.prbImport.Size = new System.Drawing.Size(1037, 28);
             this.prbImport.TabIndex = 1;
@@ -73,10 +73,10 @@
             this.lbProcessing.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lbProcessing.Location = new System.Drawing.Point(49, 118);
             this.lbProcessing.Name = "lbProcessing";
-            this.lbProcessing.Size = new System.Drawing.Size(186, 27);
+            this.lbProcessing.Size = new System.Drawing.Size(1049, 27);
             this.lbProcessing.TabIndex = 2;
-            this.lbProcessing.Text = "Current Processing:";
-            this.lbProcessing.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbProcessing.Text = "     Current Processing:";
+            this.lbProcessing.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // bkgWorkForImporting
             // 
@@ -89,7 +89,7 @@
             // 
             this.lbProgress.AutoSize = true;
             this.lbProgress.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lbProgress.Location = new System.Drawing.Point(1111, 174);
+            this.lbProgress.Location = new System.Drawing.Point(1078, 174);
             this.lbProgress.Name = "lbProgress";
             this.lbProgress.Size = new System.Drawing.Size(37, 25);
             this.lbProgress.TabIndex = 3;
@@ -102,10 +102,10 @@
             this.lbFolder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lbFolder.Location = new System.Drawing.Point(48, 69);
             this.lbFolder.Name = "lbFolder";
-            this.lbFolder.Size = new System.Drawing.Size(186, 27);
+            this.lbFolder.Size = new System.Drawing.Size(1050, 27);
             this.lbFolder.TabIndex = 4;
-            this.lbFolder.Text = "Selected Directory:";
-            this.lbFolder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbFolder.Text = "     Selected Directory:";
+            this.lbFolder.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnImportTransaction
             // 

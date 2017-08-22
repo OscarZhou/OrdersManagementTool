@@ -112,6 +112,13 @@ namespace Utilities
         #endregion
 
         #region ImportTransactionRecords
+
+        public static string ParseDateTimeInExcel(string date)
+        {
+            string[] time = date.Split('-');
+            return string.Format("20{0}-{1}-{2}", time[0], time[1], time[2]);
+        }
+
         public static List<Transaction> ParseContentIntoTransaction(string path, List<Transaction> objTransactions)
         {
             #region Initialize office components
@@ -121,7 +128,6 @@ namespace Utilities
             Excel.Range xlRange = xlWorksheet.UsedRange;
             #endregion
             
-
             int rowCount = 300;
             // excel is not zero based
             for (int i = 2; i <= rowCount; i++)
@@ -130,7 +136,8 @@ namespace Utilities
                 {
                     break;
                 }
-                string strDate = DateTime.FromOADate(Convert.ToInt32(xlRange.Cells[i, 6].Value2)).ToString("d");
+
+                string strDate = ParseDateTimeInExcel(xlRange.Cells[i, 6].Value2);
                 objTransactions.Add(new Transaction()
                 {
                     OrderNo = Convert.ToInt32(xlRange.Cells[i, 1].Value2),

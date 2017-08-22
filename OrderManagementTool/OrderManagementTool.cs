@@ -170,7 +170,10 @@ namespace OrderManagementTool
             #endregion
             dgvTransaction.Show();
             //dgvTransaction.Columns["Purchaser"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            this._orderNo = dgvTransaction.Rows[0].Cells["OrderNo"].Value.ToString();
+            if (dgvTransaction.RowCount != 0)
+            {
+                this._orderNo = dgvTransaction.Rows[0].Cells["OrderNo"].Value.ToString();    
+            }
         }
 
         private void ShowTransaction(string name, int sortingtype, int orderNo)
@@ -254,6 +257,8 @@ namespace OrderManagementTool
             // Display the selected row in datagridview    
             //this.dgvTransaction.FirstDisplayedCell = this.dgvTransaction.Rows[Convert.ToInt32(this.orderNo)].Cells[0]; 
 
+            this.DisplayMainFrm(true);
+             
             if (MessageBox.Show(this, "Delete?", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 
@@ -308,10 +313,11 @@ namespace OrderManagementTool
 
         private void dgvTransaction_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            this.DisplayMainFrm(false);
             _frmOrderDetail = new OrderDetailsPage();
-            this.EvtSendOperation += _frmOrderDetail.Receiver;
-            this.EvtSendOperation("View", this._orderNo);
-            _frmOrderDetail.ShowDialog();
+            this.EvtOpenView += _frmOrderDetail.ViewReceiver;// 关联子窗体，传递订单号信息
+            this.EvtOpenView(this._orderNo, this.splitContainer.Panel1);
+            this.OpenNewForm(_frmOrderDetail);
         }
 
         private void OrderManagementTool_KeyDown(object sender, KeyEventArgs e)

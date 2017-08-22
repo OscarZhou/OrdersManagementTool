@@ -308,10 +308,21 @@ namespace OrderManagementTool
                 return;
                 
             }
-            else if (System.Text.RegularExpressions.Regex.IsMatch(tbSellingPrice.Text, "[^0-9]"))
+            else if (System.Text.RegularExpressions.Regex.IsMatch(tbSellingPrice.Text, "[^0-9]"))  //区分不是字母，而是数字
             {
-                this.ShowError("Please input only number", tbSellingPrice, lbError);
-                return;
+                // 可能是字母或者是小数
+                if (!System.Text.RegularExpressions.Regex.IsMatch(tbSellingPrice.Text, @"^(-?\d+)(\.\d+)?$"))
+                {
+                    //不是小数
+                    this.ShowError("Please input only number", tbSellingPrice, lbError);
+                    return;
+
+                }
+                else
+                {
+
+                    this.HideError(tbSellingPrice, lbError);
+                }
             }
             else
             {
@@ -324,10 +335,21 @@ namespace OrderManagementTool
                 return;
                 
             }
-            else if (System.Text.RegularExpressions.Regex.IsMatch(tbPurchasePrice.Text, "[^0-9]"))
+            else if (System.Text.RegularExpressions.Regex.IsMatch(tbPurchasePrice.Text, "[^0-9]"))  //区分不是字母，而是数字
             {
-                this.ShowError("Please input only number", tbPurchasePrice, lbError);
-                return;
+                // 可能是字母或者是小数
+                if (!System.Text.RegularExpressions.Regex.IsMatch(tbPurchasePrice.Text, @"^(-?\d+)(\.\d+)?$"))
+                {
+                    //不是小数
+                    this.ShowError("Please input only number", tbPurchasePrice, lbError);
+                    return;
+
+                }
+                else
+                {
+
+                    this.HideError(tbSellingPrice, lbError);
+                }
             }
             else
             {

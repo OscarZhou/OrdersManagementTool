@@ -43,7 +43,7 @@ namespace OrderManagementTool
             if (fileSelector.ShowDialog() == DialogResult.OK)
             {
                 ExportFile.SetFolderPath("dircPath", fileSelector.SelectedPath);
-                lbFolder.Text = fileSelector.SelectedPath;                    
+                lbFolder.Text = string.Format("     Selected Directory: {0}", fileSelector.SelectedPath);
                 var files = Directory.GetFiles(fileSelector.SelectedPath).Where(name => name.EndsWith(".txt"));
                 prbImport.Maximum = files.ToList().Count;
                 prbImport.Step = 1;
@@ -115,8 +115,8 @@ namespace OrderManagementTool
 
             prbImport.PerformStep();
             Order objOrder = objOrders[e.ProgressPercentage];
-            lbProcessing.Text = "The current file: " + objOrder.OrderNo.ToString() + objOrder.Purchaser.ToString() +
-                                ".txt";
+            lbProcessing.Text = string.Format("     Current Processing: Loading {0}{1}.txt",
+                objOrder.OrderNo.ToString(), objOrder.Purchaser.ToString());
             int counter = e.ProgressPercentage;
             int total = objOrders.Count();
             string progressIndicate = string.Format("{0:P1}", counter * 1.0 / total);
@@ -151,7 +151,7 @@ namespace OrderManagementTool
                 int pos = fileSelector.FileName.LastIndexOf(@"\", StringComparison.Ordinal);
                 string path = fileSelector.FileName.Substring(0, pos);
                 ExportFile.SetFolderPath("dircPath", path);
-                lbFolder.Text = path;
+                lbFolder.Text = string.Format("     Selected Directory: {0}", path);
                 prbImport.Step = 1;
                 prbImport.Value = 0;
                 objTransactions = FormatParsing.ParseContentIntoTransaction(fileSelector.FileName, objTransactions);
@@ -188,7 +188,7 @@ namespace OrderManagementTool
         private void bkgWorkForTransaction_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             prbImport.PerformStep();
-            lbProcessing.Text = "Loading " + e.ProgressPercentage.ToString() + " transaction record";
+            lbProcessing.Text = string.Format("     Current Processing: Loading {0} transaction record", e.ProgressPercentage.ToString());
             int counter = e.ProgressPercentage;
             int total = objTransactions.Count();
             string progressIndicate = string.Format("{0:P1}", counter * 1.0 / total);
@@ -213,6 +213,7 @@ namespace OrderManagementTool
             {
                 ExportFile.SetFolderPath("dircPath", fileSelector.SelectedPath);
                 string path = string.Format(fileSelector.SelectedPath + @"\销售记录{0}.xls", timeStamp);
+                lbFolder.Text = string.Format("     Selected Directory: {0}", path);
                 string[] parameters = new string[2];
                 parameters[0] = timeStamp;
                 parameters[1] = path;
@@ -252,7 +253,7 @@ namespace OrderManagementTool
         {
             prbImport.PerformStep();
             prbImport.Maximum = 1;
-            lbProcessing.Text = "Exporting " + e.ProgressPercentage.ToString() + " transaction record";
+            //lbProcessing.Text = string.Format("     Current Processing: Exporting {0} transaction record", e.ProgressPercentage.ToString());
             int counter = e.ProgressPercentage;
             int total = e.ProgressPercentage;
             string progressIndicate = string.Format("{0:P1}", counter * 1.0 / total);
