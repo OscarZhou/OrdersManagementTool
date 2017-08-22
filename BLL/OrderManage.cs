@@ -1,5 +1,6 @@
 ﻿using DAL;
 using Models;
+using System.Collections.Generic;
 
 namespace BLL
 {
@@ -35,6 +36,11 @@ namespace BLL
         public string GetPurchaserName(string orderNo)
         {
             return new OrderService().GetPurchaserName(orderNo);
+        }
+
+        public Dictionary<string, string> GetAllOrderNoAndPurchaser()
+        {
+            return new OrderService().GetAllOrderNoAndPurchaser();
         }
     }
 }

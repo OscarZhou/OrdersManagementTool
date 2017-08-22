@@ -326,7 +326,6 @@ namespace OrderManagementTool
                 };
                 string orderContent = this.GenerateOrderContent(objUserInfo, true);
 
-
                 ExportFile.CreateOrderFile(path, tbOrderContent.Text.Trim());
                 MessageBox.Show("Generating " + this.crtOrderNo + this.purchaserName + ".txt Sucessfully!");
             }

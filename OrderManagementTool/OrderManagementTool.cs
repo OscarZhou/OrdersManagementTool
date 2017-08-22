@@ -362,7 +362,6 @@ namespace OrderManagementTool
 
         private void btnOrderText_Click(object sender, EventArgs e)
         {
-            this.DisplayMainFrm(false);
             FolderBrowserDialog fileSelector = new FolderBrowserDialog();
             fileSelector.Description = @"Please choose the folder that stores order text:";
             string defaultPath = ExportFile.GetDefaultPath("dircPath");
@@ -378,11 +377,12 @@ namespace OrderManagementTool
                 _frmOrderText = new FrmOrderText();
                 this.EvtSetOrderText += _frmOrderText.Receiver;
                 this.EvtSetOrderText(ExportFile.ReadOrderFile(filename), dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString());
+                this.DisplayMainFrm(false);
                 this.OpenNewForm(_frmOrderText);
 
             }
         }
-
+        
         private void tbSearch_Click(object sender, EventArgs e)
         {
             if (tbSearch.Text != "")
@@ -563,6 +563,6 @@ namespace OrderManagementTool
 
         #endregion
 
-
+        
     }
 }

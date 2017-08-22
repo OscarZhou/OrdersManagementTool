@@ -70,9 +70,9 @@
             this.btnRegenerate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnRegenerate.Image = ((System.Drawing.Image)(resources.GetObject("btnRegenerate.Image")));
             this.btnRegenerate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRegenerate.Location = new System.Drawing.Point(754, 14);
+            this.btnRegenerate.Location = new System.Drawing.Point(662, 14);
             this.btnRegenerate.Name = "btnRegenerate";
-            this.btnRegenerate.Size = new System.Drawing.Size(183, 40);
+            this.btnRegenerate.Size = new System.Drawing.Size(275, 40);
             this.btnRegenerate.TabIndex = 1;
             this.btnRegenerate.Text = "Re-generate based on order";
             this.btnRegenerate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

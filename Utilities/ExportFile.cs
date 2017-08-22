@@ -223,6 +223,38 @@ namespace Utilities
 
         #endregion
 
+        #region Export .txt file
 
+
+        public static string GenerateOrderContent(List<Item> objItems, UserInfo objUserInfo, bool withUnitPrice)
+        {
+            StringBuilder orderBuilder = new StringBuilder();
+            // From part
+            orderBuilder.Append("发件人：Oscar\r\n电话：0211376664\r\n\r\n");
+            // Item part
+            int counter = 0;
+            foreach (Item objItem in objItems)
+            {
+                counter++;
+                if (withUnitPrice)
+                {
+                    orderBuilder.Append(string.Format(counter + "、{0}，数量{1}，{2}\r\n", objItem.ItemDescription,
+                        objItem.Quantity, objItem.UnitPrice));
+                }
+                else
+                {
+                    orderBuilder.Append(string.Format(counter + "、{0}，数量{1}\r\n", objItem.ItemDescription,
+                        objItem.Quantity));
+                }
+            }
+            // To part
+            orderBuilder.Append(string.Format("\r\n收件人：{0}\r\n电话：{1}\r\n地址：{2}\r\n", objUserInfo.UserName,
+                objUserInfo.PhoneNumber,
+                objUserInfo.Address));
+            return orderBuilder.ToString();
+
+        }
+
+        #endregion
     }
 }

@@ -40,6 +40,8 @@
             this.btnExportTransaction = new System.Windows.Forms.Button();
             this.bkgWorkForExporting = new System.ComponentModel.BackgroundWorker();
             this.label11 = new System.Windows.Forms.Label();
+            this.btnExportRecords = new System.Windows.Forms.Button();
+            this.bkgWorkForExportingRecords = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // btnImportRecords
@@ -50,11 +52,11 @@
             this.btnImportRecords.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnImportRecords.Image = ((System.Drawing.Image)(resources.GetObject("btnImportRecords.Image")));
             this.btnImportRecords.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImportRecords.Location = new System.Drawing.Point(506, 15);
+            this.btnImportRecords.Location = new System.Drawing.Point(299, 15);
             this.btnImportRecords.Name = "btnImportRecords";
             this.btnImportRecords.Size = new System.Drawing.Size(183, 40);
             this.btnImportRecords.TabIndex = 0;
-            this.btnImportRecords.Text = "ImportRecords";
+            this.btnImportRecords.Text = "Import Records";
             this.btnImportRecords.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnImportRecords.UseVisualStyleBackColor = false;
             this.btnImportRecords.Click += new System.EventHandler(this.btnImport_Click);
@@ -83,7 +85,6 @@
             this.bkgWorkForImporting.WorkerReportsProgress = true;
             this.bkgWorkForImporting.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkgWorkForImporting_DoWork);
             this.bkgWorkForImporting.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bkgWorkForImporting_ProgressChanged);
-            this.bkgWorkForImporting.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bkgWorkForImporting_RunWorkerCompleted);
             // 
             // lbProgress
             // 
@@ -115,11 +116,11 @@
             this.btnImportTransaction.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnImportTransaction.Image = ((System.Drawing.Image)(resources.GetObject("btnImportTransaction.Image")));
             this.btnImportTransaction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImportTransaction.Location = new System.Drawing.Point(717, 15);
+            this.btnImportTransaction.Location = new System.Drawing.Point(510, 15);
             this.btnImportTransaction.Name = "btnImportTransaction";
             this.btnImportTransaction.Size = new System.Drawing.Size(198, 40);
             this.btnImportTransaction.TabIndex = 1;
-            this.btnImportTransaction.Text = "ImportTransaction";
+            this.btnImportTransaction.Text = "Import Transaction";
             this.btnImportTransaction.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnImportTransaction.UseVisualStyleBackColor = false;
             this.btnImportTransaction.Click += new System.EventHandler(this.btnImportTransaction_Click);
@@ -138,7 +139,7 @@
             this.btnExportTransaction.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnExportTransaction.Image = ((System.Drawing.Image)(resources.GetObject("btnExportTransaction.Image")));
             this.btnExportTransaction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportTransaction.Location = new System.Drawing.Point(943, 15);
+            this.btnExportTransaction.Location = new System.Drawing.Point(947, 15);
             this.btnExportTransaction.Name = "btnExportTransaction";
             this.btnExportTransaction.Size = new System.Drawing.Size(199, 40);
             this.btnExportTransaction.TabIndex = 1;
@@ -163,6 +164,29 @@
             this.label11.TabIndex = 13;
             this.label11.Text = "label11";
             // 
+            // btnExportRecords
+            // 
+            this.btnExportRecords.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
+            this.btnExportRecords.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
+            this.btnExportRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportRecords.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnExportRecords.Image = ((System.Drawing.Image)(resources.GetObject("btnExportRecords.Image")));
+            this.btnExportRecords.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExportRecords.Location = new System.Drawing.Point(736, 16);
+            this.btnExportRecords.Name = "btnExportRecords";
+            this.btnExportRecords.Size = new System.Drawing.Size(183, 40);
+            this.btnExportRecords.TabIndex = 0;
+            this.btnExportRecords.Text = "Export Records";
+            this.btnExportRecords.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExportRecords.UseVisualStyleBackColor = false;
+            this.btnExportRecords.Click += new System.EventHandler(this.btnExportRecords_Click);
+            // 
+            // bkgWorkForExportingRecords
+            // 
+            this.bkgWorkForExportingRecords.WorkerReportsProgress = true;
+            this.bkgWorkForExportingRecords.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkgWorkForExportingRecords_DoWork);
+            this.bkgWorkForExportingRecords.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bkgWorkForExportingRecords_ProgressChanged);
+            // 
             // DataImportingPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -177,6 +201,7 @@
             this.Controls.Add(this.lbProgress);
             this.Controls.Add(this.lbProcessing);
             this.Controls.Add(this.prbImport);
+            this.Controls.Add(this.btnExportRecords);
             this.Controls.Add(this.btnImportRecords);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -204,5 +229,7 @@
         private System.Windows.Forms.Button btnExportTransaction;
         private System.ComponentModel.BackgroundWorker bkgWorkForExporting;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnExportRecords;
+        private System.ComponentModel.BackgroundWorker bkgWorkForExportingRecords;
     }
 }

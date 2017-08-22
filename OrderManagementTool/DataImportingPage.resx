@@ -147,7 +147,7 @@
 </value>
   </data>
   <metadata name="bkgWorkForImporting.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>377, 17</value>
   </metadata>
   <data name="lbFolder.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -183,7 +183,7 @@
 </value>
   </data>
   <metadata name="bkgWorkForTransaction.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>277, 17</value>
+    <value>637, 17</value>
   </metadata>
   <data name="btnExportTransaction.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -202,7 +202,25 @@
 </value>
   </data>
   <metadata name="bkgWorkForExporting.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>551, 17</value>
+    <value>911, 17</value>
+  </metadata>
+  <data name="btnExportRecords.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAW
+        JQAAFiUBSVIk8AAAAhZJREFUOE+lkV1oUnEYxt/7guhqdNftGps3lspGHy6CoDO6SGEXu1lkzbDCkNYR
+        s2RrgRexq3ZhtKvwxjG6GavlGNLS8mPJQMZgLEuZGzicR92ZH0/nf3aOYHiR9MID//fw/h6e875kdrk4
+        k9tt6USMIbVuOZ130WExRsGJbvL8vYb08WoUGPzewJVIDZfDVVxcFdEfKsOwIkC3fIALwQK0S/tgs4xR
+        cKIbDoe11mjIBq/ykA0mdqvw7IhwZ44N+O0Cxrf2ZQM2yxgFJ7put98X6/VmgttxARM/duFJ7MAdzcD1
+        7Rec4Z/gv25j/MsW2CxjFJzoms1mq9RqzQSTyT0cSb2qlWSy+V6KxcBmGaPgRINW6wOhWm0mYAbhjQ2s
+        plIIra8jtrmJ5bU1BBMJBIJB+BcXYRwbe6jgRJcslkcFUWxJUJJ6VSyB+n43Py9fQTs87NCazedlg4HR
+        UXv+8LBtgs/xOD5GIni/sIC3c3N44/cjk8vJJuc47mn30JCOdCMjj/cqlZYEBalnKkrGqXRa/v+6tP2/
+        66zR+IxYnFy53DbBp2gUH0Ih+AIBvJ6dxdTMDNLZrAx36fWeM3p9P2lMpifZUqklQV7qVbEdqO/n09My
+        fEqjeXm6r29A3kE3x/G/BaFtAnYFZqBewevzgfd6j6Or1WUwvMhJG04Xi/8kNssYBSc62dt750RPz1Qn
+        YoyC/28R/QGsyXq4NyrZrQAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="bkgWorkForExportingRecords.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1168, 17</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
