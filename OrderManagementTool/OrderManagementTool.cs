@@ -93,6 +93,7 @@ namespace OrderManagementTool
             cmbSorting.Items.Add("Profit Asc");
             cmbSorting.Items.Add("Profit Desc");
             cmbSorting.SelectedIndex = 1;
+            this._orderNo = this.dgvTransaction.RowCount.ToString();
         }
 
         /// <summary>
@@ -157,6 +158,7 @@ namespace OrderManagementTool
         private void ShowTransaction(string name, int sortingtype)
         {
             dgvTransaction.DataSource = new TransactionManage().GetTransactionList(name, sortingtype);
+            
             #region Calculate total profit
             double TotalProfit = 0;
             foreach (DataGridViewRow dgvTransactionRow in dgvTransaction.Rows)
@@ -216,7 +218,11 @@ namespace OrderManagementTool
         /// <param name="e"></param>
         private void btnDetail_Click(object sender, EventArgs e)
         {
-            
+            if (this.dgvTransaction.RowCount == 0)
+            {
+                return;
+            }
+
             this._orderNo = dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString();    
             _frmOrderDetail = new OrderDetailsPage();
             this.EvtOpenView += _frmOrderDetail.ViewReceiver;// 关联子窗体，传递订单号信息
@@ -249,7 +255,10 @@ namespace OrderManagementTool
 
             //#endregion
 
-
+            if (this.dgvTransaction.RowCount == 0)
+            {
+                return;
+            }
             this._orderNo = dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString();    
             _frmOrderDetail = new OrderDetailsPage();
             this.EvtOpenEdit += _frmOrderDetail.EditReceiver;
@@ -279,7 +288,10 @@ namespace OrderManagementTool
         {
             // Display the selected row in datagridview    
             //this.dgvTransaction.FirstDisplayedCell = this.dgvTransaction.Rows[Convert.ToInt32(this.orderNo)].Cells[0]; 
-
+            if (this.dgvTransaction.RowCount == 0)
+            {
+                return;
+            }
             this.DisplayMainFrm(true);
              
             if (MessageBox.Show(this, "Delete?", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -362,6 +374,10 @@ namespace OrderManagementTool
 
         private void btnOrderText_Click(object sender, EventArgs e)
         {
+            if (this.dgvTransaction.RowCount == 0)
+            {
+                return;
+            }
             FolderBrowserDialog fileSelector = new FolderBrowserDialog();
             fileSelector.Description = @"Please choose the folder that stores order text:";
             string defaultPath = ExportFile.GetDefaultPath("dircPath");
@@ -416,15 +432,18 @@ namespace OrderManagementTool
 
         private void btnTransaction_Click(object sender, EventArgs e)
         {
-            this.DisplayMainFrm(true);
-            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
 
-            int selectedRowNo = GetCurrentRowNo(this._orderNo) > 5
-                ? GetCurrentRowNo(this._orderNo) - 5
-                : GetCurrentRowNo(this._orderNo);
-            
-            this.dgvTransaction.FirstDisplayedCell = this.dgvTransaction.Rows[selectedRowNo].Cells[0];
-            this.dgvTransaction.Rows[GetCurrentRowNo(this._orderNo)-1].Cells[0].Selected = true;
+            this.DisplayMainFrm(true);
+            int selectedRowNo = GetCurrentRowNo(this._orderNo);
+            int locatedRowNo = selectedRowNo > 5 ? selectedRowNo - 5 : selectedRowNo;
+            if (this.dgvTransaction.RowCount != 0)
+            {
+
+                this.dgvTransaction.FirstDisplayedCell = this.dgvTransaction.Rows[locatedRowNo].Cells[0];
+                this.dgvTransaction.Rows[selectedRowNo - 1].Cells[0].Selected = true;
+            }
+
+            //ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
         }
 
         #region Window operation
@@ -454,9 +473,6 @@ namespace OrderManagementTool
         /// <param name="mainFrmState"></param>
         private void DisplayMainFrm(bool mainFrmState)
         {
-            //MessageBox.Show("width:" + this.splitContainer.Panel1.Size.Width + ",height:" +
-            //                this.splitContainer.Panel1.Size.Height);
-
             // Refresh the Transaction DataGridView
             this.ShowTransaction(tbSearch.Text.Trim(), cmbSorting.SelectedIndex);
 

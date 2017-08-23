@@ -49,33 +49,33 @@ namespace OrderManagementTool
                 control.KeyDown += OrderDetailsPage_KeyDown;
             }
 
-            #region Add clear event to all TextBox control, 实现了对相同的控件的统一事件处理 part1
+            //#region Add clear event to all TextBox control, 实现了对相同的控件的统一事件处理 part1
 
-            foreach (Control ctrl in Controls)
-            {
-                if (ctrl is TextBox)
-                {
-                    if (!(ctrl.Name.Equals("tbPurchaser") || ctrl.Name.Equals("tbFrom") || ctrl.Name.Equals("tbFromPhone")))
-                    {
-                        ctrl.Click += new System.EventHandler(this.textBox_Click);
-                    }     
-                }
-            }
-            #endregion
+            //foreach (Control ctrl in Controls)
+            //{
+            //    if (ctrl is TextBox)
+            //    {
+            //        if (!(ctrl.Name.Equals("tbPurchaser") || ctrl.Name.Equals("tbFrom") || ctrl.Name.Equals("tbFromPhone")))
+            //        {
+            //            ctrl.Click += new System.EventHandler(this.textBox_Click);
+            //        }     
+            //    }
+            //}
+            //#endregion
         }
 
-        #region 实现了对相同的控件的统一事件处理 part2
-        /// <summary>
-        /// TextBox click event is used for clearing the box
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void textBox_Click(object sender, EventArgs e)
-        {
-            System.Windows.Forms.TextBox textBox = (System.Windows.Forms.TextBox)sender;
-            textBox.Text = "";
-        }
-        #endregion
+        //#region 实现了对相同的控件的统一事件处理 part2
+        ///// <summary>
+        ///// TextBox click event is used for clearing the box
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void textBox_Click(object sender, EventArgs e)
+        //{
+        //    System.Windows.Forms.TextBox textBox = (System.Windows.Forms.TextBox)sender;
+        //    textBox.Text = "";
+        //}
+        //#endregion
 
         #region Receiver operation
 
