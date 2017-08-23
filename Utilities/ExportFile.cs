@@ -67,7 +67,7 @@ namespace Utilities
                 xlWorksheet.Cells[i, 3] = objTransactions[i - 2].SellingPrice.ToString();
                 xlWorksheet.Cells[i, 4] = objTransactions[i - 2].PurchasePrice.ToString();
                 xlWorksheet.Cells[i, 5] = objTransactions[i - 2].Profit.ToString();
-                xlWorksheet.Cells[i, 6] = Convert.ToDateTime(objTransactions[i - 2].CreateTime).ToString("yy-MM-dd");
+                xlWorksheet.Cells[i, 6] = objTransactions[i - 2].CreateTime.ToString("yy-MM-dd");
             }
 
             xlWorkbook.SaveAs(path, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
@@ -104,18 +104,11 @@ namespace Utilities
         /// <param name="orderContent"></param>
         public static void CreateOrderFile(string path, string orderContent)
         {
-            if (File.Exists(path))
-            {
-                FileStream fs = new FileStream(path, FileMode.Create);
-                StreamWriter sw = new StreamWriter(fs, Encoding.Unicode);
-                sw.Write(orderContent);
-                sw.Close();
-                fs.Close();   
-            }
-            else
-            {
-                Console.WriteLine("There is not file in this path!");
-            }
+            FileStream fs = new FileStream(path, FileMode.Create);
+            StreamWriter sw = new StreamWriter(fs, Encoding.Unicode);
+            sw.Write(orderContent);
+            sw.Close();
+            fs.Close();   
 
         }
         /// <summary>
@@ -126,18 +119,24 @@ namespace Utilities
         public static string ReadOrderFile(string path)
         {
             StringBuilder contentBuilder = new StringBuilder();
-            if (File.Exists(path))
+            FileStream fs = null;
+            if (!File.Exists(path))
             {
-                FileStream fs = new FileStream(path, FileMode.Open);
-                StreamReader sr = new StreamReader(fs, Encoding.Unicode);
-                string content = "";
-                while ((content = sr.ReadLine()) != null)
-                {
-                    contentBuilder.Append(content + "\r\n");
-                }
-                sr.Close();
-                fs.Close();
+                fs = new FileStream(path, FileMode.Create);
             }
+            else
+            {
+                fs = new FileStream(path, FileMode.Open);    
+            }
+            
+            StreamReader sr = new StreamReader(fs, Encoding.Unicode);
+            string content = "";
+            while ((content = sr.ReadLine()) != null)
+            {
+                contentBuilder.Append(content + "\r\n");
+            }
+            sr.Close();
+            fs.Close();
             return contentBuilder.ToString();
         }
         #endregion
@@ -224,6 +223,38 @@ namespace Utilities
 
         #endregion
 
+        #region Export .txt file
 
+
+        public static string GenerateOrderContent(List<Item> objItems, UserInfo objUserInfo, bool withUnitPrice)
+        {
+            StringBuilder orderBuilder = new StringBuilder();
+            // From part
+            orderBuilder.Append("发件人：Oscar\r\n电话：0211376664\r\n\r\n");
+            // Item part
+            int counter = 0;
+            foreach (Item objItem in objItems)
+            {
+                counter++;
+                if (withUnitPrice)
+                {
+                    orderBuilder.Append(string.Format(counter + "、{0}，数量{1}，{2}\r\n", objItem.ItemDescription,
+                        objItem.Quantity, objItem.UnitPrice));
+                }
+                else
+                {
+                    orderBuilder.Append(string.Format(counter + "、{0}，数量{1}\r\n", objItem.ItemDescription,
+                        objItem.Quantity));
+                }
+            }
+            // To part
+            orderBuilder.Append(string.Format("\r\n收件人：{0}\r\n电话：{1}\r\n地址：{2}\r\n", objUserInfo.UserName,
+                objUserInfo.PhoneNumber,
+                objUserInfo.Address));
+            return orderBuilder.ToString();
+
+        }
+
+        #endregion
     }
 }

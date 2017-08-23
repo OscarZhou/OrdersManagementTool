@@ -2,6 +2,7 @@
 using Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -14,7 +15,7 @@ namespace OrderManagementTool
         private List<Item> objItems = new List<Item>();
         private int crtOrderNo;
         private string purchaserName;
-        private CalculatePriceKitPage frmPriceKit;
+        private CalculatePriceKitPage _frmPriceKit;
 
         public OrderCreationPage()
         {
@@ -41,43 +42,78 @@ namespace OrderManagementTool
             
         }
 
+        #region The validation of inputing text
+
+        private void ShowError(string tips, TextBox tbBox, Label lbError)
+        {
+            lbError.Text = tips;
+            lbError.Visible = true;
+            tbBox.Text = "";
+            tbBox.BackColor = System.Drawing.Color.LightCoral;
+            tbBox.Focus();
+        }
+
+        private void HideError(TextBox tbBox, Label lbError)
+        {
+            lbError.Visible = false;
+            tbBox.BackColor = System.Drawing.Color.White;
+        }
+
+        #endregion
+
         private void btnAddItem_Click(object sender, EventArgs e)
         {
             #region Validation for items
-            if (tbItemDescription.Text == "" && tbQuantity.Text == "" && tbPrice.Text == "")
+            if (tbItemDescription.Text.Length == 0 && tbQuantity.Text.Length == 0 && tbPrice.Text.Length == 0)
             {
-                lbItemError.Text = "Please input blank!";
-                lbItemError.Visible = true;
-                tbItemDescription.BackColor = System.Drawing.Color.LightCoral;
-                tbQuantity.BackColor = System.Drawing.Color.LightCoral;
-                tbPrice.BackColor = System.Drawing.Color.LightCoral;
-                this.tbItemDescription.Focus();
+                this.ShowError("Please fill blank!", tbItemDescription, lbItemError);
+                this.ShowError("Please fill blank!", tbQuantity, lbItemError);
+                this.ShowError("Please fill blank!", tbPrice, lbItemError);
                 return;
             }
-            else if (tbItemDescription.Text == "")
+            
+            if (tbItemDescription.Text.Length == 0)
             {
-                lbItemError.Text = "Please input the Product Name!";
-                lbItemError.Visible = true;
-                tbItemDescription.BackColor = System.Drawing.Color.LightCoral;
-                this.tbItemDescription.Focus();
+                this.ShowError("Please input the Product Name!", tbItemDescription, lbItemError);
                 return;
             }
-            else if (tbQuantity.Text == "")
+            else
             {
-                lbItemError.Text = "Please input the Quantity!";
-                lbItemError.Visible = true;
-                tbQuantity.BackColor = System.Drawing.Color.LightCoral;
-                this.tbQuantity.Focus();
+                this.HideError(tbItemDescription, lbItemError);
+            }
+
+
+            if (tbQuantity.Text.Length == 0)
+            {
+                this.ShowError("Please input the Quantity!", tbQuantity, lbItemError);
                 return;
             }
-            else if (tbPrice.Text == "")
+            else if (System.Text.RegularExpressions.Regex.IsMatch(tbQuantity.Text, "[^0-9]"))
             {
-                lbItemError.Text = "Please input the Price!";
-                lbItemError.Visible = true;
-                tbPrice.BackColor = System.Drawing.Color.LightCoral;
-                this.tbPrice.Focus();
+                this.ShowError("Please input only numbers", tbQuantity, lbItemError);
                 return;
             }
+            else
+            {
+                this.HideError(tbQuantity, lbItemError);
+            }
+
+
+            if (tbPrice.Text.Length == 0)
+            {
+                this.ShowError("Please input the Price!", tbPrice, lbItemError);
+                return;
+            }
+            else if (System.Text.RegularExpressions.Regex.IsMatch(tbPrice.Text, "[^0-9]"))
+            {
+                this.ShowError("Please input only numbers", tbPrice, lbItemError);
+                return;
+            }
+            else
+            {
+                this.HideError(tbPrice, lbItemError);
+            }
+
             #endregion
 
             #region Bind Item datagridview
@@ -219,29 +255,7 @@ namespace OrderManagementTool
             #endregion
 
             #region Generate the Order text
-            StringBuilder orderBuilder = new StringBuilder();
-            // From part
-            orderBuilder.Append("发件人：{0}\r\n电话：{1}\r\n\r\n");
-            string orderContent = string.Format(orderBuilder.ToString(), tbFrom.Text, tbFromPhone.Text);
-            tbOrderContent.Text = orderContent;
-            
-            // Item part
-            orderBuilder.Clear();
-            int counter = 0;
-            foreach (Item objItem in objItems)
-            {
-                counter++;
-                orderBuilder.Append(counter + "、{0}，数量{1}\r\n");
-                orderContent = string.Format(orderBuilder.ToString(), objItem.ItemDescription, objItem.Quantity);
-                tbOrderContent.Text += orderContent;
-                orderBuilder.Clear();
-            }
-
-            // To part
-            orderBuilder.Append("\r\n收件人：{0}\r\n电话：{1}\r\n地址：{2}\r\n");
-            orderContent = string.Format(orderBuilder.ToString(), objUserInfo.UserName, objUserInfo.PhoneNumber,
-                objUserInfo.Address);
-            tbOrderContent.Text += orderContent;
+            tbOrderContent.Text = this.GenerateOrderContent(objUserInfo, false);
 
             #endregion
 
@@ -303,6 +317,15 @@ namespace OrderManagementTool
                 string path = string.Format(fileSelector.SelectedPath + @"\{0}{1}.txt", this.crtOrderNo,
                     this.purchaserName);
 
+                UserInfo objUserInfo = new UserInfo()
+                {
+                    UserName = tbTo.Text.Trim(),
+                    PhoneNumber = tbToPhone.Text.Trim(),
+                    Address = tbAddress.Text.Trim(),
+                    CardNo = tbIdentityCard.Text.Trim()
+                };
+                string orderContent = this.GenerateOrderContent(objUserInfo, true);
+
                 ExportFile.CreateOrderFile(path, tbOrderContent.Text.Trim());
                 MessageBox.Show("Generating " + this.crtOrderNo + this.purchaserName + ".txt Sucessfully!");
             }
@@ -322,9 +345,17 @@ namespace OrderManagementTool
 
         private void btnPriceKit_Click(object sender, EventArgs e)
         {
-            frmPriceKit = new CalculatePriceKitPage();
-            frmPriceKit.EvtMoveItem += Receiver;
-            frmPriceKit.Show();
+            _frmPriceKit = new CalculatePriceKitPage();
+            _frmPriceKit.EvtMoveItem += Receiver;
+            #region 使打开的窗口依附在原窗口的边上
+
+            int x = (System.Windows.Forms.SystemInformation.WorkingArea.Width - _frmPriceKit.Size.Width) / 2 + _frmPriceKit.Size.Width;
+            int y = (System.Windows.Forms.SystemInformation.WorkingArea.Height - _frmPriceKit.Size.Height) / 2;
+            _frmPriceKit.StartPosition = FormStartPosition.Manual; //窗体的位置由Location属性决定
+            _frmPriceKit.Location = (Point)new Size(x, y);     
+
+            #endregion            
+            _frmPriceKit.Show();
             //btnPriceKit.Enabled = false;
         }
 
@@ -378,5 +409,46 @@ namespace OrderManagementTool
             
             
         }
+
+        private void OrderCreationPage_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_frmPriceKit!=null)
+            {
+                this._frmPriceKit.Close();
+            }
+        }
+
+        #region Generate Order content
+
+        private string GenerateOrderContent(UserInfo objUserInfo,bool withUnitPrice)
+        {
+            StringBuilder orderBuilder = new StringBuilder();
+            // From part
+            orderBuilder.Append(string.Format("发件人：{0}\r\n电话：{1}\r\n\r\n", tbFrom.Text, tbFromPhone.Text));
+            // Item part
+            int counter = 0;
+            foreach (Item objItem in objItems)
+            {
+                counter++;
+                if (withUnitPrice)
+                {
+                    orderBuilder.Append(string.Format(counter + "、{0}，数量{1}，{2}\r\n", objItem.ItemDescription,
+                        objItem.Quantity, objItem.UnitPrice));
+                }
+                else
+                {
+                    orderBuilder.Append(string.Format(counter + "、{0}，数量{1}\r\n", objItem.ItemDescription,
+                        objItem.Quantity));
+                }
+            }
+            // To part
+            orderBuilder.Append(string.Format("\r\n收件人：{0}\r\n电话：{1}\r\n地址：{2}\r\n", objUserInfo.UserName,
+                objUserInfo.PhoneNumber,
+                objUserInfo.Address));
+            return orderBuilder.ToString();
+
+        }
+
+        #endregion
     }
 }

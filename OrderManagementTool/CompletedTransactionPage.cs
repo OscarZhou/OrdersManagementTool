@@ -1,6 +1,7 @@
 ﻿using BLL;
 using Models;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace OrderManagementTool
@@ -21,29 +22,80 @@ namespace OrderManagementTool
             {
                 control.KeyDown += CompletedTransactionPage_KeyDown;
             }
+
+            #region Add clear event to all TextBox control, 实现了对相同的控件的统一事件处理 part1
+
+            foreach (Control ctrl in Controls)
+            {
+                if (ctrl is TextBox)
+                {
+                    if (!(ctrl.Name.Equals("tbPurchaser") || ctrl.Name.Equals("tbFrom") || ctrl.Name.Equals("tbFromPhone")))
+                    {
+                        ctrl.Click += new System.EventHandler(this.textBox_Click);
+                    }
+                }
+            }
+            #endregion
         }
+
+        #region 实现了对相同的控件的统一事件处理 part2
+        /// <summary>
+        /// TextBox click event is used for clearing the box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void textBox_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.TextBox textBox = (System.Windows.Forms.TextBox)sender;
+            textBox.Text = "";
+        }
+        #endregion
 
         private void ShowTransaction()
         {
             objTransaction = new TransactionManage().GetTransactionRecordByOrderNo(this._orderNo);
             tbOrderNo.Text = objTransaction.OrderNo.ToString();
             tbPurchaser.Text = objTransaction.Purchaser;
-            if (objTransaction.SellingPrice != 0.0)
+
+            #region 从数据库读取价钱值，如果值不为0，显示其值，如果为0，则使其为空
+
+            if (!objTransaction.SellingPrice.ToString().Equals("0"))
             {
                 tbSellingPrice.Text = objTransaction.SellingPrice.ToString();
-                tbPurchasingPrice.Focus();
+                tbPurchasingPrice.Focus();                
             }
-            
-            if (objTransaction.PurchasePrice != 0.0)
+            if (!objTransaction.PurchasePrice.ToString().Equals("0"))
             {
                 tbPurchasingPrice.Text = objTransaction.PurchasePrice.ToString();
                 tbProfit.Focus();
             }
-            
+
+            #endregion
+
             //tbProfit.Text = objTransaction.Profit.ToString();
 
         }
 
+        #region The validation of inputing text
+
+        private void ShowError(string tips, TextBox tbBox, Label lbError)
+        {
+            lbError.Text = tips;
+            lbError.Visible = true;
+            tbBox.Text = "";
+            tbBox.BackColor = System.Drawing.Color.LightCoral;
+            tbBox.Focus();
+        }
+
+        private void HideError(TextBox tbBox, Label lbError)
+        {
+            lbError.Visible = false;
+            tbBox.BackColor = System.Drawing.Color.White;
+        }
+
+        #endregion
+
+        #region Receiver operation
         /// <summary>
         /// delegate method
         /// </summary>
@@ -54,60 +106,83 @@ namespace OrderManagementTool
             ShowTransaction();
         }
 
+        #endregion
+
         private void btnOkay_Click(object sender, EventArgs e)
         {
             #region Validation for Transaction
-            //if (tbSellingPrice.Text == "" && tbPurchasingPrice.Text == "")
-            //{
-            //    lbError.Text = "Please fill the blanks!";
-            //    lbError.Visible = true;
-            //    tbSellingPrice.BackColor = System.Drawing.Color.LightCoral;
-            //    tbPurchasingPrice.BackColor = System.Drawing.Color.LightCoral;
-            //    return;
-            //}
-            //else if (tbSellingPrice.Text == "")
-            //{
-            //    lbError.Text = "Please input Selling Price";
-            //    lbError.Visible = true;
-            //    tbSellingPrice.BackColor = System.Drawing.Color.LightCoral;
-            //}
-            //else if (tbPurchasingPrice.Text == "")
-            //{
-            //    lbError.Text = "Please input Purchasing Price";
-            //    lbError.Visible = true;
-            //    tbPurchasingPrice.BackColor = System.Drawing.Color.LightCoral;
-            //}
+
+            if (tbSellingPrice.Text.Trim().Length == 0)
+            {
+                this.ShowError("Please fill the blank before submitting", tbSellingPrice, lbError);
+                return;
+            }
+            else if (System.Text.RegularExpressions.Regex.IsMatch(tbSellingPrice.Text, "[^0-9]"))  //区分不是字母，而是数字
+            {
+                // 可能是字母或者是小数
+                if (!System.Text.RegularExpressions.Regex.IsMatch(tbSellingPrice.Text, @"^(-?\d+)(\.\d+)?$"))
+                {
+                    //不是小数
+                    this.ShowError("Please input only number", tbSellingPrice, lbError);
+                    return;
+
+                }
+                else
+                {
+
+                    this.HideError(tbSellingPrice, lbError);
+                    lbError.Text = tbSellingPrice.Text.Trim();
+                }
+            }
+            else
+            {
+                this.HideError(tbSellingPrice, lbError);
+            }
+
+
+            if (tbPurchasingPrice.Text.Trim().Length == 0)
+            {
+                this.ShowError("Please fill the blank before submitting", tbPurchasingPrice, lbError);
+                return;
+            }
+            else if (System.Text.RegularExpressions.Regex.IsMatch(tbPurchasingPrice.Text, "[^0-9]"))  //区分不是字母，而是数字
+            {
+                // 可能是字母或者是小数
+                if (!System.Text.RegularExpressions.Regex.IsMatch(tbPurchasingPrice.Text, @"^(-?\d+)(\.\d+)?$"))
+                {
+                    //不是小数
+                    this.ShowError("Please input only number", tbPurchasingPrice, lbError);
+                    return;
+
+                }
+                else
+                {
+
+                    this.HideError(tbPurchasingPrice, lbError);
+                    lbError.Text = tbPurchasingPrice.Text.Trim();
+                }
+            }
+            else
+            {
+                this.HideError(tbPurchasingPrice, lbError);
+            }
 
             #endregion
 
             #region Update price
 
-            if (lbError.Visible == false)
+            tbProfit.Text = (Convert.ToDouble(tbSellingPrice.Text.Trim()) - Convert.ToDouble(tbPurchasingPrice.Text.Trim())).ToString();
+            objTransaction.SellingPrice = Convert.ToDouble(tbSellingPrice.Text.Trim());
+            objTransaction.PurchasePrice = Convert.ToDouble(tbPurchasingPrice.Text.Trim());
+            objTransaction.Profit = Convert.ToDouble(tbProfit.Text);
+            if (tbSellingPrice.Text.Length != 0 && tbPurchasingPrice.Text.Length != 0)
             {
-                if (tbSellingPrice.Text.Length != 0)
-                {
-                    objTransaction.SellingPrice = Convert.ToDouble(tbSellingPrice.Text.Trim());
-                }
-                if (tbPurchasingPrice.Text.Length != 0 )
-                {
-                    objTransaction.PurchasePrice = Convert.ToDouble(tbPurchasingPrice.Text.Trim());
-                }
-                objTransaction.Profit = objTransaction.SellingPrice - objTransaction.PurchasePrice;
-                if (tbSellingPrice.Text.Length != 0 && tbPurchasingPrice.Text.Length != 0)
-                {
-                    objTransaction.OrderStatus = Convert.ToByte(true);
-                }
-
-                int result = new TransactionManage().UpdateTransactionRecord(objTransaction);
-                if (result > 0)
-                {
-                    MessageBox.Show("Updating Sucessfully!");
-                }
+                objTransaction.OrderStatus = Convert.ToByte(true);
             }
-            else
+            int result = new TransactionManage().UpdateTransactionRecord(objTransaction);
+            if (result > 0)
             {
-                lbError.Text = "You can't submit before solving the error!";
-                return;
+                MessageBox.Show("Updating Sucessfully!");
             }
 
             #endregion
@@ -115,89 +190,30 @@ namespace OrderManagementTool
             this.Close();
         }
 
+
+        #region Leave event is used for calculating the profit
+
         private void tbSellingPrice_Leave(object sender, EventArgs e)
         {
-            double result;
-            if (double.TryParse(tbSellingPrice.Text.Trim(), out result) == false)//check to determine if the input is a number
+            // When the blank is filled with numbers, the profit will be calculated. Otherwise, nothing will be done.
+            if (System.Text.RegularExpressions.Regex.IsMatch(tbSellingPrice.Text, "[^0-9]") && System.Text.RegularExpressions.Regex.IsMatch(tbPurchasingPrice.Text, "[^0-9]"))
             {
-                lbError.Text = "Please input numbers";
-                lbError.Visible = true;
-                tbSellingPrice.BackColor = System.Drawing.Color.LightCoral;
-                return;
-            }
-            else
-            {
-                lbError.Visible = false;
-                tbSellingPrice.BackColor = System.Drawing.Color.White;
+                tbProfit.Text = (Convert.ToDouble(tbSellingPrice.Text.Trim()) - Convert.ToDouble(tbPurchasingPrice.Text.Trim())).ToString();
             }
 
-            //if (int.TryParse(tbPurchasingPrice.Text.Trim(), out result) == false)
-            //{
-            //    lbError.Text = "Please input numbers";
-            //    lbError.Visible = true;
-            //    tbPurchasingPrice.BackColor = System.Drawing.Color.LightCoral;
-            //    return;
-            //}
-            //else
-            //{
-            //    lbError.Visible = false;
-            //    tbPurchasingPrice.BackColor = System.Drawing.Color.White;
-            //}
-
-
-            if (tbSellingPrice.Text.Trim().Length == 0 || tbPurchasingPrice.Text.Trim().Length == 0)
-            {
-                lbError.Text = "Please input numbers";
-                return;
-            }
-            else if (tbSellingPrice.Text.Length != 0 && tbPurchasingPrice.Text.Length != 0)
-            {
-                tbProfit.Text = (Convert.ToDouble(tbSellingPrice.Text.Trim()) -
-                                Convert.ToDouble(tbPurchasingPrice.Text.Trim())).ToString();
-                lbError.Visible = false;
-            }
         }
 
         private void tbPurchasingPrice_Leave(object sender, EventArgs e)
         {
-            double result;
-            //if (int.TryParse(tbSellingPrice.Text.Trim(), out result) == false)
-            //{
-            //    lbError.Text = "Please input numbers";
-            //    lbError.Visible = true;
-            //    tbSellingPrice.BackColor = System.Drawing.Color.LightCoral;
-            //    return;
-            //}
-            //else
-            //{
-            //    lbError.Visible = false;
-            //    tbSellingPrice.BackColor = System.Drawing.Color.White;
-            //}
-
-            if (double.TryParse(tbPurchasingPrice.Text.Trim(), out result) == false)
+            // When the blank is filled with numbers, the profit will be calculated. Otherwise, nothing will be done.
+            if (System.Text.RegularExpressions.Regex.IsMatch(tbSellingPrice.Text, "[^0-9]") && System.Text.RegularExpressions.Regex.IsMatch(tbPurchasingPrice.Text, "[^0-9]"))
             {
-                lbError.Text = "Please input numbers";
-                lbError.Visible = true;
-                tbPurchasingPrice.BackColor = System.Drawing.Color.LightCoral;
-                return;
-            }
-            else
-            {
-                lbError.Visible = false;
-                tbPurchasingPrice.BackColor = System.Drawing.Color.White;
+                tbProfit.Text = (Convert.ToDouble(tbSellingPrice.Text.Trim()) - Convert.ToDouble(tbPurchasingPrice.Text.Trim())).ToString();
             }
 
-            if (tbSellingPrice.Text.Trim().Length == 0 || tbPurchasingPrice.Text.Trim().Length == 0)
-            {
-                return;
-            }
-            else if (tbSellingPrice.Text.Length != 0 && tbPurchasingPrice.Text.Length != 0)
-            {
-                tbProfit.Text = (Convert.ToDouble(tbSellingPrice.Text.Trim()) -
-                                Convert.ToDouble(tbPurchasingPrice.Text.Trim())).ToString();
-                lbError.Visible = false;
-            }
         }
+        #endregion
+
 
         private void CompletedTransactionPage_KeyDown(object sender, KeyEventArgs e)
         {
@@ -247,5 +263,68 @@ namespace OrderManagementTool
             }
         }
 
+        #region Drag and close window
+
+        private Point mouseOff; //The moving position variables of the mouse
+        private bool leftFlag; // Determine if the label is left button
+        private void lbLogo_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                mouseOff = new Point(-e.X, -e.Y);  // Get the values of the variable
+                leftFlag = true;
+            }
+        }
+
+        private void lbLogo_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (leftFlag)
+            {
+                Point mousetSet = Control.MousePosition;
+                mousetSet.Offset(mouseOff.X, mouseOff.Y);   // Set the position after moving
+                Location = mousetSet;
+            }
+        }
+
+        private void lbLogo_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (leftFlag)
+            {
+                leftFlag = false; // Set false after releasing mouse
+            }
+        }
+
+        private void panelTop_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                mouseOff = new Point(-e.X, -e.Y);  // Get the values of the variable
+                leftFlag = true;
+            }
+        }
+
+        private void panelTop_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (leftFlag)
+            {
+                Point mousetSet = Control.MousePosition;
+                mousetSet.Offset(mouseOff.X, mouseOff.Y);   // Set the position after moving
+                Location = mousetSet;
+            }
+        }
+
+        private void panelTop_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (leftFlag)
+            {
+                leftFlag = false; // Set false after releasing mouse
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        #endregion
     }
 }

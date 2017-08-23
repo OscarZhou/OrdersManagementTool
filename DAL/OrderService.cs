@@ -2,6 +2,7 @@
 using DAL.Helper;
 using Models;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
 
@@ -131,6 +132,57 @@ namespace DAL
             }
             return 0;
 
+        }
+
+        public string GetPurchaserName(string orderNo)
+        {
+            StringBuilder sqlBuilder = new StringBuilder();
+            sqlBuilder.Append("select Purchaser from Orders where OrderNo = {0}");
+            string sql = string.Format(sqlBuilder.ToString(), orderNo);
+
+            try
+            {
+                return (string) SQLHelper.GetSingleObject(sql);
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public Dictionary<string, string> GetAllOrderNoAndPurchaser()
+        {
+            StringBuilder sqlBuilder = new StringBuilder();
+            sqlBuilder.Append("select OrderNo, Purchaser from Orders");
+
+            try
+            {
+                SqlDataReader objReaders = SQLHelper.GetObjectCollection(sqlBuilder.ToString());
+                Dictionary<string, string> lstOrderNo = new Dictionary<string, string>();
+                while (objReaders.Read())
+                {
+                    lstOrderNo.Add(objReaders["OrderNo"].ToString(), objReaders["Purchaser"].ToString());
+
+                }
+                objReaders.Close();
+                return lstOrderNo;
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 }
