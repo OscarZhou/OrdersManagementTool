@@ -139,7 +139,6 @@ namespace OrderManagementTool
             else
             {
                 this.HideError(tbNZPrice, lbError);
-                lbResult.Text = tbNZPrice.Text.Trim();
             }
 
             #endregion
@@ -148,6 +147,11 @@ namespace OrderManagementTool
             {
                 double price = Convert.ToDouble(tbNZPrice.Text.Trim());
                 price = price * Convert.ToDouble(cboExchangeRate.SelectedItem);
+                lbResult.Text = Math.Round(price * Convert.ToDouble(cboProfitMargin.SelectedItem)).ToString("0.00");
+            }
+            else if (cboProfitMargin.SelectedItem != null && tbNZPrice.Text.Trim().Length != 0)
+            {
+                double price = Convert.ToDouble(tbNZPrice.Text.Trim());
                 lbResult.Text = Math.Round(price * Convert.ToDouble(cboProfitMargin.SelectedItem)).ToString("0.00");
             }
         }
@@ -194,7 +198,6 @@ namespace OrderManagementTool
                 {
 
                     this.HideError(tbNZPrice, lbError);
-                    lbResult.Text = tbNZPrice.Text.Trim();
                 }
             }
             else
@@ -202,6 +205,7 @@ namespace OrderManagementTool
                 this.HideError(tbNZPrice, lbError);
             }
             #endregion
+
 
             #region Generate BrowseHistory file
 
@@ -215,9 +219,8 @@ namespace OrderManagementTool
             #endregion
 
             #region Read BrowseHistory file
-            dgvPriceHistory.DataSource = null;
-            dgvPriceHistory.DataSource = ExportFile.ReadItemsFromBrowseHistoryFile(@"BrowsingHistory.txt");
-            dgvPriceHistory.Show();
+
+            ReadBrowsingHistory();
             #endregion
 
             #region Controls updating

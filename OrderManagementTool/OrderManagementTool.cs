@@ -72,6 +72,15 @@ namespace OrderManagementTool
         public OrderManagementTool()
         {
             InitializeComponent();
+            //#region Adjust window size
+
+            //int height = Screen.PrimaryScreen.Bounds.Height;
+            //MessageBox.Show("Bounds height:" + height);
+
+            //height = this.splitContainer.Panel1.Height;
+            //MessageBox.Show("panel1 height:" + height);
+            //#endregion
+
             this.dgvTransaction.AutoGenerateColumns = false;// prohibit useless column 
             ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
             InitializeSortingList();
@@ -292,7 +301,6 @@ namespace OrderManagementTool
             {
                 return;
             }
-            this.DisplayMainFrm(true);
              
             if (MessageBox.Show(this, "Delete?", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {

@@ -398,7 +398,7 @@
             this.tbOrderContent.Location = new System.Drawing.Point(41, 478);
             this.tbOrderContent.Multiline = true;
             this.tbOrderContent.Name = "tbOrderContent";
-            this.tbOrderContent.Size = new System.Drawing.Size(876, 205);
+            this.tbOrderContent.Size = new System.Drawing.Size(876, 183);
             this.tbOrderContent.TabIndex = 7;
             // 
             // btnCopy

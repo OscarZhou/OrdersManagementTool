@@ -53,6 +53,10 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.dgvPriceHistory = new System.Windows.Forms.DataGridView();
+            this.Opt = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label9 = new System.Windows.Forms.Label();
             this.btnClearPrice = new System.Windows.Forms.Button();
             this.btnImportToOrder = new System.Windows.Forms.Button();
@@ -64,10 +68,6 @@
             this.lbLogo = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.lbError = new System.Windows.Forms.Label();
-            this.Opt = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPriceHistory)).BeginInit();
             this.panelTop.SuspendLayout();
             this.SuspendLayout();
@@ -148,6 +148,7 @@
             // 
             this.cboProfitMargin.FormattingEnabled = true;
             this.cboProfitMargin.Items.AddRange(new object[] {
+            "1.0",
             "1.1",
             "1.2",
             "1.3",
@@ -195,7 +196,7 @@
             this.btnReset.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnReset.Image = ((System.Drawing.Image)(resources.GetObject("btnReset.Image")));
             this.btnReset.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReset.Location = new System.Drawing.Point(113, 82);
+            this.btnReset.Location = new System.Drawing.Point(467, 82);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(85, 40);
             this.btnReset.TabIndex = 5;
@@ -212,7 +213,7 @@
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(208, 82);
+            this.btnSave.Location = new System.Drawing.Point(562, 82);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(84, 40);
             this.btnSave.TabIndex = 5;
@@ -292,6 +293,61 @@
             this.dgvPriceHistory.TabIndex = 7;
             this.dgvPriceHistory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPriceHistory_CellClick);
             // 
+            // Opt
+            // 
+            this.Opt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.NullValue = false;
+            this.Opt.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Opt.HeaderText = "Opt.";
+            this.Opt.Name = "Opt";
+            this.Opt.ReadOnly = true;
+            this.Opt.Visible = false;
+            // 
+            // UnitPrice
+            // 
+            this.UnitPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.UnitPrice.DataPropertyName = "UnitPrice";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            this.UnitPrice.DefaultCellStyle = dataGridViewCellStyle4;
+            this.UnitPrice.HeaderText = "Price";
+            this.UnitPrice.Name = "UnitPrice";
+            this.UnitPrice.ReadOnly = true;
+            this.UnitPrice.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.UnitPrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.UnitPrice.Width = 64;
+            // 
+            // ItemDescription
+            // 
+            this.ItemDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ItemDescription.DataPropertyName = "ItemDescription";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            this.ItemDescription.DefaultCellStyle = dataGridViewCellStyle5;
+            this.ItemDescription.HeaderText = "Item";
+            this.ItemDescription.Name = "ItemDescription";
+            this.ItemDescription.ReadOnly = true;
+            this.ItemDescription.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ItemDescription.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // CreateTime
+            // 
+            this.CreateTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.CreateTime.DataPropertyName = "CreateTime";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            this.CreateTime.DefaultCellStyle = dataGridViewCellStyle6;
+            this.CreateTime.HeaderText = "Date";
+            this.CreateTime.Name = "CreateTime";
+            this.CreateTime.ReadOnly = true;
+            this.CreateTime.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.CreateTime.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.CreateTime.Width = 63;
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -310,7 +366,7 @@
             this.btnClearPrice.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnClearPrice.Image = ((System.Drawing.Image)(resources.GetObject("btnClearPrice.Image")));
             this.btnClearPrice.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClearPrice.Location = new System.Drawing.Point(17, 82);
+            this.btnClearPrice.Location = new System.Drawing.Point(371, 82);
             this.btnClearPrice.Name = "btnClearPrice";
             this.btnClearPrice.Size = new System.Drawing.Size(86, 40);
             this.btnClearPrice.TabIndex = 5;
@@ -327,7 +383,7 @@
             this.btnImportToOrder.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnImportToOrder.Image = ((System.Drawing.Image)(resources.GetObject("btnImportToOrder.Image")));
             this.btnImportToOrder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImportToOrder.Location = new System.Drawing.Point(485, 82);
+            this.btnImportToOrder.Location = new System.Drawing.Point(16, 82);
             this.btnImportToOrder.Name = "btnImportToOrder";
             this.btnImportToOrder.Size = new System.Drawing.Size(160, 40);
             this.btnImportToOrder.TabIndex = 5;
@@ -427,62 +483,6 @@
             this.lbError.Size = new System.Drawing.Size(71, 18);
             this.lbError.TabIndex = 14;
             this.lbError.Text = "label13";
-            // 
-            // Opt
-            // 
-            this.Opt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.NullValue = false;
-            this.Opt.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Opt.HeaderText = "Opt.";
-            this.Opt.Name = "Opt";
-            this.Opt.ReadOnly = true;
-            this.Opt.Visible = false;
-            this.Opt.Width = 59;
-            // 
-            // UnitPrice
-            // 
-            this.UnitPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.UnitPrice.DataPropertyName = "UnitPrice";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
-            this.UnitPrice.DefaultCellStyle = dataGridViewCellStyle4;
-            this.UnitPrice.HeaderText = "Price";
-            this.UnitPrice.Name = "UnitPrice";
-            this.UnitPrice.ReadOnly = true;
-            this.UnitPrice.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.UnitPrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.UnitPrice.Width = 64;
-            // 
-            // ItemDescription
-            // 
-            this.ItemDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ItemDescription.DataPropertyName = "ItemDescription";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
-            this.ItemDescription.DefaultCellStyle = dataGridViewCellStyle5;
-            this.ItemDescription.HeaderText = "Item";
-            this.ItemDescription.Name = "ItemDescription";
-            this.ItemDescription.ReadOnly = true;
-            this.ItemDescription.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.ItemDescription.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // CreateTime
-            // 
-            this.CreateTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.CreateTime.DataPropertyName = "CreateTime";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
-            this.CreateTime.DefaultCellStyle = dataGridViewCellStyle6;
-            this.CreateTime.HeaderText = "Date";
-            this.CreateTime.Name = "CreateTime";
-            this.CreateTime.ReadOnly = true;
-            this.CreateTime.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.CreateTime.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.CreateTime.Width = 63;
             // 
             // CalculatePriceKitPage
             // 
