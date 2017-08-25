@@ -447,7 +447,7 @@ namespace OrderManagementTool
             if (this.dgvTransaction.RowCount != 0)
             {
 
-                this.dgvTransaction.FirstDisplayedCell = this.dgvTransaction.Rows[locatedRowNo].Cells[0];
+                this.dgvTransaction.FirstDisplayedCell = this.dgvTransaction.Rows[locatedRowNo-1].Cells[0];
                 this.dgvTransaction.Rows[selectedRowNo - 1].Cells[0].Selected = true;
             }
 

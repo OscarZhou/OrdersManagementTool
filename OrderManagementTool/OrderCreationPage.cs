@@ -13,7 +13,7 @@ namespace OrderManagementTool
     public partial class OrderCreationPage : Form
     {
         private List<Item> objItems = new List<Item>();
-        private int crtOrderNo;
+        private string crtOrderNo;
         private string purchaserName;
         private CalculatePriceKitPage _frmPriceKit;
 
@@ -223,10 +223,10 @@ namespace OrderManagementTool
             this.purchaserName = tbPurchaser.Text.Trim();
 
             // insert Orders data
-            this.crtOrderNo = new OrderManage().GetMaxOrderNo();//return OrderNo (foreign key for table ItemList )
+            this.crtOrderNo = new OrderManage().GetMaxOrderNo().ToString();//return OrderNo (foreign key for table ItemList )
             Order objOrder = new Order()
             {
-                OrderNo = crtOrderNo,
+                OrderNo = Convert.ToInt32(crtOrderNo),
                 User = objUserInfo,
                 Purchaser = tbPurchaser.Text.Trim(),
                 ProductPrice = Convert.ToDouble(tbTotalPrice.Text.Trim()),
@@ -238,14 +238,14 @@ namespace OrderManagementTool
             // insert Item data
             foreach (Item objItem in objItems)
             {
-                objItem.OrderNo = crtOrderNo;
+                objItem.OrderNo = Convert.ToInt32(crtOrderNo);
                 new ItemManage().InsertItem(objItem);
             }
 
             // insert Transaction data
             Transaction objTransaction = new Transaction()
             {
-                OrderNo = this.crtOrderNo,
+                OrderNo = Convert.ToInt32(this.crtOrderNo),
                 Purchaser = this.purchaserName,
                 OrderStatus = Convert.ToByte(false),
                 CreateTime = DateTime.Now.Date
@@ -304,7 +304,11 @@ namespace OrderManagementTool
 
         private void btnTxtFile_Click(object sender, EventArgs e)
         {
+
+
             #region Generate .txt file
+
+
             FolderBrowserDialog fileSelector = new FolderBrowserDialog();
             string defaultPath = ExportFile.GetDefaultPath("dircPath");
             if (defaultPath != "")
@@ -317,6 +321,9 @@ namespace OrderManagementTool
                 string path = string.Format(fileSelector.SelectedPath + @"\{0}{1}.txt", this.crtOrderNo,
                     this.purchaserName);
 
+
+                List<Item> objItems = new ItemManage().GetItemListByOrderNo(this.crtOrderNo);
+
                 UserInfo objUserInfo = new UserInfo()
                 {
                     UserName = tbTo.Text.Trim(),
@@ -324,7 +331,7 @@ namespace OrderManagementTool
                     Address = tbAddress.Text.Trim(),
                     CardNo = tbIdentityCard.Text.Trim()
                 };
-                string orderContent = this.GenerateOrderContent(objUserInfo, true);
+                string orderContent = ExportFile.GenerateOrderContent(objItems, objUserInfo, true);
 
                 ExportFile.CreateOrderFile(path, tbOrderContent.Text.Trim());
                 MessageBox.Show("Generating " + this.crtOrderNo + this.purchaserName + ".txt Sucessfully!");
