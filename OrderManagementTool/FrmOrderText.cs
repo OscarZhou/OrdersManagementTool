@@ -12,6 +12,7 @@ namespace OrderManagementTool
     {
         private string _orderNo;
         private string _purchaserName;
+
         public FrmOrderText()
         {
             InitializeComponent();
@@ -25,7 +26,7 @@ namespace OrderManagementTool
         public void Receiver(string content, string orderNo)
         {
             tbOrderContent.Text = content;
-            this._orderNo = orderNo;
+            _orderNo = orderNo;
         }
 
         private void btnCopyToClipboard_Click(object sender, EventArgs e)
@@ -53,38 +54,33 @@ namespace OrderManagementTool
 
         private void btnRegenerate_Click(object sender, EventArgs e)
         {
-
             #region Generate the Order text
 
-            List<Item> objItems = new ItemManage().GetItemListByOrderNo(this._orderNo);
-            UserInfo objUserInfo = new UserInfoManage().GetUserByOrderNo(this._orderNo);
-            tbOrderContent.Text = this.GenerateOrderContent(objItems, objUserInfo, true);
+            var objItems = new ItemManage().GetItemListByOrderNo(_orderNo);
+            var objUserInfo = new UserInfoManage().GetUserByOrderNo(_orderNo);
+            tbOrderContent.Text = GenerateOrderContent(objItems, objUserInfo, true);
 
             #endregion
 
             #region Generate .txt file
 
-            this._purchaserName = new OrderManage().GetPurchaserName(this._orderNo);
-            FolderBrowserDialog fileSelector = new FolderBrowserDialog();
-            string defaultPath = ExportFile.GetDefaultPath("dircPath");
+            _purchaserName = new OrderManage().GetPurchaserName(_orderNo);
+            var fileSelector = new FolderBrowserDialog();
+            var defaultPath = ExportFile.GetDefaultPath("dircPath");
             if (defaultPath != "")
-            {
                 fileSelector.SelectedPath = defaultPath;
-            }
             if (fileSelector.ShowDialog() == DialogResult.OK)
             {
                 ExportFile.SetFolderPath("dircPath", fileSelector.SelectedPath);
-                string path = string.Format(fileSelector.SelectedPath + @"\{0}{1}.txt", this._orderNo,
-                    this._purchaserName);
+                var path = string.Format(fileSelector.SelectedPath + @"\{0}{1}.txt", _orderNo,
+                    _purchaserName);
 
                 ExportFile.CreateOrderFile(path, tbOrderContent.Text.Trim());
                 if (DialogResult.OK ==
-                    MessageBox.Show("Generating " + this._orderNo + this._purchaserName + ".txt Sucessfully!"))
+                    MessageBox.Show("Generating " + _orderNo + _purchaserName + ".txt Sucessfully!"))
                 {
                     //this.Close();
-                    
                 }
-
             }
 
             #endregion
@@ -94,36 +90,28 @@ namespace OrderManagementTool
 
         private string GenerateOrderContent(List<Item> objItems, UserInfo objUserInfo, bool withUnitPrice)
         {
-            StringBuilder orderBuilder = new StringBuilder();
+            var orderBuilder = new StringBuilder();
             // From part
             orderBuilder.Append("发件人：Oscar\r\n电话：0211376664\r\n\r\n");
             // Item part
-            int counter = 0;
-            foreach (Item objItem in objItems)
+            var counter = 0;
+            foreach (var objItem in objItems)
             {
                 counter++;
                 if (withUnitPrice)
-                {
                     orderBuilder.Append(string.Format(counter + "、{0}，数量{1}，{2}\r\n", objItem.ItemDescription,
                         objItem.Quantity, objItem.UnitPrice));
-                }
                 else
-                {
                     orderBuilder.Append(string.Format(counter + "、{0}，数量{1}\r\n", objItem.ItemDescription,
                         objItem.Quantity));
-                }
             }
             // To part
             orderBuilder.Append(string.Format("\r\n收件人：{0}\r\n电话：{1}\r\n地址：{2}\r\n", objUserInfo.UserName,
                 objUserInfo.PhoneNumber,
                 objUserInfo.Address));
             return orderBuilder.ToString();
-
         }
 
         #endregion
-
-
-
     }
 }
