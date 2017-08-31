@@ -138,15 +138,21 @@ namespace Utilities
                 }
 
                 string strDate = ParseDateTimeInExcel(xlRange.Cells[i, 6].Value2);
+                double profit = Convert.ToDouble(xlRange.Cells[i, 5].Value2);
+                Byte status = Convert.ToByte(true);
+                if (profit < 0.1 && profit> -0.1)
+                {
+                    status = Convert.ToByte(false);
+                }
                 objTransactions.Add(new Transaction()
                 {
                     OrderNo = Convert.ToInt32(xlRange.Cells[i, 1].Value2),
                     Purchaser = xlRange.Cells[i, 2].Value2.ToString(),
                     SellingPrice = Convert.ToDouble(xlRange.Cells[i, 3].Value2),
                     PurchasePrice = Convert.ToDouble(xlRange.Cells[i, 4].Value2),
-                    Profit = Convert.ToDouble(xlRange.Cells[i, 5].Value2),
+                    Profit = profit,
                     CreateTime = DateTime.Parse(strDate),
-                    OrderStatus = Convert.ToByte(true)
+                    OrderStatus = status
                 });
 
             }
