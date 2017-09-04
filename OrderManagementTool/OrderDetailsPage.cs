@@ -61,6 +61,8 @@ namespace OrderManagementTool
             _objItems = new ItemManage().GetItemListByOrderNo(orderNo);
             dgvItemList.DataSource = _objItems;
             dgvItemList.Show();
+
+            tbTotalPrice.Text = CalculateTotalPrice(_objItems).ToString();
             //if (_status.Equals("Edit"))
             //{
             //    string itemNo = dgvItemList.Rows[0].Cells["ItemNo"].Value.ToString(); //get the information in the first row
@@ -110,6 +112,15 @@ namespace OrderManagementTool
             dgvItemList.DataSource = null;
             dgvItemList.DataSource = _objItems;
             dgvItemList.Show();
+
+            tbTotalPrice.Text = CalculateTotalPrice(_objItems).ToString();
+            #endregion
+
+            #region Clear the controls
+
+            tbProductName.Text = "";
+            tbQuantity.Text = "";
+            tbPrice.Text = "";
 
             #endregion
         }
@@ -188,6 +199,7 @@ namespace OrderManagementTool
             _objOrder.User.UserName = tbTo.Text.Trim();
             _objOrder.User.PhoneNumber = tbToPhone.Text.Trim();
             _objOrder.User.Address = tbAddress.Text.Trim();
+            
             var objTransaction = new TransactionManage().GetTransactionRecordByOrderNo(tbOrderNo.Text.Trim());
             objTransaction.SellingPrice = Convert.ToDouble(tbSellingPrice.Text.Trim());
             objTransaction.PurchasePrice = Convert.ToDouble(tbPurchasePrice.Text.Trim());
@@ -276,7 +288,18 @@ namespace OrderManagementTool
             dgvItemList.DataSource = _objItems;
             dgvItemList.Show();
 
+            tbTotalPrice.Text = CalculateTotalPrice(_objItems).ToString();
+
             #endregion
+
+            #region Clear the controls
+
+            tbProductName.Text = "";
+            tbQuantity.Text = "";
+            tbPrice.Text = "";
+
+            #endregion
+
         }
 
         private void btnDeleteItem_Click(object sender, EventArgs e)
@@ -294,6 +317,15 @@ namespace OrderManagementTool
                 dgvItemList.DataSource = null;
                 dgvItemList.DataSource = _objItems;
                 dgvItemList.Show();
+
+                tbTotalPrice.Text = CalculateTotalPrice(_objItems).ToString();
+                #endregion
+
+                #region Clear the controls
+
+                tbProductName.Text = "";
+                tbQuantity.Text = "";
+                tbPrice.Text = "";
 
                 #endregion
             }
@@ -489,6 +521,21 @@ namespace OrderManagementTool
                     ((Form) item).Close();
                 item.Visible = mainFrmState;
             }
+        }
+
+        #endregion
+
+
+        #region Calculate the total price of all the items
+
+        private double CalculateTotalPrice(List<Item> objItems )
+        {
+            double totalPrice = 0;
+            foreach (Item objItem in objItems)
+            {
+                totalPrice += objItem.TotalPrice;
+            }
+            return totalPrice;
         }
 
         #endregion
