@@ -393,11 +393,12 @@
             // 
             // tbOrderContent
             // 
-            this.tbOrderContent.Enabled = false;
             this.tbOrderContent.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tbOrderContent.Location = new System.Drawing.Point(41, 478);
+            this.tbOrderContent.MaxLength = 100;
             this.tbOrderContent.Multiline = true;
             this.tbOrderContent.Name = "tbOrderContent";
+            this.tbOrderContent.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tbOrderContent.Size = new System.Drawing.Size(876, 183);
             this.tbOrderContent.TabIndex = 7;
             // 

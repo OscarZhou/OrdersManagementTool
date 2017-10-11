@@ -17,6 +17,7 @@ namespace OrderManagementTool
             dgvItemList.AutoGenerateColumns = false;
             lbError.Visible = false;
             lbError.ForeColor = Color.Red;
+
             // Add key down event
             KeyDown += OrderDetailsPage_KeyDown;
             foreach (Control control in Controls)
@@ -216,6 +217,8 @@ namespace OrderManagementTool
                 {
                     new ItemManage().UpdateItem(objItem);
                 }
+
+            
             var result = new OrderManage().UpdateOrder(_objOrder);
             if (result > 0)
             {
@@ -310,14 +313,16 @@ namespace OrderManagementTool
             {
                 #region Delete Item
 
-                var itemDescription = dgvItemList.CurrentRow.Cells["ItemDescription"].Value.ToString();
-                var objDeleteItem = (from t in _objItems where t.ItemDescription == itemDescription select t).First();
+                var itemNo = dgvItemList.CurrentRow.Cells["ItemNo"].Value.ToString();
+                var objDeleteItem = (from t in _objItems where t.ItemNo == Convert.ToInt32(itemNo) select t).First();
                     //Re-organize the data in DataGridView
+                
                 _objItems.Remove(objDeleteItem);
                 dgvItemList.DataSource = null;
                 dgvItemList.DataSource = _objItems;
                 dgvItemList.Show();
 
+                new ItemManage().DeleteItemByItemNo(objDeleteItem.ItemNo.ToString());
                 tbTotalPrice.Text = CalculateTotalPrice(_objItems).ToString();
                 #endregion
 

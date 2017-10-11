@@ -19,7 +19,7 @@ namespace Models
         public double TotalPrice { get; set; }
 
         public DateTime CreateTime { get; set; }
-        
+
     }
 
     #region Construct the comparer to clear up the browsing history

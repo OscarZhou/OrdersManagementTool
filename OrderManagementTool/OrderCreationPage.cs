@@ -78,11 +78,18 @@ namespace OrderManagementTool
                 ShowError("Please input the Price!", tbPrice, lbItemError);
                 return;
             }
-            if (Regex.IsMatch(tbPrice.Text, "[^0-9]"))
+            int priceInt = 0;
+            double priceDouble = 0.0;
+            if (!int.TryParse(tbPrice.Text, out priceInt) && !double.TryParse(tbPrice.Text, out priceDouble))
             {
                 ShowError("Please input only numbers", tbPrice, lbItemError);
                 return;
             }
+            //if (Regex.IsMatch(tbPrice.Text, "[^0-9]"))
+            //{
+            //    ShowError("Please input only numbers", tbPrice, lbItemError);
+            //    return;
+            //}
             HideError(tbPrice, lbItemError);
 
             #endregion
@@ -251,7 +258,14 @@ namespace OrderManagementTool
 
             #endregion
 
+
             MessageBox.Show("Adding Order Sucessfully!");
+            if (tbOrderContent.Text != "")
+            {
+                Clipboard.SetDataObject(tbOrderContent.Text);
+                tbOrderContent.Focus();
+                
+            }
         }
 
         private void btnCopy_Click(object sender, EventArgs e)

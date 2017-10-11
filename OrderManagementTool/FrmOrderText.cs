@@ -58,7 +58,7 @@ namespace OrderManagementTool
 
             var objItems = new ItemManage().GetItemListByOrderNo(_orderNo);
             var objUserInfo = new UserInfoManage().GetUserByOrderNo(_orderNo);
-            tbOrderContent.Text = GenerateOrderContent(objItems, objUserInfo, true);
+            tbOrderContent.Text = GenerateOrderContent(objItems, objUserInfo, false);
 
             #endregion
 
@@ -84,6 +84,13 @@ namespace OrderManagementTool
             }
 
             #endregion
+
+            if (tbOrderContent.Text != "")
+            {
+                Clipboard.SetDataObject(tbOrderContent.Text);
+                tbOrderContent.Focus();
+                MessageBox.Show("Copy to clipboard!");
+            }
         }
 
         #region Generate Order content

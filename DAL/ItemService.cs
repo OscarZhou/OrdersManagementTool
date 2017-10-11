@@ -85,6 +85,24 @@ namespace DAL
             }
         }
 
+        public int DeleteItemByItemNo(string itemNo)
+        {
+            StringBuilder sqlBuilder = new StringBuilder();
+            sqlBuilder.Append("delete from ItemList where ItemNo = {0}");
+
+            string sql = string.Format(sqlBuilder.ToString(), itemNo);
+
+            try
+            {
+                return SQLHelper.Update(sql);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
         public Item GetItemByItemNo(string itemNo)
         {
             StringBuilder sqlBuilder = new StringBuilder();
