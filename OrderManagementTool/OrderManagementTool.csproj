@@ -115,7 +115,13 @@
     <EmbeddedResource Include="OrderDetailsPage.resx">
       <DependentUpon>OrderDetailsPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OrderManagementTool.en-US.resx">
+      <DependentUpon>OrderManagementTool.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OrderManagementTool.resx">
+      <DependentUpon>OrderManagementTool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderManagementTool.zh-CHS.resx">
       <DependentUpon>OrderManagementTool.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

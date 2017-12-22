@@ -14,6 +14,7 @@ namespace OrderManagementTool
         public OrderManagementTool()
         {
             InitializeComponent();
+
             //#region Adjust window size
 
             //int height = Screen.PrimaryScreen.Bounds.Height;
@@ -34,6 +35,7 @@ namespace OrderManagementTool
             foreach (Control control in Controls)
                 control.KeyDown += OrderManagementTool_KeyDown;
         }
+
 
         private void InitializeSortingList()
         {
@@ -548,5 +550,7 @@ namespace OrderManagementTool
         }
 
         #endregion
+
+     
     }
 }

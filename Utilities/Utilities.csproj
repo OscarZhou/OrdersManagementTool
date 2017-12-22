@@ -43,6 +43,7 @@
     <Compile Include="ExportFile.cs" />
     <Compile Include="FormatParsing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceCulture.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj">
