@@ -1139,7 +1139,7 @@
     <value>0, 823</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1729, 52</value>
+    <value>1707, 52</value>
   </data>
   <data name="panel2.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -1292,7 +1292,7 @@
     <value>True</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1729, 875</value>
+    <value>1707, 875</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

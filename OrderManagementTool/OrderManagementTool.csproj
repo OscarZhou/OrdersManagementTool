@@ -109,7 +109,13 @@
     <EmbeddedResource Include="FrmOrderText.resx">
       <DependentUpon>FrmOrderText.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OrderCreationPage.en-US.resx">
+      <DependentUpon>OrderCreationPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OrderCreationPage.resx">
+      <DependentUpon>OrderCreationPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderCreationPage.zh-CHS.resx">
       <DependentUpon>OrderCreationPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrderDetailsPage.resx">
