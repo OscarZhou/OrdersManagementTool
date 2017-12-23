@@ -2,8 +2,10 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
+using System.Threading;
 using System.Windows.Forms;
 using Utilities;
 
@@ -11,9 +13,12 @@ namespace OrderManagementTool
 {
     public partial class OrderManagementTool : Form
     {
+        private bool zh;
         public OrderManagementTool()
         {
             InitializeComponent();
+            CultureInfo ci = Thread.CurrentThread.CurrentUICulture;
+            zh = ci.Name.Equals("zh-CHS") ? true : false;
 
             //#region Adjust window size
 
@@ -39,10 +44,10 @@ namespace OrderManagementTool
 
         private void InitializeSortingList()
         {
-            cmbSorting.Items.Add("OrderNo Asc");
-            cmbSorting.Items.Add("OrderNo Desc");
-            cmbSorting.Items.Add("Profit Asc");
-            cmbSorting.Items.Add("Profit Desc");
+            cmbSorting.Items.Add(zh ? "订单号升序" : "OrderNo Asc");
+            cmbSorting.Items.Add(zh ? "订单号降序" : "OrderNo Desc");
+            cmbSorting.Items.Add(zh ? "利润升序" : "Profit Asc");
+            cmbSorting.Items.Add(zh ? "利润降序" : "Profit Desc");
             cmbSorting.SelectedIndex = 1;
             _orderNo = dgvTransaction.RowCount.ToString();
         }
