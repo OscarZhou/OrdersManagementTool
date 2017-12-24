@@ -97,16 +97,34 @@
     <Compile Include="UndoneOrdersPage.Designer.cs">
       <DependentUpon>UndoneOrdersPage.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CalculatePriceKitPage.en-US.resx">
+      <DependentUpon>CalculatePriceKitPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CalculatePriceKitPage.resx">
+      <DependentUpon>CalculatePriceKitPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CalculatePriceKitPage.zh-CHS.resx">
       <DependentUpon>CalculatePriceKitPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CompletedTransactionPage.resx">
       <DependentUpon>CompletedTransactionPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DataImportingPage.en-US.resx">
+      <DependentUpon>DataImportingPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DataImportingPage.resx">
       <DependentUpon>DataImportingPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DataImportingPage.zh-CHS.resx">
+      <DependentUpon>DataImportingPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmOrderText.en-US.resx">
+      <DependentUpon>FrmOrderText.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmOrderText.resx">
+      <DependentUpon>FrmOrderText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmOrderText.zh-CHS.resx">
       <DependentUpon>FrmOrderText.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrderCreationPage.en-US.resx">
@@ -118,7 +136,13 @@
     <EmbeddedResource Include="OrderCreationPage.zh-CHS.resx">
       <DependentUpon>OrderCreationPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OrderDetailsPage.en-US.resx">
+      <DependentUpon>OrderDetailsPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OrderDetailsPage.resx">
+      <DependentUpon>OrderDetailsPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderDetailsPage.zh-CHS.resx">
       <DependentUpon>OrderDetailsPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrderManagementTool.en-US.resx">

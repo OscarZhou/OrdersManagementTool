@@ -3,17 +3,23 @@ using Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace OrderManagementTool
 {
     public partial class OrderDetailsPage : Form
     {
+        private bool zh;
         public OrderDetailsPage()
         {
             InitializeComponent();
+            CultureInfo ci = Thread.CurrentThread.CurrentUICulture;
+            zh = ci.Name.Equals("zh-CHS") ? true : false;
+
             dgvItemList.AutoGenerateColumns = false;
             lbError.Visible = false;
             lbError.ForeColor = Color.Red;
@@ -132,7 +138,7 @@ namespace OrderManagementTool
 
             if (tbTo.Text.Trim().Length == 0)
             {
-                ShowError("Please fill the blank", tbTo, lbError);
+                ShowError(zh?"请添加收件人":"Please fill the receiver", tbTo, lbError);
                 return;
             }
             HideError(tbTo, lbError);
@@ -140,28 +146,28 @@ namespace OrderManagementTool
 
             if (tbToPhone.Text.Trim().Length == 0)
             {
-                ShowError("Please fill the blank", tbToPhone, lbError);
+                ShowError(zh?"请添加收件人电话号码":"Please fill the receiver's phone", tbToPhone, lbError);
                 return;
             }
             HideError(tbToPhone, lbError);
 
             if (tbAddress.Text.Trim().Length == 0)
             {
-                ShowError("Please fill the blank", tbAddress, lbError);
+                ShowError(zh?"请添加收件人地址":"Please fill the receiver's address", tbAddress, lbError);
                 return;
             }
             HideError(tbAddress, lbError);
 
             if (tbSellingPrice.Text.Trim().Length == 0)
             {
-                ShowError("Please fill the blank", tbSellingPrice, lbError);
+                ShowError(zh?"请添加产品售价":"Please fill the selling price", tbSellingPrice, lbError);
                 return;
             }
             if (Regex.IsMatch(tbSellingPrice.Text, "[^0-9]")) //区分不是字母，而是数字
                 if (!Regex.IsMatch(tbSellingPrice.Text, @"^(-?\d+)(\.\d+)?$"))
                 {
                     //不是小数
-                    ShowError("Please input only number", tbSellingPrice, lbError);
+                    ShowError(zh?"只允许添加数字":"Please input only number", tbSellingPrice, lbError);
                     return;
                 }
                 else
@@ -173,14 +179,14 @@ namespace OrderManagementTool
 
             if (tbPurchasePrice.Text.Trim().Length == 0)
             {
-                ShowError("Please fill the blank", tbPurchasePrice, lbError);
+                ShowError(zh?"请添加进价":"Please fill the purchasing price", tbPurchasePrice, lbError);
                 return;
             }
             if (Regex.IsMatch(tbPurchasePrice.Text, "[^0-9]")) //区分不是字母，而是数字
                 if (!Regex.IsMatch(tbPurchasePrice.Text, @"^(-?\d+)(\.\d+)?$"))
                 {
                     //不是小数
-                    ShowError("Please input only number", tbPurchasePrice, lbError);
+                    ShowError(zh ? "只允许添加数字" : "Please input only number", tbPurchasePrice, lbError);
                     return;
                 }
                 else
@@ -222,7 +228,7 @@ namespace OrderManagementTool
             var result = new OrderManage().UpdateOrder(_objOrder);
             if (result > 0)
             {
-                MessageBox.Show("Modifying Order Sucessfully!");
+                MessageBox.Show(zh?"成功修改订单":"Modifying Order Sucessfully!");
                 EvtSendMsg("open");
                 Close();
             }
@@ -308,7 +314,7 @@ namespace OrderManagementTool
         private void btnDeleteItem_Click(object sender, EventArgs e)
         {
             if (
-                MessageBox.Show(this, "Are you sure to delete?", "Prompt", MessageBoxButtons.YesNo,
+                MessageBox.Show(this, zh?"确认删除吗？":"Are you sure to delete?", zh?"提示":"Prompt", MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 #region Delete Item
@@ -342,24 +348,24 @@ namespace OrderManagementTool
 
             if (tbQuantity.Text.Trim().Length == 0)
             {
-                ShowError("Please input the Quantity", tbQuantity, lbError);
+                ShowError(zh?"请输入产品数量":"Please input the Quantity", tbQuantity, lbError);
                 return false;
             }
             if (Regex.IsMatch(tbQuantity.Text, "[^0-9]"))
             {
-                ShowError("Please input only number", tbQuantity, lbError);
+                ShowError(zh?"只允许输入数字":"Please input only number", tbQuantity, lbError);
                 return false;
             }
             HideError(tbQuantity, lbError);
 
             if (tbPrice.Text.Trim().Length == 0)
             {
-                ShowError("Please input the Unit Price", tbPrice, lbError);
+                ShowError(zh?"请输入产品单价":"Please input the Unit Price", tbPrice, lbError);
                 return false;
             }
             if (Regex.IsMatch(tbPrice.Text, "[^0-9]"))
             {
-                ShowError("Please input only number", tbPrice, lbError);
+                ShowError(zh ? "只允许输入数字" : "Please input only number", tbPrice, lbError);
                 return false;
             }
             HideError(tbPrice, lbError);

@@ -343,8 +343,10 @@ namespace OrderManagementTool
 
             #region 使打开的窗口依附在原窗口的边上
 
-            var x = (SystemInformation.WorkingArea.Width - _frmPriceKit.Size.Width) / 2 + _frmPriceKit.Size.Width;
-            var y = (SystemInformation.WorkingArea.Height - _frmPriceKit.Size.Height) / 2;
+            //var x = (SystemInformation.WorkingArea.Width - _frmPriceKit.Size.Width) / 2 + _frmPriceKit.Size.Width;
+            //var y = (SystemInformation.WorkingArea.Height - _frmPriceKit.Size.Height) / 2;
+            var x = 100;
+            var y = 100;
             _frmPriceKit.StartPosition = FormStartPosition.Manual; //窗体的位置由Location属性决定
             _frmPriceKit.Location = (Point) new Size(x, y);
 

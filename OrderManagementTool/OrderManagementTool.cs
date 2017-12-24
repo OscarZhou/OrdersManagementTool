@@ -279,8 +279,10 @@ namespace OrderManagementTool
 
             #region Setting the start position of the new window
 
-            var x = (SystemInformation.WorkingArea.Width - _frmPriceKit.Size.Width) / 2 + _frmPriceKit.Size.Width;
-            var y = (SystemInformation.WorkingArea.Height - _frmPriceKit.Size.Height) / 2;
+            //var x = (SystemInformation.WorkingArea.Width - _frmPriceKit.Size.Width) / 3 + _frmPriceKit.Size.Width;
+            //var y = (SystemInformation.WorkingArea.Height - _frmPriceKit.Size.Height) / 3;
+            var x = 100;
+            var y = 100;
             _frmPriceKit.StartPosition = FormStartPosition.Manual; //窗体的位置由Location属性决定
             _frmPriceKit.Location = (Point) new Size(x, y); //窗体的起始位置为(x,y)
 

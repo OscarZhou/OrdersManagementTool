@@ -130,7 +130,7 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 135</value>
+    <value>49, 135</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 25</value>
@@ -157,7 +157,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="tbFrom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>145, 135</value>
+    <value>166, 135</value>
   </data>
   <data name="tbFrom.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 31</value>
@@ -190,7 +190,7 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 182</value>
+    <value>49, 182</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 25</value>
@@ -217,7 +217,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="tbFromPhone.Location" type="System.Drawing.Point, System.Drawing">
-    <value>145, 182</value>
+    <value>166, 182</value>
   </data>
   <data name="tbFromPhone.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 31</value>
@@ -244,7 +244,7 @@
     <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>44, 56</value>
+    <value>65, 56</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>1124, 1</value>
@@ -274,7 +274,7 @@
     <value>NoControl</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>537, 80</value>
+    <value>558, 80</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 25</value>
@@ -301,7 +301,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="tbItemDescription.Location" type="System.Drawing.Point, System.Drawing">
-    <value>624, 77</value>
+    <value>645, 77</value>
   </data>
   <data name="tbItemDescription.Size" type="System.Drawing.Size, System.Drawing">
     <value>604, 31</value>
@@ -331,7 +331,7 @@
     <value>NoControl</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>537, 132</value>
+    <value>558, 132</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 25</value>
@@ -358,7 +358,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="tbQuantity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>624, 129</value>
+    <value>645, 129</value>
   </data>
   <data name="tbQuantity.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 31</value>
@@ -388,7 +388,7 @@
     <value>NoControl</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>776, 135</value>
+    <value>797, 135</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 25</value>
@@ -415,7 +415,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="tbPrice.Location" type="System.Drawing.Point, System.Drawing">
-    <value>841, 132</value>
+    <value>862, 132</value>
   </data>
   <data name="tbPrice.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 31</value>
@@ -439,7 +439,7 @@
     <value>NoControl</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 490</value>
+    <value>43, 490</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>1124, 1</value>
@@ -493,7 +493,7 @@
     <value>94</value>
   </data>
   <data name="dgvItemList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>521, 218</value>
+    <value>542, 218</value>
   </data>
   <data name="dgvItemList.Size" type="System.Drawing.Size, System.Drawing">
     <value>794, 218</value>
@@ -523,7 +523,7 @@
     <value>NoControl</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 293</value>
+    <value>49, 293</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>34, 25</value>
@@ -550,7 +550,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="tbTo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>143, 292</value>
+    <value>164, 292</value>
   </data>
   <data name="tbTo.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 31</value>
@@ -580,7 +580,7 @@
     <value>NoControl</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 345</value>
+    <value>47, 345</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 25</value>
@@ -607,7 +607,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="tbToPhone.Location" type="System.Drawing.Point, System.Drawing">
-    <value>143, 344</value>
+    <value>164, 344</value>
   </data>
   <data name="tbToPhone.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 31</value>
@@ -637,7 +637,7 @@
     <value>NoControl</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 449</value>
+    <value>49, 449</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 25</value>
@@ -664,7 +664,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="tbAddress.Location" type="System.Drawing.Point, System.Drawing">
-    <value>143, 446</value>
+    <value>164, 446</value>
   </data>
   <data name="tbAddress.Size" type="System.Drawing.Size, System.Drawing">
     <value>543, 31</value>
@@ -688,7 +688,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="tbOrderContent.Location" type="System.Drawing.Point, System.Drawing">
-    <value>39, 516</value>
+    <value>60, 516</value>
   </data>
   <data name="tbOrderContent.MaxLength" type="System.Int32, mscorlib">
     <value>100</value>
@@ -727,7 +727,7 @@
     <value>NoControl</value>
   </data>
   <data name="lbItemError.Location" type="System.Drawing.Point, System.Drawing">
-    <value>858, 542</value>
+    <value>879, 542</value>
   </data>
   <data name="lbItemError.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 25</value>
@@ -760,7 +760,7 @@
     <value>NoControl</value>
   </data>
   <data name="lbUserError.Location" type="System.Drawing.Point, System.Drawing">
-    <value>858, 600</value>
+    <value>879, 600</value>
   </data>
   <data name="lbUserError.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 25</value>
@@ -793,7 +793,7 @@
     <value>NoControl</value>
   </data>
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 93</value>
+    <value>49, 93</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 25</value>
@@ -820,7 +820,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="tbPurchaser.Location" type="System.Drawing.Point, System.Drawing">
-    <value>145, 93</value>
+    <value>166, 93</value>
   </data>
   <data name="tbPurchaser.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 31</value>
@@ -850,7 +850,7 @@
     <value>NoControl</value>
   </data>
   <data name="chkLock.Location" type="System.Drawing.Point, System.Drawing">
-    <value>292, 184</value>
+    <value>313, 184</value>
   </data>
   <data name="chkLock.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 29</value>
@@ -883,7 +883,7 @@
     <value>NoControl</value>
   </data>
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1067, 452</value>
+    <value>1088, 452</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
     <value>90, 25</value>
@@ -913,7 +913,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="tbTotalPrice.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1166, 448</value>
+    <value>1187, 448</value>
   </data>
   <data name="tbTotalPrice.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 31</value>
@@ -943,7 +943,7 @@
     <value>NoControl</value>
   </data>
   <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 398</value>
+    <value>48, 398</value>
   </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 25</value>
@@ -970,7 +970,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="tbIdentityCard.Location" type="System.Drawing.Point, System.Drawing">
-    <value>143, 395</value>
+    <value>164, 395</value>
   </data>
   <data name="tbIdentityCard.Size" type="System.Drawing.Size, System.Drawing">
     <value>356, 31</value>
@@ -994,7 +994,7 @@
     <value>NoControl</value>
   </data>
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 257</value>
+    <value>41, 257</value>
   </data>
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
     <value>484, 2</value>
@@ -1024,7 +1024,7 @@
     <value>NoControl</value>
   </data>
   <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1262, 451</value>
+    <value>1283, 451</value>
   </data>
   <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
     <value>49, 25</value>
@@ -1067,7 +1067,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnTxtFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1132, 650</value>
+    <value>1153, 650</value>
   </data>
   <data name="btnTxtFile.Size" type="System.Drawing.Size, System.Drawing">
     <value>183, 40</value>
@@ -1115,7 +1115,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnCopy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>916, 650</value>
+    <value>937, 650</value>
   </data>
   <data name="btnCopy.Size" type="System.Drawing.Size, System.Drawing">
     <value>183, 40</value>
@@ -1167,7 +1167,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnPriceKit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1145, 177</value>
+    <value>1166, 177</value>
   </data>
   <data name="btnPriceKit.Size" type="System.Drawing.Size, System.Drawing">
     <value>169, 40</value>
@@ -1216,7 +1216,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnAddOrder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1170, 13</value>
+    <value>1191, 13</value>
   </data>
   <data name="btnAddOrder.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 40</value>
@@ -1270,7 +1270,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnDeleteItem.Location" type="System.Drawing.Point, System.Drawing">
-    <value>995, 177</value>
+    <value>1016, 177</value>
   </data>
   <data name="btnDeleteItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 40</value>
@@ -1324,7 +1324,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnAddItem.Location" type="System.Drawing.Point, System.Drawing">
-    <value>841, 177</value>
+    <value>862, 177</value>
   </data>
   <data name="btnAddItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>135, 40</value>
@@ -1524,9 +1524,6 @@
         /gH4PwAA////h+D/AAD////Dg/8AAP///+AP/wAA////8D//AAD////8//8AAP///////wAA////////
         AAA=
 </value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
