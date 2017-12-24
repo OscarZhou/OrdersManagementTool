@@ -109,6 +109,10 @@
     <EmbeddedResource Include="CompletedTransactionPage.resx">
       <DependentUpon>CompletedTransactionPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CompletedTransactionPage.zh-CHS.resx">
+      <DependentUpon>CompletedTransactionPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompletedTransationPage.en-US.resx" />
     <EmbeddedResource Include="DataImportingPage.en-US.resx">
       <DependentUpon>DataImportingPage.cs</DependentUpon>
     </EmbeddedResource>

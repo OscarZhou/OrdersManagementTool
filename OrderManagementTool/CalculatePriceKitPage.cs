@@ -1,8 +1,10 @@
 ﻿using Models;
 using System;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows.Forms;
 using Utilities;
 
@@ -10,9 +12,12 @@ namespace OrderManagementTool
 {
     public partial class CalculatePriceKitPage : Form
     {
+        private bool zh;
         public CalculatePriceKitPage()
         {
             InitializeComponent();
+            CultureInfo ci = Thread.CurrentThread.CurrentUICulture;
+            zh = ci.Name.Equals("zh-CHS") ? true : false;
             dgvPriceHistory.AutoGenerateColumns = false;
             lbError.Visible = false;
             lbError.ForeColor = Color.Red;
@@ -41,7 +46,7 @@ namespace OrderManagementTool
 
             if (tbNZPrice.Text.Trim().Length == 0)
             {
-                ShowError("Please fill the blank", tbNZPrice, lbError);
+                ShowError(zh?"请输入纽币价格":"Please fill NZ price", tbNZPrice, lbError);
                 return;
             }
             if (Regex.IsMatch(tbNZPrice.Text, "[^0-9]")) //区分不是字母，而是数字
@@ -50,7 +55,7 @@ namespace OrderManagementTool
                 if (!Regex.IsMatch(tbNZPrice.Text, @"^(-?\d+)(\.\d+)?$"))
                 {
                     //不是小数
-                    ShowError("Please input only number", tbNZPrice, lbError);
+                    ShowError(zh?"只允许输入数字":"Please input only number", tbNZPrice, lbError);
                     return;
                 }
                 HideError(tbNZPrice, lbError);
@@ -79,14 +84,14 @@ namespace OrderManagementTool
 
             if (tbNZPrice.Text.Trim().Length == 0)
             {
-                ShowError("Please fill the blank", tbNZPrice, lbError);
+                ShowError(zh?"请输入纽币价格":"Please fill NZ price", tbNZPrice, lbError);
                 return;
             }
             if (Regex.IsMatch(tbNZPrice.Text, "[^0-9]")) //区分不是字母，而是数字
                 if (!Regex.IsMatch(tbNZPrice.Text, @"^(-?\d+)(\.\d+)?$"))
                 {
                     //不是小数
-                    ShowError("Please input only number", tbNZPrice, lbError);
+                    ShowError(zh?"只允许输入数字":"Please input only number", tbNZPrice, lbError);
                     return;
                 }
                 else
@@ -126,7 +131,7 @@ namespace OrderManagementTool
 
             if (tbItem.Text.Trim().Length == 0)
             {
-                ShowError("Please fill the blank", tbItem, lbError);
+                ShowError(zh?"请输入产品":"Please fill the item", tbItem, lbError);
                 return;
             }
             HideError(tbItem, lbError);
@@ -134,14 +139,14 @@ namespace OrderManagementTool
 
             if (tbNZPrice.Text.Trim().Length == 0)
             {
-                ShowError("Please fill the blank", tbNZPrice, lbError);
+                ShowError(zh?"请输入纽币价格":"Please fill the blank", tbNZPrice, lbError);
                 return;
             }
             if (Regex.IsMatch(tbNZPrice.Text, "[^0-9]")) //区分不是字母，而是数字
                 if (!Regex.IsMatch(tbNZPrice.Text, @"^(-?\d+)(\.\d+)?$"))
                 {
                     //不是小数
-                    ShowError("Please input only number", tbNZPrice, lbError);
+                    ShowError(zh?"只允许输入数字":"Please input only number", tbNZPrice, lbError);
                     return;
                 }
                 else

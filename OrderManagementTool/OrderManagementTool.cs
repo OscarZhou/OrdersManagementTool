@@ -87,7 +87,7 @@ namespace OrderManagementTool
             var objLists = new TransactionManage().GetUndoneTransactionList();
             if (objLists.Count == 0)
             {
-                MessageBox.Show("No undone orders!", "Prompt", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(zh?"没有未完成的订单":"No undone orders!", zh?"提示":"Prompt", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -154,7 +154,7 @@ namespace OrderManagementTool
             double TotalProfit = 0;
             foreach (DataGridViewRow dgvTransactionRow in dgvTransaction.Rows)
                 TotalProfit += Convert.ToDouble(dgvTransactionRow.Cells["Profit"].Value);
-            lbTotalProfit.Text = "The total profit: " + TotalProfit;
+            lbTotalProfit.Text = zh?"总利润：":"The total profit: " + TotalProfit;
 
             #endregion
 
@@ -232,7 +232,7 @@ namespace OrderManagementTool
             {
                 var path = string.Format(fileSelector.SelectedPath + @"\销售记录{0}.xls", timeStamp);
                 ExportFile.ExportToExcel(path, new TransactionManage().GetTransactionList());
-                MessageBox.Show("Generating 销售记录" + timeStamp + ".xls Sucessfully!");
+                MessageBox.Show((zh?"生成销售记录":"Generating 销售记录") + timeStamp + (zh?".xls 成功！":".xls Sucessfully!"));
             }
 
             #endregion
@@ -245,7 +245,7 @@ namespace OrderManagementTool
             if (dgvTransaction.RowCount == 0)
                 return;
 
-            if (MessageBox.Show(this, "Delete?", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
+            if (MessageBox.Show(this, zh?"删除？":"Delete?", zh?"提示":"Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
                 DialogResult.Yes)
             {
                 var objOrder = new OrderManage().GetOrderByOrderNo(_orderNo);
@@ -268,7 +268,7 @@ namespace OrderManagementTool
                 new OrderManage().DeleteOrder(objOrder);
                 var result = new UserInfoManage().DeleteUser(objOrder.User);
                 if (result > 0)
-                    MessageBox.Show("Delete data sucessfully!");
+                    MessageBox.Show(zh?"删除数据成功":"Delete data sucessfully!");
                 DisplayMainFrm(true);
             }
         }
@@ -324,7 +324,7 @@ namespace OrderManagementTool
             if (dgvTransaction.RowCount == 0)
                 return;
             var fileSelector = new FolderBrowserDialog();
-            fileSelector.Description = @"Please choose the folder that stores order text:";
+            fileSelector.Description = zh?"请选择存有订单文本的文件夹：":@"Please choose the folder that stores order text:";
             var defaultPath = ExportFile.GetDefaultPath("dircPath");
             if (defaultPath != "")
                 fileSelector.SelectedPath = defaultPath;

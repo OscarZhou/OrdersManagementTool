@@ -2,7 +2,9 @@
 using Models;
 using System;
 using System.Drawing;
+using System.Globalization;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace OrderManagementTool
@@ -11,10 +13,14 @@ namespace OrderManagementTool
     {
         private string _orderNo;
         private Transaction objTransaction;
+        private bool zh;
 
         public CompletedTransactionPage()
         {
             InitializeComponent();
+            CultureInfo ci = Thread.CurrentThread.CurrentUICulture;
+            zh = ci.Name.Equals("zh-CHS") ? true : false;
+
             lbError.Visible = false;
             lbError.ForeColor = Color.Red;
             // Add key down event
@@ -93,14 +99,14 @@ namespace OrderManagementTool
 
             if (tbSellingPrice.Text.Trim().Length == 0)
             {
-                ShowError("Please fill the blank before submitting", tbSellingPrice, lbError);
+                ShowError(zh?"在关闭订单前，请输入售价":"Please fill the selling price before submitting", tbSellingPrice, lbError);
                 return;
             }
             if (Regex.IsMatch(tbSellingPrice.Text, "[^0-9]")) //区分不是字母，而是数字
                 if (!Regex.IsMatch(tbSellingPrice.Text, @"^(-?\d+)(\.\d+)?$"))
                 {
                     //不是小数
-                    ShowError("Please input only number", tbSellingPrice, lbError);
+                    ShowError(zh?"只允许输入数字":"Please input only number", tbSellingPrice, lbError);
                     return;
                 }
                 else
@@ -114,14 +120,14 @@ namespace OrderManagementTool
 
             if (tbPurchasingPrice.Text.Trim().Length == 0)
             {
-                ShowError("Please fill the blank before submitting", tbPurchasingPrice, lbError);
+                ShowError(zh?"在关闭订单前，请输入进价":"Please fill the purchasing price before submitting", tbPurchasingPrice, lbError);
                 return;
             }
             if (Regex.IsMatch(tbPurchasingPrice.Text, "[^0-9]")) //区分不是字母，而是数字
                 if (!Regex.IsMatch(tbPurchasingPrice.Text, @"^(-?\d+)(\.\d+)?$"))
                 {
                     //不是小数
-                    ShowError("Please input only number", tbPurchasingPrice, lbError);
+                    ShowError(zh?"只允许输入数字":"Please input only number", tbPurchasingPrice, lbError);
                     return;
                 }
                 else
@@ -146,7 +152,7 @@ namespace OrderManagementTool
                 objTransaction.OrderStatus = Convert.ToByte(true);
             var result = new TransactionManage().UpdateTransactionRecord(objTransaction);
             if (result > 0)
-                MessageBox.Show("Updating Sucessfully!");
+                MessageBox.Show(zh?"更新成功！":"Updating Sucessfully!");
 
             #endregion
 
@@ -174,11 +180,11 @@ namespace OrderManagementTool
 
                         var result = new TransactionManage().UpdateTransactionRecord(objTransaction);
                         if (result > 0)
-                            MessageBox.Show("Updating Sucessfully!");
+                            MessageBox.Show(zh?"更新成功！":"Updating Sucessfully!");
                     }
                     else
                     {
-                        lbError.Text = "You can't submit before solving the error!";
+                        lbError.Text = zh?"在解决问题前，不能关闭订单":"You can't submit before solving the error!";
                         return;
                     }
 
