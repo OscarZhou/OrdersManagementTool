@@ -59,6 +59,11 @@
     <Compile Include="CompletedTransactionPage.Designer.cs">
       <DependentUpon>CompletedTransactionPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="CompletedTransationPage.en-US.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CompletedTransationPage.en-US.resx</DependentUpon>
+    </Compile>
     <Compile Include="DataImportingPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,7 +117,10 @@
     <EmbeddedResource Include="CompletedTransactionPage.zh-CHS.resx">
       <DependentUpon>CompletedTransactionPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CompletedTransationPage.en-US.resx" />
+    <EmbeddedResource Include="CompletedTransationPage.en-US.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CompletedTransationPage.en-US.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="DataImportingPage.en-US.resx">
       <DependentUpon>DataImportingPage.cs</DependentUpon>
     </EmbeddedResource>
