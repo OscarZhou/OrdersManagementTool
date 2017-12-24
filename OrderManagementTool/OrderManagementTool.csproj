@@ -140,7 +140,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UndoneOrdersPage.en-US.resx">
+      <DependentUpon>UndoneOrdersPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UndoneOrdersPage.resx">
+      <DependentUpon>UndoneOrdersPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UndoneOrdersPage.zh-CHS.resx">
       <DependentUpon>UndoneOrdersPage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

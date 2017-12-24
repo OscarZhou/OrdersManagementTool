@@ -36,8 +36,6 @@ namespace OrderManagementTool
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnCompleteOrder = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.dgvUndoneOrders = new System.Windows.Forms.DataGridView();
             this.OrderNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,48 +44,17 @@ namespace OrderManagementTool
             this.PurchasePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Profit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCompleteOrder = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUndoneOrders)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
-            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Location = new System.Drawing.Point(17, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(167, 28);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Undone Orders:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // btnCompleteOrder
-            // 
-            this.btnCompleteOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
-            this.btnCompleteOrder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
-            this.btnCompleteOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCompleteOrder.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnCompleteOrder.Image = ((System.Drawing.Image)(resources.GetObject("btnCompleteOrder.Image")));
-            this.btnCompleteOrder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCompleteOrder.Location = new System.Drawing.Point(953, 10);
-            this.btnCompleteOrder.Name = "btnCompleteOrder";
-            this.btnCompleteOrder.Size = new System.Drawing.Size(183, 40);
-            this.btnCompleteOrder.TabIndex = 2;
-            this.btnCompleteOrder.Text = "Complete Order";
-            this.btnCompleteOrder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCompleteOrder.UseVisualStyleBackColor = false;
-            this.btnCompleteOrder.Click += new System.EventHandler(this.btnCompleteOrder_Click);
             // 
             // label6
             // 
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label6.Location = new System.Drawing.Point(12, 50);
+            resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(1124, 1);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "label6";
             // 
             // dgvUndoneOrders
             // 
@@ -121,7 +88,7 @@ namespace OrderManagementTool
             this.PurchasePrice,
             this.Profit,
             this.CreateTime});
-            this.dgvUndoneOrders.Location = new System.Drawing.Point(12, 65);
+            resources.ApplyResources(this.dgvUndoneOrders, "dgvUndoneOrders");
             this.dgvUndoneOrders.MultiSelect = false;
             this.dgvUndoneOrders.Name = "dgvUndoneOrders";
             this.dgvUndoneOrders.ReadOnly = true;
@@ -142,8 +109,6 @@ namespace OrderManagementTool
             this.dgvUndoneOrders.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvUndoneOrders.RowTemplate.Height = 30;
             this.dgvUndoneOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUndoneOrders.Size = new System.Drawing.Size(1126, 608);
-            this.dgvUndoneOrders.TabIndex = 1;
             this.dgvUndoneOrders.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUndoneOrders_CellDoubleClick);
             // 
             // OrderNo
@@ -151,77 +116,83 @@ namespace OrderManagementTool
             this.OrderNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.OrderNo.DataPropertyName = "OrderNo";
             this.OrderNo.FillWeight = 30F;
-            this.OrderNo.HeaderText = "Order No";
+            resources.ApplyResources(this.OrderNo, "OrderNo");
             this.OrderNo.Name = "OrderNo";
             this.OrderNo.ReadOnly = true;
-            this.OrderNo.Width = 136;
             // 
             // Purchaser
             // 
             this.Purchaser.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Purchaser.DataPropertyName = "Purchaser";
             this.Purchaser.FillWeight = 30F;
-            this.Purchaser.HeaderText = "Purchaser Name";
+            resources.ApplyResources(this.Purchaser, "Purchaser");
             this.Purchaser.Name = "Purchaser";
             this.Purchaser.ReadOnly = true;
-            this.Purchaser.Width = 202;
             // 
             // SellingPrice
             // 
             this.SellingPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.SellingPrice.DataPropertyName = "SellingPrice";
             this.SellingPrice.FillWeight = 30F;
-            this.SellingPrice.HeaderText = "Selling Price";
+            resources.ApplyResources(this.SellingPrice, "SellingPrice");
             this.SellingPrice.Name = "SellingPrice";
             this.SellingPrice.ReadOnly = true;
-            this.SellingPrice.Width = 161;
             // 
             // PurchasePrice
             // 
             this.PurchasePrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.PurchasePrice.DataPropertyName = "PurchasePrice";
             this.PurchasePrice.FillWeight = 30F;
-            this.PurchasePrice.HeaderText = "Purchasing Price";
+            resources.ApplyResources(this.PurchasePrice, "PurchasePrice");
             this.PurchasePrice.Name = "PurchasePrice";
             this.PurchasePrice.ReadOnly = true;
-            this.PurchasePrice.Width = 202;
             // 
             // Profit
             // 
             this.Profit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Profit.DataPropertyName = "Profit";
             this.Profit.FillWeight = 30F;
-            this.Profit.HeaderText = "Profit";
+            resources.ApplyResources(this.Profit, "Profit");
             this.Profit.Name = "Profit";
             this.Profit.ReadOnly = true;
-            this.Profit.Width = 99;
             // 
             // CreateTime
             // 
             this.CreateTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.CreateTime.DataPropertyName = "CreateTime";
             this.CreateTime.FillWeight = 30F;
-            this.CreateTime.HeaderText = "Date";
+            resources.ApplyResources(this.CreateTime, "CreateTime");
             this.CreateTime.Name = "CreateTime";
             this.CreateTime.ReadOnly = true;
             // 
+            // btnCompleteOrder
+            // 
+            this.btnCompleteOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
+            this.btnCompleteOrder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(163)))), ((int)(((byte)(220)))));
+            resources.ApplyResources(this.btnCompleteOrder, "btnCompleteOrder");
+            this.btnCompleteOrder.Name = "btnCompleteOrder";
+            this.btnCompleteOrder.UseVisualStyleBackColor = false;
+            this.btnCompleteOrder.Click += new System.EventHandler(this.btnCompleteOrder_Click);
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
             // UndoneOrdersPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(1218, 706);
             this.Controls.Add(this.dgvUndoneOrders);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnCompleteOrder);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "UndoneOrdersPage";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Undone Orders";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UndoneOrdersPage_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUndoneOrders)).EndInit();
             this.ResumeLayout(false);

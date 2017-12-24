@@ -130,7 +130,7 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 135</value>
+    <value>28, 135</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 25</value>
@@ -157,7 +157,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="tbFrom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>118, 135</value>
+    <value>145, 135</value>
   </data>
   <data name="tbFrom.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 31</value>
@@ -190,7 +190,7 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 182</value>
+    <value>28, 182</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 25</value>
@@ -217,7 +217,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="tbFromPhone.Location" type="System.Drawing.Point, System.Drawing">
-    <value>118, 182</value>
+    <value>145, 182</value>
   </data>
   <data name="tbFromPhone.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 31</value>
@@ -550,7 +550,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="tbTo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>119, 292</value>
+    <value>143, 292</value>
   </data>
   <data name="tbTo.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 31</value>
@@ -607,7 +607,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="tbToPhone.Location" type="System.Drawing.Point, System.Drawing">
-    <value>119, 344</value>
+    <value>143, 344</value>
   </data>
   <data name="tbToPhone.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 31</value>
@@ -664,7 +664,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="tbAddress.Location" type="System.Drawing.Point, System.Drawing">
-    <value>119, 446</value>
+    <value>143, 446</value>
   </data>
   <data name="tbAddress.Size" type="System.Drawing.Size, System.Drawing">
     <value>543, 31</value>
@@ -793,7 +793,7 @@
     <value>NoControl</value>
   </data>
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 93</value>
+    <value>28, 93</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 25</value>
@@ -820,7 +820,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="tbPurchaser.Location" type="System.Drawing.Point, System.Drawing">
-    <value>118, 93</value>
+    <value>145, 93</value>
   </data>
   <data name="tbPurchaser.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 31</value>
@@ -850,7 +850,7 @@
     <value>NoControl</value>
   </data>
   <data name="chkLock.Location" type="System.Drawing.Point, System.Drawing">
-    <value>265, 184</value>
+    <value>292, 184</value>
   </data>
   <data name="chkLock.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 29</value>
@@ -970,7 +970,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="tbIdentityCard.Location" type="System.Drawing.Point, System.Drawing">
-    <value>119, 395</value>
+    <value>143, 395</value>
   </data>
   <data name="tbIdentityCard.Size" type="System.Drawing.Size, System.Drawing">
     <value>356, 31</value>
