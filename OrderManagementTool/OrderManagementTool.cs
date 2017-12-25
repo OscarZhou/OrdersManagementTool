@@ -30,7 +30,7 @@ namespace OrderManagementTool
             //#endregion
 
             dgvTransaction.AutoGenerateColumns = false; // prohibit useless column 
-            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex), dtpAfterDate.Value);
+            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex), dtpFromDate.Value,dtpEndDate.Value);
             InitializeSortingList();
             lbAuthor.Text = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).CompanyName;
             lbVersion.Text = Assembly.GetExecutingAssembly().GetName().Version.ToString();
@@ -106,12 +106,12 @@ namespace OrderManagementTool
         /// <param name="e"></param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex), dtpAfterDate.Value);
+            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex), dtpFromDate.Value, dtpEndDate.Value);
         }
 
-        private void ShowTransaction(string name, int sortingtype, DateTime dt)
+        private void ShowTransaction(string name, int sortingtype, DateTime dtFromDate, DateTime dtEndDate)
         {
-            dgvTransaction.DataSource = new TransactionManage().GetTransactionList(name, sortingtype, dt);
+            dgvTransaction.DataSource = new TransactionManage().GetTransactionList(name, sortingtype, dtFromDate, dtEndDate);
 
             #region Calculate total profit
 
@@ -134,7 +134,7 @@ namespace OrderManagementTool
 
         private void ShowTransaction(string name, int sortingtype, int orderNo, DateTime dt)
         {
-            dgvTransaction.DataSource = new TransactionManage().GetTransactionList(name, sortingtype, dt);
+            dgvTransaction.DataSource = new TransactionManage().GetTransactionList(name, sortingtype, dtpFromDate.Value, dtpEndDate.Value);
             if (sortingtype == 0)
             {
                 dgvTransaction.FirstDisplayedCell = dgvTransaction.Rows[orderNo].Cells[0];
@@ -163,7 +163,7 @@ namespace OrderManagementTool
 
         private void cmbSorting_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex), dtpAfterDate.Value);
+            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex), dtpFromDate.Value, dtpEndDate.Value);
         }
 
         /// <summary>
@@ -308,7 +308,7 @@ namespace OrderManagementTool
             switch (e.KeyCode)
             {
                 case Keys.Enter:
-                    ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex), dtpAfterDate.Value);
+                    ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex), dtpFromDate.Value, dtpEndDate.Value);
                     break;
                 case Keys.Escape:
                     Close();
@@ -360,7 +360,7 @@ namespace OrderManagementTool
         public void Receiver(string msgName)
         {
             if (msgName.Equals("refresh"))
-                ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex), dtpAfterDate.Value);
+                ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex), dtpFromDate.Value, dtpEndDate.Value);
             else if (msgName.Equals("open"))
                 DisplayMainFrm(true);
         }
@@ -483,7 +483,7 @@ namespace OrderManagementTool
         private void DisplayMainFrm(bool mainFrmState)
         {
             // Refresh the Transaction DataGridView
-            ShowTransaction(tbSearch.Text.Trim(), cmbSorting.SelectedIndex, dtpAfterDate.Value);
+            ShowTransaction(tbSearch.Text.Trim(), cmbSorting.SelectedIndex, dtpFromDate.Value, dtpEndDate.Value);
 
             // Close other embeded windows
             foreach (Control item in splitContainer.Panel1.Controls)
@@ -558,10 +558,18 @@ namespace OrderManagementTool
 
         #endregion
 
-        private void dtpAfterDate_ValueChanged(object sender, EventArgs e)
+        private void dtpFromDate_ValueChanged(object sender, EventArgs e)
         {
-            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex), dtpAfterDate.Value);
+            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex), dtpFromDate.Value, dtpEndDate.Value);
         }
+
+        private void dtpEndDate_ValueChanged(object sender, EventArgs e)
+        {
+            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex), dtpFromDate.Value, dtpEndDate.Value);
+        }
+
+        
+
 
      
     }

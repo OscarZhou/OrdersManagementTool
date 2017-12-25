@@ -38,9 +38,9 @@ namespace BLL
             return new TransactionService().GetTransactionListByName(name);
         }
 
-        public List<Transaction> GetTransactionList(string name, int sortingType, DateTime dt)
+        public List<Transaction> GetTransactionList(string name, int sortingType, DateTime dtFromDate, DateTime dtEndDate)
         {
-            return new TransactionService().GetTransactionList(name, sortingType, dt);
+            return new TransactionService().GetTransactionList(name, sortingType, dtFromDate.Date, dtEndDate.Date);
         }
 
         public int DeleteTransactionRecord(string orderNo)

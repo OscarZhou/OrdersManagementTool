@@ -128,7 +128,7 @@ namespace Utilities
             Excel.Range xlRange = xlWorksheet.UsedRange;
             #endregion
             
-            int rowCount = 300;
+            int rowCount = 2000;
             // excel is not zero based
             for (int i = 2; i <= rowCount; i++)
             {
