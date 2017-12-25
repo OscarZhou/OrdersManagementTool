@@ -209,7 +209,7 @@ namespace DAL
             }
             else
             {
-                sqlBuilder.Append("select * from TransactionList where CreateTime >= '{0}' and CreateTime <= '{1}' and Purchaser like '%{1}%' ");
+                sqlBuilder.Append("select * from TransactionList where CreateTime >= '{0}' and CreateTime <= '{1}' and Purchaser like '%{2}%' ");
             }
 
             switch (sortingType)

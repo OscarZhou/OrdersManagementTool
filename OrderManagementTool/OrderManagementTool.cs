@@ -132,34 +132,34 @@ namespace OrderManagementTool
             //}
         }
 
-        private void ShowTransaction(string name, int sortingtype, int orderNo, DateTime dt)
-        {
-            dgvTransaction.DataSource = new TransactionManage().GetTransactionList(name, sortingtype, dtpFromDate.Value, dtpEndDate.Value);
-            if (sortingtype == 0)
-            {
-                dgvTransaction.FirstDisplayedCell = dgvTransaction.Rows[orderNo].Cells[0];
-                    // Display the selected row in datagridview    
-                dgvTransaction.Rows[orderNo].DefaultCellStyle.BackColor = Color.DeepSkyBlue;
-            }
-            else if (sortingtype == 1)
-            {
-                var totalRows = dgvTransaction.RowCount;
-                dgvTransaction.FirstDisplayedCell = dgvTransaction.Rows[totalRows - orderNo].Cells[0];
-                    // Display the selected row in datagridview    
-                dgvTransaction.Rows[totalRows - orderNo].DefaultCellStyle.BackColor = Color.DeepSkyBlue;
-            }
+        //private void ShowTransaction(string name, int sortingtype, int orderNo, DateTime dtFromDate)
+        //{
+        //    dgvTransaction.DataSource = new TransactionManage().GetTransactionList(name, sortingtype, dtpFromDate.Value, dtpEndDate.Value);
+        //    if (sortingtype == 0)
+        //    {
+        //        dgvTransaction.FirstDisplayedCell = dgvTransaction.Rows[orderNo].Cells[0];
+        //            // Display the selected row in datagridview    
+        //        dgvTransaction.Rows[orderNo].DefaultCellStyle.BackColor = Color.DeepSkyBlue;
+        //    }
+        //    else if (sortingtype == 1)
+        //    {
+        //        var totalRows = dgvTransaction.RowCount;
+        //        dgvTransaction.FirstDisplayedCell = dgvTransaction.Rows[totalRows - orderNo].Cells[0];
+        //            // Display the selected row in datagridview    
+        //        dgvTransaction.Rows[totalRows - orderNo].DefaultCellStyle.BackColor = Color.DeepSkyBlue;
+        //    }
 
-            #region Calculate total profit
+        //    #region Calculate total profit
 
-            double TotalProfit = 0;
-            foreach (DataGridViewRow dgvTransactionRow in dgvTransaction.Rows)
-                TotalProfit += Convert.ToDouble(dgvTransactionRow.Cells["Profit"].Value);
-            lbTotalProfit.Text = zh?"总利润：":"The total profit: " + TotalProfit;
+        //    double TotalProfit = 0;
+        //    foreach (DataGridViewRow dgvTransactionRow in dgvTransaction.Rows)
+        //        TotalProfit += Convert.ToDouble(dgvTransactionRow.Cells["Profit"].Value);
+        //    lbTotalProfit.Text = zh?"总利润：":"The total profit: " + TotalProfit;
 
-            #endregion
+        //    #endregion
 
-            dgvTransaction.Show();
-        }
+        //    dgvTransaction.Show();
+        //}
 
         private void cmbSorting_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -567,6 +567,7 @@ namespace OrderManagementTool
         {
             ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex), dtpFromDate.Value, dtpEndDate.Value);
         }
+
 
         
 
