@@ -2,7 +2,9 @@
 using Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using Utilities;
 
@@ -12,11 +14,13 @@ namespace OrderManagementTool
     {
         private string _orderNo;
         private string _purchaserName;
+        private bool zh;
 
         public FrmOrderText()
         {
             InitializeComponent();
-
+            CultureInfo ci = Thread.CurrentThread.CurrentUICulture;
+            zh = ci.Name.Equals("zh-CHS") ? true : false;
             // Add key down event
             KeyDown += FrmOrderText_KeyDown;
             foreach (Control control in Controls)
@@ -35,7 +39,7 @@ namespace OrderManagementTool
             {
                 Clipboard.SetDataObject(tbOrderContent.Text);
                 tbOrderContent.Focus();
-                MessageBox.Show("Copy to clipboard!");
+                MessageBox.Show(zh?"复制到粘贴板":"Copy to clipboard!");
             }
         }
 
@@ -58,7 +62,7 @@ namespace OrderManagementTool
 
             var objItems = new ItemManage().GetItemListByOrderNo(_orderNo);
             var objUserInfo = new UserInfoManage().GetUserByOrderNo(_orderNo);
-            tbOrderContent.Text = GenerateOrderContent(objItems, objUserInfo, true);
+            tbOrderContent.Text = GenerateOrderContent(objItems, objUserInfo, false);
 
             #endregion
 
@@ -77,13 +81,20 @@ namespace OrderManagementTool
 
                 ExportFile.CreateOrderFile(path, tbOrderContent.Text.Trim());
                 if (DialogResult.OK ==
-                    MessageBox.Show("Generating " + _orderNo + _purchaserName + ".txt Sucessfully!"))
+                    MessageBox.Show((zh?"生成":"Generating ") + _orderNo + _purchaserName + (zh?".txt 成功！":".txt Sucessfully!")))
                 {
                     //this.Close();
                 }
             }
 
             #endregion
+
+            if (tbOrderContent.Text != "")
+            {
+                Clipboard.SetDataObject(tbOrderContent.Text);
+                tbOrderContent.Focus();
+                MessageBox.Show(zh ? "复制到粘贴板" : "Copy to clipboard!");
+            }
         }
 
         #region Generate Order content

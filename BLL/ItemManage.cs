@@ -1,7 +1,7 @@
 ﻿
+using DAL;
 using Models;
 using System.Collections.Generic;
-using DAL;
 
 namespace BLL
 {
@@ -22,6 +22,10 @@ namespace BLL
             return new ItemService().DeleteItemListByOrderNo(orderNo);
         }
 
+        public int DeleteItemByItemNo(string itemNo)
+        {
+            return new ItemService().DeleteItemByItemNo(itemNo);
+        }
         public Item GetItemByItemNo(string itemNo)
         {
             return new ItemService().GetItemByItemNo(itemNo);

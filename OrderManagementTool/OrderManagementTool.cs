@@ -2,8 +2,10 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
+using System.Threading;
 using System.Windows.Forms;
 using Utilities;
 
@@ -11,9 +13,13 @@ namespace OrderManagementTool
 {
     public partial class OrderManagementTool : Form
     {
+        private bool zh;
         public OrderManagementTool()
         {
             InitializeComponent();
+            CultureInfo ci = Thread.CurrentThread.CurrentUICulture;
+            zh = ci.Name.Equals("zh-CHS") ? true : false;
+
             //#region Adjust window size
 
             //int height = Screen.PrimaryScreen.Bounds.Height;
@@ -24,7 +30,7 @@ namespace OrderManagementTool
             //#endregion
 
             dgvTransaction.AutoGenerateColumns = false; // prohibit useless column 
-            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
+            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex), dtpFromDate.Value,dtpEndDate.Value);
             InitializeSortingList();
             lbAuthor.Text = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).CompanyName;
             lbVersion.Text = Assembly.GetExecutingAssembly().GetName().Version.ToString();
@@ -35,12 +41,13 @@ namespace OrderManagementTool
                 control.KeyDown += OrderManagementTool_KeyDown;
         }
 
+
         private void InitializeSortingList()
         {
-            cmbSorting.Items.Add("OrderNo Asc");
-            cmbSorting.Items.Add("OrderNo Desc");
-            cmbSorting.Items.Add("Profit Asc");
-            cmbSorting.Items.Add("Profit Desc");
+            cmbSorting.Items.Add(zh ? "订单号升序" : "OrderNo Asc");
+            cmbSorting.Items.Add(zh ? "订单号降序" : "OrderNo Desc");
+            cmbSorting.Items.Add(zh ? "利润升序" : "Profit Asc");
+            cmbSorting.Items.Add(zh ? "利润降序" : "Profit Desc");
             cmbSorting.SelectedIndex = 1;
             _orderNo = dgvTransaction.RowCount.ToString();
         }
@@ -80,7 +87,7 @@ namespace OrderManagementTool
             var objLists = new TransactionManage().GetUndoneTransactionList();
             if (objLists.Count == 0)
             {
-                MessageBox.Show("No undone orders!", "Prompt", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(zh?"没有未完成的订单":"No undone orders!", zh?"提示":"Prompt", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -99,12 +106,12 @@ namespace OrderManagementTool
         /// <param name="e"></param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
+            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex), dtpFromDate.Value, dtpEndDate.Value);
         }
 
-        private void ShowTransaction(string name, int sortingtype)
+        private void ShowTransaction(string name, int sortingtype, DateTime dtFromDate, DateTime dtEndDate)
         {
-            dgvTransaction.DataSource = new TransactionManage().GetTransactionList(name, sortingtype);
+            dgvTransaction.DataSource = new TransactionManage().GetTransactionList(name, sortingtype, dtFromDate, dtEndDate);
 
             #region Calculate total profit
 
@@ -125,38 +132,38 @@ namespace OrderManagementTool
             //}
         }
 
-        private void ShowTransaction(string name, int sortingtype, int orderNo)
-        {
-            dgvTransaction.DataSource = new TransactionManage().GetTransactionList(name, sortingtype);
-            if (sortingtype == 0)
-            {
-                dgvTransaction.FirstDisplayedCell = dgvTransaction.Rows[orderNo].Cells[0];
-                    // Display the selected row in datagridview    
-                dgvTransaction.Rows[orderNo].DefaultCellStyle.BackColor = Color.DeepSkyBlue;
-            }
-            else if (sortingtype == 1)
-            {
-                var totalRows = dgvTransaction.RowCount;
-                dgvTransaction.FirstDisplayedCell = dgvTransaction.Rows[totalRows - orderNo].Cells[0];
-                    // Display the selected row in datagridview    
-                dgvTransaction.Rows[totalRows - orderNo].DefaultCellStyle.BackColor = Color.DeepSkyBlue;
-            }
+        //private void ShowTransaction(string name, int sortingtype, int orderNo, DateTime dtFromDate)
+        //{
+        //    dgvTransaction.DataSource = new TransactionManage().GetTransactionList(name, sortingtype, dtpFromDate.Value, dtpEndDate.Value);
+        //    if (sortingtype == 0)
+        //    {
+        //        dgvTransaction.FirstDisplayedCell = dgvTransaction.Rows[orderNo].Cells[0];
+        //            // Display the selected row in datagridview    
+        //        dgvTransaction.Rows[orderNo].DefaultCellStyle.BackColor = Color.DeepSkyBlue;
+        //    }
+        //    else if (sortingtype == 1)
+        //    {
+        //        var totalRows = dgvTransaction.RowCount;
+        //        dgvTransaction.FirstDisplayedCell = dgvTransaction.Rows[totalRows - orderNo].Cells[0];
+        //            // Display the selected row in datagridview    
+        //        dgvTransaction.Rows[totalRows - orderNo].DefaultCellStyle.BackColor = Color.DeepSkyBlue;
+        //    }
 
-            #region Calculate total profit
+        //    #region Calculate total profit
 
-            double TotalProfit = 0;
-            foreach (DataGridViewRow dgvTransactionRow in dgvTransaction.Rows)
-                TotalProfit += Convert.ToDouble(dgvTransactionRow.Cells["Profit"].Value);
-            lbTotalProfit.Text = "The total profit: " + TotalProfit;
+        //    double TotalProfit = 0;
+        //    foreach (DataGridViewRow dgvTransactionRow in dgvTransaction.Rows)
+        //        TotalProfit += Convert.ToDouble(dgvTransactionRow.Cells["Profit"].Value);
+        //    lbTotalProfit.Text = zh?"总利润：":"The total profit: " + TotalProfit;
 
-            #endregion
+        //    #endregion
 
-            dgvTransaction.Show();
-        }
+        //    dgvTransaction.Show();
+        //}
 
         private void cmbSorting_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
+            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex), dtpFromDate.Value, dtpEndDate.Value);
         }
 
         /// <summary>
@@ -225,7 +232,7 @@ namespace OrderManagementTool
             {
                 var path = string.Format(fileSelector.SelectedPath + @"\销售记录{0}.xls", timeStamp);
                 ExportFile.ExportToExcel(path, new TransactionManage().GetTransactionList());
-                MessageBox.Show("Generating 销售记录" + timeStamp + ".xls Sucessfully!");
+                MessageBox.Show((zh?"生成销售记录":"Generating 销售记录") + timeStamp + (zh?".xls 成功！":".xls Sucessfully!"));
             }
 
             #endregion
@@ -238,7 +245,7 @@ namespace OrderManagementTool
             if (dgvTransaction.RowCount == 0)
                 return;
 
-            if (MessageBox.Show(this, "Delete?", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
+            if (MessageBox.Show(this, zh?"删除？":"Delete?", zh?"提示":"Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
                 DialogResult.Yes)
             {
                 var objOrder = new OrderManage().GetOrderByOrderNo(_orderNo);
@@ -261,7 +268,7 @@ namespace OrderManagementTool
                 new OrderManage().DeleteOrder(objOrder);
                 var result = new UserInfoManage().DeleteUser(objOrder.User);
                 if (result > 0)
-                    MessageBox.Show("Delete data sucessfully!");
+                    MessageBox.Show(zh?"删除数据成功":"Delete data sucessfully!");
                 DisplayMainFrm(true);
             }
         }
@@ -272,8 +279,10 @@ namespace OrderManagementTool
 
             #region Setting the start position of the new window
 
-            var x = (SystemInformation.WorkingArea.Width - _frmPriceKit.Size.Width) / 2 + _frmPriceKit.Size.Width;
-            var y = (SystemInformation.WorkingArea.Height - _frmPriceKit.Size.Height) / 2;
+            //var x = (SystemInformation.WorkingArea.Width - _frmPriceKit.Size.Width) / 3 + _frmPriceKit.Size.Width;
+            //var y = (SystemInformation.WorkingArea.Height - _frmPriceKit.Size.Height) / 3;
+            var x = 100;
+            var y = 100;
             _frmPriceKit.StartPosition = FormStartPosition.Manual; //窗体的位置由Location属性决定
             _frmPriceKit.Location = (Point) new Size(x, y); //窗体的起始位置为(x,y)
 
@@ -286,6 +295,7 @@ namespace OrderManagementTool
 
         private void dgvTransaction_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+
             _orderNo = dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString();
             _frmOrderDetail = new OrderDetailsPage();
             EvtOpenView += _frmOrderDetail.ViewReceiver; // 关联子窗体，传递订单号信息
@@ -299,7 +309,7 @@ namespace OrderManagementTool
             switch (e.KeyCode)
             {
                 case Keys.Enter:
-                    ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
+                    ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex), dtpFromDate.Value, dtpEndDate.Value);
                     break;
                 case Keys.Escape:
                     Close();
@@ -315,7 +325,7 @@ namespace OrderManagementTool
             if (dgvTransaction.RowCount == 0)
                 return;
             var fileSelector = new FolderBrowserDialog();
-            fileSelector.Description = @"Please choose the folder that stores order text:";
+            fileSelector.Description = zh?"请选择存有订单文本的文件夹：":@"Please choose the folder that stores order text:";
             var defaultPath = ExportFile.GetDefaultPath("dircPath");
             if (defaultPath != "")
                 fileSelector.SelectedPath = defaultPath;
@@ -351,7 +361,7 @@ namespace OrderManagementTool
         public void Receiver(string msgName)
         {
             if (msgName.Equals("refresh"))
-                ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex));
+                ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex), dtpFromDate.Value, dtpEndDate.Value);
             else if (msgName.Equals("open"))
                 DisplayMainFrm(true);
         }
@@ -474,7 +484,7 @@ namespace OrderManagementTool
         private void DisplayMainFrm(bool mainFrmState)
         {
             // Refresh the Transaction DataGridView
-            ShowTransaction(tbSearch.Text.Trim(), cmbSorting.SelectedIndex);
+            ShowTransaction(tbSearch.Text.Trim(), cmbSorting.SelectedIndex, dtpFromDate.Value, dtpEndDate.Value);
 
             // Close other embeded windows
             foreach (Control item in splitContainer.Panel1.Controls)
@@ -548,5 +558,22 @@ namespace OrderManagementTool
         }
 
         #endregion
+
+        private void dtpFromDate_ValueChanged(object sender, EventArgs e)
+        {
+            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex), dtpFromDate.Value, dtpEndDate.Value);
+        }
+
+        private void dtpEndDate_ValueChanged(object sender, EventArgs e)
+        {
+            ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex), dtpFromDate.Value, dtpEndDate.Value);
+        }
+
+
+
+        
+
+
+     
     }
 }

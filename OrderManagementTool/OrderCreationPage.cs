@@ -3,9 +3,11 @@ using Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows.Forms;
 using Utilities;
 
@@ -17,10 +19,14 @@ namespace OrderManagementTool
         private CalculatePriceKitPage _frmPriceKit;
         private string crtOrderNo;
         private string purchaserName;
+        private bool zh;
 
         public OrderCreationPage()
         {
             InitializeComponent();
+            CultureInfo ci = Thread.CurrentThread.CurrentUICulture;
+            zh = ci.Name.Equals("zh-CHS") ? true : false;
+
             SetControls();
             // Add key down event
             KeyDown += OrderCreationPage_KeyDown;
@@ -46,15 +52,15 @@ namespace OrderManagementTool
 
             if (tbItemDescription.Text.Length == 0 && tbQuantity.Text.Length == 0 && tbPrice.Text.Length == 0)
             {
-                ShowError("Please fill blank!", tbItemDescription, lbItemError);
-                ShowError("Please fill blank!", tbQuantity, lbItemError);
-                ShowError("Please fill blank!", tbPrice, lbItemError);
+                ShowError(zh?"请添加产品描述":"Please fill item description!", tbItemDescription, lbItemError);
+                ShowError(zh?"请添加产品数量":"Please fill item quantity!", tbQuantity, lbItemError);
+                ShowError(zh?"请添加产品单价":"Please fill item price!", tbPrice, lbItemError);
                 return;
             }
 
             if (tbItemDescription.Text.Length == 0)
             {
-                ShowError("Please input the Product Name!", tbItemDescription, lbItemError);
+                ShowError(zh?"请添加产品名称":"Please input the Product Name!", tbItemDescription, lbItemError);
                 return;
             }
             HideError(tbItemDescription, lbItemError);
@@ -62,12 +68,12 @@ namespace OrderManagementTool
 
             if (tbQuantity.Text.Length == 0)
             {
-                ShowError("Please input the Quantity!", tbQuantity, lbItemError);
+                ShowError(zh?"请添加产品数量":"Please input the Quantity!", tbQuantity, lbItemError);
                 return;
             }
             if (Regex.IsMatch(tbQuantity.Text, "[^0-9]"))
             {
-                ShowError("Please input only numbers", tbQuantity, lbItemError);
+                ShowError(zh?"只能输入数字":"Please input only numbers", tbQuantity, lbItemError);
                 return;
             }
             HideError(tbQuantity, lbItemError);
@@ -75,14 +81,21 @@ namespace OrderManagementTool
 
             if (tbPrice.Text.Length == 0)
             {
-                ShowError("Please input the Price!", tbPrice, lbItemError);
+                ShowError(zh?"请输入单价":"Please input the Price!", tbPrice, lbItemError);
                 return;
             }
-            if (Regex.IsMatch(tbPrice.Text, "[^0-9]"))
+            int priceInt = 0;
+            double priceDouble = 0.0;
+            if (!int.TryParse(tbPrice.Text, out priceInt) && !double.TryParse(tbPrice.Text, out priceDouble))
             {
-                ShowError("Please input only numbers", tbPrice, lbItemError);
+                ShowError(zh ? "只能输入数字" : "Please input only numbers", tbPrice, lbItemError);
                 return;
             }
+            //if (Regex.IsMatch(tbPrice.Text, "[^0-9]"))
+            //{
+            //    ShowError("Please input only numbers", tbPrice, lbItemError);
+            //    return;
+            //}
             HideError(tbPrice, lbItemError);
 
             #endregion
@@ -131,7 +144,7 @@ namespace OrderManagementTool
 
             if (tbTo.Text == "" && tbToPhone.Text == "" && tbAddress.Text == "" && tbPurchaser.Text == "")
             {
-                lbUserError.Text = "Please input blank!";
+                lbUserError.Text = zh?"请填充空白":"Please input blank!";
                 lbUserError.Visible = true;
                 tbTo.BackColor = Color.LightCoral;
                 tbToPhone.BackColor = Color.LightCoral;
@@ -142,7 +155,7 @@ namespace OrderManagementTool
             }
             if (tbTo.Text == "")
             {
-                lbUserError.Text = "Please input the To!";
+                lbUserError.Text = zh?"请输入收件人":"Please input the To!";
                 lbUserError.Visible = true;
                 tbTo.BackColor = Color.LightCoral;
                 tbTo.Focus();
@@ -150,7 +163,7 @@ namespace OrderManagementTool
             }
             if (tbToPhone.Text == "")
             {
-                lbUserError.Text = "Please input the Phone!";
+                lbUserError.Text = zh?"请输入收件人电话":"Please input the Phone!";
                 lbUserError.Visible = true;
                 tbToPhone.BackColor = Color.LightCoral;
                 tbToPhone.Focus();
@@ -158,7 +171,7 @@ namespace OrderManagementTool
             }
             if (tbAddress.Text == "")
             {
-                lbUserError.Text = "Please input the Address!";
+                lbUserError.Text = zh?"请输入收件人地址":"Please input the Address!";
                 lbUserError.Visible = true;
                 tbAddress.BackColor = Color.LightCoral;
                 tbAddress.Focus();
@@ -166,7 +179,7 @@ namespace OrderManagementTool
             }
             if (tbPurchaser.Text == "")
             {
-                lbUserError.Text = "Please input the Purchaser Name!";
+                lbUserError.Text = zh?"请输入下单人姓名":"Please input the Purchaser Name!";
                 lbUserError.Visible = true;
                 tbPurchaser.BackColor = Color.LightCoral;
                 tbPurchaser.Focus();
@@ -174,7 +187,7 @@ namespace OrderManagementTool
             }
             if (dgvItemList.DataSource == null)
             {
-                lbUserError.Text = "There is not items to be added!";
+                lbUserError.Text = zh?"未添加产品":"There is not items to be added!";
                 lbUserError.Visible = true;
                 return;
             }
@@ -251,7 +264,14 @@ namespace OrderManagementTool
 
             #endregion
 
-            MessageBox.Show("Adding Order Sucessfully!");
+
+            MessageBox.Show(zh?"成功添加订单":"Adding Order Sucessfully!");
+            if (tbOrderContent.Text != "")
+            {
+                Clipboard.SetDataObject(tbOrderContent.Text);
+                tbOrderContent.Focus();
+                
+            }
         }
 
         private void btnCopy_Click(object sender, EventArgs e)
@@ -260,16 +280,16 @@ namespace OrderManagementTool
             {
                 Clipboard.SetDataObject(tbOrderContent.Text);
                 tbOrderContent.Focus();
-                MessageBox.Show("Copy to clipboard!");
+                MessageBox.Show(zh?"复制到粘贴板":"Copy to clipboard!");
             }
         }
 
         private void chkLock_CheckedChanged(object sender, EventArgs e)
         {
             if (chkLock.Checked)
-                chkLock.Text = "Unlock";
+                chkLock.Text = zh?"解锁":"Unlock";
             else
-                chkLock.Text = "Lock";
+                chkLock.Text = zh?"锁定":"Lock";
             tbFrom.Enabled = !chkLock.Checked;
             tbFromPhone.Enabled = !chkLock.Checked;
         }
@@ -301,7 +321,7 @@ namespace OrderManagementTool
                 var orderContent = ExportFile.GenerateOrderContent(objItems, objUserInfo, true);
 
                 ExportFile.CreateOrderFile(path, tbOrderContent.Text.Trim());
-                MessageBox.Show("Generating " + crtOrderNo + purchaserName + ".txt Sucessfully!");
+                MessageBox.Show((zh?"生成 ":"Generating ") + crtOrderNo + purchaserName + (zh?".txt 成功！ ":".txt Sucessfully!"));
             }
 
             #endregion
@@ -323,8 +343,10 @@ namespace OrderManagementTool
 
             #region 使打开的窗口依附在原窗口的边上
 
-            var x = (SystemInformation.WorkingArea.Width - _frmPriceKit.Size.Width) / 2 + _frmPriceKit.Size.Width;
-            var y = (SystemInformation.WorkingArea.Height - _frmPriceKit.Size.Height) / 2;
+            //var x = (SystemInformation.WorkingArea.Width - _frmPriceKit.Size.Width) / 2 + _frmPriceKit.Size.Width;
+            //var y = (SystemInformation.WorkingArea.Height - _frmPriceKit.Size.Height) / 2;
+            var x = 100;
+            var y = 100;
             _frmPriceKit.StartPosition = FormStartPosition.Manual; //窗体的位置由Location属性决定
             _frmPriceKit.Location = (Point) new Size(x, y);
 
@@ -359,7 +381,7 @@ namespace OrderManagementTool
         private void btnDeleteItem_Click(object sender, EventArgs e)
         {
             if (
-                MessageBox.Show(this, "Are you sure to delete?", "Prompt", MessageBoxButtons.YesNo,
+                MessageBox.Show(this, zh?"你确定删除吗？":"Are you sure to delete?", zh?"提示":"Prompt", MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 #region Delete Item

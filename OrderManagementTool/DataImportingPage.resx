@@ -117,7 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnImportRecords.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnImportRecords.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
   <data name="btnImportRecords.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAW
@@ -133,6 +140,61 @@
         YoyC/28R/QGsyXq4NyrZrQAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="btnImportRecords.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="btnImportRecords.Location" type="System.Drawing.Point, System.Drawing">
+    <value>462, 15</value>
+  </data>
+  <data name="btnImportRecords.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 40</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnImportRecords.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="btnImportRecords.Text" xml:space="preserve">
+    <value>Import Records</value>
+  </data>
+  <data name="btnImportRecords.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;btnImportRecords.Name" xml:space="preserve">
+    <value>btnImportRecords</value>
+  </data>
+  <data name="&gt;&gt;btnImportRecords.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnImportRecords.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnImportRecords.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="prbImport.Location" type="System.Drawing.Point, System.Drawing">
+    <value>191, 172</value>
+  </data>
+  <data name="prbImport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1037, 28</value>
+  </data>
+  <data name="prbImport.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;prbImport.Name" xml:space="preserve">
+    <value>prbImport</value>
+  </data>
+  <data name="&gt;&gt;prbImport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;prbImport.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;prbImport.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="lbProcessing.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
   <data name="lbProcessing.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAW
@@ -146,9 +208,72 @@
         IRaLeacnk0k4jtN5QLFY/DuTRqOzgHb41n8VRb0BbB3DPN5BbfIAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="lbProcessing.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="lbProcessing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>212, 118</value>
+  </data>
+  <data name="lbProcessing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1049, 27</value>
+  </data>
+  <data name="lbProcessing.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="lbProcessing.Text" xml:space="preserve">
+    <value>     Current Processing:</value>
+  </data>
+  <data name="lbProcessing.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;lbProcessing.Name" xml:space="preserve">
+    <value>lbProcessing</value>
+  </data>
+  <data name="&gt;&gt;lbProcessing.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbProcessing.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbProcessing.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <metadata name="bkgWorkForImporting.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>377, 17</value>
   </metadata>
+  <data name="lbProgress.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbProgress.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="lbProgress.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1241, 174</value>
+  </data>
+  <data name="lbProgress.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 25</value>
+  </data>
+  <data name="lbProgress.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="lbProgress.Text" xml:space="preserve">
+    <value>0%</value>
+  </data>
+  <data name="&gt;&gt;lbProgress.Name" xml:space="preserve">
+    <value>lbProgress</value>
+  </data>
+  <data name="&gt;&gt;lbProgress.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbProgress.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbProgress.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="lbFolder.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
   <data name="lbFolder.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAW
@@ -166,6 +291,42 @@
         bIxYUUoPLQHnPr1c7WIQxG/gLm+nFLeLkQAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="lbFolder.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="lbFolder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>211, 69</value>
+  </data>
+  <data name="lbFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1050, 27</value>
+  </data>
+  <data name="lbFolder.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="lbFolder.Text" xml:space="preserve">
+    <value>     Selected Directory:</value>
+  </data>
+  <data name="lbFolder.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;lbFolder.Name" xml:space="preserve">
+    <value>lbFolder</value>
+  </data>
+  <data name="&gt;&gt;lbFolder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbFolder.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbFolder.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="btnImportTransaction.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btnImportTransaction.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
   <data name="btnImportTransaction.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAW
@@ -182,9 +343,45 @@
         twPAJv+jSrZE8gvdiusc65tLigAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="btnImportTransaction.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="btnImportTransaction.Location" type="System.Drawing.Point, System.Drawing">
+    <value>673, 15</value>
+  </data>
+  <data name="btnImportTransaction.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 40</value>
+  </data>
+  <data name="btnImportTransaction.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="btnImportTransaction.Text" xml:space="preserve">
+    <value>Import Transaction</value>
+  </data>
+  <data name="btnImportTransaction.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;btnImportTransaction.Name" xml:space="preserve">
+    <value>btnImportTransaction</value>
+  </data>
+  <data name="&gt;&gt;btnImportTransaction.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnImportTransaction.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnImportTransaction.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <metadata name="bkgWorkForTransaction.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>637, 17</value>
   </metadata>
+  <data name="btnExportTransaction.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btnExportTransaction.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
   <data name="btnExportTransaction.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAW
@@ -201,9 +398,69 @@
         64eXYQAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="btnExportTransaction.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="btnExportTransaction.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1110, 15</value>
+  </data>
+  <data name="btnExportTransaction.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 40</value>
+  </data>
+  <data name="btnExportTransaction.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="btnExportTransaction.Text" xml:space="preserve">
+    <value>Export Transaction</value>
+  </data>
+  <data name="btnExportTransaction.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;btnExportTransaction.Name" xml:space="preserve">
+    <value>btnExportTransaction</value>
+  </data>
+  <data name="&gt;&gt;btnExportTransaction.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnExportTransaction.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnExportTransaction.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="bkgWorkForExporting.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>911, 17</value>
   </metadata>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>185, 55</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1124, 1</value>
+  </data>
+  <data name="label11.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnExportRecords.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btnExportRecords.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
   <data name="btnExportRecords.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAW
@@ -219,9 +476,51 @@
         YoyC/28R/QGsyXq4NyrZrQAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="btnExportRecords.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="btnExportRecords.Location" type="System.Drawing.Point, System.Drawing">
+    <value>899, 16</value>
+  </data>
+  <data name="btnExportRecords.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 40</value>
+  </data>
+  <data name="btnExportRecords.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="btnExportRecords.Text" xml:space="preserve">
+    <value>Export Records</value>
+  </data>
+  <data name="btnExportRecords.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;btnExportRecords.Name" xml:space="preserve">
+    <value>btnExportRecords</value>
+  </data>
+  <data name="&gt;&gt;btnExportRecords.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnExportRecords.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnExportRecords.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
   <metadata name="bkgWorkForExportingRecords.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1168, 17</value>
   </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>9, 18</value>
+  </data>
+  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1345, 733</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAMDAAAAEAIACoJQAAFgAAACgAAAAwAAAAYAAAAAEAIAAAAAAAACQAAMgAAADIAAAAAAAAAAAA
@@ -387,5 +686,41 @@
         AAA//wAAwAAAAD//AADAAAAAP/8AAMAAAAA//wAA4AAAAD//AAD/gAAAP/8AAP+AAAA//wAA////////
         AAA=
 </value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Data Importing</value>
+  </data>
+  <data name="&gt;&gt;bkgWorkForImporting.Name" xml:space="preserve">
+    <value>bkgWorkForImporting</value>
+  </data>
+  <data name="&gt;&gt;bkgWorkForImporting.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bkgWorkForTransaction.Name" xml:space="preserve">
+    <value>bkgWorkForTransaction</value>
+  </data>
+  <data name="&gt;&gt;bkgWorkForTransaction.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bkgWorkForExporting.Name" xml:space="preserve">
+    <value>bkgWorkForExporting</value>
+  </data>
+  <data name="&gt;&gt;bkgWorkForExporting.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bkgWorkForExportingRecords.Name" xml:space="preserve">
+    <value>bkgWorkForExportingRecords</value>
+  </data>
+  <data name="&gt;&gt;bkgWorkForExportingRecords.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>DataImportingPage</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

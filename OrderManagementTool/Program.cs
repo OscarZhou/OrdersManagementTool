@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace OrderManagementTool
@@ -13,6 +14,7 @@ namespace OrderManagementTool
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("zh-CHS");
             Application.Run(new OrderManagementTool());
             //Application.Run(new DataImportingPage());
         }

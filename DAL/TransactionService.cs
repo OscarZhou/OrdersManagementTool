@@ -198,18 +198,18 @@ namespace DAL
         /// <param name="name"></param>
         /// <param name="sortingType"></param>
         /// <returns></returns>
-        public List<Transaction> GetTransactionList(string name, int sortingType)
+        public List<Transaction> GetTransactionList(string name, int sortingType, DateTime dtFromDate, DateTime dtEndDate)
         {
             List<Transaction> objTransactions = new List<Transaction>();
             StringBuilder sqlBuilder = new StringBuilder();
 
-            if (name == "Input Name" || name == "")
+            if (name == "Input Name" || name=="客户姓名" || name == "")
             {
-                sqlBuilder.Append("select * from TransactionList ");
+                sqlBuilder.Append("select * from TransactionList where CreateTime >= '{0}' and CreateTime <= '{1}' ");
             }
             else
             {
-                sqlBuilder.Append("select * from TransactionList where Purchaser like '%{0}%' ");
+                sqlBuilder.Append("select * from TransactionList where CreateTime >= '{0}' and CreateTime <= '{1}' and Purchaser like '%{2}%' ");
             }
 
             switch (sortingType)
@@ -230,14 +230,15 @@ namespace DAL
                     break;
             }
 
+
             string sql = null;
-            if (name == "Input Name" || name == "")
+            if (name == "Input Name" || name == "客户姓名" || name == "")
             {
-                sql = sqlBuilder.ToString();
+                sql = string.Format(sqlBuilder.ToString(), dtFromDate.Date, dtEndDate.Date);
             }
             else
             {
-                sql = string.Format(sqlBuilder.ToString(), name);
+                sql = string.Format(sqlBuilder.ToString(), dtFromDate.Date, dtEndDate.Date, name);
             }
 
             SqlDataReader objReaders = SQLHelper.GetObjectCollection(sql);

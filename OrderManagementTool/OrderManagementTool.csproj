@@ -97,25 +97,67 @@
     <Compile Include="UndoneOrdersPage.Designer.cs">
       <DependentUpon>UndoneOrdersPage.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CalculatePriceKitPage.en-US.resx">
+      <DependentUpon>CalculatePriceKitPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CalculatePriceKitPage.resx">
       <DependentUpon>CalculatePriceKitPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CalculatePriceKitPage.zh-CHS.resx">
+      <DependentUpon>CalculatePriceKitPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompletedTransactionPage.en-US.resx">
+      <DependentUpon>CompletedTransactionPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CompletedTransactionPage.resx">
       <DependentUpon>CompletedTransactionPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CompletedTransactionPage.zh-CHS.resx">
+      <DependentUpon>CompletedTransactionPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataImportingPage.en-US.resx">
+      <DependentUpon>DataImportingPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DataImportingPage.resx">
       <DependentUpon>DataImportingPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataImportingPage.zh-CHS.resx">
+      <DependentUpon>DataImportingPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmOrderText.en-US.resx">
+      <DependentUpon>FrmOrderText.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmOrderText.resx">
       <DependentUpon>FrmOrderText.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmOrderText.zh-CHS.resx">
+      <DependentUpon>FrmOrderText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderCreationPage.en-US.resx">
+      <DependentUpon>OrderCreationPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OrderCreationPage.resx">
       <DependentUpon>OrderCreationPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderCreationPage.zh-CHS.resx">
+      <DependentUpon>OrderCreationPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderDetailsPage.en-US.resx">
+      <DependentUpon>OrderDetailsPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrderDetailsPage.resx">
       <DependentUpon>OrderDetailsPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OrderDetailsPage.zh-CHS.resx">
+      <DependentUpon>OrderDetailsPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderManagementTool.en-US.resx">
+      <DependentUpon>OrderManagementTool.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OrderManagementTool.resx">
+      <DependentUpon>OrderManagementTool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderManagementTool.zh-CHS.resx">
       <DependentUpon>OrderManagementTool.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -128,7 +170,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UndoneOrdersPage.en-US.resx">
+      <DependentUpon>UndoneOrdersPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UndoneOrdersPage.resx">
+      <DependentUpon>UndoneOrdersPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UndoneOrdersPage.zh-CHS.resx">
       <DependentUpon>UndoneOrdersPage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
