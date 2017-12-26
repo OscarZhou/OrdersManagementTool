@@ -295,6 +295,7 @@ namespace OrderManagementTool
 
         private void dgvTransaction_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+
             _orderNo = dgvTransaction.CurrentRow.Cells["OrderNo"].Value.ToString();
             _frmOrderDetail = new OrderDetailsPage();
             EvtOpenView += _frmOrderDetail.ViewReceiver; // 关联子窗体，传递订单号信息
@@ -567,6 +568,7 @@ namespace OrderManagementTool
         {
             ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex), dtpFromDate.Value, dtpEndDate.Value);
         }
+
 
 
         

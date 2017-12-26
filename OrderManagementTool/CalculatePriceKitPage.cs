@@ -207,16 +207,21 @@ namespace OrderManagementTool
         {
             // Only the first column can go to this branch
             // This part takes me a long time
+            // This is not put into use after remove the item NO.
+
+
             if (e.ColumnIndex == 0)
             {
                 var chkSelected =
-                    (DataGridViewCheckBoxCell) dgvPriceHistory.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                    (DataGridViewCheckBoxCell)dgvPriceHistory.Rows[e.RowIndex].Cells[e.ColumnIndex];
 
                 if (Convert.ToBoolean(chkSelected.Value))
                     chkSelected.Value = false;
                 else
                     chkSelected.Value = true;
             }
+
+
         }
 
         private void CalculatePriceKitPage_FormClosed(object sender, FormClosedEventArgs e)
@@ -344,5 +349,6 @@ namespace OrderManagementTool
         }
 
         #endregion
+
     }
 }
