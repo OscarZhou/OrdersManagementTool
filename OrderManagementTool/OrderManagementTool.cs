@@ -29,6 +29,7 @@ namespace OrderManagementTool
             //MessageBox.Show("panel1 height:" + height);
             //#endregion
 
+            dtpFromDate.Value = Convert.ToDateTime(string.Format("{0}/1/{1}", DateTime.Now.Month, DateTime.Now.Year));//From Date is default the first day of the current month
             dgvTransaction.AutoGenerateColumns = false; // prohibit useless column 
             ShowTransaction(tbSearch.Text.Trim(), Convert.ToInt32(cmbSorting.SelectedIndex), dtpFromDate.Value,dtpEndDate.Value);
             InitializeSortingList();
