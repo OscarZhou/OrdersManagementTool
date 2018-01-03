@@ -51,6 +51,13 @@ First releasing.
 &nbsp;&nbsp;**2.2** Adjust the width of the columns in each DataGridView   
 &nbsp;&nbsp;**2.3** Convert the Date column in Excel with the additional column(Date) to DateTime type  
 &nbsp;&nbsp;**2.4** Add Key Code to associate with window operation  
+
+## V1.8  
+**1.** Adjust the layout for all pages  
+**2.** Add multiple language (Globalization and localization) for all pages  
+**3.** Add some functions  
+&nbsp;&nbsp;**3.1** Search based on the date range and calculate the profit during the time range.  
+
  
  
  
