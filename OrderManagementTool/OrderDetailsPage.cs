@@ -163,6 +163,11 @@ namespace OrderManagementTool
                 ShowError(zh?"请添加产品售价":"Please fill the selling price", tbSellingPrice, lbError);
                 return;
             }
+            if (Regex.IsMatch(tbCardNo.Text, "[^0-9]")) //区分不是字母，而是数字
+                ShowError(zh ? "只允许添加数字" : "Please input only number", tbCardNo, lbError);
+            else
+                HideError(tbCardNo, lbError);
+
             if (Regex.IsMatch(tbSellingPrice.Text, "[^0-9]")) //区分不是字母，而是数字
                 if (!Regex.IsMatch(tbSellingPrice.Text, @"^(-?\d+)(\.\d+)?$"))
                 {
@@ -205,6 +210,7 @@ namespace OrderManagementTool
             _objOrder.User = new UserInfoManage().GetUserByOrderNo(tbOrderNo.Text.Trim());
             _objOrder.User.UserName = tbTo.Text.Trim();
             _objOrder.User.PhoneNumber = tbToPhone.Text.Trim();
+            _objOrder.User.CardNo = tbCardNo.Text.Trim();
             _objOrder.User.Address = tbAddress.Text.Trim();
             
             var objTransaction = new TransactionManage().GetTransactionRecordByOrderNo(tbOrderNo.Text.Trim());

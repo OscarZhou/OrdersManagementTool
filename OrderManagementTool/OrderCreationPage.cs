@@ -255,6 +255,7 @@ namespace OrderManagementTool
             tbTo.BackColor = Color.White;
             tbToPhone.Text = "";
             tbToPhone.BackColor = Color.White;
+            tbIdentityCard.Text = "";
             tbAddress.Text = "";
             tbAddress.BackColor = Color.White;
             tbPurchaser.Text = "";
